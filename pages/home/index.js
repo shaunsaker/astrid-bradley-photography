@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Home = () => {
   return (
-    <div style={styles.container}>
+    <div>
       <h1>Hello world</h1>
     </div>
   );
