@@ -1,44 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { withRouter } from 'next/router';
+import Media from 'react-media';
 
-import styles from './styles';
-import ROUTES from './routes';
+import Desktop from './Desktop';
+import Mobile from './Mobile';
 
-import Logo from '../Logo';
-
-const Header = ({ router }) => {
-  const { pathname } = router;
-
+const Header = () => {
   return (
-    <div>
-      <Logo />
-
-      <ul>
-        {ROUTES.map((route) => {
-          const { href, title } = route;
-          const isActive = route.href === pathname;
-          console.log(isActive);
-
-          return (
-            <Link key={href} href={href}>
-              <li className={isActive && 'active'}>{title}</li>
-            </Link>
-          );
-        })}
-      </ul>
-
-      <style jsx>{styles}</style>
-    </div>
+    <Media query={{ maxWidth: 720 }}>{(matches) => (matches ? <Mobile /> : <Desktop />)}</Media>
   );
 };
 
-Header.propTypes = {
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
-};
+Header.propTypes = {};
 Header.defaultProps = {};
 
-export default withRouter(Header);
+export default Header;

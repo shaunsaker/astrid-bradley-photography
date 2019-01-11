@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css';
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors } from '../../../static/styles/styleConstants';
 
 const styles = css`
   div {

@@ -22,6 +22,7 @@ body {
 }
 
 img {
+  width: 100%;
   max-width: 100%;
 }
 
@@ -37,6 +38,12 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 `;
 
