@@ -3,6 +3,8 @@ import App, { Container } from 'next/app';
 
 import globalStyles from '../static/styles/global';
 
+import Head from '../components/Head';
+
 export class MerjApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
@@ -19,6 +21,8 @@ export class MerjApp extends App {
 
     return (
       <Container>
+        <Head />
+
         <style jsx global>
           {globalStyles}
         </style>
