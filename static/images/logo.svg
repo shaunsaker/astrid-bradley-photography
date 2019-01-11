@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="760px" height="90px" viewBox="0 0 760 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="49.3139755%" cy="50%" fx="49.3139755%" fy="50%" r="101.232406%" gradientTransform="translate(0.493140,0.500000),scale(0.086124,1.000000),rotate(90.000000),scale(1.000000,5.974749),translate(-0.493140,-0.500000)" id="radialGradient-1">
+            <stop stop-color="#BB7D46" offset="0%"></stop>
+            <stop stop-color="#69411D" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="LOGO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Futura-Medium, Futura" font-weight="400">
+        <g id="Artboard" transform="translate(-116.000000, -457.000000)">
+            <g id="Group" transform="translate(116.000000, 447.500000)">
+                <text id="ASTRID-BRADLEY-PHOTO" font-size="36" letter-spacing="7.5" fill="#161723">
+                    <tspan x="0.5" y="37.6835938">ASTRID BRADLEY PHOTOGRAPHY</tspan>
+                </text>
+                <text id="WEDDING-&amp;-LIFESTYLE" fill-opacity="0.9" fill="url(#radialGradient-1)" font-size="28" letter-spacing="5.83333349">
+                    <tspan x="175" y="97.3727824">WEDDING &amp; LIFESTYLE</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
