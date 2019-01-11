@@ -1,1 +1,3 @@
-export default () => <div>Welcome to next.js!</div>;
+import Home from "./home";
+
+export default Home;
