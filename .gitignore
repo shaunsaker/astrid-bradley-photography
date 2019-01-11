@@ -1,0 +1,11 @@
+node_modules
+
+# VS Code
+settings.json
+
+# Nextjs
+.next
+public
+
+# Mac
+.DS_Store
