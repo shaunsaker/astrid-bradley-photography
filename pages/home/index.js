@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Page from '../../components/Page';
+import Header from '../../components/Header';
+
 const Home = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <Page>
+      <Header />
+    </Page>
   );
 };
 

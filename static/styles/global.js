@@ -24,6 +24,20 @@ body {
 img {
   max-width: 100%;
 }
+
+div, ul {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
 `;
 
 export default styles;
