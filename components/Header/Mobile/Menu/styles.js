@@ -6,7 +6,6 @@ const styles = css`
   ul {
     background-color: ${colors.white};
     padding: 16px 12px 0;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 16px;
 
     @keyframes grow {

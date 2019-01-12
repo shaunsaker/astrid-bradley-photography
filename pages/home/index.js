@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
+import ImageSlider from '../../components/ImageSlider';
 import Footer from '../../components/Footer';
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
       <Header />
 
       <div className="flex">
-        <div />
+        <ImageSlider />
       </div>
 
       <Footer />

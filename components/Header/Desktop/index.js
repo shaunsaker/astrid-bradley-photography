@@ -15,7 +15,7 @@ const Desktop = ({ router }) => {
     <div className="desktop">
       <Logo />
 
-      <ul>
+      <ul className="row">
         {ROUTES.map((route) => {
           const { href, title } = route;
           const isActive = route.href === pathname;

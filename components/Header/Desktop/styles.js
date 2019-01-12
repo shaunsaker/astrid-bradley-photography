@@ -1,13 +1,11 @@
-import css from 'styled-jsx/css';
-
-import { colors } from '../../../static/styles/styleConstants';
+import css from 'styled-jsx/css'; // eslint-disable-line
 
 const styles = css`
   div {
+    padding-bottom: 16px;
   }
 
   ul {
-    flex-direction: row;
     justify-content: space-between;
     margin-top: 64px;
     padding: 0 48px;

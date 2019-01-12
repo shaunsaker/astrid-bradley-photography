@@ -10,7 +10,7 @@ const Menu = ({ router }) => {
   const { pathname } = router;
 
   return (
-    <ul>
+    <ul className="shadow-lg">
       {ROUTES.map((route) => {
         const { href, title } = route;
         const isActive = route.href === pathname;
