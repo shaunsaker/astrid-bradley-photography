@@ -8,10 +8,14 @@ const AboutSection = () => {
     <section>
       <h2>About Me</h2>
 
-      <div className="row">
+      <div className="row xs-wrap">
         <div className="image-container">
           <img src="/static/images/pages/home/astrid-bradley.jpg" alt="Astrid Bradley" />
         </div>
+
+        <div className="spacer-hz hidden-xs-down" />
+
+        <div className="spacer-vt hidden-xs-up" />
 
         <div>
           <p>

@@ -11,13 +11,19 @@ const PortfolioSection = () => {
     <section>
       <h1>Portfolio</h1>
 
-      <div className="row">
+      <div className="row xs-wrap">
         {SPRINGBOARDS.map((springboard, index) => {
           const { image, text, href } = springboard;
-          const spacerComponent = index !== SPRINGBOARDS.length - 1 && <div className="spacer" />;
+          const spacerComponent = index !== SPRINGBOARDS.length - 1 && (
+            <Fragment>
+              <div className="spacer-hz hidden-xs-down" />
+
+              <div className="spacer-vt hidden-xs-up" />
+            </Fragment>
+          );
 
           return (
-            <Fragment>
+            <Fragment key={text}>
               <Springboard image={image} text={text} href={href} />
 
               {spacerComponent}

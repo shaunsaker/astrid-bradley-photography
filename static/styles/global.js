@@ -84,6 +84,14 @@ button {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
+.spacer-hz {
+  min-width: 12px;
+}
+
+.spacer-vt {
+  min-height: 16px;
+}
+
 @font-face {
   font-family: 'Futura';
   src: url('/static/fonts/Futura.ttf') format('truetype');
