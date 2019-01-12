@@ -60,18 +60,22 @@ p {
   color: ${colors.grey};
 }
 
-.link {
+.nav-link, .link {
   font-size: 1em;
   color: ${colors.grey};
   cursor: pointer;
   transition: color 0.5s ease;
 }
 
-.link:hover {
+.link {
+  text-decoration: underline;
+}
+
+.nav-link:hover, .link:hover {
   color: ${colors.black};
 }
 
-.link.active {
+.nav-link.active, .link.active {
   font-weight: 700;
   color: ${colors.black};
 }

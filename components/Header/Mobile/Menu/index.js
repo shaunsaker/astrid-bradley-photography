@@ -18,7 +18,7 @@ const Menu = ({ router }) => {
         return (
           <li key={href}>
             <Link href={href}>
-              <span className={`link ${isActive && 'active'}`}>{title}</span>
+              <span className={`nav-link ${isActive && 'active'}`}>{title}</span>
             </Link>
           </li>
         );
