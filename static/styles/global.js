@@ -48,13 +48,10 @@ button {
 
 .page-wrapper {
   height: 100vh;
-  align-items: center;
 }
 
 .page-container {
   max-width: 720px;
-  padding: 120px 24px 0; //  120px = header height
-  align-self: stretch;
 }
 
 p {
