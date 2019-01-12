@@ -48,7 +48,7 @@ button {
 }
 
 .page-wrapper {
-  height: 100vh;
+
 }
 
 .page-container {
@@ -80,10 +80,8 @@ h1, p {
 }
 
 h1 {
-  font-size: 1em;
-  line-height: 1.5em;
+  font-size: 1.5em;
   color: ${colors.black};
-  text-align: center;
   margin: 16px 0;
 }
 
