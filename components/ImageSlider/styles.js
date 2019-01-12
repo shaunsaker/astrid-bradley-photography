@@ -34,7 +34,7 @@ const styles = css`
     border-radius: ${DOT_SIZE / 2}px;
     background-color: ${colors.white};
     margin: 0 ${DOT_SIZE / 2}px;
-    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .active {

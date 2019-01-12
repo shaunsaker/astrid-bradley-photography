@@ -64,7 +64,12 @@ button {
 }
 
 .shadow-sm {
+  transition: all 0.5s ease;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.shadow-sm:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .shadow-md {
@@ -75,12 +80,22 @@ button {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-h1, p {
+.margin-hz {
+  margin: 0 12px;
+}
+
+h1, h2, p {
   margin: 0;
 }
 
 h1 {
   font-size: 1.5em;
+  color: ${colors.black};
+  margin: 16px 0;
+}
+
+h2 {
+  font-size: 1.25em;
   color: ${colors.black};
   margin: 16px 0;
 }
@@ -100,16 +115,20 @@ small {
   text-align: center;
 }
 
-.nav-link, .link {
-  font-size: 1em;
+.nav-link {
+  font-size: 0.8em;
   color: ${colors.grey};
-  cursor: pointer;
-  transition: color 0.5s ease;
 }
 
 .link {
+  font-size: 1em;
   color: ${colors.black};
   text-decoration: underline;
+}
+
+.nav-link, .link {
+  cursor: pointer;
+  transition: color 0.5s ease;
 }
 
 .nav-link:hover, .link:hover {
