@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from 'styled-jsx/css'; // eslint-disable-line
 
 import { colors } from '../../../../static/styles/styleConstants';
 
@@ -22,16 +22,8 @@ const styles = css`
   }
 
   li {
-    font-size: 1em;
-    color: ${colors.grey};
-    cursor: pointer;
     margin-bottom: 16px;
     text-align: center;
-  }
-
-  li.active {
-    font-weight: 700;
-    color: ${colors.black};
   }
 `;
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { withRouter } from 'next/router';
 
 import ROUTES from '../../routes';
 import styles from './styles';
+
+import Link from '../../../Link';
 
 const Menu = ({ router }) => {
   const { pathname } = router;
@@ -16,9 +17,11 @@ const Menu = ({ router }) => {
         const isActive = route.href === pathname;
 
         return (
-          <Link key={href} href={href}>
-            <li className={isActive ? 'active' : null}>{title}</li>
-          </Link>
+          <li key={href}>
+            <Link href={href} active={isActive}>
+              {title}
+            </Link>
+          </li>
         );
       })}
 
