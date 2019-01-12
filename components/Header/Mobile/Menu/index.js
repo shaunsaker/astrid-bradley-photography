@@ -11,7 +11,7 @@ const Menu = ({ router }) => {
   const { pathname } = router;
 
   return (
-    <ul className="container">
+    <ul>
       {ROUTES.map((route) => {
         const { href, title } = route;
         const isActive = route.href === pathname;

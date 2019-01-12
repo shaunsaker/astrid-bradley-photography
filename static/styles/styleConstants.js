@@ -1,7 +1,7 @@
 const colors = {
   black: '#000000',
   white: '#FFFFFF',
-  grey: '#ADADAD',
+  grey: '#9c9c9c',
   accent1: '#69411D',
   accent2: '#BB7D46',
 };

@@ -11,11 +11,12 @@ const styles = css`
   }
 
   .desktop {
-    padding: 64px 24px;
+    padding: 64px 24px 0;
   }
 
   .mobile {
-    padding: 32px 12px;
+    padding: 120px 12px 0; /* 120 = header height */
+    align-self: stretch;
   }
 `;
 

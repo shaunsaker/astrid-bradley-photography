@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 
 import styles from './styles';
-import ROUTES from '../routes';
+import ROUTES from './routes';
 
-import Logo from '../../Logo';
-import Link from '../../Link';
+import Link from '../Link';
 
-const Desktop = ({ router }) => {
+const Footer = ({ router }) => {
   const { pathname } = router;
 
   return (
     <div>
-      <Logo />
-
       <ul>
         {ROUTES.map((route) => {
           const { href, title } = route;
@@ -35,11 +32,11 @@ const Desktop = ({ router }) => {
   );
 };
 
-Desktop.propTypes = {
+Footer.propTypes = {
   router: PropTypes.shape({
     pathname: PropTypes.string,
   }),
 };
-Desktop.defaultProps = {};
+Footer.defaultProps = {};
 
-export default withRouter(Desktop);
+export default withRouter(Footer);

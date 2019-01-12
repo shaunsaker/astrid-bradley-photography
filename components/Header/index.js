@@ -7,7 +7,7 @@ import Mobile from './Mobile';
 
 const Header = () => {
   return (
-    <Media query={{ maxWidth: 720 }}>{(matches) => (matches ? <Mobile /> : <Desktop />)}</Media>
+    <Media query={{ maxWidth: 720 }}>{(matches) => (!matches ? <Desktop /> : <Mobile />)}</Media>
   );
 };
 
