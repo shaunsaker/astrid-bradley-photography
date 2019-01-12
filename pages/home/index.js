@@ -3,41 +3,28 @@ import PropTypes from 'prop-types';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
-import ImageSlider from '../../components/ImageSlider';
-import Springboard from '../../components/Springboard';
 import Footer from '../../components/Footer';
+
+import FeaturedImagesSection from '../../layouts/home/FeaturedImagesSection';
+import PortfolioSection from '../../layouts/home/PortfolioSection';
+import AboutSection from '../../layouts/home/AboutSection';
+import TestimonialsSection from '../../layouts/home/TestimonialsSection';
+import QuoteSection from '../../layouts/home/QuoteSection';
 
 const Home = () => {
   return (
     <Page>
       <Header />
 
-      <div>
-        <ImageSlider />
+      <FeaturedImagesSection />
 
-        <div>
-          <h1>Portfolio</h1>
+      <PortfolioSection />
 
-          <div className="row">
-            <Springboard
-              image={{ src: '/static/images/pages/home/springboard-weddings.jpg', alt: 'Weddings' }}
-              text="Weddings"
-              href="weddings"
-            />
+      <AboutSection />
 
-            <div className="margin-hz" />
+      <TestimonialsSection />
 
-            <Springboard
-              image={{
-                src: '/static/images/pages/home/springboard-lifestyle.jpg',
-                alt: 'Weddings',
-              }}
-              text="Lifestyle"
-              href="lifestyle"
-            />
-          </div>
-        </div>
-      </div>
+      <QuoteSection />
 
       <Footer />
     </Page>
