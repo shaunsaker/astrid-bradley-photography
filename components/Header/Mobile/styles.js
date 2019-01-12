@@ -2,11 +2,16 @@ import css from 'styled-jsx/css';
 
 const styles = css`
   .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px;
   }
 
   .buttonContainer {
-    align-items: flex-end;
-    margin-bottom: 32px;
+    align-items: flex-start;
+    margin-bottom: 16px;
   }
 
   button {
