@@ -7,6 +7,7 @@ const styles = css`
     left: 0;
     right: 0;
     padding: 16px 24px;
+    min-height: 120px;
   }
 
   .buttonContainer {
