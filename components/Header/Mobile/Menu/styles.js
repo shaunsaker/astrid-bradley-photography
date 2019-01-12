@@ -9,16 +9,18 @@ const styles = css`
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 16px;
 
-    @keyframes fade-in {
+    @keyframes grow {
       from {
         opacity: 0;
+        max-height: 0;
       }
       to {
         opacity: 1;
+        max-height: 500px; /* anything value bigger than the menu */
       }
     }
 
-    animation: fade-in 0.5s ease;
+    animation: grow 0.5s ease;
   }
 
   li {
