@@ -84,6 +84,14 @@ button {
   margin: 0 12px;
 }
 
+@font-face {
+  font-family: 'Futura';
+  src: url('/static/fonts/Futura.ttf') format('truetype');
+  font-weight: 500;
+  font-style: medium;
+  font-display: swap;
+}
+
 h1, h2, p {
   margin: 0;
 }
@@ -98,6 +106,12 @@ h2 {
   font-size: 1.25em;
   color: ${colors.black};
   margin: 16px 0;
+}
+
+h1, h2 {
+  font-family: 'Futura', sans-serif;
+  font-weight: 500;
+  letter-spacing: 3px;
 }
 
 p {
