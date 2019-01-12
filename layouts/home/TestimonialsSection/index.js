@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const PortfolioSection = () => {
+const TestimonialsSection = () => {
   return (
     <section>
       <style jsx>{styles}</style>
@@ -11,7 +11,7 @@ const PortfolioSection = () => {
   );
 };
 
-PortfolioSection.propTypes = {};
-PortfolioSection.defaultProps = {};
+TestimonialsSection.propTypes = {};
+TestimonialsSection.defaultProps = {};
 
-export default PortfolioSection;
+export default TestimonialsSection;
