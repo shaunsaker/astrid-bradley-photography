@@ -4,9 +4,14 @@ import { colors } from '../../static/styles/styleConstants';
 
 const styles = css`
   span {
-    font-size: 1em;
+    font-size: 0.8em;
     color: ${colors.grey};
     cursor: pointer;
+    transition: color 0.5s ease;
+  }
+
+  span:hover {
+    color: ${colors.black};
   }
 
   .active {
