@@ -1,12 +1,7 @@
-import css from 'styled-jsx/css'; // eslint-disable-line styled-jsx is included with nextjs
+import css from 'styled-jsx/css'; // eslint-disable-line
 
 const styles = css`
-  ul {
-    flex-direction: row;
-  }
-
-  li {
-    flex: 1;
+  p {
     text-align: center;
   }
 `;

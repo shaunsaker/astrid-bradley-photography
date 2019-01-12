@@ -1,19 +1,7 @@
-.page-wrapper {
-    height: 100vh;
-    align-items: center;
-}
-
-.page-container {
-    max-width: 720px;
-}
-
+// All responsive styles go here
 @media screen and (max-width: 767px) {
     .desktop {
         display: none;
-    }
-    .page-container {
-        padding: 120px 12px 0; //  120 = header height
-        align-self: stretch;
     }
 }
 

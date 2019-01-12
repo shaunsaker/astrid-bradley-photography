@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import Link from 'next/link';
 
 import styles from './styles';
 import ROUTES from '../routes';
 
 import Logo from '../../Logo';
-import Link from '../../Link';
 
 const Desktop = ({ router }) => {
   const { pathname } = router;
@@ -22,8 +22,8 @@ const Desktop = ({ router }) => {
 
           return (
             <li key={href}>
-              <Link href={href} active={isActive}>
-                {title}
+              <Link href={href}>
+                <span className={`link ${isActive && 'active'}`}>{title}</span>
               </Link>
             </li>
           );

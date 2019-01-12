@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import Link from 'next/link';
 
 import ROUTES from '../../routes';
 import styles from './styles';
-
-import Link from '../../../Link';
 
 const Menu = ({ router }) => {
   const { pathname } = router;
@@ -18,8 +17,8 @@ const Menu = ({ router }) => {
 
         return (
           <li key={href}>
-            <Link href={href} active={isActive}>
-              {title}
+            <Link href={href}>
+              <span className={`link ${isActive && 'active'}`}>{title}</span>
             </Link>
           </li>
         );

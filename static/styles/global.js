@@ -45,6 +45,39 @@ button {
   border: none;
   padding: 0;
 }
+
+.page-wrapper {
+  height: 100vh;
+  align-items: center;
+}
+
+.page-container {
+  max-width: 720px;
+  padding: 120px 24px 0; //  120px = header height
+  align-self: stretch;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.5em;
+  color: ${colors.grey};
+}
+
+.link {
+  font-size: 1em;
+  color: ${colors.grey};
+  cursor: pointer;
+  transition: color 0.5s ease;
+}
+
+.link:hover {
+  color: ${colors.black};
+}
+
+.link.active {
+  font-weight: 700;
+  color: ${colors.black};
+}
 `;
 
 export default styles;

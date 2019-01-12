@@ -1,42 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
 
 import styles from './styles';
-import ROUTES from './routes';
 
-import Link from '../Link';
-
-const Footer = ({ router }) => {
-  const { pathname } = router;
+const Footer = () => {
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
     <div>
-      <ul>
-        {ROUTES.map((route) => {
-          const { href, title } = route;
-          const isActive = route.href === pathname;
-
-          return (
-            <li key={href}>
-              <Link href={href} active={isActive}>
-                {title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <p>All content copyright Astrid Bradley © 2012-{year}. All rights reserved.</p>
 
       <style jsx>{styles}</style>
     </div>
   );
 };
 
-Footer.propTypes = {
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
-};
+Footer.propTypes = {};
 Footer.defaultProps = {};
 
-export default withRouter(Footer);
+export default Footer;
