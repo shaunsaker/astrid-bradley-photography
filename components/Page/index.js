@@ -1,19 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Media from 'react-media';
-
-import styles from './styles';
 
 const Page = ({ children }) => {
   return (
-    <div className="wrapper">
-      <Media query={{ maxWidth: 720 }}>
-        {(matches) => (
-          <div className={`container ${matches ? 'mobile' : 'desktop'}`}>{children}</div>
-        )}
-      </Media>
-
-      <style jsx>{styles}</style>
+    <div className="page-wrapper">
+      <div className="page-container">{children}</div>
     </div>
   );
 };

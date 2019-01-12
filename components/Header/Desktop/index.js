@@ -12,7 +12,7 @@ const Desktop = ({ router }) => {
   const { pathname } = router;
 
   return (
-    <div>
+    <div className="desktop">
       <Logo />
 
       <ul>

@@ -11,14 +11,15 @@
   "author": "Shaun Saker [info@shaunsaker.com]",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "next": "^7.0.2",
     "next-compose": "^0.0.2",
     "next-images": "^1.0.4",
+    "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-icons": "^3.3.0",
-    "react-media": "^1.9.2"
+    "react-icons": "^3.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
