@@ -54,10 +54,35 @@ button {
   max-width: 720px;
 }
 
+.flex {
+  flex: 1;
+}
+
+h1, p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1em;
+  line-height: 1.5em;
+  color: ${colors.black};
+  text-align: center;
+  margin: 16px 0;
+}
+
 p {
   font-size: 1em;
   line-height: 1.5em;
+  color: ${colors.black};
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+small {
+  font-size: 0.8em;
+  line-height: 1.25em;
   color: ${colors.grey};
+  text-align: center;
 }
 
 .nav-link, .link {
@@ -68,6 +93,7 @@ p {
 }
 
 .link {
+  color: ${colors.black};
   text-decoration: underline;
 }
 

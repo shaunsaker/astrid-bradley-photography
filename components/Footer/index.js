@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <div>
-      <p>All content copyright Astrid Bradley © 2012-{year}. All rights reserved.</p>
+      <small>All content copyright Astrid Bradley © 2012-{year}. All rights reserved.</small>
 
       <style jsx>{styles}</style>
     </div>

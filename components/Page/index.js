@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Page = ({ children }) => {
   return (
     <div className="page-wrapper">
-      <div className="page-container">{children}</div>
+      <div className="page-container flex">{children}</div>
     </div>
   );
 };
