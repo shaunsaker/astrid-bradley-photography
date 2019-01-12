@@ -7,11 +7,11 @@ import ImageSlider from '../../../components/ImageSlider';
 
 const FeaturedImagesSection = () => {
   return (
-    <div>
+    <section>
       <ImageSlider />
 
       <style jsx>{styles}</style>
-    </div>
+    </section>
   );
 };
 

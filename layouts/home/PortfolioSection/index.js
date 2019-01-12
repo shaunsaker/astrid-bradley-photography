@@ -1,34 +1,33 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
+import SPRINGBOARDS from './springboards';
 
 import Springboard from '../../../components/Springboard';
 
 const PortfolioSection = () => {
   return (
-    <div>
+    <section>
       <h1>Portfolio</h1>
 
       <div className="row">
-        <Springboard
-          image={{ src: '/static/images/pages/home/springboard-weddings.jpg', alt: 'Weddings' }}
-          text="Weddings"
-          href="weddings"
-        />
+        {SPRINGBOARDS.map((springboard, index) => {
+          const { image, text, href } = springboard;
+          const spacerComponent = index !== SPRINGBOARDS.length - 1 && <div className="spacer" />;
 
-        <div className="margin-hz" />
+          return (
+            <Fragment>
+              <Springboard image={image} text={text} href={href} />
 
-        <Springboard
-          image={{
-            src: '/static/images/pages/home/springboard-lifestyle.jpg',
-            alt: 'Weddings',
-          }}
-          text="Lifestyle"
-          href="lifestyle"
-        />
+              {spacerComponent}
+            </Fragment>
+          );
+        })}
       </div>
-    </div>
+
+      <style jsx>{styles}</style>
+    </section>
   );
 };
 

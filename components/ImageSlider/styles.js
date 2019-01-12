@@ -24,7 +24,7 @@ const styles = css`
   }
 
   .dots-container {
-    padding: 16px 0;
+    padding-top: 16px;
     justify-content: center;
   }
 

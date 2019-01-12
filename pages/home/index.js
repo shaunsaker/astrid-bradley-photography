@@ -16,15 +16,17 @@ const Home = () => {
     <Page>
       <Header />
 
-      <FeaturedImagesSection />
+      <main>
+        <FeaturedImagesSection />
 
-      <PortfolioSection />
+        <PortfolioSection />
 
-      <AboutSection />
+        <AboutSection />
 
-      <TestimonialsSection />
+        <TestimonialsSection />
 
-      <QuoteSection />
+        <QuoteSection />
+      </main>
 
       <Footer />
     </Page>

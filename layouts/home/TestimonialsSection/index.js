@@ -5,9 +5,9 @@ import styles from './styles';
 
 const PortfolioSection = () => {
   return (
-    <div>
+    <section>
       <style jsx>{styles}</style>
-    </div>
+    </section>
   );
 };
 

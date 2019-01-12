@@ -11,6 +11,7 @@ const styles = css`
     padding: 16px 24px;
     min-height: 120px;
     background-color: ${colors.white};
+    z-index: 1;
   }
 
   .buttonContainer {
