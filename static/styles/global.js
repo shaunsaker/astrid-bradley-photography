@@ -118,7 +118,6 @@ p {
   font-size: 1em;
   line-height: 1.5em;
   color: ${colors.black};
-  text-align: center;
   margin-bottom: 16px;
 }
 
@@ -126,7 +125,6 @@ small {
   font-size: 0.8em;
   line-height: 1.25em;
   color: ${colors.grey};
-  text-align: center;
 }
 
 .nav-link {
