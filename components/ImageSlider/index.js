@@ -98,7 +98,7 @@ export default class ImageSlider extends React.Component {
                 key={`dot-${src}`}
                 type="button"
                 onClick={() => this.scrollToIndex(index)}
-                className={`dot ${isActive && 'active'} shadow-sm`}
+                className={`dot ${isActive && 'active'} shadow-sm shadow-hover`}
               />
             );
           })}

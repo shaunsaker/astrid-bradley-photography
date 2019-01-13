@@ -59,20 +59,19 @@ button {
   max-width: 720px;
 }
 
-.flex {
-  flex: 1;
-}
-
 .row {
   flex-direction: row;
 }
 
 .shadow-sm {
-  transition: all 0.5s ease;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.shadow-sm:hover {
+.shadow-hover {
+  transition: all 0.5s ease;
+}
+
+.shadow-hover:hover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -90,6 +89,7 @@ button {
 
 .spacer-vt {
   min-height: 16px;
+  width: 100%;
 }
 
 @font-face {
@@ -100,7 +100,7 @@ button {
   font-display: swap;
 }
 
-h1, h2, p {
+h1, h2, h3, p {
   margin: 0;
 }
 
@@ -116,6 +116,11 @@ h2 {
   margin: 16px 0;
 }
 
+h3 {
+  font-size: 1em;
+  color: ${colors.black};
+}
+
 h1, h2 {
   font-family: 'Futura', sans-serif;
   font-weight: 500;
@@ -126,7 +131,6 @@ p {
   font-size: 1em;
   line-height: 1.5em;
   color: ${colors.black};
-  margin-bottom: 16px;
 }
 
 small {

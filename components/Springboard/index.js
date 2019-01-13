@@ -9,7 +9,7 @@ const Springboard = ({ image, text, href }) => {
 
   return (
     <Link href={href}>
-      <div className="container shadow-sm">
+      <div className="container shadow-sm shadow-hover">
         <img src={src} alt={alt} />
 
         <div className="text-container">
