@@ -5,12 +5,12 @@ import Page from '../../components/Page';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import FeaturedImagesSection from '../../layouts/home/FeaturedImagesSection';
-import PortfolioSection from '../../layouts/home/PortfolioSection';
-import AboutSection from '../../layouts/home/AboutSection';
-import TestimonialsSection from '../../layouts/home/TestimonialsSection';
-import QuoteSection from '../../layouts/home/QuoteSection';
-import FeaturedOnSection from '../../layouts/home/FeaturedOnSection';
+import FeaturedImagesSection from '../../layouts/FeaturedImagesSection';
+import PortfolioSection from '../../layouts/PortfolioSection';
+import AboutSection from '../../layouts/AboutSection';
+import TestimonialsSection from '../../layouts/TestimonialsSection';
+import QuoteSection from '../../layouts/QuoteSection';
+import FeaturedOnSection from '../../layouts/FeaturedOnSection';
 
 const Home = () => {
   return (

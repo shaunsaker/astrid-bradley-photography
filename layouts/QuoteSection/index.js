@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Springboard from '../../../components/Springboard';
+import Springboard from '../../components/Springboard';
 
 const PortfolioSection = () => {
   return (
