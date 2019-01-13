@@ -19,11 +19,12 @@ const AboutSection = () => {
 
         <div>
           <p>
-            Colourful, spontaneous, captivating, fresh, emotive and modern. Capturing authentic
-            weddings with a mix of lifestyle and documentary photos. My images can be described as
-            natural and light, balanced with rich colours and warm tones. I love to document the day
-            as it naturally unfolds, while connecting the story of the wedding day by also producing
-            some editorial refinement in-between the significant moments.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque eros ac
+            sapien interdum laoreet. Nulla mauris magna, tincidunt sed efficitur ut, finibus vel
+            magna. Curabitur purus mi, laoreet et tortor eu, sollicitudin congue turpis. Duis
+            eleifend dolor erat, id maximus risus commodo eu. Curabitur vel hendrerit velit. Mauris
+            eget augue sed est blandit egestas ac et tortor. Cras feugiat neque elementum, egestas
+            tortor sed, congue lorem. Ut euismod finibus vehicula.
           </p>
         </div>
       </div>

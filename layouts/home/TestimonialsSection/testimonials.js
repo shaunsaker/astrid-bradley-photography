@@ -5,7 +5,7 @@ const testimonials = [
       alt: 'X',
     },
     name: 'X',
-    text: 'Astrid is the best! Astrid is the best! Astrid is the best!',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lectus.',
   },
   {
     image: {
@@ -13,7 +13,7 @@ const testimonials = [
       alt: 'Y',
     },
     name: 'Y',
-    text: 'Astrid is the best! Astrid is the best! Astrid is the best!',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lectus.',
   },
   {
     image: {
@@ -21,7 +21,7 @@ const testimonials = [
       alt: 'Z',
     },
     name: 'Z',
-    text: 'Astrid is the best! Astrid is the best! Astrid is the best!',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lectus.',
   },
 ];
 
