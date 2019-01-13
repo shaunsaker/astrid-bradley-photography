@@ -104,14 +104,14 @@ h1, h2, h3, p {
   margin: 0;
 }
 
-h1 {
-  font-size: 1.5em;
-  color: ${colors.black};
-  margin: 16px 0;
-}
 
-h2 {
-  font-size: 1.25em;
+
+h1, h2 {
+  font-family: 'Futura', sans-serif;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 1em;
   color: ${colors.black};
   margin: 16px 0;
 }
@@ -119,12 +119,6 @@ h2 {
 h3 {
   font-size: 1em;
   color: ${colors.black};
-}
-
-h1, h2 {
-  font-family: 'Futura', sans-serif;
-  font-weight: 500;
-  letter-spacing: 3px;
 }
 
 p {
@@ -136,7 +130,7 @@ p {
 small {
   font-size: 0.8em;
   line-height: 1.25em;
-  color: ${colors.grey};
+  color: ${colors.black};
 }
 
 .nav-link {
