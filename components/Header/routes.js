@@ -20,10 +20,6 @@ const routes = [
     href: '/photo-queue',
   },
   {
-    title: 'Bio',
-    href: '/bio',
-  },
-  {
     title: 'Contact',
     href: '/contact',
   },
