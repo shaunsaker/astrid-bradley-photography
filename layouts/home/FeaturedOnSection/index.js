@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 
 import styles from './styles';
 import FEATURES from './features';
@@ -12,15 +11,15 @@ const FeaturedOnSection = () => {
 
       {
         <ul className="row">
-          {FEATURES.map((feature, index) => {
+          {FEATURES.map((feature) => {
             const { image, href } = feature;
             const { src, alt } = image;
 
             return (
               <li key={src}>
-                <Link href={href}>
+                <a href={href} target="_blank" rel="noopener noreferrer">
                   <img src={src} alt={alt} />
-                </Link>
+                </a>
               </li>
             );
           })}
