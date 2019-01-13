@@ -95,7 +95,7 @@ button {
 @font-face {
   font-family: 'Futura';
   src: url('/static/fonts/Futura.ttf') format('truetype');
-  font-weight: 500;
+  font-weight: 400;
   font-style: medium;
   font-display: swap;
 }
