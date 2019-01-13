@@ -20,12 +20,13 @@ const styles = css`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.33);
     justify-content: center;
     align-items: center;
   }
 
   h2 {
+    background-color: rgba(0, 0, 0, 0.67);
+    padding: 16px 24px;
     color: ${colors.white};
   }
 `;
