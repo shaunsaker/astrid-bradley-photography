@@ -10,6 +10,7 @@ import PortfolioSection from '../../layouts/home/PortfolioSection';
 import AboutSection from '../../layouts/home/AboutSection';
 import TestimonialsSection from '../../layouts/home/TestimonialsSection';
 import QuoteSection from '../../layouts/home/QuoteSection';
+import FeaturedOnSection from '../../layouts/home/FeaturedOnSection';
 
 const Home = () => {
   return (
@@ -26,6 +27,8 @@ const Home = () => {
         <TestimonialsSection />
 
         <QuoteSection />
+
+        <FeaturedOnSection />
       </main>
 
       <Footer />
