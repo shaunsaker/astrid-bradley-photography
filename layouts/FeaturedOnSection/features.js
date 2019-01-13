@@ -1,7 +1,7 @@
 const testimonials = [
   {
     image: {
-      src: '/static/images/pages/home/featured-hochzeitsguide.png',
+      src: '/static/images/layouts/FeaturedOnSection/featured-hochzeitsguide.png',
       alt: 'Huchzeitsguide Blog',
     },
     href:
@@ -9,21 +9,21 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/pages/home/featured-confetti-daydreams.png',
+      src: '/static/images/layouts/FeaturedOnSection/featured-confetti-daydreams.png',
       alt: 'Confetti Daydreams',
     },
     href: 'http://www.confettidaydreams.com/burgundy-red-navy-blue-gold-wedding/',
   },
   {
     image: {
-      src: '/static/images/pages/home/featured-southbound-bride.jpg',
+      src: '/static/images/layouts/FeaturedOnSection/featured-southbound-bride.jpg',
       alt: 'Southbound Bride',
     },
     href: 'https://southboundbride.com/ethereal-seaside-bridal-inspiration/',
   },
   {
     image: {
-      src: '/static/images/pages/home/featured-confetti.png',
+      src: '/static/images/layouts/FeaturedOnSection/featured-confetti.png',
       alt: 'Confetti',
     },
     href: 'https://www.confetti.co.za/listing/astrid-bradley-photography',
@@ -31,21 +31,21 @@ const testimonials = [
 
   {
     image: {
-      src: '/static/images/pages/home/featured-mooi.jpg',
+      src: '/static/images/layouts/FeaturedOnSection/featured-mooi.jpg',
       alt: 'Mooi Troues',
     },
     href: 'https://www.mooitroues.co.za/2017/12/klassiek-glansend-en-vars-gestileerde-fotosessie/',
   },
   {
     image: {
-      src: '/static/images/pages/home/featured-bloved.png',
+      src: '/static/images/layouts/FeaturedOnSection/featured-bloved.png',
       alt: 'Be Loved',
     },
     href: 'http://blovedblog.com/weddings/vibrant-south-african-wedding-inspiration/',
   },
   {
     image: {
-      src: '/static/images/pages/home/featured-smashing-the-glass.png',
+      src: '/static/images/layouts/FeaturedOnSection/featured-smashing-the-glass.png',
       alt: 'Smashing The Glass',
     },
     href:

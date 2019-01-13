@@ -9,7 +9,10 @@ const PortfolioSection = () => {
   return (
     <section>
       <Springboard
-        image={{ src: '/static/images/pages/home/springboard-quote.jpg', alt: 'Build a quote' }}
+        image={{
+          src: '/static/images/layouts/QuoteSection/springboard-quote.jpg',
+          alt: 'Build a quote',
+        }}
         text="Build a Quote"
         href="/build-a-quote"
       />
