@@ -9,9 +9,15 @@ const styles = css`
   }
 
   .container {
+    scroll-snap-type: x mandatory;
     overflow-x: scroll;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; /* FIXME: Only works on older Firefox versions */
+  }
+
+  .container::-webkit-scrollbar {
+    display: none;
   }
 
   .slide {
