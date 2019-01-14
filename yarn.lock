@@ -1025,6 +1025,17 @@ autodll-webpack-plugin@0.4.2:
     webpack-merge "^4.1.0"
     webpack-sources "^1.0.1"
 
+autoprefixer@^9.4.5:
+  version "9.4.5"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.4.5.tgz#a13ccb001e4bc8837f71c3354005b42f02cc03d7"
+  dependencies:
+    browserslist "^4.4.0"
+    caniuse-lite "^1.0.30000928"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^7.0.11"
+    postcss-value-parser "^3.3.1"
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -1238,6 +1249,14 @@ browserslist@^4.1.0:
     electron-to-chromium "^1.3.96"
     node-releases "^1.1.3"
 
+browserslist@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.4.0.tgz#7050d1412cbfc5274aba609ed5e50359ca1a5fdf"
+  dependencies:
+    caniuse-lite "^1.0.30000928"
+    electron-to-chromium "^1.3.100"
+    node-releases "^1.1.3"
+
 buffer-from@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
@@ -1332,7 +1351,7 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
-caniuse-lite@^1.0.30000925:
+caniuse-lite@^1.0.30000925, caniuse-lite@^1.0.30000928:
   version "1.0.30000928"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000928.tgz#805e828dc72b06498e3683a32e61c7507fd67b88"
 
@@ -1854,6 +1873,10 @@ ecc-jsbn@~0.1.1:
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
+
+electron-to-chromium@^1.3.100:
+  version "1.3.102"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.102.tgz#3ac43a037c8a63bca3dfa189eb3d90f097196787"
 
 electron-to-chromium@^1.3.96:
   version "1.3.100"
@@ -3683,6 +3706,10 @@ normalize-path@^2.1.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
+normalize-range@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+
 npm-bundled@^1.0.1:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.5.tgz#3c1732b7ba936b3a10325aef616467c0ccbcc979"
@@ -3702,6 +3729,10 @@ npm-packlist@^1.1.6:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+num2fraction@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
@@ -4061,7 +4092,7 @@ postcss-modules-values@^1.3.0:
     icss-replace-symbols "^1.1.0"
     postcss "^6.0.1"
 
-postcss-value-parser@^3.3.0:
+postcss-value-parser@^3.3.0, postcss-value-parser@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
 
@@ -4076,6 +4107,14 @@ postcss@^6.0.1, postcss@^6.0.23:
 postcss@^7.0.0:
   version "7.0.10"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.10.tgz#a1f44cfe3711649190989a283024921e33dbc49f"
+  dependencies:
+    chalk "^2.4.2"
+    source-map "^0.6.1"
+    supports-color "^6.1.0"
+
+postcss@^7.0.11:
+  version "7.0.11"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.11.tgz#f63c513b78026d66263bb2ca995bf02e3d1a697d"
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"
