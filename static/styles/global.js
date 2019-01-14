@@ -81,7 +81,7 @@ button {
 }
 
 .shadow-hover, .shadow-hover-lg {
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
 .shadow-hover:hover {
@@ -106,7 +106,7 @@ button {
 }
 
 .scale {
-  transform: scale(50);
+  transform: scale(75);
   box-shadow: none;
 }
 
@@ -162,7 +162,7 @@ small {
 
 .nav-link, .link {
   cursor: pointer;
-  transition: color 0.5s ease;
+  transition: color 1s ease;
 }
 
 .nav-link:hover, .link:hover {

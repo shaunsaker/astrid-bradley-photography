@@ -17,12 +17,12 @@ const Desktop = ({ router }) => {
 
       <ul className="row">
         {ROUTES.map((route) => {
-          const { href, title } = route;
+          const { href, title, prefetch } = route;
           const isActive = route.href === pathname;
 
           return (
             <li key={href}>
-              <Link href={href}>
+              <Link href={href} prefetch={prefetch}>
                 <span className={`nav-link ${isActive && 'active'}`}>{title}</span>
               </Link>
             </li>

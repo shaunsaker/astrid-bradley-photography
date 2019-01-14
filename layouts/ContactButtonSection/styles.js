@@ -5,13 +5,14 @@ const styles = css`
     position: fixed;
     bottom: 16px;
     right: 24px;
-    z-index: 1;
+    z-index: 3;
   }
 
   .pageAnimator {
     position: fixed;
     bottom: 16px;
     right: 24px;
+    z-index: 2;
   }
 `;
 

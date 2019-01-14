@@ -19,7 +19,7 @@ const styles = css`
       }
     }
 
-    animation: grow 0.5s ease;
+    animation: grow 1s ease;
   }
 
   li {
