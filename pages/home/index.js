@@ -11,6 +11,7 @@ import AboutSection from '../../layouts/AboutSection';
 import TestimonialsSection from '../../layouts/TestimonialsSection';
 import QuoteSection from '../../layouts/QuoteSection';
 import FeaturedOnSection from '../../layouts/FeaturedOnSection';
+import ContactButtonSection from '../../layouts/ContactButtonSection';
 
 const Home = () => {
   return (
@@ -32,6 +33,8 @@ const Home = () => {
       </main>
 
       <Footer />
+
+      <ContactButtonSection />
     </Page>
   );
 };

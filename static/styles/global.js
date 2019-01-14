@@ -72,7 +72,15 @@ button {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.shadow-hover {
+.shadow-md {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-hover, .shadow-hover-lg {
   transition: all 0.5s ease;
 }
 
@@ -80,12 +88,8 @@ button {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-.shadow-md {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-
-.shadow-lg {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+.shadow-hover-lg:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .spacer-hz {
@@ -95,6 +99,15 @@ button {
 .spacer-vt {
   min-height: 16px;
   width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.scale {
+  transform: scale(50);
+  box-shadow: none;
 }
 
 @font-face {
