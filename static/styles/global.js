@@ -59,6 +59,11 @@ button {
   max-width: 720px;
 }
 
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
 .row {
   flex-direction: row;
 }
@@ -103,8 +108,6 @@ button {
 h1, h2, h3, p {
   margin: 0;
 }
-
-
 
 h1, h2 {
   font-family: 'Futura', sans-serif;

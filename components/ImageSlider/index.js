@@ -9,6 +9,7 @@ export default class ImageSlider extends React.Component {
     super(props);
 
     this.onScroll = this.onScroll.bind(this);
+    this.onKeyPressed = this.onKeyPressed.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
     this.scrollToIndex = this.scrollToIndex.bind(this);
     this.scrollTo = this.scrollTo.bind(this);
@@ -30,10 +31,21 @@ export default class ImageSlider extends React.Component {
     this.imageSlider = imageSlider;
 
     this.imageSlider.addEventListener('scroll', this.onScroll);
+
+    document.addEventListener('keydown', this.onKeyPressed);
+  }
+
+  componentDidUpdate(prevState) {
+    const { slideIndex } = this.state;
+
+    if (slideIndex !== prevState.slideIndex) {
+      this.scrollToIndex(slideIndex);
+    }
   }
 
   componentWillUnmount() {
     this.imageSlider.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('keydown', this.onKeyPressed);
   }
 
   onScroll(event) {
@@ -45,6 +57,19 @@ export default class ImageSlider extends React.Component {
     if (slideIndex % 1 === 0) {
       // Only if it's a whole number
       this.setSlideIndex(slideIndex);
+    }
+  }
+
+  onKeyPressed(event) {
+    const { slideIndex } = this.state;
+    const { keyCode } = event;
+    const isLeftArrow = keyCode === 37;
+    const isRightArrow = keyCode === 39;
+
+    if (isLeftArrow && slideIndex > 0) {
+      this.setSlideIndex(slideIndex - 1);
+    } else if (isRightArrow && slideIndex < IMAGES.length - 1) {
+      this.setSlideIndex(slideIndex + 1);
     }
   }
 
@@ -98,7 +123,7 @@ export default class ImageSlider extends React.Component {
               <button
                 key={`dot-${src}`}
                 type="button"
-                onClick={() => this.scrollToIndex(index)}
+                onClick={() => this.setSlideIndex(index)}
                 className={`dot ${isActive && 'active'} shadow-sm shadow-hover`}
               />
             );

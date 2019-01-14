@@ -44,7 +44,7 @@ const styles = css`
   }
 
   .active {
-    background-color: ${colors.black};
+    background-color: ${colors.lightGrey};
   }
 `;
 
