@@ -38,7 +38,8 @@ export default class ImageSlider extends React.Component {
 
   onScroll(event) {
     const imageSliderWidth = this.getImageSliderWidth();
-    const scrollX = event.srcElement.scrollLeft;
+    const target = event.target || event.srcElement;
+    const scrollX = target.scrollLeft;
     const slideIndex = scrollX / imageSliderWidth;
 
     if (slideIndex % 1 === 0) {
