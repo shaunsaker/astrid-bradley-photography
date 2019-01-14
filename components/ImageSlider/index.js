@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import IMAGES from './images';
 
+const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
 export default class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -58,17 +60,13 @@ export default class ImageSlider extends React.Component {
   }
 
   startInterval() {
-    const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-
-    if (!isDev) {
+    if (!IS_DEV) {
       this.interval = setInterval(this.onInterval, this.timerInterval);
     }
   }
 
   clearInterval() {
-    const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-
-    if (!isDev) {
+    if (!IS_DEV) {
       clearInterval(this.interval);
     }
   }
@@ -102,10 +100,20 @@ export default class ImageSlider extends React.Component {
     const isLeftArrow = keyCode === 37;
     const isRightArrow = keyCode === 39;
 
-    if (isLeftArrow && slideIndex > 0) {
-      this.onSetSlideIndex(slideIndex - 1);
-    } else if (isRightArrow && slideIndex < IMAGES.length - 1) {
-      this.onSetSlideIndex(slideIndex + 1);
+    if (isLeftArrow) {
+      if (slideIndex === 0) {
+        // Go backwards
+        this.onSetSlideIndex(IMAGES.length - 1);
+      } else {
+        this.onSetSlideIndex(slideIndex - 1);
+      }
+    } else if (isRightArrow) {
+      if (slideIndex === IMAGES.length - 1) {
+        // Reset
+        this.onSetSlideIndex(0);
+      } else {
+        this.onSetSlideIndex(slideIndex + 1);
+      }
     }
   }
 
