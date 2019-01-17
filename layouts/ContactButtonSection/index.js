@@ -1,63 +1,26 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Router from 'next/router';
+import Link from 'next/link';
 
 import styles from './styles';
 
 import IconButton from '../../components/IconButton';
 
-export default class ContactButtonSection extends React.Component {
-  constructor(props) {
-    super(props);
+const ContactButtonSection = () => {
+  return (
+    <div className="container">
+      <Link href="/contact">
+        <span>
+          <IconButton name="mail" />
+        </span>
+      </Link>
 
-    this.onShouldAnimate = this.onShouldAnimate.bind(this);
-    this.toggleShouldAnimate = this.toggleShouldAnimate.bind(this);
-    this.navigate = this.navigate.bind(this);
+      <style jsx>{styles}</style>
+    </div>
+  );
+};
 
-    this.state = {
-      shouldAnimate: false,
-    };
-  }
+ContactButtonSection.propTypes = {};
+ContactButtonSection.defaultProps = {};
 
-  static propTypes = {};
-
-  static defaultProps = {};
-
-  onShouldAnimate() {
-    this.toggleShouldAnimate();
-
-    setTimeout(() => {
-      this.navigate();
-    }, 500);
-  }
-
-  toggleShouldAnimate() {
-    const { shouldAnimate } = this.state;
-
-    this.setState({
-      shouldAnimate: !shouldAnimate,
-    });
-  }
-
-  navigate() {
-    Router.push('/contact');
-  }
-
-  render() {
-    const { shouldAnimate } = this.state;
-
-    return (
-      <Fragment>
-        <div className="pageAnimator">
-          <IconButton className={shouldAnimate ? 'scale' : null} />
-        </div>
-
-        <div className={`buttonContainer ${shouldAnimate && 'hidden'}`}>
-          <IconButton name="mail" handleClick={this.onShouldAnimate} />
-        </div>
-
-        <style jsx>{styles}</style>
-      </Fragment>
-    );
-  }
-}
+export default ContactButtonSection;

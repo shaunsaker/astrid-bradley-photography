@@ -6,14 +6,9 @@ import styles from './styles';
 
 import Icon from '../Icon';
 
-const IconButton = ({ handleClick, name, className }) => {
+const IconButton = ({ handleClick, name }) => {
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className={`shadow-lg shadow-hover-lg ${className}`}
-      disabled={!handleClick}
-    >
+    <button type="button" onClick={handleClick} className="shadow-lg shadow-hover-lg">
       <Icon name={name} color={colors.accent2} />
 
       <style jsx>{styles}</style>
@@ -24,7 +19,6 @@ const IconButton = ({ handleClick, name, className }) => {
 IconButton.propTypes = {
   handleClick: PropTypes.func,
   name: PropTypes.string,
-  className: PropTypes.string,
 };
 IconButton.defaultProps = {};
 
