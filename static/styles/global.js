@@ -132,6 +132,10 @@ h1, h2, button {
   margin-bottom: 32px;
 }
 
+button {
+  margin-bottom: 0;
+}
+
 h3 {
   font-size: 1em;
   color: ${colors.black};
