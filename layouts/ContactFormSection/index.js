@@ -45,7 +45,7 @@ const ContactFormSection = () => {
           <label htmlFor="input-message">Message</label>
         </fieldset>
 
-        <button type="submit" className="button">
+        <button type="submit" className="button shadow-sm shadow-hover">
           Send
         </button>
       </form>
