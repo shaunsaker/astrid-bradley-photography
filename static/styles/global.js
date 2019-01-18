@@ -122,6 +122,10 @@ h1, h2, h3, p {
   margin: 0;
 }
 
+h1 {
+  margin-bottom: ${rhythm.vt * 2}px;
+}
+
 h1, h2, button {
   font-family: 'Futura', sans-serif;
   font-weight: 400;
@@ -129,11 +133,6 @@ h1, h2, button {
   text-transform: uppercase;
   font-size: 1em;
   color: ${colors.black};
-  margin-bottom: 32px;
-}
-
-button {
-  margin-bottom: 0;
 }
 
 h3 {
