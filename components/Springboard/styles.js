@@ -1,7 +1,5 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
-
 const styles = css`
   .container {
     position: relative;

@@ -1,10 +1,10 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
   section {
-    margin-bottom: 16px;
+    margin-bottom: ${rhythm.vt * 2}px;
   }
 
   fieldset {
@@ -12,15 +12,15 @@ const styles = css`
     padding: 0;
     margin: 0;
     position: relative;
-    margin-bottom: 32px;
+    margin-bottom: ${rhythm.vt * 2}px;
   }
 
   label {
     position: absolute;
     top: 10px;
-    left: 6px;
+    left: ${rhythm.hz / 4}px;
     transition: all 0.5s ease;
-    padding: 0 6px;
+    padding: 0 ${rhythm.hz / 4}px;
     background-color: ${colors.white};
     color: ${colors.grey};
   }
@@ -30,7 +30,7 @@ const styles = css`
     width: 100%;
     border: 1px solid ${colors.black};
     outline: none;
-    padding: 8px 12px;
+    padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
     transition: border-color 1s ease;
   }
 
@@ -43,7 +43,7 @@ const styles = css`
   input:valid ~ label,
   textarea:focus ~ label,
   textarea:valid ~ label {
-    top: -8px;
+    top: -${rhythm.vt / 2}px;
     font-size: 0.8em;
   }
 

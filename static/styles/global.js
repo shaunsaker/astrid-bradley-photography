@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from './styleConstants';
+import { colors, rhythm } from './styleConstants';
 
 const styles = css.global`
 * {
@@ -32,7 +32,7 @@ div, ul {
 }
 
 section {
-  margin-bottom: 64px;
+  margin-bottom: ${rhythm.vt * 4}px;
 }
 
 ul {
@@ -93,11 +93,11 @@ button {
 }
 
 .spacer-hz {
-  min-width: 12px;
+  min-width: ${rhythm.hz / 2}px;
 }
 
 .spacer-vt {
-  min-height: 16px;
+  min-height: ${rhythm.vt}px;
   width: 100%;
 }
 
@@ -184,7 +184,7 @@ small {
 
 .button {
   background-color: rgba(0, 0, 0, 0.67);
-  padding: 16px 24px;
+  padding: ${rhythm.vt}px ${rhythm.hz}px;
   color: ${colors.white};
 }
 `;

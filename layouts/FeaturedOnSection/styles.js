@@ -1,5 +1,7 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
+import { rhythm } from '../../static/styles/styleConstants';
+
 const IMAGE_SIZE = 132;
 
 const styles = css`
@@ -9,7 +11,7 @@ const styles = css`
   }
 
   li {
-    margin: 16px;
+    margin: ${rhythm.vt}px;
   }
 
   img {

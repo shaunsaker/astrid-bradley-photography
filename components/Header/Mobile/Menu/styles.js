@@ -1,12 +1,12 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../../../static/styles/styleConstants';
+import { colors, rhythm } from '../../../../static/styles/styleConstants';
 
 const styles = css`
   ul {
     background-color: ${colors.white};
-    padding: 16px 12px 0;
-    margin-top: 16px;
+    padding: ${rhythm.vt}px ${rhythm.hz / 2}px 0;
+    margin-top: ${rhythm.vt}px;
 
     @keyframes grow {
       from {
@@ -23,7 +23,7 @@ const styles = css`
   }
 
   li {
-    margin-bottom: 16px;
+    margin-bottom: ${rhythm.vt}px;
     text-align: center;
   }
 `;

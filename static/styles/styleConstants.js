@@ -7,10 +7,16 @@ const colors = {
   accent2: '#BB7D46',
 };
 
-const styleConstants = {
-  colors,
+const rhythm = {
+  vt: 16,
+  hz: 24,
 };
 
-export { colors };
+const styleConstants = {
+  colors,
+  rhythm,
+};
+
+export { colors, rhythm };
 
 export default styleConstants;

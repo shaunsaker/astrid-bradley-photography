@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const DOT_SIZE = 10;
 
@@ -30,7 +30,7 @@ const styles = css`
   }
 
   .dots-container {
-    padding-top: 16px;
+    padding-top: ${rhythm.vt}px;
     justify-content: center;
   }
 

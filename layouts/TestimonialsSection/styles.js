@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const IMAGE_SIZE = 75;
 
@@ -20,7 +20,7 @@ const styles = css`
   }
 
   .card-container {
-    padding: 16px 12px;
+    padding: ${rhythm.vt}px ${rhythm.hz / 2}px;
   }
 
   span {
