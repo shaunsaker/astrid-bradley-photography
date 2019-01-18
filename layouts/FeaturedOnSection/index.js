@@ -7,7 +7,7 @@ import FEATURES from './features';
 const FeaturedOnSection = () => {
   return (
     <section>
-      <h1>Featured On:</h1>
+      <h1>Featured On</h1>
 
       {
         <ul className="row">

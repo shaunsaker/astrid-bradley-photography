@@ -32,7 +32,7 @@ div, ul {
 }
 
 section {
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 
 ul {
@@ -129,7 +129,7 @@ h1, h2 {
   text-transform: uppercase;
   font-size: 1em;
   color: ${colors.black};
-  margin: 16px 0;
+  margin-bottom: 32px;
 }
 
 h3 {

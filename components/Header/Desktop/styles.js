@@ -2,7 +2,7 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 
 const styles = css`
   div {
-    padding-bottom: 16px;
+    margin-bottom: 64px;
   }
 
   ul {
