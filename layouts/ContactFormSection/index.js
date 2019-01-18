@@ -28,6 +28,18 @@ const ContactFormSection = () => {
         </fieldset>
 
         <fieldset>
+          <input type="date" name="date" id="input-date" />
+
+          <label htmlFor="input-date">Date</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="text" name="venue" id="input-venue" required />
+
+          <label htmlFor="input-venue">Venue</label>
+        </fieldset>
+
+        <fieldset>
           <textarea name="message" id="input-message" required />
 
           <label htmlFor="input-message">Message</label>

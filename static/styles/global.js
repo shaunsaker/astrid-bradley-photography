@@ -143,6 +143,10 @@ p, input, textarea, label {
   color: ${colors.black};
 }
 
+input[type=date] {
+  font-family: Arial;
+}
+
 small {
   font-size: 0.8em;
   line-height: 1.25em;
