@@ -11,7 +11,7 @@ const styles = css`
   }
 
   li {
-    margin: ${rhythm.vt}px;
+    padding: ${rhythm.vt}px;
   }
 
   img {

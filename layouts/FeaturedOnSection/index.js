@@ -16,7 +16,7 @@ const FeaturedOnSection = () => {
             const { src, alt } = image;
 
             return (
-              <li key={src}>
+              <li key={src} className="shadow-hover">
                 <a href={href} target="_blank" rel="noopener noreferrer">
                   <img src={src} alt={alt} />
                 </a>
