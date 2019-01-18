@@ -34,13 +34,7 @@
     "react/sort-comp": [
       1,
       {
-        "order": [
-          "constructor",
-          "static-methods",
-          "lifecycle",
-          "everything-else",
-          "render"
-        ]
+        "order": ["constructor", "static-methods", "lifecycle", "everything-else", "render"]
       }
     ],
     "react/jsx-one-expression-per-line": "off", // does not work well with prettier
@@ -52,7 +46,8 @@
     "max-len": "off",
     "react/prefer-stateless-function": "off",
     "indent": "off",
-    "jsx-a11y/label-has-for": "off"
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   },
   "plugins": ["react"],
   "globals": {
