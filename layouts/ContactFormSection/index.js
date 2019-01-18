@@ -5,7 +5,7 @@ import styles from './styles';
 
 const ContactFormSection = () => {
   return (
-    <div>
+    <section>
       <h1>Get in touch</h1>
 
       <form name="contact" method="POST" data-netlify="true">
@@ -33,11 +33,13 @@ const ContactFormSection = () => {
           <label htmlFor="input-message">Message</label>
         </fieldset>
 
-        <button type="submit">Send</button>
+        <button type="submit" className="button">
+          Send
+        </button>
       </form>
 
       <style jsx>{styles}</style>
-    </div>
+    </section>
   );
 };
 

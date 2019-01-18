@@ -122,7 +122,7 @@ h1, h2, h3, p {
   margin: 0;
 }
 
-h1, h2 {
+h1, h2, button {
   font-family: 'Futura', sans-serif;
   font-weight: 400;
   letter-spacing: 3px;
@@ -172,6 +172,12 @@ small {
 .nav-link.active, .link.active {
   font-weight: 700;
   color: ${colors.black};
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0.67);
+  padding: 16px 24px;
+  color: ${colors.white};
 }
 `;
 

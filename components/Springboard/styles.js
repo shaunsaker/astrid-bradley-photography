@@ -23,12 +23,6 @@ const styles = css`
     justify-content: center;
     align-items: center;
   }
-
-  h2 {
-    background-color: rgba(0, 0, 0, 0.67);
-    padding: 16px 24px;
-    color: ${colors.white};
-  }
 `;
 
 export default styles;
