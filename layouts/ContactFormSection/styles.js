@@ -3,6 +3,10 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 import { colors } from '../../static/styles/styleConstants';
 
 const styles = css`
+  section {
+    margin-bottom: 16px;
+  }
+
   fieldset {
     border: none;
     padding: 0;
@@ -18,6 +22,7 @@ const styles = css`
     transition: all 0.5s ease;
     padding: 0 6px;
     background-color: ${colors.white};
+    color: ${colors.grey};
   }
 
   input,
@@ -36,13 +41,10 @@ const styles = css`
 
   input:focus ~ label,
   input:valid ~ label,
-  input:invalid ~ label,
   textarea:focus ~ label,
-  textarea:valid ~ label,
-  textarea:invalid ~ label {
+  textarea:valid ~ label {
     top: -8px;
     font-size: 0.8em;
-    color: ${colors.grey};
   }
 
   input:valid ~ label {
