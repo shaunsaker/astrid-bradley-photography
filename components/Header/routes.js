@@ -7,19 +7,16 @@ const routes = [
   {
     title: 'Weddings',
     href: '/category?id=weddings',
-    as: '/weddings',
     prefetch: false,
   },
   {
     title: 'Lifestyle',
     href: '/category?id=lifestyle',
-    as: '/lifestyle',
     prefetch: false,
   },
   {
     title: 'Styled Shoots',
     href: '/category?id=styled_shoots',
-    as: '/styled-shoots',
     prefetch: false,
   },
   {
