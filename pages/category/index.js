@@ -11,14 +11,22 @@ import SpringboardsSection from '../../layouts/SpringboardsSection';
 import ContactButtonSection from '../../layouts/ContactButtonSection';
 
 const Category = ({ shoots }) => {
-  const categoriesArr = [];
+  const springboards = shoots.map((shoot) => {
+    const { name, cover_photo_url, id } = shoot;
+
+    return {
+      image: { src: cover_photo_url, alt: name },
+      text: name,
+      href: `/shoot?id=${id}`,
+    };
+  });
 
   return (
     <Page>
       <Header />
 
       <main>
-        <SpringboardsSection springboards={categoriesArr} />
+        <SpringboardsSection springboards={springboards} />
       </main>
 
       <Footer />
@@ -29,8 +37,15 @@ const Category = ({ shoots }) => {
 };
 
 Category.getInitialProps = async ({ query }) => {
-  const categoryID = query.categoryID || ''; // query param of category_id for example, will break the app
-  const shoots = await getCollection('shoots', ['category_id', '==', categoryID]);
+  const categoryID = query.id;
+  let shoots = [];
+
+  if (categoryID) {
+    shoots = await getCollection({
+      url: 'shoots',
+      query: ['category_id', '==', categoryID],
+    });
+  }
 
   return { shoots };
 };
