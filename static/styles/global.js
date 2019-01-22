@@ -135,6 +135,10 @@ h1, h2, button {
   color: ${colors.black};
 }
 
+h2 {
+  font-size: 0.8em;
+}
+
 h3 {
   font-size: 1em;
   color: ${colors.black};

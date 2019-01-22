@@ -13,7 +13,7 @@ const Springboard = ({ image, text, href }) => {
         <img src={src} alt={alt} />
 
         <div className="text-container">
-          <h2 className="button">{text}</h2>
+          <h1 className="button">{text}</h1>
         </div>
 
         <style jsx>{styles}</style>
