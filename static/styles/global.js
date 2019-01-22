@@ -118,7 +118,7 @@ button {
   font-display: swap;
 }
 
-h1, h2, h3, p {
+h1,  h3, p {
   margin: 0;
 }
 
@@ -126,17 +126,13 @@ h1 {
   margin-bottom: ${rhythm.vt * 2}px;
 }
 
-h1, h2, button {
+h1, button {
   font-family: 'Futura', sans-serif;
   font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 1em;
   color: ${colors.black};
-}
-
-h2 {
-  font-size: 0.8em;
 }
 
 h3 {
