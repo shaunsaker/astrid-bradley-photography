@@ -26,14 +26,24 @@ const Shoot = ({ shoot }) => {
   );
 };
 
-Shoot.getInitialProps = async ({ query }) => {
+Shoot.getInitialProps = async ({ store, isServer, query }) => {
   const shootID = query.id;
-  let shoot;
+  const { shoots } = store.getState();
+  let shoot = shoots.filter((item) => item.id === shootID)[0];
 
-  if (shootID) {
+  // Only fetch shoot if
+  // We're rendering on the server OR
+  // We're rendering on the client and we do not have that shoot
+  const shouldFetchShoot = isServer || (!isServer && !shoot);
+
+  // Only fetch shoot if (see above)
+  // and the shootID was supplied
+  if (shouldFetchShoot && shootID) {
     shoot = await getDocument({
       url: `shoots/${shootID}`,
     });
+
+    // No need to update the store
   }
 
   return { shoot };
