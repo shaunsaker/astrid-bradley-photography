@@ -1,8 +1,11 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
 
 import globalStyles from '../static/styles/global';
 import '../static/styles/responsive.scss';
+import createStore from '../store';
 
 import Head from '../components/Head';
 import PageLoader from '../components/PageLoader';
@@ -19,22 +22,24 @@ export class MerjApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, store } = this.props;
 
     return (
       <Container>
-        <Head />
+        <Provider store={store}>
+          <Head />
 
-        <style jsx global>
-          {globalStyles}
-        </style>
+          <style jsx global>
+            {globalStyles}
+          </style>
 
-        <Component {...pageProps} />
+          <Component {...pageProps} />
 
-        <PageLoader />
+          <PageLoader />
+        </Provider>
       </Container>
     );
   }
 }
 
-export default MerjApp;
+export default withRedux(createStore)(MerjApp);
