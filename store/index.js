@@ -1,10 +1,16 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { createLogger } from 'redux-logger';
 
 import reducers from './reducers';
 import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
+const loggerMiddleware = createLogger();
+const middleware = [];
+
+middleware.push(sagaMiddleware);
+middleware.push(loggerMiddleware);
 
 function configureStore(initialState) {
   /**
@@ -12,7 +18,7 @@ function configureStore(initialState) {
    * when creating the store.
    */
 
-  const store = createStore(reducers, initialState, applyMiddleware(sagaMiddleware));
+  const store = createStore(reducers, initialState, applyMiddleware(...middleware));
 
   /**
    * next-redux-saga depends on `runSagaTask` and `sagaTask` being attached to the store.
