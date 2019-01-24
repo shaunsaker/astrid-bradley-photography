@@ -33,7 +33,7 @@ ShootSection.propTypes = {
     date: PropTypes.number,
     location: PropTypes.string,
     photos: PropTypes.arrayOf(PropTypes.string),
-  }),
+  }).isRequired,
 };
 ShootSection.defaultProps = {};
 

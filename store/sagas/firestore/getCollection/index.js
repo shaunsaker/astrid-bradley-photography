@@ -5,11 +5,11 @@ import { prepareNextAction } from '../../../../utils';
 
 const { getCollection } = firestore;
 
-function* saga(action) {
+export default function* getCollectionSaga(action) {
   try {
     const { meta } = action;
     const { url, query } = meta;
-    const response = yield call(getCollection, url, query);
+    const response = yield call(getCollection, { url, query });
     const nextAction = prepareNextAction(action, response);
 
     yield put(nextAction);
@@ -17,5 +17,3 @@ function* saga(action) {
     console.log(error); // TODO: Handle errors
   }
 }
-
-export default saga;

@@ -34,6 +34,7 @@ function configureStore(initialState) {
 
   // run the sagas initially
   store.runSagaTask();
+
   return store;
 }
 

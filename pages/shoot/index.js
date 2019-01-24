@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { getDocument } from '../../services/firestore';
+import { connect } from 'react-redux';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
@@ -10,14 +9,15 @@ import Footer from '../../components/Footer';
 import ShootSection from '../../layouts/ShootSection';
 import ContactButtonSection from '../../layouts/ContactButtonSection';
 
-const Shoot = ({ shoot }) => {
+const Shoot = ({ shootID, shoots }) => {
+  const shoot = shoots.filter((item) => item.id === shootID)[0];
+  const shootComponent = shoot && <ShootSection shoot={shoot} />;
+
   return (
     <Page>
       <Header />
 
-      <main>
-        <ShootSection shoot={shoot} />
-      </main>
+      <main>{shootComponent}</main>
 
       <Footer />
 
@@ -26,32 +26,22 @@ const Shoot = ({ shoot }) => {
   );
 };
 
-Shoot.getInitialProps = async ({ store, isServer, query }) => {
+Shoot.getInitialProps = async ({ query }) => {
   const shootID = query.id;
-  const { shoots } = store.getState();
-  let shoot = shoots.filter((item) => item.id === shootID)[0];
 
-  // Only fetch shoot if
-  // We're rendering on the server OR
-  // We're rendering on the client and we do not have that shoot
-  const shouldFetchShoot = isServer || (!isServer && !shoot);
-
-  // Only fetch shoot if (see above)
-  // and the shootID was supplied
-  if (shouldFetchShoot && shootID) {
-    shoot = await getDocument({
-      url: `shoots/${shootID}`,
-    });
-
-    // No need to update the store
-  }
-
-  return { shoot };
+  return { shootID };
 };
 
 Shoot.propTypes = {
-  shoot: PropTypes.shape({}),
+  shootID: PropTypes.string,
+  shoots: PropTypes.arrayOf(PropTypes.shape({})),
 };
 Shoot.defaultProps = {};
 
-export default Shoot;
+const mapStateToProps = (state) => {
+  return {
+    shoots: state.shoots,
+  };
+};
+
+export default connect(mapStateToProps)(Shoot);

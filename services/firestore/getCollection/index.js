@@ -4,7 +4,7 @@ import getRef from '../getRef';
 // parses the snapshot to return docs data only
 export default async ({ url, query, orderBy }) => {
   let ref = await getRef(url);
-  let collectionArray = [];
+  let data = [];
 
   if (query) {
     ref = ref.where(...query);
@@ -17,7 +17,7 @@ export default async ({ url, query, orderBy }) => {
   try {
     const collection = await ref.get();
 
-    collectionArray = collection.docs.map((document) => {
+    data = collection.docs.map((document) => {
       return {
         ...document.data(),
         id: document.id,
@@ -27,5 +27,5 @@ export default async ({ url, query, orderBy }) => {
     console.log(error);
   }
 
-  return collectionArray;
+  return { data };
 };

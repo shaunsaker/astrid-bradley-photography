@@ -6,10 +6,12 @@ import withReduxSaga from 'next-redux-saga';
 
 import globalStyles from '../static/styles/global';
 import '../static/styles/responsive.scss';
-import createStore from '../store';
+import configureStore from '../store';
 
 import Head from '../components/Head';
 import PageLoader from '../components/PageLoader';
+
+import DataHandler from '../handlers/DataHandler';
 
 export class MerjApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -37,10 +39,12 @@ export class MerjApp extends App {
           <Component {...pageProps} />
 
           <PageLoader />
+
+          <DataHandler />
         </Provider>
       </Container>
     );
   }
 }
 
-export default withRedux(createStore)(withReduxSaga({ async: true })(MerjApp));
+export default withRedux(configureStore)(withReduxSaga({ async: true })(MerjApp));

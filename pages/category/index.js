@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getCollection } from '../../services/firestore';
-
 import Page from '../../components/Page';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -41,32 +39,8 @@ const Category = ({ categoryID, shoots }) => {
   );
 };
 
-Category.getInitialProps = async ({ store, isServer, query }) => {
+Category.getInitialProps = async ({ query }) => {
   const categoryID = query.id;
-  const { shoots } = store.getState();
-
-  // Only fetch new shoots if
-  // We're rendering on the server OR
-  // We're rendering on the client AND we don't already have shoots for that category
-  const shouldFetchShoots =
-    isServer || (!isServer && !shoots.filter((shoot) => shoot.category_id === categoryID).length);
-
-  // Only fetch shoots if (see above)
-  // and the categoryID was supplied
-  if (shouldFetchShoots && categoryID) {
-    const newShoots = await getCollection({
-      url: 'shoots',
-      query: ['category_id', '==', categoryID],
-    });
-
-    // Group the existing shoots and the new shoots
-    // NOTE: This assumes newShoots are of a different category AND
-    // Shoots were not updated during the session
-    const data = [...shoots, ...newShoots];
-
-    // Update the store
-    store.dispatch({ type: 'SET_SHOOTS', payload: { data } });
-  }
 
   return { categoryID };
 };
