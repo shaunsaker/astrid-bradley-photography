@@ -131,12 +131,14 @@ h1, h2, button {
   font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 1.25em;
   color: ${colors.black};
 }
 
-h2 {
-  font-size: 0.8em;
+
+
+h2, button {
+  font-size: 1em;
 }
 
 h3 {
