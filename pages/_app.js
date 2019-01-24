@@ -3,6 +3,8 @@ import App, { Container } from 'next/app';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
 import globalStyles from '../static/styles/global';
 import '../static/styles/responsive.scss';
@@ -14,6 +16,12 @@ import PageLoader from '../components/PageLoader';
 import DataHandler from '../handlers/DataHandler';
 
 export class MerjApp extends App {
+  constructor(props) {
+    super(props);
+
+    this.persistor = persistStore(props.store);
+  }
+
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
@@ -30,17 +38,19 @@ export class MerjApp extends App {
     return (
       <Container>
         <Provider store={store}>
-          <Head />
+          <PersistGate loading={null} persistor={this.persistor}>
+            <Head />
 
-          <style jsx global>
-            {globalStyles}
-          </style>
+            <style jsx global>
+              {globalStyles}
+            </style>
 
-          <Component {...pageProps} />
+            <Component {...pageProps} />
 
-          <PageLoader />
+            <PageLoader />
 
-          <DataHandler />
+            <DataHandler />
+          </PersistGate>
         </Provider>
       </Container>
     );
