@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js",
+    "deploy": "now"
   },
   "author": "Shaun Saker [info@shaunsaker.com]",
   "license": "ISC",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "autoprefixer": "^9.4.5",
+    "express": "^4.16.4",
     "firebase": "^5.8.0",
     "next": "^7.0.2",
     "next-compose": "^0.0.2",
@@ -37,6 +39,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "now": "^13.1.2"
   }
 }
