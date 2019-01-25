@@ -5,7 +5,10 @@ const springboards = [
       alt: 'Weddings',
     },
     text: 'Weddings',
-    href: '/category?id=weddings',
+    link: {
+      href: '/category?id=weddings',
+      as: '/category/weddings',
+    },
   },
   {
     image: {
@@ -13,7 +16,10 @@ const springboards = [
       alt: 'Lifestyle',
     },
     text: 'Lifestyle',
-    href: '/category?id=lifestyle',
+    link: {
+      href: '/category?id=lifestyle',
+      as: '/category/lifestyle',
+    },
   },
 ];
 

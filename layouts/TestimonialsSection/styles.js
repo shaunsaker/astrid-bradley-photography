@@ -20,7 +20,7 @@ const styles = css`
   }
 
   .card-container {
-    padding: ${rhythm.vt}px ${rhythm.hz / 2}px;
+    padding: ${rhythm.vt}px ${rhythm.hz}px;
   }
 
   span {

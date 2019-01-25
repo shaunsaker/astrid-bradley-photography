@@ -4,11 +4,12 @@ import Link from 'next/link';
 
 import styles from './styles';
 
-const Springboard = ({ image, text, href }) => {
+const Springboard = ({ image, text, link }) => {
   const { src, alt } = image;
+  const { href, as } = link;
 
   return (
-    <Link href={href}>
+    <Link href={href} as={as}>
       <div className="container shadow-sm shadow-hover">
         <img src={src} alt={alt} />
 
@@ -25,7 +26,10 @@ const Springboard = ({ image, text, href }) => {
 Springboard.propTypes = {
   image: PropTypes.shape({ src: PropTypes.string, alt: PropTypes.string }).isRequired,
   text: PropTypes.string,
-  href: PropTypes.string,
+  link: PropTypes.shape({
+    href: PropTypes.string,
+    as: PropTypes.string,
+  }),
 };
 Springboard.defaultProps = {};
 

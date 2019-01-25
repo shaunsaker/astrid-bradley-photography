@@ -14,7 +14,7 @@ const PortfolioSection = () => {
           alt: 'Build a quote',
         }}
         text="Build a Quote"
-        href="/build-a-quote"
+        link={{ href: '/build-a-quote' }}
       />
 
       <style jsx>{styles}</style>

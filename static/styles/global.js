@@ -93,7 +93,7 @@ button {
 }
 
 .spacer-hz {
-  min-width: ${rhythm.hz / 2}px;
+  min-width: ${rhythm.hz}px;
 }
 
 .spacer-vt {
@@ -135,10 +135,8 @@ h1, h2, button {
   color: ${colors.black};
 }
 
-
-
 h2, button {
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 h3 {
