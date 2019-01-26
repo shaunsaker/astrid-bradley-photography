@@ -1,33 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
-import Link from 'next/link';
 
 import styles from './styles';
-import ROUTES from '../routes';
 
 import Logo from '../../Logo';
+import Links from '../Links';
 
-const Desktop = ({ router }) => {
-  const { pathname } = router;
-
+const Desktop = () => {
   return (
     <div className="desktop">
       <Logo />
 
       <ul className="row">
-        {ROUTES.map((route) => {
-          const { href, title, prefetch, as } = route;
-          const isActive = route.href === pathname;
-
-          return (
-            <li key={href}>
-              <Link href={href} prefetch={prefetch} as={as}>
-                <span className={`nav-link ${isActive && 'active'}`}>{title}</span>
-              </Link>
-            </li>
-          );
-        })}
+        <Links />
       </ul>
 
       <style jsx>{styles}</style>
@@ -35,11 +20,7 @@ const Desktop = ({ router }) => {
   );
 };
 
-Desktop.propTypes = {
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-  }),
-};
+Desktop.propTypes = {};
 Desktop.defaultProps = {};
 
-export default withRouter(Desktop);
+export default Desktop;
