@@ -53,10 +53,6 @@ button {
 }
 
 // HELPERS
-.page-container {
-  max-width: 720px;
-}
-
 .flex {
   display: flex;
   flex-direction: column;
