@@ -6,7 +6,7 @@ import Page from '../../../components/Page';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
-const Admin = () => {
+const AddShoot = () => {
   return (
     <Page>
       <Header />
@@ -20,13 +20,13 @@ const Admin = () => {
   );
 };
 
-Admin.getInitialProps = async () => {};
+AddShoot.getInitialProps = async () => {};
 
-Admin.propTypes = {};
-Admin.defaultProps = {};
+AddShoot.propTypes = {};
+AddShoot.defaultProps = {};
 
 const mapStateToProps = (state) => {
   return {};
 };
 
-export default connect(mapStateToProps)(Admin);
+export default connect(mapStateToProps)(AddShoot);
