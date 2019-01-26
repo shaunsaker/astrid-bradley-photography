@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import Page from '../../../components/Page';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
-import Spinner from '../../../components/Spinner';
 
 import LoginFormSection from '../../../layouts/LoginFormSection';
+import LoadingSection from '../../../layouts/LoadingSection';
 
 class Login extends React.Component {
   constructor(props) {
@@ -48,19 +48,19 @@ class Login extends React.Component {
 
   render() {
     const { isLoading } = this.state;
-    const loadingComponent = isLoading && <Spinner />;
+    const loadingComponent = isLoading && <LoadingSection />;
 
     return (
       <Page>
         <Header />
 
-        <main>
+        <main className="relative">
           <LoginFormSection handleSubmit={this.onSubmit} />
+
+          {loadingComponent}
         </main>
 
         <Footer />
-
-        {loadingComponent}
       </Page>
     );
   }

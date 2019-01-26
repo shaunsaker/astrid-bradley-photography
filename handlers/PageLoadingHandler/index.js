@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 
-import styles from './styles';
+import LoadingSection from '../../layouts/LoadingSection';
 
-import Spinner from '../Spinner';
-
-export default class PageLoader extends React.Component {
+export default class PageLoadingHandler extends React.Component {
   constructor(props) {
     super(props);
 
@@ -51,13 +49,7 @@ export default class PageLoader extends React.Component {
     const { isLoading } = this.state;
 
     if (isLoading) {
-      return (
-        <div className="container">
-          <Spinner />
-
-          <style jsx>{styles}</style>
-        </div>
-      );
+      return <LoadingSection />;
     }
 
     return null;

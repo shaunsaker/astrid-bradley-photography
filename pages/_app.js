@@ -10,9 +10,9 @@ import globalStyles from '../static/styles/global';
 import configureStore from '../store';
 
 import Head from '../components/Head';
-import PageLoader from '../components/PageLoader';
 
 import DataHandler from '../handlers/DataHandler';
+import PageLoadingHandler from '../handlers/PageLoadingHandler';
 
 export class MerjApp extends App {
   constructor(props) {
@@ -46,7 +46,7 @@ export class MerjApp extends App {
 
             <Component {...pageProps} />
 
-            <PageLoader />
+            <PageLoadingHandler />
 
             <DataHandler />
           </PersistGate>

@@ -108,6 +108,10 @@ button {
   box-shadow: none;
 }
 
+.relative {
+  position: relative;
+}
+
 // TYPOGRAPHY
 @font-face {
   font-family: 'Futura';
