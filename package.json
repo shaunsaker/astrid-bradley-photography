@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "deploy": "now"
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "Shaun Saker [info@shaunsaker.com]",
   "license": "ISC",
@@ -39,7 +38,6 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
-    "now": "^13.1.2"
+    "eslint-plugin-react": "^7.11.1"
   }
 }
