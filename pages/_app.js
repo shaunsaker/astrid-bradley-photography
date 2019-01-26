@@ -7,7 +7,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 
 import globalStyles from '../static/styles/global';
-import '../static/styles/responsive.scss';
 import configureStore from '../store';
 
 import Head from '../components/Head';
