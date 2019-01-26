@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import IMAGES from './images';
 
 const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
@@ -31,7 +30,9 @@ export default class ImageSlider extends React.Component {
     };
   }
 
-  static propTypes = {};
+  static propTypes = {
+    images: PropTypes.arrayOf(PropTypes.shape({ src: PropTypes.string, alt: PropTypes.string })),
+  };
 
   static defaultProps = {};
 
@@ -73,8 +74,9 @@ export default class ImageSlider extends React.Component {
 
   onInterval() {
     const { slideIndex } = this.state;
+    const { images } = this.props;
 
-    if (slideIndex === IMAGES.length - 1) {
+    if (slideIndex === images.length - 1) {
       // At the end, reset
       this.setSlideIndex(0);
     } else {
@@ -96,6 +98,7 @@ export default class ImageSlider extends React.Component {
 
   onKeyPressed(event) {
     const { slideIndex } = this.state;
+    const { images } = this.props;
     const { keyCode } = event;
     const isLeftArrow = keyCode === 37;
     const isRightArrow = keyCode === 39;
@@ -103,12 +106,12 @@ export default class ImageSlider extends React.Component {
     if (isLeftArrow) {
       if (slideIndex === 0) {
         // Go backwards
-        this.onSetSlideIndex(IMAGES.length - 1);
+        this.onSetSlideIndex(images.length - 1);
       } else {
         this.onSetSlideIndex(slideIndex - 1);
       }
     } else if (isRightArrow) {
-      if (slideIndex === IMAGES.length - 1) {
+      if (slideIndex === images.length - 1) {
         // Reset
         this.onSetSlideIndex(0);
       } else {
@@ -149,11 +152,12 @@ export default class ImageSlider extends React.Component {
 
   render() {
     const { slideIndex } = this.state;
+    const { images } = this.props;
 
     return (
       <div className="wrapper">
         <div id="image-slider" className="container row">
-          {IMAGES.map((image) => {
+          {images.map((image) => {
             const { src, alt } = image;
 
             return (
@@ -165,7 +169,7 @@ export default class ImageSlider extends React.Component {
         </div>
 
         <div className="dots-container row">
-          {IMAGES.map((image, index) => {
+          {images.map((image, index) => {
             const { src } = image;
             const isActive = index === slideIndex;
 
