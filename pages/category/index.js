@@ -10,6 +10,8 @@ import SpringboardsSection from '../../components/SpringboardsSection';
 import ContactButton from '../../components/ContactButton';
 
 const Category = ({ categoryID, shoots }) => {
+  const title = categoryID.replace('-', ' ');
+
   // Filter on category_id
   // Map to springboards data type
   const springboards = shoots
@@ -29,6 +31,8 @@ const Category = ({ categoryID, shoots }) => {
       <Header />
 
       <main>
+        <h1>{title}</h1>
+
         <SpringboardsSection springboards={springboards} />
       </main>
 

@@ -6,13 +6,13 @@ import Page from '../../../components/Page';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
-const AddShoot = () => {
+const EditShoot = () => {
   return (
     <Page>
       <Header />
 
       <main>
-        <h1>Add a Shoot</h1>
+        <h1>Edit a Shoot</h1>
 
         <div />
       </main>
@@ -22,13 +22,13 @@ const AddShoot = () => {
   );
 };
 
-AddShoot.getInitialProps = async () => {};
+EditShoot.getInitialProps = async () => {};
 
-AddShoot.propTypes = {};
-AddShoot.defaultProps = {};
+EditShoot.propTypes = {};
+EditShoot.defaultProps = {};
 
 const mapStateToProps = (state) => {
   return {};
 };
 
-export default connect(mapStateToProps)(AddShoot);
+export default connect(mapStateToProps)(EditShoot);

@@ -6,13 +6,13 @@ import Page from '../../../components/Page';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
-const AddShoot = () => {
+const PhotoQueue = () => {
   return (
     <Page>
       <Header />
 
       <main>
-        <h1>Add a Shoot</h1>
+        <h1>Manage Photo Queue</h1>
 
         <div />
       </main>
@@ -22,13 +22,13 @@ const AddShoot = () => {
   );
 };
 
-AddShoot.getInitialProps = async () => {};
+PhotoQueue.getInitialProps = async () => {};
 
-AddShoot.propTypes = {};
-AddShoot.defaultProps = {};
+PhotoQueue.propTypes = {};
+PhotoQueue.defaultProps = {};
 
 const mapStateToProps = (state) => {
   return {};
 };
 
-export default connect(mapStateToProps)(AddShoot);
+export default connect(mapStateToProps)(PhotoQueue);

@@ -189,6 +189,7 @@ small {
   background-color: ${colors.transBlack};
   padding: ${rhythm.vt}px ${rhythm.hz}px;
   color: ${colors.white};
+  cursor: pointer;
 }
 
 // FORMS

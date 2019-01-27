@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
+import ButtonsSection from '../../components/admin/ButtonsSection';
 import Footer from '../../components/Footer';
 
 class Admin extends React.Component {
@@ -19,7 +20,9 @@ class Admin extends React.Component {
         <Header />
 
         <main>
-          <div />
+          <h1>Admin Dashboard</h1>
+
+          <ButtonsSection />
         </main>
 
         <Footer />
