@@ -5,9 +5,9 @@ export default function reducer(state = initialState, action = {}) {
   let newState;
 
   switch (action.type) {
-    case 'SIGN_IN_USER':
+    case 'SET_SYSTEM_MESSAGE':
       newState = cloneObject(state);
-      newState = action.payload.user;
+      newState.systemMessage = action.payload.message;
       return newState;
 
     default:

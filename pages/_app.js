@@ -11,6 +11,7 @@ import configureStore from '../store';
 
 import Head from '../components/Head';
 
+import AuthHandler from '../handlers/AuthHandler';
 import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
 
@@ -31,6 +32,11 @@ export class MerjApp extends App {
     return { pageProps };
   }
 
+  componentDidMount() {
+    // Helper to purge persistor
+    // this.persistor.purge();
+  }
+
   render() {
     const { Component, pageProps, store } = this.props;
 
@@ -46,9 +52,11 @@ export class MerjApp extends App {
 
             <Component {...pageProps} />
 
-            <PageLoadingHandler />
+            <AuthHandler />
 
             <DataHandler />
+
+            <PageLoadingHandler />
           </PersistGate>
         </Provider>
       </Container>

@@ -4,10 +4,10 @@ import firebase from '../../firebase';
 // e.g. collection/doc/collection/doc
 // and returns a firestore ref
 export default async (url) => {
-  const db = await firebase();
-  let ref = db.firestore();
+  const fb = await firebase();
 
   try {
+    let ref = fb.firestore();
     const pathParts = url.split('/');
     let isCollection = true;
 
@@ -15,9 +15,13 @@ export default async (url) => {
       ref = isCollection ? ref.collection(pathPart) : ref.doc(pathPart);
       isCollection = !isCollection;
     });
-  } catch (error) {
-    console.log(error);
-  }
 
-  return ref;
+    if (ref instanceof Error) {
+      throw ref;
+    }
+
+    return ref;
+  } catch (error) {
+    throw error;
+  }
 };

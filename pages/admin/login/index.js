@@ -40,15 +40,23 @@ class Login extends React.Component {
     });
   }
 
-  signInUser(user) {
+  signInUser(payload) {
     const { dispatch } = this.props;
 
-    console.log(user);
+    dispatch({
+      type: 'signInWithEmail',
+      payload,
+      meta: {
+        nextAction: {
+          type: 'SIGN_IN_USER',
+        },
+      },
+    });
   }
 
   render() {
     const { isLoading } = this.state;
-    const loadingComponent = isLoading && <LoadingSection />;
+    const loadingComponent = false && isLoading && <LoadingSection />;
 
     return (
       <Page>
@@ -68,7 +76,9 @@ class Login extends React.Component {
 
 Login.getInitialProps = async () => {};
 
-Login.propTypes = {};
+Login.propTypes = {
+  dispatch: PropTypes.func,
+};
 
 Login.defaultProps = {};
 

@@ -1,5 +1,3 @@
-const initialState = {
-  authenticated: false,
-};
+const initialState = {};
 
 export default initialState;

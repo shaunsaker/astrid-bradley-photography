@@ -1,15 +1,14 @@
 import { call, put } from 'redux-saga/effects';
 
-import { firestore } from '../../../../services';
+import { auth } from '../../../../services';
 import { prepareNextAction } from '../../../../utils';
 
-const { getCollection } = firestore;
+const { signInWithEmail } = auth;
 
 export default function* saga(action) {
   try {
-    const { meta } = action;
-    const { url, query } = meta;
-    const response = yield call(getCollection, { url, query });
+    const { payload } = action;
+    const response = yield call(signInWithEmail, payload);
     const nextAction = prepareNextAction(action, response);
 
     if (nextAction) {

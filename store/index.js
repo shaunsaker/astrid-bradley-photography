@@ -13,6 +13,7 @@ const middleware = [];
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['appState'],
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
 
