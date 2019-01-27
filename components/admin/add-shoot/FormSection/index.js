@@ -6,17 +6,24 @@ import styles from './styles';
 
 import Form from '../../../Form';
 
-const FormSection = () => {
+const FormSection = ({ handleSubmit, children }) => {
   return (
     <div>
-      <Form formName="add-shoot" fields={FIELDS} submitText="Add Shoot" handleSubmit={() => 'um'} />
+      <Form formName="add-shoot" fields={FIELDS} submitText="Add Shoot" handleSubmit={handleSubmit}>
+        {children}
+      </Form>
+
+      <div className="spacer-vt" />
 
       <style jsx>{styles}</style>
     </div>
   );
 };
 
-FormSection.propTypes = {};
+FormSection.propTypes = {
+  handleSubmit: PropTypes.func,
+  children: PropTypes.node,
+};
 FormSection.defaultProps = {};
 
 export default FormSection;

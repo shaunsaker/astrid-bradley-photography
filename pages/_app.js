@@ -16,7 +16,7 @@ import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
 import SystemMessageHandler from '../handlers/SystemMessageHandler';
 
-export class MerjApp extends App {
+export class TheApp extends App {
   constructor(props) {
     super(props);
 
@@ -67,4 +67,4 @@ export class MerjApp extends App {
   }
 }
 
-export default withRedux(configureStore)(withReduxSaga({ async: true })(MerjApp));
+export default withRedux(configureStore)(withReduxSaga({ async: true })(TheApp));

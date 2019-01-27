@@ -5,7 +5,7 @@ const fields = [
     type: 'text',
     name: 'title',
     label: 'Title',
-    isRequired: true,
+    // isRequired: true,
   },
   {
     type: 'select',
@@ -19,19 +19,26 @@ const fields = [
     }),
     name: 'category',
     label: 'Select a Category:',
-    isRequired: true,
+    // isRequired: true,
   },
   {
     type: 'date',
     name: 'date',
     label: 'Date',
-    isRequired: true,
+    // isRequired: true,
   },
   {
     type: 'text',
     name: 'location',
     label: 'Location',
-    isRequired: true,
+    // isRequired: true,
+  },
+  {
+    type: 'file',
+    name: 'file',
+    // isRequired: true,
+    multiple: true,
+    accept: 'image/*',
   },
 ];
 
