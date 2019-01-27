@@ -1,10 +1,10 @@
 import React from 'react';
-import { MdClose, MdMail, MdWarning } from 'react-icons/md';
+import { MdClose, MdInfo, MdMail } from 'react-icons/md';
 
 const icons = {
   close: (props) => <MdClose {...props} />,
+  info: (props) => <MdInfo {...props} />,
   mail: (props) => <MdMail {...props} />,
-  warning: (props) => <MdWarning {...props} />,
 };
 
 export default icons;

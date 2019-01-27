@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Router from 'next/router';
 
 import Page from '../../../components/Page';
 import Header from '../../../components/Header';
@@ -16,6 +17,7 @@ class Login extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.setIsLoading = this.setIsLoading.bind(this);
     this.signInUser = this.signInUser.bind(this);
+    this.setSystemMessage = this.setSystemMessage.bind(this);
 
     this.state = {
       isLoading: false,
@@ -24,9 +26,34 @@ class Login extends React.Component {
 
   static getInitialProps = async () => {};
 
-  static propTypes = { dispatch: PropTypes.func };
+  static propTypes = {
+    dispatch: PropTypes.func,
+    user: PropTypes.shape({
+      uid: PropTypes.string,
+    }),
+    systemMessage: PropTypes.string,
+  };
 
   static defaultProps = {};
+
+  componentDidUpdate(prevProps) {
+    const { user, systemMessage } = this.props;
+    const { uid } = user;
+
+    if (systemMessage !== prevProps.systemMessage) {
+      // Error event
+      this.setIsLoading(false);
+    }
+
+    if (uid !== prevProps.user.uid) {
+      // New user is signed in
+      // Set a system message telling the user that they are signed in
+      // Redirect to admin dashboard
+      this.setSystemMessage('Sign in successful.');
+
+      Router.replace('/admin');
+    }
+  }
 
   onSubmit(event) {
     const { email, password } = event.target;
@@ -60,9 +87,18 @@ class Login extends React.Component {
     });
   }
 
+  setSystemMessage(message) {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'SET_SYSTEM_MESSAGE',
+      payload: { message },
+    });
+  }
+
   render() {
     const { isLoading } = this.state;
-    const loadingComponent = false && isLoading && <LoadingSection />;
+    const loadingComponent = isLoading && <LoadingSection />;
 
     return (
       <Page>
@@ -80,8 +116,14 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  const { user, appState } = state;
+  const { systemMessage } = appState;
+
+  return {
+    user,
+    systemMessage,
+  };
 };
 
 export default connect(mapStateToProps)(Login);

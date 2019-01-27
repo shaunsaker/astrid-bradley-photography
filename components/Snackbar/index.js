@@ -10,7 +10,7 @@ const Snackbar = ({ text, handleClose }) => {
   return (
     <div className="wrapper shadow-lg">
       <div className="container row">
-        <Icon name="warning" color={colors.accent2} />
+        <Icon name="info" color={colors.accent2} />
 
         <div className="spacer-hz" />
 
