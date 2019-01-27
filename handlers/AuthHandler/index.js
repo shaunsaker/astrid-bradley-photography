@@ -12,6 +12,13 @@ export class AuthHandler extends React.Component {
     this.state = {};
   }
 
+  static propTypes = {
+    user: PropTypes.shape({}),
+    router: PropTypes.shape(),
+  };
+
+  static defaultProps = {};
+
   componentDidMount() {
     // Handle route change
     Router.events.on('routeChangeComplete', this.handleAdminRedirect);
@@ -46,12 +53,5 @@ function mapStateToProps(state) {
     user: state.user,
   };
 }
-
-AuthHandler.propTypes = {
-  user: PropTypes.shape({}),
-  router: PropTypes.shape(),
-};
-
-AuthHandler.defaultProps = {};
 
 export default withRouter(connect(mapStateToProps)(AuthHandler));

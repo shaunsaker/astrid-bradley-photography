@@ -22,6 +22,12 @@ class Login extends React.Component {
     };
   }
 
+  static getInitialProps = async () => {};
+
+  static propTypes = { dispatch: PropTypes.func };
+
+  static defaultProps = {};
+
   onSubmit(event) {
     const { email, password } = event.target;
     const values = {
@@ -73,14 +79,6 @@ class Login extends React.Component {
     );
   }
 }
-
-Login.getInitialProps = async () => {};
-
-Login.propTypes = {
-  dispatch: PropTypes.func,
-};
-
-Login.defaultProps = {};
 
 const mapStateToProps = () => {
   return {};

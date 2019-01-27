@@ -7,6 +7,12 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 class Admin extends React.Component {
+  static getInitialProps = async () => {};
+
+  static propTypes = {};
+
+  static defaultProps = {};
+
   render() {
     return (
       <Page>
@@ -23,10 +29,6 @@ class Admin extends React.Component {
 }
 
 Admin.getInitialProps = async () => {};
-
-Admin.propTypes = {};
-
-Admin.defaultProps = {};
 
 const mapStateToProps = (state) => {
   return {};

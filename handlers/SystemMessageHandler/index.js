@@ -17,6 +17,13 @@ export class SystemMessageHandler extends React.Component {
     this.state = {};
   }
 
+  static propTypes = {
+    dispatch: PropTypes.func,
+    systemMessage: PropTypes.string,
+  };
+
+  static defaultProps = {};
+
   componentDidUpdate(prevProps) {
     const { systemMessage } = this.props;
 
@@ -61,12 +68,5 @@ function mapStateToProps(state) {
     systemMessage,
   };
 }
-
-SystemMessageHandler.propTypes = {
-  dispatch: PropTypes.func,
-  systemMessage: PropTypes.string,
-};
-
-SystemMessageHandler.defaultProps = {};
 
 export default connect(mapStateToProps)(SystemMessageHandler);
