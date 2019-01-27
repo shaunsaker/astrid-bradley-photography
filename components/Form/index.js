@@ -18,7 +18,11 @@ const Form = ({ formName, fields, submitText, handleSubmit }) => {
           type === 'select' ? (
             <select name={name} id={id} required={isRequired}>
               {options.map((option) => {
-                return <option key={option.value}>{option.name}</option>;
+                return (
+                  <option key={option.value} value={option.value}>
+                    {option.name}
+                  </option>
+                );
               })}
             </select>
           ) : type === 'textarea' ? (
