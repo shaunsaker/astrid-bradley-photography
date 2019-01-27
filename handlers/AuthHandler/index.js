@@ -36,9 +36,9 @@ export class AuthHandler extends React.Component {
     const { pathname } = router;
     const { uid } = user;
 
-    // IF the user navigated to the admin page
+    // IF the user navigated to an admin page
     // IF the user does not have a uid AKA is not signed in
-    if (pathname === '/admin' && !uid) {
+    if (pathname.indexOf('admin') > -1 && !uid) {
       router.replace('/admin/login');
     }
   }
