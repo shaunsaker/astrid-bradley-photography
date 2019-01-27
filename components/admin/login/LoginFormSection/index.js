@@ -1,30 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FIELDS from './fields';
 import styles from './styles';
+
+import Form from '../../../Form';
 
 const LoginFormSection = ({ handleSubmit }) => {
   return (
     <section>
       <h1>Login</h1>
 
-      <form name="contact" onSubmit={handleSubmit}>
-        <fieldset>
-          <input type="email" name="email" id="input-email" required />
-
-          <label htmlFor="input-email">Email Address</label>
-        </fieldset>
-
-        <fieldset>
-          <input type="password" name="password" id="input-password" required />
-
-          <label htmlFor="input-password">Password</label>
-        </fieldset>
-
-        <button type="submit" className="button shadow-sm shadow-hover">
-          Submit
-        </button>
-      </form>
+      <Form formName="contact" fields={FIELDS} handleSubmit={handleSubmit} />
 
       <style jsx>{styles}</style>
     </section>
