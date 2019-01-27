@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getPrettyDate } from '../../utils';
+import { getPrettyDate } from '../../../utils';
 import styles from './styles';
 
 const ShootSection = ({ shoot }) => {

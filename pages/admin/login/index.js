@@ -5,10 +5,9 @@ import Router from 'next/router';
 
 import Page from '../../../components/Page';
 import Header from '../../../components/Header';
+import LoginFormSection from '../../../components/admin/login/LoginFormSection';
+import LoadingSection from '../../../components/LoadingSection';
 import Footer from '../../../components/Footer';
-
-import LoginFormSection from '../../../layouts/LoginFormSection';
-import LoadingSection from '../../../layouts/LoadingSection';
 
 class Login extends React.Component {
   constructor(props) {

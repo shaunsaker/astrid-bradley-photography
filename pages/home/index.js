@@ -5,13 +5,13 @@ import Page from '../../components/Page';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import FeaturedImagesSection from '../../layouts/FeaturedImagesSection';
-import PortfolioSection from '../../layouts/PortfolioSection';
-import AboutSection from '../../layouts/AboutSection';
-import TestimonialsSection from '../../layouts/TestimonialsSection';
-import QuoteSection from '../../layouts/QuoteSection';
-import FeaturedOnSection from '../../layouts/FeaturedOnSection';
-import ContactButtonSection from '../../layouts/ContactButtonSection';
+import FeaturedImagesSection from '../../components/home/FeaturedImagesSection';
+import PortfolioSection from '../../components/home/PortfolioSection';
+import AboutSection from '../../components/home/AboutSection';
+import TestimonialsSection from '../../components/home/TestimonialsSection';
+import QuoteSection from '../../components/QuoteSection';
+import FeaturedOnSection from '../../components/home/FeaturedOnSection';
+import ContactButtonSection from '../../components/ContactButton';
 
 const Home = () => {
   return (

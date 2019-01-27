@@ -6,8 +6,8 @@ import Page from '../../components/Page';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import SpringboardsSection from '../../layouts/SpringboardsSection';
-import ContactButtonSection from '../../layouts/ContactButtonSection';
+import SpringboardsSection from '../../components/SpringboardsSection';
+import ContactButton from '../../components/ContactButton';
 
 const Category = ({ categoryID, shoots }) => {
   // Filter on category_id
@@ -34,7 +34,7 @@ const Category = ({ categoryID, shoots }) => {
 
       <Footer />
 
-      <ContactButtonSection />
+      <ContactButton />
     </Page>
   );
 };

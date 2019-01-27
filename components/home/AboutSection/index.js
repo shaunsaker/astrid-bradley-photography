@@ -10,7 +10,7 @@ const AboutSection = () => {
 
       <div className="row xs-wrap">
         <div className="image-container">
-          <img src="/static/images/layouts/AboutSection/astrid-bradley.jpg" alt="Astrid Bradley" />
+          <img src="/static/images/astrid-bradley.jpg" alt="Astrid Bradley" />
         </div>
 
         <div className="spacer-hz hidden-xs-down" />

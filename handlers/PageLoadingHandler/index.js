@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 
-import LoadingSection from '../../layouts/LoadingSection';
+import LoadingSection from '../../components/LoadingSection';
 
 export default class PageLoadingHandler extends React.Component {
   constructor(props) {

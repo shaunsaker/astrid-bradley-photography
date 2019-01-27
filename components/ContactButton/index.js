@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 import styles from './styles';
 
-import IconButton from '../../components/IconButton';
+import IconButton from '../IconButton';
 
-const ContactButtonSection = () => {
+const ContactButton = () => {
   return (
     <div className="container">
       <Link href="/contact">
@@ -20,7 +20,7 @@ const ContactButtonSection = () => {
   );
 };
 
-ContactButtonSection.propTypes = {};
-ContactButtonSection.defaultProps = {};
+ContactButton.propTypes = {};
+ContactButton.defaultProps = {};
 
-export default ContactButtonSection;
+export default ContactButton;

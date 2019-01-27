@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
+import ShootSection from '../../components/shoot/ShootSection';
 import Footer from '../../components/Footer';
-
-import ShootSection from '../../layouts/ShootSection';
-import ContactButtonSection from '../../layouts/ContactButtonSection';
+import ContactButton from '../../components/ContactButton';
 
 const Shoot = ({ shootID, shoots }) => {
   const shoot = shoots.filter((item) => item.id === shootID)[0];
@@ -21,7 +20,7 @@ const Shoot = ({ shootID, shoots }) => {
 
       <Footer />
 
-      <ContactButtonSection />
+      <ContactButton />
     </Page>
   );
 };

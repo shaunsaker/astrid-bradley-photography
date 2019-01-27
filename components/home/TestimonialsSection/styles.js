@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors, rhythm } from '../../static/styles/styleConstants';
+import { colors, rhythm } from '../../../static/styles/styleConstants';
 
 const IMAGE_SIZE = 75;
 

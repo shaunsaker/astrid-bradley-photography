@@ -1,7 +1,7 @@
 const springboards = [
   {
     image: {
-      src: '/static/images/layouts/SpringboardSection/springboard-weddings.jpg',
+      src: '/static/images/springboard-weddings.jpg',
       alt: 'Weddings',
     },
     text: 'Weddings',
@@ -12,7 +12,7 @@ const springboards = [
   },
   {
     image: {
-      src: '/static/images/layouts/SpringboardSection/springboard-lifestyle.jpg',
+      src: '/static/images/springboard-lifestyle.jpg',
       alt: 'Lifestyle',
     },
     text: 'Lifestyle',

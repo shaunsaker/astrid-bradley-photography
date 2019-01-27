@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import IMAGES from './images';
 
-import ImageSlider from '../../components/ImageSlider';
+import ImageSlider from '../../ImageSlider';
 
 const FeaturedImagesSection = () => {
   return (

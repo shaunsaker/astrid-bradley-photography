@@ -1,7 +1,7 @@
 const testimonials = [
   {
     image: {
-      src: '/static/images/layouts/TestimonialSection/testimonial-x.jpg',
+      src: '/static/images/testimonials/testimonial-x.jpg',
       alt: 'X',
     },
     name: 'X',
@@ -9,7 +9,7 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/layouts/TestimonialSection/testimonial-y.jpeg',
+      src: '/static/images/testimonials/testimonial-y.jpeg',
       alt: 'Y',
     },
     name: 'Y',
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/layouts/TestimonialSection/testimonial-z.jpg',
+      src: '/static/images/testimonials/testimonial-z.jpg',
       alt: 'Z',
     },
     name: 'Z',

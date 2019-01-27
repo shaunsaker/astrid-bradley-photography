@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Springboard from '../../components/Springboard';
+import Springboard from '../Springboard';
 
 const PortfolioSection = () => {
   return (
     <section>
       <Springboard
         image={{
-          src: '/static/images/layouts/QuoteSection/springboard-quote.jpg',
+          src: '/static/images/springboard-quote.jpg',
           alt: 'Build a quote',
         }}
         text="Build a Quote"
