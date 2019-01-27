@@ -19,10 +19,10 @@ const styles = css`
       }
     }
 
-    animation: grow 1s ease;
+    animation: grow 0.5s ease;
   }
 
-  li {
+  ul > :global(li) {
     margin-bottom: ${rhythm.vt}px;
     text-align: center;
   }

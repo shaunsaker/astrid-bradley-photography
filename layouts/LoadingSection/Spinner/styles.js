@@ -20,7 +20,7 @@ const styles = css`
   width: ${SIZE}px;
   height: ${SIZE}px;
   border-radius: ${SIZE / 2}px;
-  animation: spin 1s linear infinite;
+  animation: spin 0.5s linear infinite;
 `;
 
 export default styles;

@@ -40,7 +40,7 @@ const styles = css`
     border-radius: ${DOT_SIZE / 2}px;
     background-color: ${colors.white};
     margin: 0 ${DOT_SIZE / 2}px;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
   }
 
   .active {

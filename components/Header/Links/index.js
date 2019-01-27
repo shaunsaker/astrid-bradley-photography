@@ -6,11 +6,23 @@ import Link from 'next/link';
 import ROUTES from '../routes';
 
 const Links = ({ router }) => {
-  const { pathname } = router;
+  const { pathname, query } = router;
+  const { id } = query;
 
   return ROUTES.map((route) => {
     const { href, title, prefetch, as } = route;
-    const isActive = route.href === pathname;
+    let isActive = href === pathname;
+
+    // IF the actual route is the category page
+    // IF the mapped route is the category page
+    // IF the mapped routes id matches that of the actual route
+    if (
+      pathname.indexOf('category') > -1 &&
+      href.indexOf('category') > -1 &&
+      href.indexOf(id) > -1
+    ) {
+      isActive = true;
+    }
 
     return (
       <li key={href}>

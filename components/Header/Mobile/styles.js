@@ -9,7 +9,6 @@ const styles = css`
     left: 0;
     right: 0;
     padding: ${rhythm.vt}px ${rhythm.hz}px;
-    padding-bottom: ${rhythm.vt * 2}px;
     min-height: 120px;
     background-color: ${colors.white};
     z-index: 1;

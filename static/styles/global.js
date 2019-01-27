@@ -75,7 +75,7 @@ button {
 }
 
 .shadow-hover, .shadow-hover-lg {
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 .shadow-hover:hover {
@@ -173,7 +173,7 @@ small {
 
 .nav-link, .link {
   cursor: pointer;
-  transition: color 1s ease;
+  transition: color 0.5s ease;
 }
 
 .nav-link:hover, .link:hover {
@@ -208,6 +208,7 @@ label {
   padding: 0 ${rhythm.hz / 4}px;
   background-color: ${colors.white};
   color: ${colors.grey};
+  cursor: text;
 }
 
 input,
@@ -216,7 +217,7 @@ textarea {
   border: 1px solid ${colors.black};
   outline: none;
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
-  transition: border-color 1s ease;
+  transition: border-color 0.5s ease;
 }
 
 input:focus,
