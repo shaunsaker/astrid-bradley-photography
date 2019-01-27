@@ -1,3 +1,5 @@
+import { categories } from '../../config';
+
 const routes = [
   {
     title: 'Home',
@@ -5,27 +7,21 @@ const routes = [
     prefetch: false,
     admin: false,
   },
-  {
-    title: 'Weddings',
-    href: '/category?id=weddings',
-    as: '/category/weddings',
+];
+
+categories.forEach((category) => {
+  const { name, id } = category;
+
+  routes.push({
+    title: name,
+    href: `/category?id=${id}`,
+    as: `/category/${id}`,
     prefetch: false,
     admin: false,
-  },
-  {
-    title: 'Lifestyle',
-    href: '/category?id=lifestyle',
-    as: '/category/lifestyle',
-    prefetch: false,
-    admin: false,
-  },
-  {
-    title: 'Styled Shoots',
-    href: '/category?id=styled-shoots',
-    as: '/category/styled-shoots',
-    prefetch: false,
-    admin: false,
-  },
+  });
+});
+
+routes.push(
   {
     title: 'Photo Queue',
     href: '/photo-queue',
@@ -44,6 +40,8 @@ const routes = [
     prefetch: false,
     admin: true,
   },
-];
+);
+
+console.log(routes);
 
 export default routes;

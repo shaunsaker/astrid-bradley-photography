@@ -1,26 +1,21 @@
-const springboards = [
-  {
+import { categories } from '../../../config';
+
+// Take the first two categories
+// Map them to springboard objects
+const springboards = categories.slice(0, 2).map((category) => {
+  const { name, id } = category;
+
+  return {
     image: {
-      src: '/static/images/springboard-weddings.jpg',
-      alt: 'Weddings',
+      src: `/static/images/springboard-${id}.jpg`,
+      alt: name,
     },
-    text: 'Weddings',
+    text: name,
     link: {
-      href: '/category?id=weddings',
-      as: '/category/weddings',
+      href: `/category?id=${id}`,
+      as: `/category/${id}`,
     },
-  },
-  {
-    image: {
-      src: '/static/images/springboard-lifestyle.jpg',
-      alt: 'Lifestyle',
-    },
-    text: 'Lifestyle',
-    link: {
-      href: '/category?id=lifestyle',
-      as: '/category/lifestyle',
-    },
-  },
-];
+  };
+});
 
 export default springboards;
