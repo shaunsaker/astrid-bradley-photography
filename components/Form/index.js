@@ -12,19 +12,34 @@ const Form = ({ formName, fields, submitText, handleSubmit }) => {
       data-netlify={!handleSubmit && 'true'}
     >
       {fields.map((field) => {
-        const { type, name, label, isRequired } = field;
+        const { type, options, name, label, isRequired } = field;
+        const id = `input-${name}`;
         const inputComponent =
-          type === 'textarea' ? (
-            <textarea name={name} id={`input-${name}`} required={isRequired} />
+          type === 'select' ? (
+            <select name={name} id={id} required={isRequired}>
+              {options.map((option) => {
+                return <option key={option.value}>{option.name}</option>;
+              })}
+            </select>
+          ) : type === 'textarea' ? (
+            <textarea name={name} id={id} required={isRequired} />
           ) : (
-            <input type={type} name={name} id={`input-${name}`} required={isRequired} />
+            <input type={type} name={name} id={id} required={isRequired} />
           );
+        const selectLabelComponent = field.type === 'select' && (
+          <label htmlFor={id} className="select-label">
+            {label}
+          </label>
+        );
+        const labelComponent = field.type !== 'select' && <label htmlFor={id}>{label}</label>;
 
         return (
           <fieldset key={name}>
+            {selectLabelComponent}
+
             {inputComponent}
 
-            <label htmlFor={`input-${name}`}>{label}</label>
+            {labelComponent}
           </fieldset>
         );
       })}

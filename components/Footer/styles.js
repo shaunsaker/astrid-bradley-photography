@@ -10,6 +10,7 @@ const styles = css`
 
   small {
     color: ${colors.grey};
+    text-align: center;
   }
 `;
 

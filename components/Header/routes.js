@@ -42,6 +42,4 @@ routes.push(
   },
 );
 
-console.log(routes);
-
 export default routes;

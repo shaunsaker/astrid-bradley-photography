@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Page from '../../../components/Page';
 import Header from '../../../components/Header';
+import FormSection from '../../../components/admin/add-shoot/FormSection';
 import Footer from '../../../components/Footer';
 
 const AddShoot = () => {
@@ -14,7 +15,7 @@ const AddShoot = () => {
       <main>
         <h1>Add a Shoot</h1>
 
-        <div />
+        <FormSection />
       </main>
 
       <Footer />

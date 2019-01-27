@@ -8,9 +8,14 @@ const styles = css.global`
   box-sizing: border-box;
 }
 
+
 body,
-html {
-  max-height: 100%;
+html, #__next {
+  min-height: 100%;
+}
+
+main {
+  flex: 1;
 }
 
 body {
