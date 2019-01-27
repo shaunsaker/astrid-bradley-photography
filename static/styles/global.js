@@ -122,6 +122,10 @@ h1, h2, h3, p {
 }
 
 h1 {
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: ${colors.lightGrey};
+  padding: ${rhythm.vt}px 0;
   margin-bottom: ${rhythm.vt * 2}px;
 }
 
@@ -190,6 +194,11 @@ small {
   padding: ${rhythm.vt}px ${rhythm.hz}px;
   color: ${colors.white};
   cursor: pointer;
+}
+
+.button.secondary {
+  background-color: ${colors.lightGrey};
+  color: ${colors.black};
 }
 
 // FORMS

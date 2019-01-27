@@ -8,11 +8,41 @@ import ButtonsSection from '../../components/admin/ButtonsSection';
 import Footer from '../../components/Footer';
 
 class Admin extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onSignOut = this.onSignOut.bind(this);
+    this.signOut = this.signOut.bind(this);
+  }
+
   static getInitialProps = async () => {};
 
-  static propTypes = {};
+  static propTypes = {
+    dispatch: PropTypes.func,
+  };
 
   static defaultProps = {};
+
+  onSignOut() {
+    this.signOut();
+  }
+
+  signOut() {
+    const { dispatch } = this.props;
+    const message = 'Sign out successful.';
+
+    dispatch({
+      type: 'signOut',
+      meta: {
+        nextAction: {
+          type: 'SET_SYSTEM_MESSAGE',
+          payload: {
+            message,
+          },
+        },
+      },
+    });
+  }
 
   render() {
     return (
@@ -22,7 +52,7 @@ class Admin extends React.Component {
         <main>
           <h1>Admin Dashboard</h1>
 
-          <ButtonsSection />
+          <ButtonsSection handleSignOut={this.onSignOut} />
         </main>
 
         <Footer />
@@ -31,9 +61,7 @@ class Admin extends React.Component {
   }
 }
 
-Admin.getInitialProps = async () => {};
-
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {};
 };
 

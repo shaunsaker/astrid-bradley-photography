@@ -5,7 +5,7 @@ import Link from 'next/link';
 import BUTTONS from './buttons';
 import styles from './styles';
 
-const ButtonsSection = () => {
+const ButtonsSection = ({ handleSignOut }) => {
   return (
     <div className="container">
       {BUTTONS.map((button) => {
@@ -23,12 +23,24 @@ const ButtonsSection = () => {
         );
       })}
 
+      <button
+        type="button"
+        onClick={handleSignOut}
+        className="button secondary shadow-sm shadow-hover"
+      >
+        Sign out
+      </button>
+
+      <div className="spacer-vt" />
+
       <style jsx>{styles}</style>
     </div>
   );
 };
 
-ButtonsSection.propTypes = {};
+ButtonsSection.propTypes = {
+  handleSignOut: PropTypes.func,
+};
 ButtonsSection.defaultProps = {};
 
 export default ButtonsSection;
