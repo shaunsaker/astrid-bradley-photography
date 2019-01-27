@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import Page from '../../../components/Page';
 import Header from '../../../components/Header';
-import FormSection from '../../../components/admin/add-shoot/FormSection';
 import Footer from '../../../components/Footer';
 
-class AddShoot extends React.Component {
+class UploadPhotos extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,20 +21,7 @@ class AddShoot extends React.Component {
 
   static defaultProps = {};
 
-  onSubmit(event) {
-    const { title, category, date, location } = event.target;
-    const values = {
-      title: title.value,
-      category: category.value,
-      date: date.value,
-      location: location.value,
-    };
-
-    event.preventDefault();
-
-    // TODO: Save the shoot to the db
-    // TODO: Show success state and Navigate to upload photos button
-  }
+  onSubmit() {}
 
   render() {
     return (
@@ -43,9 +29,7 @@ class AddShoot extends React.Component {
         <Header />
 
         <main>
-          <h1>Add a Shoot</h1>
-
-          <FormSection handleSubmit={this.onSubmit} />
+          <h1>Upload Photos</h1>
         </main>
 
         <Footer />
@@ -58,4 +42,4 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-export default connect(mapStateToProps)(AddShoot);
+export default connect(mapStateToProps)(UploadPhotos);
