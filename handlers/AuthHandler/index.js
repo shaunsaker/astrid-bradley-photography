@@ -47,10 +47,7 @@ function mapStateToProps(state) {
   };
 }
 
-AuthHandler.getInitialProps = async () => {};
-
 AuthHandler.propTypes = {
-  dispatch: PropTypes.func,
   user: PropTypes.shape({}),
   router: PropTypes.shape(),
 };

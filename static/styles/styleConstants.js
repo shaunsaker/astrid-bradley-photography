@@ -1,5 +1,6 @@
 const colors = {
   black: '#000000',
+  transBlack: 'rgba(0, 0, 0, 0.8)',
   white: '#FFFFFF',
   grey: '#9C9C9C',
   lightGrey: '#CCCCCC',

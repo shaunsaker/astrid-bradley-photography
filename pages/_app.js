@@ -14,6 +14,7 @@ import Head from '../components/Head';
 import AuthHandler from '../handlers/AuthHandler';
 import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
+import SystemMessageHandler from '../handlers/SystemMessageHandler';
 
 export class MerjApp extends App {
   constructor(props) {
@@ -57,6 +58,8 @@ export class MerjApp extends App {
             <DataHandler />
 
             <PageLoadingHandler />
+
+            <SystemMessageHandler />
           </PersistGate>
         </Provider>
       </Container>

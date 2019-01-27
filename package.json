@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
-  "author": "Shaun Saker [info@shaunsaker.com]",
-  "license": "ISC",
+  "author": "Shaun Saker [kolabatory@gmail.com]",
+  "license": "MIT",
   "dependencies": {
     "autoprefixer": "^9.4.5",
     "express": "^4.16.4",

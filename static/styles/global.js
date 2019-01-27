@@ -186,7 +186,7 @@ small {
 }
 
 .button {
-  background-color: rgba(0, 0, 0, 0.67);
+  background-color: ${colors.transBlack};
   padding: ${rhythm.vt}px ${rhythm.hz}px;
   color: ${colors.white};
 }
