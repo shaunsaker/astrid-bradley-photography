@@ -3,8 +3,8 @@ import { categories } from '../../../../config';
 const fields = [
   {
     type: 'text',
-    name: 'title',
-    label: 'Title',
+    name: 'name',
+    label: 'Name',
     isRequired: true,
   },
   {

@@ -18,23 +18,53 @@ class AddShoot extends React.Component {
 
   static getInitialProps = async () => {};
 
-  static propTypes = {};
+  static propTypes = {
+    dispatch: PropTypes.func,
+  };
 
   static defaultProps = {};
 
   onSubmit(event) {
-    const { title, category, date, location } = event.target;
+    event.preventDefault();
+
+    const { name, category, date, location } = event.target;
+    const nameValue = name.value;
+    const dateValue = date.value;
+
+    // Parse the date value into js time (in ms)
+    const time = new Date(dateValue).getTime();
     const values = {
-      title: title.value,
-      category: category.value,
-      date: date.value,
+      name: nameValue,
+      category_id: category.value,
+      date: time,
       location: location.value,
     };
 
-    event.preventDefault();
+    // Use the name as the id
+    const shootID = nameValue
+      .split(' ')
+      .join('-')
+      .toLowerCase();
 
-    // TODO: Save the shoot to the db
-    // TODO: Show success state and Navigate to upload photos button
+    this.saveShoot(shootID, values);
+  }
+
+  saveShoot(id, shoot) {
+    const { dispatch } = this.props;
+    const document = shoot;
+
+    // Add a date created field with the current time
+    document.date_created = Date.now();
+
+    dispatch({
+      type: 'addDocument',
+      payload: {
+        document,
+      },
+      meta: {
+        url: `shoots/${id}`,
+      },
+    });
   }
 
   render() {
