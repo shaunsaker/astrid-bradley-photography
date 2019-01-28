@@ -8,11 +8,11 @@ export class DataHandler extends React.Component {
     super(props);
 
     this.handleGetShoots = this.handleGetShoots.bind(this);
-    this.getShoots = this.getShoots.bind(this);
-    this.setHaveFetchedShoots = this.setHaveFetchedShoots.bind(this);
+    this.syncShoots = this.syncShoots.bind(this);
+    this.setHaveSyncedShoots = this.setHaveSyncedShoots.bind(this);
 
     this.state = {
-      haveFetchedShoots: false,
+      haveSyncedShoots: false,
     };
   }
 
@@ -36,28 +36,28 @@ export class DataHandler extends React.Component {
   }
 
   handleGetShoots() {
-    const { haveFetchedShoots } = this.state;
+    const { haveSyncedShoots } = this.state;
     const { router } = this.props;
     const { pathname } = router;
 
-    // If we have not fetched shoots AND
+    // If we have not synced shoots AND
     // If the user navigated to the category OR
     // If the user navigated to the shoot page THEN
-    // Get all of the shoots
+    // Sync all of the shoots
     if (
-      !haveFetchedShoots &&
+      !haveSyncedShoots &&
       (pathname.indexOf('category') > -1 || pathname.indexOf('shoot') > -1)
     ) {
-      this.setHaveFetchedShoots(true);
-      this.getShoots();
+      this.setHaveSyncedShoots(true);
+      this.syncShoots();
     }
   }
 
-  getShoots() {
+  syncShoots() {
     const { dispatch } = this.props;
 
     dispatch({
-      type: 'getCollection',
+      type: 'sync',
       meta: {
         url: 'shoots',
         nextAction: {
@@ -67,8 +67,8 @@ export class DataHandler extends React.Component {
     });
   }
 
-  setHaveFetchedShoots(haveFetchedShoots) {
-    this.setState({ haveFetchedShoots });
+  setHaveSyncedShoots(haveSyncedShoots) {
+    this.setState({ haveSyncedShoots });
   }
 
   render() {
