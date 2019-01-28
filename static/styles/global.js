@@ -199,6 +199,7 @@ small {
   padding: ${rhythm.vt}px ${rhythm.hz}px;
   color: ${colors.white};
   cursor: pointer;
+  text-align: center;
 }
 
 .button.secondary {
