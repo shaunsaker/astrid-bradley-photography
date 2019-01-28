@@ -4,16 +4,16 @@ import { withRouter } from 'next/router';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 
-import ROUTES from '../routes';
+import { routes } from '../../../config';
 
-const Links = ({ router, isAdmin }) => {
+const Links = ({ router, isAdminUser }) => {
   const { pathname, query } = router;
   const { id } = query;
 
   return (
     <Fragment>
-      {ROUTES.map((route) => {
-        const { href, title, prefetch, as, admin } = route;
+      {routes.map((route) => {
+        const { href, title, prefetch, as, isAdmin, isNav } = route;
         let isActive = href === pathname;
 
         // IF the actual route is the category page
@@ -27,11 +27,13 @@ const Links = ({ router, isAdmin }) => {
           isActive = true;
         }
 
+        // IF the mapped route is a nav route
+        // AND
         // IF the mapped route is an admin route
         // IF the user is admin
         // OR if the mapped route is not an admin route
         // THEN return it
-        if ((admin && isAdmin) || !admin) {
+        if (isNav && ((isAdmin && isAdminUser) || !isAdmin)) {
           return (
             <li key={href}>
               <Link href={href} prefetch={prefetch} as={as}>
@@ -54,17 +56,17 @@ Links.propTypes = {
       id: PropTypes.string,
     }),
   }),
-  isAdmin: PropTypes.bool,
+  isAdminUser: PropTypes.bool,
 };
 Links.defaultProps = {};
 
 function mapStateToProps(state) {
   const { user } = state;
   const { uid } = user;
-  const isAdmin = uid ? true : false;
+  const isAdminUser = uid ? true : false;
 
   return {
-    isAdmin,
+    isAdminUser,
   };
 }
 

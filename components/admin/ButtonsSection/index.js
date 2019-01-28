@@ -2,25 +2,28 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-import BUTTONS from './buttons';
+import { routes } from '../../../config';
 import styles from './styles';
 
 const ButtonsSection = ({ handleSignOut }) => {
   return (
     <div className="container">
-      {BUTTONS.map((button) => {
-        const { text, link } = button;
-        const { href, as } = link;
+      {routes.map((route) => {
+        const { title, href, as, isAdmin, isNav } = route;
 
-        return (
-          <Fragment key={text}>
-            <Link href={href} as={as}>
-              <h2 className="button shadow-sm shadow-hover">{text}</h2>
-            </Link>
+        if (isAdmin && !isNav) {
+          return (
+            <Fragment key={title}>
+              <Link href={href} as={as}>
+                <h2 className="button shadow-sm shadow-hover">{title}</h2>
+              </Link>
 
-            <div className="spacer-vt" />
-          </Fragment>
-        );
+              <div className="spacer-vt" />
+            </Fragment>
+          );
+        }
+
+        return null;
       })}
 
       <button
