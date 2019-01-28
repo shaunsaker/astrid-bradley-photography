@@ -10,12 +10,13 @@ import SpringboardsSection from '../../components/SpringboardsSection';
 import ContactButton from '../../components/ContactButton';
 
 const Category = ({ categoryID, shoots }) => {
-  const title = categoryID.replace('-', ' ');
+  const title = categoryID.replace('-', ' '); // FIXME: Title could come from db categories collection (overkill for now)
 
-  // Filter on category_id
+  // Filter on category_id AND
+  // IF photos exist
   // Map to springboards data type
   const springboards = shoots
-    .filter((shoot) => shoot.category_id === categoryID)
+    .filter((shoot) => shoot.category_id === categoryID && shoot.photos)
     .map((shoot) => {
       const { name, cover_photo_url, id } = shoot;
 
@@ -51,7 +52,14 @@ Category.getInitialProps = async ({ query }) => {
 
 Category.propTypes = {
   categoryID: PropTypes.string,
-  shoots: PropTypes.arrayOf(PropTypes.shape({})),
+  shoots: PropTypes.arrayOf(
+    PropTypes.shape({
+      category_id: PropTypes.string,
+      name: PropTypes.string,
+      id: PropTypes.string,
+      cover_photo_url: PropTypes.string,
+    }),
+  ),
 };
 Category.defaultProps = {};
 
