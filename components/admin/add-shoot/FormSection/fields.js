@@ -17,7 +17,7 @@ const fields = [
         value: id,
       };
     }),
-    name: 'category',
+    name: 'category_id',
     label: 'Select a Category:',
     isRequired: true,
   },
