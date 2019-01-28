@@ -24,34 +24,25 @@ class AddShoot extends React.Component {
 
   static defaultProps = {};
 
-  onSubmit(event) {
-    event.preventDefault();
+  onSubmit(values) {
+    const shoot = values;
 
-    const { name, category, date, location } = event.target;
-    const nameValue = name.value;
-    const dateValue = date.value;
+    // Replace the date value with js time (in ms)
+    const time = new Date(shoot.date).getTime();
+    shoot.date = time;
 
-    // Parse the date value into js time (in ms)
-    const time = new Date(dateValue).getTime();
-    const values = {
-      name: nameValue,
-      category_id: category.value,
-      date: time,
-      location: location.value,
-    };
+    this.saveShoot(shoot);
+  }
+
+  saveShoot(shoot) {
+    const { dispatch } = this.props;
+    const document = shoot;
 
     // Use the name as the id
-    const shootID = nameValue
+    const id = shoot.name
       .split(' ')
       .join('-')
       .toLowerCase();
-
-    this.saveShoot(shootID, values);
-  }
-
-  saveShoot(id, shoot) {
-    const { dispatch } = this.props;
-    const document = shoot;
 
     // Add a date created field with the current time
     document.date_created = Date.now();
