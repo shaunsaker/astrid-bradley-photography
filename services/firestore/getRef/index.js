@@ -16,10 +16,6 @@ export default async (url) => {
       isCollection = !isCollection;
     });
 
-    if (ref instanceof Error) {
-      throw ref;
-    }
-
     return ref;
   } catch (error) {
     throw error;

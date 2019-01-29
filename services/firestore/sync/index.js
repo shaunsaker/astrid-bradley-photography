@@ -10,10 +10,6 @@ export default async ({ url, query }, callback) => {
 
     const unsubscribe = ref.onSnapshot(callback);
 
-    if (unsubscribe instanceof Error) {
-      throw unsubscribe;
-    }
-
     return unsubscribe;
   } catch (error) {
     throw error;
