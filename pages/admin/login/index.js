@@ -27,30 +27,27 @@ class Login extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
-    user: PropTypes.shape({
-      uid: PropTypes.string,
-    }),
+    authenticated: PropTypes.bool,
     systemMessage: PropTypes.string,
   };
 
   static defaultProps = {};
 
   componentDidUpdate(prevProps) {
-    const { user, systemMessage } = this.props;
-    const { uid } = user;
+    const { authenticated, systemMessage } = this.props;
 
     if (systemMessage !== prevProps.systemMessage) {
       // Error event
       this.setIsLoading(false);
     }
 
-    if (uid !== prevProps.user.uid) {
+    if (authenticated !== prevProps.authenticated) {
       // New user is signed in
       // Set a system message telling the user that they are signed in
       // Redirect to admin dashboard
       this.setSystemMessage('Sign in successful.');
 
-      // Router.replace('/admin');
+      Router.replace('/admin');
     }
   }
 
@@ -71,6 +68,11 @@ class Login extends React.Component {
     dispatch({
       type: 'signInWithEmail',
       payload,
+      meta: {
+        nextAction: {
+          type: 'SIGN_IN_USER',
+        },
+      },
     });
   }
 
@@ -105,10 +107,11 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   const { user, appState } = state;
+  const { authenticated } = user;
   const { systemMessage } = appState;
 
   return {
-    user,
+    authenticated,
     systemMessage,
   };
 };

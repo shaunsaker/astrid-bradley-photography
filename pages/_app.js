@@ -53,8 +53,6 @@ export class TheApp extends App {
 
             <Component {...pageProps} />
 
-            <AuthHandler />
-
             <DataHandler />
 
             <PageLoadingHandler />

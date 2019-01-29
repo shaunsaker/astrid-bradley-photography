@@ -29,16 +29,13 @@ class Admin extends React.Component {
 
   signOut() {
     const { dispatch } = this.props;
-    const message = 'Sign out successful.';
 
     dispatch({
       type: 'signOut',
       meta: {
         nextAction: {
-          type: 'SET_SYSTEM_MESSAGE',
-          payload: {
-            message,
-          },
+          type: 'SIGN_OUT_USER',
+          // TODO: How to also display error message?
         },
       },
     });
