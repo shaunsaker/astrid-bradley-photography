@@ -46,10 +46,7 @@ export class SystemMessageHandler extends React.Component {
     const { dispatch } = this.props;
 
     dispatch({
-      type: 'SET_SYSTEM_MESSAGE',
-      payload: {
-        message: null,
-      },
+      type: 'RESET_SYSTEM_MESSAGE',
     });
   }
 

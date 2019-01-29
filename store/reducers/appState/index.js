@@ -10,6 +10,11 @@ export default function reducer(state = initialState, action = {}) {
       newState.systemMessage = action.payload.message;
       return newState;
 
+    case 'RESET_SYSTEM_MESSAGE':
+      newState = cloneObject(state);
+      newState.systemMessage = initialState.systemMessage;
+      return newState;
+
     default:
       return state;
   }
