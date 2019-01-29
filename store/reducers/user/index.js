@@ -7,7 +7,12 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SIGN_IN_USER':
       newState = cloneObject(state);
-      newState = action.payload.user;
+      newState = action.payload || initialState; // protect against setting it to null
+      return newState;
+
+    case 'SIGN_OUT_USER':
+      newState = cloneObject(state);
+      newState = initialState;
       return newState;
 
     default:

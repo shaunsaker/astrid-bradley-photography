@@ -39,7 +39,6 @@ class Form extends React.Component {
     event.preventDefault();
 
     // Grab the relevant fields from event.target
-
     fields.forEach((field) => {
       const { name } = field;
       const { value } = event.target[name];

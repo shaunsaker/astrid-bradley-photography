@@ -50,18 +50,11 @@ class Login extends React.Component {
       // Redirect to admin dashboard
       this.setSystemMessage('Sign in successful.');
 
-      Router.replace('/admin');
+      // Router.replace('/admin');
     }
   }
 
-  onSubmit(event) {
-    const { email, password } = event.target;
-    const values = {
-      email: email.value,
-      password: password.value,
-    };
-
-    event.preventDefault();
+  onSubmit(values) {
     this.setIsLoading(true);
     this.signInUser(values);
   }
@@ -78,11 +71,6 @@ class Login extends React.Component {
     dispatch({
       type: 'signInWithEmail',
       payload,
-      meta: {
-        nextAction: {
-          type: 'SIGN_IN_USER',
-        },
-      },
     });
   }
 

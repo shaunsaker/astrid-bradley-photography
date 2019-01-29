@@ -23,8 +23,6 @@ class AddShoot extends React.Component {
     };
   }
 
-  static getInitialProps = async () => {};
-
   static propTypes = {
     dispatch: PropTypes.func,
     shoots: PropTypes.arrayOf(PropTypes.shape({})),

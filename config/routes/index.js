@@ -46,6 +46,13 @@ routes.push(
     isNav: true,
   },
   {
+    title: 'Admin',
+    href: '/admin/login',
+    prefetch: false,
+    isAdmin: false,
+    isNav: false,
+  },
+  {
     title: 'Add a Shoot',
     href: '/admin/add-shoot',
     prefetch: false,
