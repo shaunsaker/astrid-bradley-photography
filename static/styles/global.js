@@ -80,7 +80,7 @@ button {
 }
 
 .shadow-hover, .shadow-hover-lg {
-  transition: all 0.5s ease;
+  transition: box-shadow 0.5s ease;
 }
 
 .shadow-hover:hover {
@@ -200,6 +200,11 @@ small {
   color: ${colors.white};
   cursor: pointer;
   text-align: center;
+  outline: none;
+}
+
+.button:focus {
+  border: 1px solid ${colors.white};
 }
 
 .button.secondary {
