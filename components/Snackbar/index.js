@@ -6,19 +6,15 @@ import styles from './styles';
 
 import Icon from '../Icon';
 
-const Snackbar = ({ text, handleClose }) => {
+const Snackbar = ({ text }) => {
   return (
     <div className="wrapper shadow-lg">
       <div className="container row">
-        <Icon name="info" color={colors.accent2} />
+        <Icon name="info" color={colors.white} />
 
         <div className="spacer-hz" />
 
         <p className="text">{text}</p>
-
-        <button type="button" onClick={handleClose} className="close-button">
-          <Icon name="close" color={colors.white} />
-        </button>
       </div>
 
       <style jsx>{styles}</style>
@@ -28,7 +24,6 @@ const Snackbar = ({ text, handleClose }) => {
 
 Snackbar.propTypes = {
   text: PropTypes.string,
-  handleClose: PropTypes.func,
 };
 Snackbar.defaultProps = {};
 

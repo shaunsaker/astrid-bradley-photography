@@ -8,7 +8,7 @@ const styles = css`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: ${colors.transBlack};
+    background-color: ${colors.black};
     z-index: 2;
     animation: translate-up 0.5s ease;
   }
@@ -20,12 +20,6 @@ const styles = css`
 
   .text {
     color: ${colors.white};
-  }
-
-  .close-button {
-    position: absolute;
-    top: ${rhythm.vt}px;
-    right: ${rhythm.hz}px;
   }
 
   @keyframes translate-up {
