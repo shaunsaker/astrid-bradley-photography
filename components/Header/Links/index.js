@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import Link from 'next/link';
+import { connect } from 'react-redux';
 
 import { routes } from '../../../config';
-
-import withAuth from '../../../wrappers/withAuth';
 
 const Links = ({ router, authenticated }) => {
   const { pathname, query } = router;
@@ -61,4 +60,12 @@ Links.propTypes = {
 };
 Links.defaultProps = {};
 
-export default withAuth(withRouter(Links));
+const mapStateToProps = (state) => {
+  const { user } = state;
+  const { uid } = user;
+  const authenticated = uid ? true : false;
+
+  return { authenticated };
+};
+
+export default withRouter(connect(mapStateToProps)(Links));

@@ -11,7 +11,6 @@ import configureStore from '../store';
 
 import Head from '../components/Head';
 
-import AuthHandler from '../handlers/AuthHandler';
 import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
 import SystemMessageHandler from '../handlers/SystemMessageHandler';
