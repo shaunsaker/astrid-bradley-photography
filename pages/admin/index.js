@@ -7,6 +7,8 @@ import Header from '../../components/Header';
 import ButtonsSection from '../../components/admin/ButtonsSection';
 import Footer from '../../components/Footer';
 
+import withAuth from '../../wrappers/withAuth';
+
 class Admin extends React.Component {
   constructor(props) {
     super(props);
@@ -62,4 +64,4 @@ const mapStateToProps = () => {
   return {};
 };
 
-export default connect(mapStateToProps)(Admin);
+export default withAuth(connect(mapStateToProps)(Admin));

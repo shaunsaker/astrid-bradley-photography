@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import Link from 'next/link';
-import { connect } from 'react-redux';
 
 import { routes } from '../../../config';
 
-const Links = ({ router, isAdminUser }) => {
+import withAuth from '../../../wrappers/withAuth';
+
+const Links = ({ router, authenticated }) => {
   const { pathname, query } = router;
   const { id } = query;
 
@@ -33,7 +34,7 @@ const Links = ({ router, isAdminUser }) => {
         // IF the user is admin
         // OR if the mapped route is not an admin route
         // THEN return it
-        if (isNav && ((isAdmin && isAdminUser) || !isAdmin)) {
+        if (isNav && ((isAdmin && authenticated) || !isAdmin)) {
           return (
             <li key={href}>
               <Link href={href} prefetch={prefetch} as={as}>
@@ -56,18 +57,8 @@ Links.propTypes = {
       id: PropTypes.string,
     }),
   }),
-  isAdminUser: PropTypes.bool,
+  authenticated: PropTypes.bool,
 };
 Links.defaultProps = {};
 
-function mapStateToProps(state) {
-  const { user } = state;
-  const { uid } = user;
-  const isAdminUser = uid ? true : false;
-
-  return {
-    isAdminUser,
-  };
-}
-
-export default withRouter(connect(mapStateToProps)(Links));
+export default withAuth(withRouter(Links));

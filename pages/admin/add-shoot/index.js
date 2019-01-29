@@ -9,6 +9,8 @@ import LoadingSection from '../../../components/LoadingSection';
 import SuccessSection from '../../../components/admin/add-shoot/SuccessSection';
 import Footer from '../../../components/Footer';
 
+import withAuth from '../../../wrappers/withAuth';
+
 class AddShoot extends React.Component {
   constructor(props) {
     super(props);
@@ -136,4 +138,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(AddShoot);
+export default withAuth(connect(mapStateToProps)(AddShoot));
