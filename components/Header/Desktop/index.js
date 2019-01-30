@@ -8,7 +8,7 @@ import Links from '../Links';
 
 const Desktop = () => {
   return (
-    <div className="desktop">
+    <div className="hidden-md-down">
       <Logo />
 
       <ul className="row">

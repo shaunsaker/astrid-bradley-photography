@@ -15,8 +15,8 @@ const ControlPanel = ({ children }) => {
         const { href, as } = link;
 
         return (
-          <Link href={href} as={as}>
-            <Fragment key={label}>
+          <Link key={label} href={href} as={as}>
+            <Fragment>
               <IconButton iconName={iconName} label={label} handleClick={null} />
 
               <div className="spacer-hz" />

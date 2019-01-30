@@ -36,7 +36,7 @@ export class Mobile extends React.Component {
     const menuComponent = showMenu && <Menu handleClose={this.toggleMenu} />;
 
     return (
-      <div className="container mobile">
+      <div className="container hidden-md-up">
         <div className="buttonContainer">
           <button type="button" onClick={this.toggleMenu}>
             <MenuIcon size={24} color={colors.black} />

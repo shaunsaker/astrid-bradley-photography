@@ -229,25 +229,16 @@ small {
 }
 
 @media screen and (max-width: 767px) {
-  .desktop {
+  .hidden-md-down {
     display: none;
-  }
-  .page-container {
-    padding: 120px 24px 0;
-    align-self: stretch;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .mobile {
+  .hidden-md-up {
       display: none;
   }
-  .page-container {
-    padding: 64px 24px 0;
-    align-self: center;
-  }
 }
-
 `;
 
 export default styles;

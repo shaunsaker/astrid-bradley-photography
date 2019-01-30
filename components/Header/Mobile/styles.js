@@ -10,6 +10,7 @@ const styles = css`
     right: 0;
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     min-height: 120px;
+    max-height: 160px;
     background-color: ${colors.white};
     z-index: 1;
   }
