@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-class Form extends React.Component {
+import Select from '../Select';
+
+export default class Form extends React.Component {
   constructor(props) {
     super(props);
 
@@ -64,15 +66,7 @@ class Form extends React.Component {
           const id = `input-${name}`;
           const inputComponent =
             type === 'select' ? (
-              <select name={name} id={id} required={isRequired}>
-                {options.map((option) => {
-                  return (
-                    <option key={option.value} value={option.value}>
-                      {option.name}
-                    </option>
-                  );
-                })}
-              </select>
+              <Select fieldName={name} id={id} options={options} />
             ) : type === 'textarea' ? (
               <textarea name={name} id={id} required={isRequired} />
             ) : (
@@ -114,5 +108,3 @@ class Form extends React.Component {
     );
   }
 }
-
-export default Form;

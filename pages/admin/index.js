@@ -6,7 +6,8 @@ import { categories } from '../../config';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
-import SelectCategorySection from '../../components/admin/SelectCategorySection';
+import Select from '../../components/Select';
+import ShootItem from '../../components/ShootItem';
 import ControlPanel from '../../components/admin/ControlPanel';
 import IconButton from '../../components/IconButton';
 import Footer from '../../components/Footer';
@@ -70,8 +71,19 @@ class Admin extends React.Component {
   render() {
     const { currentCategory } = this.state;
     const { shoots } = this.props;
+
+    // Map categories to select options
+    const selectOptions = categories.map((category) => {
+      const { name, id } = category;
+
+      return {
+        name,
+        value: id,
+      };
+    });
+
+    // Filter shoots on category_id
     const shootsArray = shoots.filter((shoot) => shoot.category_id === currentCategory.id);
-    console.log(shootsArray);
 
     return (
       <Page>
@@ -80,9 +92,21 @@ class Admin extends React.Component {
         <main>
           <h1>Admin Dashboard</h1>
 
-          <SelectCategorySection categories={categories} handleChange={this.onSelectCategory} />
+          <div className="row">
+            <label>Select a category</label>
+
+            <span className="spacer-hz" />
+
+            <Select options={selectOptions} handleChange={this.onSelectCategory} />
+          </div>
 
           <span className="spacer-vt" />
+
+          {shootsArray.map((shoot) => {
+            const { id } = shoot;
+
+            return <ShootItem key={id} shoot={shoot} />;
+          })}
 
           <ControlPanel>
             <IconButton iconName="lock" label="Sign Out" handleClick={this.onSignOut} />

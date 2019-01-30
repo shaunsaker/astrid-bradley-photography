@@ -153,7 +153,7 @@ h3 {
   color: ${colors.black};
 }
 
-p, input, textarea, label {
+p, input, textarea, label, select {
   font-size: 1em;
   line-height: 1.5em;
   color: ${colors.black};
