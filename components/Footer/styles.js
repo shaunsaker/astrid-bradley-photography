@@ -6,6 +6,7 @@ const styles = css`
   div {
     padding: ${rhythm.vt}px 0;
     align-items: center;
+    padding-bottom: 82px;
   }
 
   small {

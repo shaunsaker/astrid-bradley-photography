@@ -13,13 +13,13 @@ const SuccessSection = ({ shootID }) => {
         <h2 className="button">Upload Photos</h2>
       </Link>
 
-      <span className="spacer-vt" />
+      <div className="spacer-vt" />
 
       <Link href="/admin/add-a-shoot">
         <h2 className="button">Add Another Shoot</h2>
       </Link>
 
-      <span className="spacer-vt" />
+      <div className="spacer-vt" />
 
       <style jsx>{styles}</style>
     </div>

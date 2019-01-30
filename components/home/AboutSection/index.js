@@ -13,9 +13,9 @@ const AboutSection = () => {
           <img src="/static/images/astrid-bradley.jpg" alt="Astrid Bradley" />
         </div>
 
-        <span className="spacer-hz hidden-xs-down" />
+        <div className="spacer-hz hidden-xs-down" />
 
-        <span className="spacer-vt hidden-xs-up" />
+        <div className="spacer-vt hidden-xs-up" />
 
         <div>
           <p>

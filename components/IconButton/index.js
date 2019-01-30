@@ -12,7 +12,7 @@ const IconButton = ({ iconName, label, handleClick }) => {
 
   return (
     <button type="button" onClick={handleClick} className="container shadow-lg shadow-hover-lg">
-      <Icon name={iconName} color={colors.accent2} />
+      <Icon name={iconName} color={colors.white} />
 
       <div className="tooltip-container">{tooltipComponent}</div>
 

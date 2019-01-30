@@ -101,6 +101,10 @@ button {
   width: 100%;
 }
 
+.spacer-vt.large {
+  min-height: ${rhythm.vt * 2}px;
+}
+
 .hidden {
   display: none;
 }
@@ -153,7 +157,7 @@ h3 {
   color: ${colors.black};
 }
 
-p, input, textarea, label, select {
+p, input, textarea, label {
   font-size: 1em;
   line-height: 1.5em;
   color: ${colors.black};
@@ -163,7 +167,7 @@ input[type=date] {
   font-family: Arial;
 }
 
-small {
+small, select {
   font-size: 0.8em;
   line-height: 1.25em;
   color: ${colors.black};

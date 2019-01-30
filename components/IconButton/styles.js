@@ -7,14 +7,10 @@ const SIZE = 50;
 const styles = css`
   .container {
     position: relative;
-    background-color: ${colors.white};
+    background-color: ${colors.accent2};
     width: ${SIZE}px;
     height: ${SIZE}px;
     border-radius: ${SIZE / 2}px;
-  }
-
-  .secondary {
-    background-color: ${colors.lightGrey};
   }
 
   .tooltip-container {

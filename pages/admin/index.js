@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { categories } from '../../config';
+import { sortArrayOfObjectsByKey } from '../../utils';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
@@ -83,29 +84,51 @@ class Admin extends React.Component {
     });
 
     // Filter shoots on category_id
-    const shootsArray = shoots.filter((shoot) => shoot.category_id === currentCategory.id);
+    // Sort by date
+    const shootsArray = sortArrayOfObjectsByKey(
+      shoots.filter((shoot) => shoot.category_id === currentCategory.id),
+      'date',
+      true, // reverse order
+    );
 
     return (
       <Page>
         <Header />
 
         <main>
-          <h1>Admin Dashboard</h1>
+          <div className="relative">
+            <h1 style={{ marginBottom: 0 }}>Admin Dashboard</h1>
 
-          <div className="row">
-            <label>Select a category</label>
+            <div
+              className="row"
+              style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                justifyContent: 'center',
+              }}
+            >
+              <label>Select a category</label>
 
-            <span className="spacer-hz" />
+              <div className="spacer-hz" />
 
-            <Select options={selectOptions} handleChange={this.onSelectCategory} />
+              <Select options={selectOptions} handleChange={this.onSelectCategory} />
+            </div>
           </div>
 
-          <span className="spacer-vt" />
+          <div className="spacer-vt large" />
 
           {shootsArray.map((shoot) => {
             const { id } = shoot;
 
-            return <ShootItem key={id} shoot={shoot} />;
+            return (
+              <Fragment key={id}>
+                <ShootItem shoot={shoot} />
+
+                <div className="spacer-vt" />
+              </Fragment>
+            );
           })}
 
           <ControlPanel>

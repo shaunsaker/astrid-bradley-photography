@@ -19,7 +19,7 @@ const ControlPanel = ({ children }) => {
             <div className="row">
               <IconButton iconName={iconName} label={label} handleClick={null} />
 
-              <span className="spacer-hz" />
+              <div className="spacer-hz" />
             </div>
           </Link>
         );
