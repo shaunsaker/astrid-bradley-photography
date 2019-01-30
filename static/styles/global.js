@@ -212,10 +212,6 @@ small {
   color: ${colors.black};
 }
 
-button {
-  width: 100%;
-}
-
 // RESPONSIVENESS
 @media screen and (max-width: 543px) {
   .xs-wrap {
