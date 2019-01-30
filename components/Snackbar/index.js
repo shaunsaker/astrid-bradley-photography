@@ -12,7 +12,7 @@ const Snackbar = ({ text }) => {
       <div className="container row">
         <Icon name="info" color={colors.white} />
 
-        <div className="spacer-hz" />
+        <span className="spacer-hz" />
 
         <p className="text">{text}</p>
       </div>

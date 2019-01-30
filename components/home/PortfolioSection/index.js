@@ -16,9 +16,9 @@ const PortfolioSection = () => {
           const { text } = springboard;
           const spacerComponent = index !== SPRINGBOARDS.length - 1 && (
             <Fragment>
-              <div className="spacer-hz hidden-xs-down" />
+              <span className="spacer-hz hidden-xs-down" />
 
-              <div className="spacer-vt hidden-xs-up" />
+              <span className="spacer-vt hidden-xs-up" />
             </Fragment>
           );
 

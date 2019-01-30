@@ -16,7 +16,7 @@ const FormSection = ({ handleSubmit }) => {
         handleSubmit={handleSubmit}
       />
 
-      <div className="spacer-vt" />
+      <span className="spacer-vt" />
 
       <style jsx>{styles}</style>
     </div>

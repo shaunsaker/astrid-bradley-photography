@@ -16,9 +16,9 @@ const TestimonialsSection = () => {
             const { src, alt } = image;
             const spacerComponent = index !== TESTIMONIALS.length - 1 && (
               <Fragment>
-                <div className="spacer-hz hidden-xs-down" />
+                <span className="spacer-hz hidden-xs-down" />
 
-                <div className="spacer-vt hidden-xs-up" />
+                <span className="spacer-vt hidden-xs-up" />
               </Fragment>
             );
 
@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
                     <div className="card-container shadow-sm">
                       <small>&quot;{text}&quot;</small>
 
-                      <div className="spacer-vt" />
+                      <span className="spacer-vt" />
 
                       <h3>{name}</h3>
                     </div>
@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
                     <span>▼</span>
                   </div>
 
-                  <div className="spacer-vt" />
+                  <span className="spacer-vt" />
 
                   <img src={src} alt={alt} />
                 </li>

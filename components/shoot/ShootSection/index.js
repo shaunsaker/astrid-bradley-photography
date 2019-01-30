@@ -16,7 +16,7 @@ const ShootSection = ({ shoot }) => {
         {prettyDate} | {location}
       </p>
 
-      <div className="spacer-vt" />
+      <span className="spacer-vt" />
 
       {photos.map((photo, index) => {
         return <img key={photo} src={photo} alt={`${name}-${index + 1}`} className="spacer-vt" />;

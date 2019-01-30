@@ -54,6 +54,7 @@ const styles = css`
     left: auto;
     padding: 0;
     margin-right: ${rhythm.hz}px;
+    color: ${colors.black};
   }
 
   input[type='file'] {

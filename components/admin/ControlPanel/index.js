@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
@@ -16,11 +16,11 @@ const ControlPanel = ({ children }) => {
 
         return (
           <Link key={label} href={href} as={as}>
-            <Fragment>
+            <div className="row">
               <IconButton iconName={iconName} label={label} handleClick={null} />
 
-              <div className="spacer-hz" />
-            </Fragment>
+              <span className="spacer-hz" />
+            </div>
           </Link>
         );
       })}

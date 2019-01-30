@@ -65,6 +65,7 @@ button {
 
 .row {
   flex-direction: row;
+  align-items: center;
 }
 
 .shadow-sm {
@@ -203,8 +204,12 @@ small {
   outline: none;
 }
 
-.button:focus {
-  border: 1px solid ${colors.white};
+button, .button {
+  outline: none;
+}
+
+button:focus, .button:focus {
+  border: 2px solid ${colors.accent2};
 }
 
 .button.secondary {
