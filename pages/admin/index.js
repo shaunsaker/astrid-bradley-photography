@@ -53,7 +53,7 @@ class Admin extends React.Component {
           <h1>Admin Dashboard</h1>
 
           <ControlPanel>
-            <IconButton iconName="lock" handleClick={this.onSignOut} />
+            <IconButton iconName="lock" label="Sign Out" handleClick={this.onSignOut} />
           </ControlPanel>
         </main>
 
