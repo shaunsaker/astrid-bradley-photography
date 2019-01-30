@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
-import ButtonsSection from '../../components/admin/ButtonsSection';
+import ControlPanel from '../../components/admin/ControlPanel';
+import IconButton from '../../components/IconButton';
 import Footer from '../../components/Footer';
 
 import withAuth from '../../wrappers/withAuth';
@@ -51,7 +52,9 @@ class Admin extends React.Component {
         <main>
           <h1>Admin Dashboard</h1>
 
-          <ButtonsSection handleSignOut={this.onSignOut} />
+          <ControlPanel>
+            <IconButton iconName="lock" handleClick={this.onSignOut} />
+          </ControlPanel>
         </main>
 
         <Footer />
