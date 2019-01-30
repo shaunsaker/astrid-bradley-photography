@@ -11,7 +11,7 @@ const ContactButton = () => {
     <div className="container">
       <Link href="/contact">
         <span>
-          <IconButton name="mail" />
+          <IconButton iconName="mail" />
         </span>
       </Link>
 
