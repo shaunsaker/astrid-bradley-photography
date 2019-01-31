@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 
 const HeadingText = ({ children }) => {
   return (
-    <span>
+    <Fragment>
       <h2>{children}</h2>
 
       <style jsx>{styles}</style>
-    </span>
+    </Fragment>
   );
 };
 

@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 
 const TitleText = ({ children }) => {
   return (
-    <span>
+    <Fragment>
       <h1>{children}</h1>
 
       <style jsx>{styles}</style>
-    </span>
+    </Fragment>
   );
 };
 

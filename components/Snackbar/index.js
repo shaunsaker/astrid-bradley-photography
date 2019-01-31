@@ -5,6 +5,7 @@ import { colors } from '../../static/styles/styleConstants';
 import styles from './styles';
 
 import Icon from '../Icon';
+import ParagraphText from '../ParagraphText';
 
 const Snackbar = ({ text }) => {
   return (
@@ -14,7 +15,7 @@ const Snackbar = ({ text }) => {
 
         <div className="spacer-hz" />
 
-        <p className="text">{text}</p>
+        <ParagraphText className="text">{text}</ParagraphText>
       </div>
 
       <style jsx>{styles}</style>

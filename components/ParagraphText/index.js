@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const ParagraphText = ({ children }) => {
+const ParagraphText = ({ children, className }) => {
   return (
-    <span>
-      <p>{children}</p>
+    <Fragment>
+      <p className={className}>{children}</p>
 
       <style jsx>{styles}</style>
-    </span>
+    </Fragment>
   );
 };
 
 ParagraphText.propTypes = {
   children: PropTypes.string,
+  className: PropTypes.string,
 };
 ParagraphText.defaultProps = {};
 
