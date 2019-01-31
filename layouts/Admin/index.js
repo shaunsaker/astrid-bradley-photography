@@ -108,14 +108,12 @@ class Admin extends React.Component {
 
     return (
       <Layout title="Admin Dashboard">
-        <div className="relative">
-          <div className="row category-container">
-            <label>Select a category</label>
+        <div className="row category-container">
+          <label>Select a category</label>
 
-            <div className="spacer-hz" />
+          <div className="spacer-hz" />
 
-            <Select options={selectOptions} handleChange={this.onSelectCategory} />
-          </div>
+          <Select options={selectOptions} handleChange={this.onSelectCategory} />
         </div>
 
         <div className="spacer-vt large" />

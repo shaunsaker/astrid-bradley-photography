@@ -5,11 +5,11 @@ import styles from './styles';
 
 const SmallText = ({ children }) => {
   return (
-    <Fragment>
+    <div>
       <small>{children}</small>
 
       <style jsx>{styles}</style>
-    </Fragment>
+    </div>
   );
 };
 

@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
+import SmallText from '../../SmallText';
+
 const Tooltip = ({ text }) => {
   return (
     <div className="container shadow-lg">
-      <small className="text">{text}</small>
+      <SmallText className="text">{text}</SmallText>
 
       <style jsx>{styles}</style>
     </div>

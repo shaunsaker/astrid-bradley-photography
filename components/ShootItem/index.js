@@ -8,6 +8,7 @@ import { getPrettyDate } from '../../utils';
 import styles from './styles';
 
 import HeadingText from '../HeadingText';
+import SmallText from '../SmallText';
 import Icon from '../Icon';
 
 const ShootItem = ({ shoot }) => {
@@ -23,7 +24,7 @@ const ShootItem = ({ shoot }) => {
 
           <div className="spacer-vt" />
 
-          <small className="text">{prettyDate}</small>
+          <SmallText className="text">{prettyDate}</SmallText>
         </div>
 
         <div className="spacer-hz" />

@@ -4,6 +4,7 @@ import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
   select {
+    font-family: 'Arial';
     -webkit-appearance: none;
     border: none;
     border-radius: 0;

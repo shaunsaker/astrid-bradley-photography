@@ -11,6 +11,25 @@ const styles = css`
     margin-bottom: ${rhythm.vt * 2}px;
   }
 
+  input,
+  textarea,
+  label {
+    font-size: 1em;
+    line-height: 1.5em;
+    color: ${colors.black};
+  }
+
+  input[type='date'] {
+    font-family: Arial;
+  }
+
+  select {
+    font-family: 'Arial';
+    font-size: 0.8em;
+    line-height: 1.25em;
+    color: ${colors.black};
+  }
+
   label {
     position: absolute;
     top: 10px;

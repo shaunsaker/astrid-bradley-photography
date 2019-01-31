@@ -8,11 +8,6 @@ const styles = css`
     align-items: center;
     padding-bottom: 82px;
   }
-
-  small {
-    color: ${colors.grey};
-    text-align: center;
-  }
 `;
 
 export default styles;

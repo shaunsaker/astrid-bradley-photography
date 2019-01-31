@@ -19,8 +19,6 @@ const Layout = ({ title, children }) => {
 
       {titleTextComponent}
 
-      <div className="spacer-vt large" />
-
       <main>{children}</main>
 
       <Footer />

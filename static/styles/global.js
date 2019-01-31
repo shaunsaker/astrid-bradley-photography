@@ -136,24 +136,8 @@ h1, h2, p {
   font-display: swap;
 }
 
-input, textarea, label {
+button {
   font-size: 1em;
-  line-height: 1.5em;
-  color: ${colors.black};
-}
-
-input[type=date] {
-  font-family: Arial;
-}
-
-small, select {
-  font-size: 0.8em;
-  line-height: 1.25em;
-  color: ${colors.black};
-}
-
-select {
-  font-family: 'Arial';
 }
 
 // RESPONSIVE HELPERS

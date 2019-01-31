@@ -14,6 +14,7 @@ const styles = css`
     border-style: solid;
     border-color: ${colors.lightGrey};
     padding: ${rhythm.vt}px 0;
+    margin-bottom: ${rhythm.vt * 2}px;
   }
 `;
 
