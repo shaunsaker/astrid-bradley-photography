@@ -173,6 +173,10 @@ small, select {
   color: ${colors.black};
 }
 
+select {
+  font-family: 'Arial';
+}
+
 // BUTTONS AND LINKS
 .nav-link {
   font-size: 0.8em;
@@ -208,7 +212,7 @@ small, select {
   outline: none;
 }
 
-button:focus, .button:focus {
+button:focus, .button:focus, select:focus {
   outline: 2px solid ${colors.white};
 }
 
