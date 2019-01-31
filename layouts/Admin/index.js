@@ -7,12 +7,10 @@ import { categories } from '../../config';
 import { sortArrayOfObjectsByKey } from '../../utils';
 import styles from './styles';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import Select from '../../components/Select';
 import ShootItem from '../../components/ShootItem';
 import ControlPanel from '../../components/ControlPanel';
-import Footer from '../../components/Footer';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -108,60 +106,52 @@ class Admin extends React.Component {
     });
 
     return (
-      <Page>
-        <Header />
+      <Layout title="Admin Dashboard">
+        <div className="relative">
+          <div className="row category-container">
+            <label>Select a category</label>
 
-        <main>
-          <div className="relative">
-            <h1 className="heading">Admin Dashboard</h1>
+            <div className="spacer-hz" />
 
-            <div className="row category-container">
-              <label>Select a category</label>
-
-              <div className="spacer-hz" />
-
-              <Select options={selectOptions} handleChange={this.onSelectCategory} />
-            </div>
+            <Select options={selectOptions} handleChange={this.onSelectCategory} />
           </div>
+        </div>
 
-          <div className="spacer-vt large" />
+        <div className="spacer-vt large" />
 
-          {Object.keys(groupedShoots).map((year) => {
-            const groupedShootsArray = groupedShoots[year];
+        {Object.keys(groupedShoots).map((year) => {
+          const groupedShootsArray = groupedShoots[year];
 
-            return (
-              <section key={year}>
-                <h2>{year}</h2>
+          return (
+            <section key={year}>
+              <h2>{year}</h2>
 
-                <div className="spacer-vt" />
+              <div className="spacer-vt" />
 
-                {groupedShootsArray.map((shoot) => {
-                  const { id } = shoot;
+              {groupedShootsArray.map((shoot) => {
+                const { id } = shoot;
 
-                  return (
-                    <Fragment key={id}>
-                      <ShootItem shoot={shoot} />
+                return (
+                  <Fragment key={id}>
+                    <ShootItem shoot={shoot} />
 
-                      <div className="spacer-vt" />
-                    </Fragment>
-                  );
-                })}
-              </section>
-            );
-          })}
+                    <div className="spacer-vt" />
+                  </Fragment>
+                );
+              })}
+            </section>
+          );
+        })}
 
-          <ControlPanel
-            controls={[
-              ...CONTROLS,
-              { iconName: 'lock', label: 'Sign Out', handleClick: this.signOut },
-            ]}
-          />
-        </main>
-
-        <Footer />
+        <ControlPanel
+          controls={[
+            ...CONTROLS,
+            { iconName: 'lock', label: 'Sign Out', handleClick: this.signOut },
+          ]}
+        />
 
         <style jsx>{styles}</style>
-      </Page>
+      </Layout>
     );
   }
 }

@@ -2,26 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import ShootSection from './ShootSection';
-import Footer from '../../components/Footer';
 import ContactButton from '../../components/ContactButton';
 
 const Shoot = ({ shootID, shoots }) => {
   const shoot = shoots.filter((item) => item.id === shootID)[0];
+  const { name } = shoot;
   const shootComponent = shoot && <ShootSection shoot={shoot} />;
 
   return (
-    <Page>
-      <Header />
-
+    <Layout title={name}>
       <main>{shootComponent}</main>
 
-      <Footer />
-
       <ContactButton />
-    </Page>
+    </Layout>
   );
 };
 

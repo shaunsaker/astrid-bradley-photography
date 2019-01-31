@@ -9,8 +9,6 @@ import Form from '../../../components/Form';
 const LoginFormSection = ({ handleSubmit }) => {
   return (
     <section>
-      <h1>Login</h1>
-
       <Form formName="contact" fields={FIELDS} handleSubmit={handleSubmit} />
 
       <style jsx>{styles}</style>

@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import LoginFormSection from './LoginFormSection';
 import LoadingSection from '../../components/LoadingSection';
-import Footer from '../../components/Footer';
 
 class Login extends React.Component {
   constructor(props) {
@@ -90,17 +88,11 @@ class Login extends React.Component {
     const loadingComponent = isLoading && <LoadingSection />;
 
     return (
-      <Page>
-        <Header />
+      <Layout title="Login">
+        <LoginFormSection handleSubmit={this.onSubmit} />
 
-        <main className="relative">
-          <LoginFormSection handleSubmit={this.onSubmit} />
-
-          {loadingComponent}
-        </main>
-
-        <Footer />
-      </Page>
+        {loadingComponent}
+      </Layout>
     );
   }
 }

@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import FormSection from './FormSection';
 import LoadingSection from '../../components/LoadingSection';
 import SuccessSection from './SuccessSection';
-import Footer from '../../components/Footer';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -116,19 +114,7 @@ export class AddShoot extends React.Component {
       mainComponent = <SuccessSection shootID={shootID} />;
     }
 
-    return (
-      <Page>
-        <Header />
-
-        <main>
-          <h1>{title}</h1>
-
-          {mainComponent}
-        </main>
-
-        <Footer />
-      </Page>
-    );
+    return <Layout title={title}>{mainComponent}</Layout>;
   }
 }
 

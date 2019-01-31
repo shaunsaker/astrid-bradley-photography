@@ -10,8 +10,6 @@ const ShootSection = ({ shoot }) => {
 
   return (
     <div className="container">
-      <h1>{name}</h1>
-
       <p>
         {prettyDate} | {location}
       </p>

@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import SpringboardsSection from '../../components/SpringboardsSection';
-import Footer from '../../components/Footer';
 import ContactButton from '../../components/ContactButton';
 
 const Category = ({ categoryID, shoots }) => {
@@ -27,19 +25,11 @@ const Category = ({ categoryID, shoots }) => {
     });
 
   return (
-    <Page>
-      <Header />
-
-      <main>
-        <h1>{title}</h1>
-
-        <SpringboardsSection springboards={springboards} />
-      </main>
-
-      <Footer />
+    <Layout title={title}>
+      <SpringboardsSection springboards={springboards} />
 
       <ContactButton />
-    </Page>
+    </Layout>
   );
 };
 

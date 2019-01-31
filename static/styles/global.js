@@ -123,6 +123,10 @@ button:focus {
   outline: 1px solid ${colors.white};
 }
 
+h1, h2, h3, p {
+  margin: 0;
+}
+
 // TYPOGRAPHY
 @font-face {
   font-family: 'Futura';
@@ -132,19 +136,7 @@ button:focus {
   font-display: swap;
 }
 
-h1, h2, h3, p {
-  margin: 0;
-}
-
-h1 {
-  border-width: 1px 0px;
-  border-style: solid;
-  border-color: ${colors.lightGrey};
-  padding: ${rhythm.vt}px 0;
-  margin-bottom: ${rhythm.vt * 2}px;
-}
-
-h1, h2 {
+h2 {
   font-family: 'Futura', sans-serif;
   font-weight: 400;
   letter-spacing: 3px;

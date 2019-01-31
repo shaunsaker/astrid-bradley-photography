@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import FeaturedImagesSection from './FeaturedImagesSection';
 import PortfolioSection from './PortfolioSection';
 import AboutSection from './AboutSection';
@@ -10,31 +9,24 @@ import TestimonialsSection from './TestimonialsSection';
 import QuoteSection from '../../components/QuoteSection';
 import FeaturedOnSection from './FeaturedOnSection';
 import ContactButtonSection from '../../components/ContactButton';
-import Footer from '../../components/Footer';
 
 const Home = () => {
   return (
-    <Page>
-      <Header />
+    <Layout>
+      <FeaturedImagesSection />
 
-      <main>
-        <FeaturedImagesSection />
+      <PortfolioSection />
 
-        <PortfolioSection />
+      <AboutSection />
 
-        <AboutSection />
+      <TestimonialsSection />
 
-        <TestimonialsSection />
+      <QuoteSection />
 
-        <QuoteSection />
-
-        <FeaturedOnSection />
-      </main>
-
-      <Footer />
+      <FeaturedOnSection />
 
       <ContactButtonSection />
-    </Page>
+    </Layout>
   );
 };
 
