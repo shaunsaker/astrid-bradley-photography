@@ -9,8 +9,6 @@ const styles = css`
     left: 0;
     right: 0;
     padding: ${rhythm.vt}px ${rhythm.hz}px;
-    min-height: 120px;
-    max-height: 160px;
     background-color: ${colors.white};
     z-index: 1;
   }
@@ -18,9 +16,6 @@ const styles = css`
   .buttonContainer {
     align-items: flex-start;
     margin-bottom: ${rhythm.vt}px;
-  }
-
-  button {
   }
 `;
 

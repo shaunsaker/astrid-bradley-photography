@@ -218,7 +218,7 @@ button:focus, .button:focus {
 }
 
 // RESPONSIVENESS
-@media screen and (max-width: 543px) {
+@media (max-width: 543px) {
   .xs-wrap {
     flex-wrap: wrap;
   }
@@ -227,19 +227,19 @@ button:focus, .button:focus {
   }
 }
 
-@media screen and (min-width: 544px) {
+@media (min-width: 544px) {
   .hidden-xs-up {
     display: none;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
   .hidden-md-down {
     display: none;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .hidden-md-up {
       display: none;
   }

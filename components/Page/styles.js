@@ -4,26 +4,26 @@ import { rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
   .page-wrapper {
-    padding-top: ${rhythm.vt}px;
     height: 100%;
   }
 
   .page-container {
+    align-self: center;
     max-width: 720px;
     height: 100%;
+    padding: 0px ${rhythm.hz}px 0;
+    padding-top: ${105 + rhythm.vt}px; /* header height + spacing */
   }
 
-  @media screen and (max-width: 767px) {
+  @media (min-width: 544px) {
     .page-container {
-      padding: 120px 24px 0;
-      align-self: stretch;
+      padding-top: ${134 + rhythm.vt}px; /* header height + spacing */
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     .page-container {
-      padding: 64px 24px 0;
-      align-self: center;
+      padding-top: ${rhythm.vt * 4}px;
     }
   }
 `;
