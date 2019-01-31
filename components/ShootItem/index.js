@@ -7,6 +7,7 @@ import { getPrettyDate } from '../../utils';
 
 import styles from './styles';
 
+import HeadingText from '../HeadingText';
 import Icon from '../Icon';
 
 const ShootItem = ({ shoot }) => {
@@ -18,7 +19,7 @@ const ShootItem = ({ shoot }) => {
     <Link href={href}>
       <button type="button" className="container flex row shadow-sm shadow-hover xs-wrap">
         <div className="text-container">
-          <h3 className="text">{name}</h3>
+          <HeadingText>{name}</HeadingText>
 
           <div className="spacer-vt" />
 

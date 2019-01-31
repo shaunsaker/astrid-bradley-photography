@@ -123,7 +123,7 @@ button:focus {
   outline: 1px solid ${colors.white};
 }
 
-h1, h2, h3, p {
+h1, h2, p {
   margin: 0;
 }
 
@@ -134,11 +134,6 @@ h1, h2, h3, p {
   font-weight: 400;
   font-style: medium;
   font-display: swap;
-}
-
-h3 {
-  font-size: 1em;
-  color: ${colors.black};
 }
 
 p, input, textarea, label {

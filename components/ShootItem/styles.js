@@ -13,11 +13,6 @@ const styles = css`
     flex: 1;
     justify-content: space-between;
   }
-
-  .text {
-    font-size: 1.25em;
-    text-align: left;
-  }
 `;
 
 export default styles;

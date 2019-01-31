@@ -5,6 +5,7 @@ import styles from './styles';
 import TESTIMONIALS from './testimonials';
 
 import TitleText from '../../../components/TitleText';
+import HeadingText from '../../../components/HeadingText';
 
 const TestimonialsSection = () => {
   return (
@@ -33,7 +34,7 @@ const TestimonialsSection = () => {
 
                       <div className="spacer-vt" />
 
-                      <h3>{name}</h3>
+                      <HeadingText>{name}</HeadingText>
                     </div>
 
                     <span>▼</span>
