@@ -136,7 +136,7 @@ h1, h2, p {
   font-display: swap;
 }
 
-p, input, textarea, label {
+input, textarea, label {
   font-size: 1em;
   line-height: 1.5em;
   color: ${colors.black};

@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import { getPrettyDate } from '../../../utils';
 import styles from './styles';
 
+import ParagraphText from '../../../components/ParagraphText';
+
 const ShootSection = ({ shoot }) => {
   const { name, date, location, photos } = shoot;
   const prettyDate = getPrettyDate(date);
 
   return (
     <div className="container">
-      <p>
+      <ParagraphText>
         {prettyDate} | {location}
-      </p>
+      </ParagraphText>
 
       <div className="spacer-vt" />
 

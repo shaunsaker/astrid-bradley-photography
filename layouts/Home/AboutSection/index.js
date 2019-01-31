@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 import TitleText from '../../../components/TitleText';
+import ParagraphText from '../../../components/ParagraphText';
 
 const AboutSection = () => {
   return (
@@ -20,14 +21,14 @@ const AboutSection = () => {
         <div className="spacer-vt hidden-xs-up" />
 
         <div>
-          <p>
+          <ParagraphText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque eros ac
             sapien interdum laoreet. Nulla mauris magna, tincidunt sed efficitur ut, finibus vel
             magna. Curabitur purus mi, laoreet et tortor eu, sollicitudin congue turpis. Duis
             eleifend dolor erat, id maximus risus commodo eu. Curabitur vel hendrerit velit. Mauris
             eget augue sed est blandit egestas ac et tortor. Cras feugiat neque elementum, egestas
             tortor sed, congue lorem. Ut euismod finibus vehicula.
-          </p>
+          </ParagraphText>
         </div>
       </div>
 
