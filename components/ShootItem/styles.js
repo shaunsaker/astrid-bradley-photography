@@ -15,6 +15,7 @@ const styles = css`
   }
 
   .text {
+    font-size: 1.25em;
     text-align: left;
   }
 `;

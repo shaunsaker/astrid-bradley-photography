@@ -9,12 +9,7 @@ import Form from '../../../components/Form';
 const FormSection = ({ handleSubmit }) => {
   return (
     <div>
-      <Form
-        formName="add-shoot"
-        fields={FIELDS}
-        submitText="Add Shoot"
-        handleSubmit={handleSubmit}
-      />
+      <Form formName="add-shoot" fields={FIELDS} handleSubmit={handleSubmit} />
 
       <div className="spacer-vt" />
 

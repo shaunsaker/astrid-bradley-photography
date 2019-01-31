@@ -55,6 +55,7 @@ button {
   border: none;
   padding: 0;
   cursor: pointer;
+  font-family: 'Arial', sans-serif;
 }
 
 // HELPERS

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import { colors } from '../../static/styles/styleConstants';
 import { getPrettyDate } from '../../utils';
@@ -11,23 +12,26 @@ import Icon from '../Icon';
 const ShootItem = ({ shoot }) => {
   const { name, id, date } = shoot;
   const prettyDate = getPrettyDate(date);
+  const href = `/admin/edit-shoot?${id}`;
 
   return (
-    <button type="button" className="container flex row shadow-sm shadow-hover xs-wrap">
-      <div className="text-container">
-        <h3 className="text">{name}</h3>
+    <Link href={href}>
+      <button type="button" className="container flex row shadow-sm shadow-hover xs-wrap">
+        <div className="text-container">
+          <h3 className="text">{name}</h3>
 
-        <div className="spacer-vt" />
+          <div className="spacer-vt" />
 
-        <small className="text">{prettyDate}</small>
-      </div>
+          <small className="text">{prettyDate}</small>
+        </div>
 
-      <div className="spacer-hz" />
+        <div className="spacer-hz" />
 
-      <Icon name="edit" size={18} color={colors.lightGrey} />
+        <Icon name="edit" size={18} color={colors.lightGrey} />
 
-      <style jsx>{styles}</style>
-    </button>
+        <style jsx>{styles}</style>
+      </button>
+    </Link>
   );
 };
 
