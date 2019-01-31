@@ -1,4 +1,4 @@
-import { categories } from '../../../../config';
+import { categories } from '../../../config';
 
 const fields = [
   {
