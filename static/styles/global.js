@@ -119,6 +119,10 @@ button {
   position: relative;
 }
 
+button:focus {
+  outline: 1px solid ${colors.white};
+}
+
 // TYPOGRAPHY
 @font-face {
   font-family: 'Futura';

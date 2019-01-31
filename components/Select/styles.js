@@ -5,7 +5,7 @@ import { colors, rhythm } from '../../static/styles/styleConstants';
 const styles = css`
   select {
     -webkit-appearance: none;
-    border: 1px solid ${colors.lightGrey};
+    border: none;
     border-radius: 0;
     background: none;
     padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;

@@ -9,17 +9,12 @@ const styles = css`
     color: ${colors.white};
     cursor: pointer;
     text-align: center;
-    outline: none;
     font-family: 'Futura', sans-serif;
     font-weight: 400;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 0.8em;
     color: ${colors.white};
-  }
-
-  .container:focus {
-    outline: 2px solid ${colors.white};
   }
 `;
 
