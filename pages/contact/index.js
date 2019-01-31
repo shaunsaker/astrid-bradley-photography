@@ -1,29 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
-import ContactFormSection from '../../components/contact/ContactFormSection';
-import QuoteSection from '../../components/QuoteSection';
-import Footer from '../../components/Footer';
+import Contact from '../../layouts/Contact';
 
-const Contact = () => {
-  return (
-    <Page>
-      <Header />
-
-      <main>
-        <ContactFormSection />
-
-        <QuoteSection />
-      </main>
-
-      <Footer />
-    </Page>
-  );
+const Page = (props) => {
+  return <Contact {...props} />;
 };
 
-Contact.propTypes = {};
-Contact.defaultProps = {};
+Page.getInitialProps = async () => {};
 
-export default Contact;
+export default Page;
