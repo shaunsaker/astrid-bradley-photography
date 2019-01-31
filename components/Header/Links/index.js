@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 
 import { routes } from '../../../config';
+import styles from './styles';
 
 const Links = ({ router, authenticated }) => {
   const { pathname, query } = router;
@@ -45,6 +46,8 @@ const Links = ({ router, authenticated }) => {
 
         return null;
       })}
+
+      <style jsx>{styles}</style>
     </Fragment>
   );
 };

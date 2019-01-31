@@ -177,32 +177,6 @@ select {
   font-family: 'Arial';
 }
 
-// LINKS
-.nav-link {
-  font-size: 0.8em;
-  color: ${colors.grey};
-}
-
-.link {
-  font-size: 1em;
-  color: ${colors.black};
-  text-decoration: underline;
-}
-
-.nav-link, .link {
-  cursor: pointer;
-  transition: color 0.5s ease;
-}
-
-.nav-link:hover, .link:hover {
-  color: ${colors.black};
-}
-
-.nav-link.active, .link.active {
-  font-weight: 700;
-  color: ${colors.black};
-}
-
 // RESPONSIVE HELPERS
 @media (max-width: 543px) {
   .xs-wrap {
