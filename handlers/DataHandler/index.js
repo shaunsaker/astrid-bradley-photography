@@ -46,7 +46,9 @@ export class DataHandler extends React.Component {
     // Sync all of the shoots
     if (
       !haveSyncedShoots &&
-      (pathname.indexOf('category') > -1 || pathname.indexOf('shoot') > -1)
+      (pathname.indexOf('admin') > -1 ||
+        pathname.indexOf('category') > -1 ||
+        pathname.indexOf('shoot') > -1)
     ) {
       this.setHaveSyncedShoots(true);
       this.syncShoots();
