@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { categories } from '../../config';
 import { sortArrayOfObjectsByKey } from '../../utils';
+import styles from './styles';
 
 import Page from '../../components/Page';
 import Header from '../../components/Header';
@@ -97,16 +98,7 @@ class Admin extends React.Component {
           <div className="relative">
             <h1 style={{ marginBottom: 0 }}>Admin Dashboard</h1>
 
-            <div
-              className="row"
-              style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                bottom: 0,
-                justifyContent: 'center',
-              }}
-            >
+            <div className="row category-container">
               <label>Select a category</label>
 
               <div className="spacer-hz" />
@@ -135,6 +127,8 @@ class Admin extends React.Component {
         </main>
 
         <Footer />
+
+        <style jsx>{styles}</style>
       </Page>
     );
   }
