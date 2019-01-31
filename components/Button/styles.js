@@ -1,0 +1,26 @@
+import css from 'styled-jsx/css'; // eslint-disable-line
+
+import { colors, rhythm } from '../../static/styles/styleConstants';
+
+const styles = css`
+  .container {
+    background-color: ${colors.transBlack};
+    padding: ${rhythm.vt}px ${rhythm.hz}px;
+    color: ${colors.white};
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    font-family: 'Futura', sans-serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: ${colors.white};
+  }
+
+  .container:focus {
+    outline: 2px solid ${colors.white};
+  }
+`;
+
+export default styles;

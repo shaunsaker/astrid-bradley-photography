@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 import Select from '../Select';
+import Button from '../Button';
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -99,9 +100,7 @@ export default class Form extends React.Component {
 
         {children}
 
-        <button type="submit" className="button shadow-sm shadow-hover">
-          {submitText}
-        </button>
+        <Button type="submit" text={submitText} />
 
         <style jsx>{styles}</style>
       </form>

@@ -11,6 +11,10 @@ const styles = css`
     padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
     cursor: pointer;
   }
+
+  select:focus {
+    outline: 2px solid ${colors.white};
+  }
 `;
 
 export default styles;

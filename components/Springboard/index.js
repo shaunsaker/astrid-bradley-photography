@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import styles from './styles';
 
+import Button from '../Button';
+
 const Springboard = ({ image, text, link }) => {
   const { src, alt } = image;
   const { href, as } = link;
@@ -14,7 +16,7 @@ const Springboard = ({ image, text, link }) => {
         <img src={src} alt={alt} />
 
         <div className="text-container">
-          <h2 className="button">{text}</h2>
+          <Button text={text} noShadow />
         </div>
 
         <style jsx>{styles}</style>

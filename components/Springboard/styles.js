@@ -5,12 +5,6 @@ const styles = css`
     cursor: pointer;
   }
 
-  .container:hover {
-  }
-
-  img {
-  }
-
   .text-container {
     position: absolute;
     top: 0;

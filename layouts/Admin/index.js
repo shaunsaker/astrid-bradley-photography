@@ -96,7 +96,7 @@ class Admin extends React.Component {
 
         <main>
           <div className="relative">
-            <h1 style={{ marginBottom: 0 }}>Admin Dashboard</h1>
+            <h1 className="heading">Admin Dashboard</h1>
 
             <div className="row category-container">
               <label>Select a category</label>

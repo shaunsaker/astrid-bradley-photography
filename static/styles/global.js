@@ -139,7 +139,7 @@ h1 {
   margin-bottom: ${rhythm.vt * 2}px;
 }
 
-h1, h2, button {
+h1, h2 {
   font-family: 'Futura', sans-serif;
   font-weight: 400;
   letter-spacing: 3px;
@@ -148,7 +148,7 @@ h1, h2, button {
   color: ${colors.black};
 }
 
-h2, button {
+h2 {
   font-size: 0.8em;
 }
 
@@ -177,7 +177,7 @@ select {
   font-family: 'Arial';
 }
 
-// BUTTONS AND LINKS
+// LINKS
 .nav-link {
   font-size: 0.8em;
   color: ${colors.grey};
@@ -203,25 +203,7 @@ select {
   color: ${colors.black};
 }
 
-.button {
-  background-color: ${colors.transBlack};
-  padding: ${rhythm.vt}px ${rhythm.hz}px;
-  color: ${colors.white};
-  cursor: pointer;
-  text-align: center;
-  outline: none;
-}
-
-button:focus, .button:focus, select:focus {
-  outline: 2px solid ${colors.white};
-}
-
-.button.secondary {
-  background-color: ${colors.lightGrey};
-  color: ${colors.black};
-}
-
-// RESPONSIVENESS
+// RESPONSIVE HELPERS
 @media (max-width: 543px) {
   .xs-wrap {
     flex-wrap: wrap;

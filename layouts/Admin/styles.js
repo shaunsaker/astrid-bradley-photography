@@ -3,6 +3,10 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 import { rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
+  .heading {
+    margin-bottom: 0;
+  }
+
   .category-container {
     margin-top: ${rhythm.vt}px;
   }
