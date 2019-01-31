@@ -1,46 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import Page from '../../components/Page';
-import Header from '../../components/Header';
-import ShootSection from '../../components/shoot/ShootSection';
-import Footer from '../../components/Footer';
-import ContactButton from '../../components/ContactButton';
+import Shoot from '../../layouts/Shoot';
 
-const Shoot = ({ shootID, shoots }) => {
-  const shoot = shoots.filter((item) => item.id === shootID)[0];
-  const shootComponent = shoot && <ShootSection shoot={shoot} />;
-
-  return (
-    <Page>
-      <Header />
-
-      <main>{shootComponent}</main>
-
-      <Footer />
-
-      <ContactButton />
-    </Page>
-  );
+const Page = (props) => {
+  return <Shoot {...props} />;
 };
 
-Shoot.getInitialProps = async ({ query }) => {
+Page.getInitialProps = async ({ query }) => {
   const shootID = query.id;
 
   return { shootID };
 };
 
-Shoot.propTypes = {
-  shootID: PropTypes.string,
-  shoots: PropTypes.arrayOf(PropTypes.shape({})),
-};
-Shoot.defaultProps = {};
-
-const mapStateToProps = (state) => {
-  return {
-    shoots: state.shoots,
-  };
-};
-
-export default connect(mapStateToProps)(Shoot);
+export default Page;
