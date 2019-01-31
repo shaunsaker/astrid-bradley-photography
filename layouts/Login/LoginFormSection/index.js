@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FIELDS from './fields';
 import styles from './styles';
 
-import Form from '../../../Form';
+import Form from '../../../components/Form';
 
 const LoginFormSection = ({ handleSubmit }) => {
   return (
