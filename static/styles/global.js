@@ -208,12 +208,8 @@ small, select {
   outline: none;
 }
 
-button, .button {
-  outline: none;
-}
-
 button:focus, .button:focus {
-  border: 2px solid ${colors.accent2};
+  outline: 2px solid ${colors.white};
 }
 
 .button.secondary {
