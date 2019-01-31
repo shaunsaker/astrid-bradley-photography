@@ -13,7 +13,7 @@ const ControlPanel = ({ controls }) => {
         const { iconName, label, link, handleClick } = control;
         const contentComponent = (
           <div className="row">
-            <IconButton iconName={iconName} label={label} handleClick={null} />
+            <IconButton iconName={iconName} label={label} handleClick={handleClick} />
 
             <div className="spacer-hz" />
           </div>
@@ -29,11 +29,7 @@ const ControlPanel = ({ controls }) => {
           );
         }
 
-        return (
-          <button type="button" onClick={handleClick}>
-            {contentComponent}
-          </button>
-        );
+        return <div key={label}>{contentComponent}</div>;
       })}
 
       <style jsx>{styles}</style>
