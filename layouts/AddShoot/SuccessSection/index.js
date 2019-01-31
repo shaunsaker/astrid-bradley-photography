@@ -14,7 +14,11 @@ const SuccessSection = ({ shootID }) => {
 
       <div className="spacer-vt" />
 
-      <Button text="Add Another Shoot" link={{ href: '/admin/add-a-shoot' }} />
+      <Button text="Add Another Shoot" link={{ href: '/admin/add-shoot' }} />
+
+      <div className="spacer-vt" />
+
+      <Button text="Go Back to the Dashboard" link={{ href: '/admin' }} />
 
       <div className="spacer-vt" />
 

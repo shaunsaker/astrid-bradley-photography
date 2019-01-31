@@ -12,6 +12,7 @@ const styles = css`
   .text-container {
     flex: 1;
     justify-content: space-between;
+    text-align: left;
   }
 `;
 

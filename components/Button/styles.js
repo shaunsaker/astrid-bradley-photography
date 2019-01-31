@@ -14,6 +14,7 @@ const styles = css`
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 0.8em;
+    line-height: 1.5em;
     color: ${colors.white};
   }
 `;

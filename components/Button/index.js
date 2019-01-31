@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
@@ -20,17 +20,19 @@ const Wrapper = ({ link, children }) => {
 
 const Button = ({ text, type, noShadow, handleClick, link }) => {
   return (
-    <Wrapper link={link}>
-      <button
-        type={type}
-        onClick={handleClick}
-        className={`container ${!noShadow && 'shadow-sm shadow-hover'}`}
-      >
-        {text}
-      </button>
+    <Fragment>
+      <Wrapper link={link}>
+        <button
+          type={type}
+          onClick={handleClick}
+          className={`container ${!noShadow && 'shadow-sm shadow-hover'}`}
+        >
+          {text}
+        </button>
+      </Wrapper>
 
       <style jsx>{styles}</style>
-    </Wrapper>
+    </Fragment>
   );
 };
 

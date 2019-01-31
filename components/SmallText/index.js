@@ -5,16 +5,16 @@ import styles from './styles';
 
 const SmallText = ({ children }) => {
   return (
-    <div>
+    <Fragment>
       <small>{children}</small>
 
       <style jsx>{styles}</style>
-    </div>
+    </Fragment>
   );
 };
 
 SmallText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any, // eslint-disable-line
 };
 SmallText.defaultProps = {};
 
