@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout';
 import ShootSection from './ShootSection';
+import LoadingSection from '../../components/LoadingSection';
 import ContactButton from '../../components/ContactButton';
 
 const Shoot = ({ shootID, shoots }) => {
   const shoot = shoots.filter((item) => item.id === shootID)[0];
   const { name } = shoot;
-  const shootComponent = shoot && <ShootSection shoot={shoot} />;
+  const shootComponent = shoot ? <ShootSection shoot={shoot} /> : <LoadingSection />;
 
   return (
     <Layout title={name}>

@@ -109,7 +109,7 @@ export class AddShoot extends React.Component {
     // IF not loading and we have the shoot in props
     const hasLoaded = !isLoading && shoots.filter((shoot) => shoot.id === shootID).length;
 
-    if (!hasLoaded) {
+    if (hasLoaded) {
       title = 'Shoot Added Successfully';
       mainComponent = <SuccessSection shootID={shootID} />;
     }

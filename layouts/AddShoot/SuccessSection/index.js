@@ -9,7 +9,7 @@ const SuccessSection = ({ shootID }) => {
   const uploadPhotosHREF = `/admin/upload-photos?id=${shootID}`;
 
   return (
-    <div className="container">
+    <section className="container">
       <Button text="Upload Photos" link={{ href: uploadPhotosHREF }} />
 
       <div className="spacer-vt" />
@@ -23,7 +23,7 @@ const SuccessSection = ({ shootID }) => {
       <div className="spacer-vt" />
 
       <style jsx>{styles}</style>
-    </div>
+    </section>
   );
 };
 

@@ -8,13 +8,13 @@ import Form from '../../../components/Form';
 
 const FormSection = ({ handleSubmit }) => {
   return (
-    <div>
+    <section>
       <Form formName="add-shoot" fields={FIELDS} handleSubmit={handleSubmit} />
 
       <div className="spacer-vt" />
 
       <style jsx>{styles}</style>
-    </div>
+    </section>
   );
 };
 

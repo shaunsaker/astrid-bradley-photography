@@ -11,7 +11,7 @@ const ShootSection = ({ shoot }) => {
   const prettyDate = getPrettyDate(date);
 
   return (
-    <div className="container">
+    <section className="container">
       <ParagraphText>
         {prettyDate} | {location}
       </ParagraphText>
@@ -23,7 +23,7 @@ const ShootSection = ({ shoot }) => {
       })}
 
       <style jsx>{styles}</style>
-    </div>
+    </section>
   );
 };
 
