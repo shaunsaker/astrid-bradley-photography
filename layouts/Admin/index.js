@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import CONTROLS from './controls';
 import { categories } from '../../config';
 import { sortArrayOfObjectsByKey } from '../../utils';
 import styles from './styles';
@@ -10,8 +11,7 @@ import Page from '../../components/Page';
 import Header from '../../components/Header';
 import Select from '../../components/Select';
 import ShootItem from '../../components/ShootItem';
-import ControlPanel from './ControlPanel';
-import IconButton from '../../components/IconButton';
+import ControlPanel from '../../components/ControlPanel';
 import Footer from '../../components/Footer';
 
 import withAuth from '../../wrappers/withAuth';
@@ -24,6 +24,12 @@ class Admin extends React.Component {
     this.onSignOut = this.onSignOut.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
     this.signOut = this.signOut.bind(this);
+
+    CONTROLS.push({
+      iconName: 'lock',
+      label: 'Sign Out',
+      handleClick: this.signOut,
+    });
 
     this.state = {
       currentCategory: categories[0],
@@ -121,9 +127,7 @@ class Admin extends React.Component {
             );
           })}
 
-          <ControlPanel>
-            <IconButton iconName="lock" label="Sign Out" handleClick={this.onSignOut} />
-          </ControlPanel>
+          <ControlPanel controls={CONTROLS} />
         </main>
 
         <Footer />
