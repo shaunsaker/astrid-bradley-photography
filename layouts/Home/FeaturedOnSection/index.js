@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import FEATURES from './features';
 
+import TitleText from '../../../components/TitleText';
+
 const FeaturedOnSection = () => {
   return (
     <section>
-      <h1>Featured On</h1>
+      <TitleText>Featured On</TitleText>
 
       {
         <ul className="row">

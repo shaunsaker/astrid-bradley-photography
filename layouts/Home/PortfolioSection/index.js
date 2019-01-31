@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import SPRINGBOARDS from './springboards';
 
+import TitleText from '../../../components/TitleText';
 import Springboard from '../../../components/Springboard';
 
 const PortfolioSection = () => {
   return (
     <section>
-      <h1>Portfolio</h1>
+      <TitleText>Portfolio</TitleText>
 
       <div className="row xs-wrap">
         {SPRINGBOARDS.map((springboard, index) => {

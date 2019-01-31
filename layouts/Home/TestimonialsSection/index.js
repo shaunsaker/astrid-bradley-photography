@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import TESTIMONIALS from './testimonials';
 
+import TitleText from '../../../components/TitleText';
+
 const TestimonialsSection = () => {
   return (
     <section>
-      <h1>Testimonials</h1>
+      <TitleText>Testimonials</TitleText>
 
       {
         <ul className="row xs-wrap">

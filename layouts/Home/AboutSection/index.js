@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
+import TitleText from '../../../components/TitleText';
+
 const AboutSection = () => {
   return (
     <section>
-      <h1>About Me</h1>
+      <TitleText>About Me</TitleText>
 
       <div className="row xs-wrap">
         <div className="image-container">
