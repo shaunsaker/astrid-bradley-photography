@@ -154,7 +154,7 @@ h1, h2 {
 }
 
 h2 {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 h3 {

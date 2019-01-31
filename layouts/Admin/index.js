@@ -25,12 +25,6 @@ class Admin extends React.Component {
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
     this.signOut = this.signOut.bind(this);
 
-    CONTROLS.push({
-      iconName: 'lock',
-      label: 'Sign Out',
-      handleClick: this.signOut,
-    });
-
     this.state = {
       currentCategory: categories[0],
     };
@@ -89,12 +83,29 @@ class Admin extends React.Component {
     });
 
     // Filter shoots on category_id
-    // Sort by date
+    // Sort by wedding date
     const shootsArray = sortArrayOfObjectsByKey(
       shoots.filter((shoot) => shoot.category_id === currentCategory.id),
       'date',
       true, // reverse order
     );
+
+    // Group shoots by year
+    const groupedShoots = {};
+
+    shootsArray.forEach((shoot) => {
+      const { date } = shoot;
+      const dateA = new Date(date);
+      const year = dateA.getFullYear();
+
+      // IF the year is not a key on the groupedShoots object
+      if (!groupedShoots[year]) {
+        groupedShoots[year] = [];
+      }
+
+      // Add the shoot to that year group
+      groupedShoots[year].push(shoot);
+    });
 
     return (
       <Page>
@@ -115,19 +126,36 @@ class Admin extends React.Component {
 
           <div className="spacer-vt large" />
 
-          {shootsArray.map((shoot) => {
-            const { id } = shoot;
+          {Object.keys(groupedShoots).map((year) => {
+            const groupedShootsArray = groupedShoots[year];
 
             return (
-              <Fragment key={id}>
-                <ShootItem shoot={shoot} />
+              <section key={year}>
+                <h2>{year}</h2>
 
                 <div className="spacer-vt" />
-              </Fragment>
+
+                {groupedShootsArray.map((shoot) => {
+                  const { id } = shoot;
+
+                  return (
+                    <Fragment key={id}>
+                      <ShootItem shoot={shoot} />
+
+                      <div className="spacer-vt" />
+                    </Fragment>
+                  );
+                })}
+              </section>
             );
           })}
 
-          <ControlPanel controls={CONTROLS} />
+          <ControlPanel
+            controls={[
+              ...CONTROLS,
+              { iconName: 'lock', label: 'Sign Out', handleClick: this.signOut },
+            ]}
+          />
         </main>
 
         <Footer />
