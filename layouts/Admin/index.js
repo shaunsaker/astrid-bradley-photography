@@ -9,6 +9,7 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import Select from '../../components/Select';
+import HeadingText from '../../components/HeadingText';
 import ShootItem from '../../components/ShootItem';
 import ControlPanel from '../../components/ControlPanel';
 
@@ -124,7 +125,7 @@ class Admin extends React.Component {
 
           return (
             <section key={year}>
-              <h2>{year}</h2>
+              <HeadingText>{year}</HeadingText>
 
               <div className="spacer-vt" />
 
