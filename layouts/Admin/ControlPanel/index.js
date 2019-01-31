@@ -5,7 +5,7 @@ import Link from 'next/link';
 import CONTROLS from './controls';
 import styles from './styles';
 
-import IconButton from '../../IconButton';
+import IconButton from '../../../components/IconButton';
 
 const ControlPanel = ({ children }) => {
   return (
