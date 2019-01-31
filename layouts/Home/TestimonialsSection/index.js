@@ -6,6 +6,7 @@ import TESTIMONIALS from './testimonials';
 
 import TitleText from '../../../components/TitleText';
 import HeadingText from '../../../components/HeadingText';
+import SmallText from '../../../components/SmallText';
 
 const TestimonialsSection = () => {
   return (
@@ -30,7 +31,7 @@ const TestimonialsSection = () => {
                 <li>
                   <div className="card-wrapper">
                     <div className="card-container shadow-sm">
-                      <small>&quot;{text}&quot;</small>
+                      <SmallText>&quot;{text}&quot;</SmallText>
 
                       <div className="spacer-vt" />
 
