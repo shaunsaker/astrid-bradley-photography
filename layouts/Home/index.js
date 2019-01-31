@@ -38,7 +38,6 @@ const Home = () => {
   );
 };
 
-Home.getInitialProps = async () => {};
 Home.propTypes = {};
 Home.defaultProps = {};
 
