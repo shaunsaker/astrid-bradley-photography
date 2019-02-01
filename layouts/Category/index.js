@@ -9,11 +9,12 @@ import ContactButton from '../../components/ContactButton';
 const Category = ({ categoryID, shoots }) => {
   const title = categoryID.replace('-', ' '); // FIXME: Title could come from db categories collection (overkill for now)
 
-  // Filter on category_id AND
+  // Filter on category_id
   // IF photos exist
+  // IF not archived
   // Map to springboards data type
   const springboards = shoots
-    .filter((shoot) => shoot.category_id === categoryID && shoot.photos)
+    .filter((shoot) => shoot.category_id === categoryID && shoot.photos && !shoot.archived)
     .map((shoot) => {
       const { name, cover_photo_url, id } = shoot;
 
