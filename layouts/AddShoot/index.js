@@ -6,8 +6,6 @@ import { shootFormFields } from '../../config';
 
 import Layout from '../../components/Layout';
 import Form from '../../components/Form';
-import LoadingSection from '../../components/LoadingSection';
-import SuccessSection from './SuccessSection';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -16,33 +14,17 @@ export class AddShoot extends React.Component {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.setIsLoading = this.setIsLoading.bind(this);
-    this.setShootID = this.setShootID.bind(this);
     this.saveShoot = this.saveShoot.bind(this);
 
-    this.state = {
-      shootID: null,
-    };
+    this.state = {};
   }
 
   static propTypes = {
     dispatch: PropTypes.func,
-    shoots: PropTypes.arrayOf(PropTypes.shape({})),
+    // shoots: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {};
-
-  componentDidUpdate(prevProps) {
-    const { shootID } = this.state;
-    const { shoots } = this.props;
-    const haveShoot = shoots.filter((shoot) => shoot.id === shootID).length;
-    const didNotHaveShoot = !prevProps.shoots.filter((shoot) => shoot.id === shootID).length;
-
-    // IF we just received the new shoot
-    if (haveShoot && didNotHaveShoot) {
-      this.setIsLoading(false);
-    }
-  }
 
   onSubmit(values) {
     const shoot = values;
@@ -57,21 +39,7 @@ export class AddShoot extends React.Component {
       .join('-')
       .toLowerCase();
 
-    this.setIsLoading(true);
-    this.setShootID(id);
     this.saveShoot(id, shoot);
-  }
-
-  setIsLoading(isLoading) {
-    this.setState({
-      isLoading,
-    });
-  }
-
-  setShootID(shootID) {
-    this.setState({
-      shootID,
-    });
   }
 
   saveShoot(id, shoot) {
@@ -88,41 +56,32 @@ export class AddShoot extends React.Component {
       },
       meta: {
         url: `shoots/${id}`,
+        nextAction: {
+          type: 'SET_SYSTEM_MESSAGE',
+          payload: {
+            message: 'Shoot added successfully.',
+          },
+        },
       },
     });
   }
 
   render() {
-    const { isLoading, shootID } = this.state;
-    const { shoots } = this.props;
-    let title = 'Add a Shoot';
+    const title = 'Add a Shoot';
 
-    // IF loading
-    // THEN display the loading section
-    const loadingComponent = isLoading && <LoadingSection />;
-    let mainComponent = (
-      <section className="relative">
-        <Form formName="add-shoot" fields={shootFormFields} handleSubmit={this.onSubmit} />
-
-        {loadingComponent}
-      </section>
+    return (
+      <Layout title={title}>
+        <section className="relative">
+          <Form formName="add-shoot" fields={shootFormFields} handleSubmit={this.onSubmit} />
+        </section>
+      </Layout>
     );
-
-    // IF not loading and we have the shoot in props
-    const hasLoaded = !isLoading && shoots.filter((shoot) => shoot.id === shootID).length;
-
-    if (hasLoaded) {
-      title = 'Shoot Added Successfully';
-      mainComponent = <SuccessSection shootID={shootID} />;
-    }
-
-    return <Layout title={title}>{mainComponent}</Layout>;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    shoots: state.shoots,
+    // shoots: state.shoots,
   };
 };
 
