@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { shootFormFields } from '../../config';
-import { getFormDate } from '../../utils';
+import { cloneObject, getFormDate } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
@@ -18,9 +18,11 @@ export class EditShoot extends React.Component {
 
     this.getInitialState = this.getInitialState.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.setValue = this.setValue.bind(this);
     this.onArchive = this.onArchive.bind(this);
     this.onUnarchive = this.onUnarchive.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.setValue = this.setValue.bind(this);
+    this.saveShoot = this.saveShoot.bind(this);
 
     this.state = {
       values: this.getInitialState(),
@@ -66,6 +68,41 @@ export class EditShoot extends React.Component {
 
   onUnarchive() {}
 
+  onSubmit() {
+    const { values } = this.state;
+    const { shootID } = this.props;
+
+    // Clone values otherwise we mutate the state
+    const newValues = cloneObject(values);
+
+    // Replace the date value with js time (in ms)
+    const time = new Date(newValues.date).getTime();
+    newValues.date = time;
+
+    // Keep the original shoot ID (otherwise we create a new document)
+    const id = shootID;
+
+    this.saveShoot(id, newValues);
+  }
+
+  saveShoot(id, shoot) {
+    const { dispatch } = this.props;
+    const document = shoot;
+
+    // Add a date_modified field with the current time
+    document.date_modified = Date.now();
+
+    dispatch({
+      type: 'addDocument',
+      payload: {
+        document,
+      },
+      meta: {
+        url: `shoots/${id}`,
+      },
+    });
+  }
+
   setValue(name, value) {
     const { values } = this.state;
     values[name] = value;
@@ -78,6 +115,7 @@ export class EditShoot extends React.Component {
     const { shoots, shootID } = this.props;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
     const { name, id, is_archived } = shoot;
+    const title = `Editing: ${name}`;
 
     // Create the controls
     const controls = [
@@ -106,11 +144,14 @@ export class EditShoot extends React.Component {
     });
 
     return (
-      <Layout title={name}>
+      <Layout title={title}>
         <section className="relative">
-          <Form name="edit-shoot" fields={fieldsWithValues} handleChange={this.onChange} />
-
-          <div>Loading state</div>
+          <Form
+            name="edit-shoot"
+            fields={fieldsWithValues}
+            handleChange={this.onChange}
+            handleSubmit={this.onSubmit}
+          />
         </section>
 
         <ControlPanel controls={controls} />
