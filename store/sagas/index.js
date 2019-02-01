@@ -1,11 +1,11 @@
 import { takeLatest } from 'redux-saga/effects';
 
 import { signInWithEmail, signOut } from './auth';
-import { addDocument, sync } from './firestore';
+import { setDocument, sync } from './firestore';
 
 export default function* sagas() {
   yield takeLatest('signInWithEmail', signInWithEmail);
   yield takeLatest('signOut', signOut);
-  yield takeLatest('addDocument', addDocument);
+  yield takeLatest('setDocument', setDocument);
   yield takeLatest('sync', sync);
 }

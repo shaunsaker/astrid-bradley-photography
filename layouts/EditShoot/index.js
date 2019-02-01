@@ -93,7 +93,7 @@ export class EditShoot extends React.Component {
     document.date_modified = Date.now();
 
     dispatch({
-      type: 'addDocument',
+      type: 'setDocument',
       payload: {
         document,
       },

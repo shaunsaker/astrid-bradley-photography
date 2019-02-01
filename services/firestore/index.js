@@ -1,11 +1,11 @@
-import addDocument from './addDocument';
+import setDocument from './setDocument';
 import sync from './sync';
 
 const firestore = {
-  addDocument,
+  setDocument,
   sync,
 };
 
-export { addDocument, sync };
+export { setDocument, sync };
 
 export default firestore;

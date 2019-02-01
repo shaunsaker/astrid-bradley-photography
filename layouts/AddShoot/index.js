@@ -82,7 +82,7 @@ export class AddShoot extends React.Component {
     document.date_created = Date.now();
 
     dispatch({
-      type: 'addDocument',
+      type: 'setDocument',
       payload: {
         document,
       },

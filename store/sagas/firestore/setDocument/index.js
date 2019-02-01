@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import { firestore } from '../../../../services';
 import { createUID, prepareNextAction } from '../../../../utils';
 
-const { addDocument } = firestore;
+const { setDocument } = firestore;
 
 export default function* saga(action) {
   try {
@@ -24,7 +24,7 @@ export default function* saga(action) {
       },
     });
 
-    const response = yield call(addDocument, { url, document });
+    const response = yield call(setDocument, { url, document });
 
     // We received a response, remove the write event
     yield put({
