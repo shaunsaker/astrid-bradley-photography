@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
+import { connect } from 'react-redux';
 
 import LoadingSection from '../../components/LoadingSection';
 
-export default class PageLoadingHandler extends React.Component {
+export class PageLoadingHandler extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,13 +18,33 @@ export default class PageLoadingHandler extends React.Component {
     };
   }
 
-  static propTypes = {};
+  static propTypes = {
+    pendingTransactions: PropTypes.arrayOf(PropTypes.shape({})),
+  };
 
   static defaultProps = {};
 
   componentDidMount() {
     Router.events.on('routeChangeStart', this.onRouteChangeStart);
     Router.events.on('routeChangeComplete', this.onRouteChangeComplete);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { pendingTransactions } = this.props;
+
+    // IF pt has length
+    // IF previous pt does not have length
+    // THEN we are loading
+    if (pendingTransactions.length && !prevProps.pendingTransactions.length) {
+      this.setIsLoading(true);
+    }
+
+    // IF pt does not have length
+    // IF previous pt has length
+    // THEN we are loading
+    else if (!pendingTransactions.length && prevProps.pendingTransactions.length) {
+      this.setIsLoading(false);
+    }
   }
 
   componentWillUnmount() {
@@ -55,3 +76,14 @@ export default class PageLoadingHandler extends React.Component {
     return null;
   }
 }
+
+const mapStateToProps = (state) => {
+  const { appState } = state;
+  const { pendingTransactions } = appState;
+
+  return {
+    pendingTransactions,
+  };
+};
+
+export default connect(mapStateToProps)(PageLoadingHandler);
