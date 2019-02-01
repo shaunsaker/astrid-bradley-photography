@@ -50,6 +50,10 @@ const styles = css`
     transition: border-color 0.5s ease;
   }
 
+  input[type='checkbox'] {
+    width: auto;
+  }
+
   input:focus,
   textarea:focus {
     border-color: ${colors.accent2};
@@ -67,7 +71,7 @@ const styles = css`
     color: ${colors.accent2};
   }
 
-  .select-label {
+  .static-label {
     position: static;
     top: auto;
     left: auto;

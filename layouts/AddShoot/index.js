@@ -21,7 +21,6 @@ export class AddShoot extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
-    // shoots: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {};
@@ -79,10 +78,8 @@ export class AddShoot extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    // shoots: state.shoots,
-  };
+const mapStateToProps = () => {
+  return {};
 };
 
 export default withAuth(connect(mapStateToProps)(AddShoot));

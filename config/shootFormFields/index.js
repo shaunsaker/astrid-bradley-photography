@@ -33,6 +33,12 @@ const shootFormFields = [
     label: 'Location',
     isRequired: true,
   },
+  {
+    type: 'checkbox',
+    name: 'archived',
+    label: 'Archive Shoot:',
+    isRequired: false,
+  },
 ];
 
 export default shootFormFields;

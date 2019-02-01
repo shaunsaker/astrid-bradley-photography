@@ -22,6 +22,7 @@ export default class Form extends React.Component {
         name: PropTypes.string,
         label: PropTypes.string,
         value: PropTypes.any, // eslint-disable-line
+        checked: PropTypes.bool,
         isRequired: PropTypes.bool,
         multiple: PropTypes.bool, // if type === 'file'
         accept: PropTypes.string, // if type === 'file'
@@ -40,10 +41,16 @@ export default class Form extends React.Component {
   onChange(event) {
     const { handleChange } = this.props;
     const { target } = event;
-    const { name, value } = target;
+    const { name, value, type, checked } = target;
+    let inputValue = value;
 
-    // TODO: May not work for files
-    handleChange(name, value);
+    // IF its a checkbox
+    // THEN Assign the checked value to the inputValue
+    if (type === 'checkbox') {
+      inputValue = checked;
+    }
+
+    handleChange(name, inputValue);
   }
 
   onSubmit(event) {
@@ -56,9 +63,16 @@ export default class Form extends React.Component {
     // Grab the relevant fields from event.target
     fields.forEach((field) => {
       const { name } = field;
-      const { value } = event.target[name];
+      const { value, type, checked } = event.target[name];
+      let inputValue = value;
 
-      values[name] = value;
+      // IF its a checkbox
+      // THEN Assign the checked value to the inputValue
+      if (type === 'checkbox') {
+        inputValue = checked;
+      }
+
+      values[name] = inputValue;
     });
 
     handleSubmit(values);
@@ -95,26 +109,40 @@ export default class Form extends React.Component {
                 name={name}
                 id={id}
                 value={value}
+                checked={type === 'checkbox' ? value : null}
                 required={isRequired}
                 multiple={multiple}
                 accept={accept}
                 onChange={onChange}
               />
             );
-          const selectLabelComponent = label && type === 'select' && (
-            <label htmlFor={id} className="select-label">
-              {label}
-            </label>
-          );
-          const labelComponent = label && type !== 'select' && <label htmlFor={id}>{label}</label>;
+
+          let staticLabelComponent;
+          let absoluteLabelComponent;
+
+          // IF a label was provided
+          if (label) {
+            // IF the input is of type select or checkbox
+            const isOtherLabel = type === 'select' || type === 'checkbox';
+
+            if (isOtherLabel) {
+              staticLabelComponent = (
+                <label htmlFor={id} className="static-label">
+                  {label}
+                </label>
+              );
+            } else {
+              absoluteLabelComponent = <label htmlFor={id}>{label}</label>;
+            }
+          }
 
           return (
             <fieldset key={name}>
-              {selectLabelComponent}
+              {staticLabelComponent}
 
               {inputComponent}
 
-              {labelComponent}
+              {absoluteLabelComponent}
             </fieldset>
           );
         })}
