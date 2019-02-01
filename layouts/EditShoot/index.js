@@ -18,8 +18,6 @@ export class EditShoot extends React.Component {
 
     this.getInitialState = this.getInitialState.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onArchive = this.onArchive.bind(this);
-    this.onUnarchive = this.onUnarchive.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.setValue = this.setValue.bind(this);
     this.saveShoot = this.saveShoot.bind(this);
@@ -63,10 +61,6 @@ export class EditShoot extends React.Component {
   onChange(name, value) {
     this.setValue(name, value);
   }
-
-  onArchive() {}
-
-  onUnarchive() {}
 
   onSubmit() {
     const { values } = this.state;
@@ -120,10 +114,10 @@ export class EditShoot extends React.Component {
     const { values } = this.state;
     const { shoots, shootID } = this.props;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
-    const { name, id, is_archived } = shoot;
+    const { name, id } = shoot;
     const title = `Editing: ${name}`;
 
-    // Create the controls
+    // Create the controls (needs to be dynamic)
     const controls = [
       {
         iconName: 'photo',
@@ -131,11 +125,6 @@ export class EditShoot extends React.Component {
         link: {
           href: `/admin/upload-photos?id=${id}`,
         },
-      },
-      {
-        iconName: is_archived ? 'unarchive' : 'archive',
-        label: is_archived ? 'Unarchive' : 'Archive',
-        handleClick: is_archived ? this.onUnarchive : this.onArchive,
       },
     ];
 
