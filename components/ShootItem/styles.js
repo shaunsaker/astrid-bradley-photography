@@ -7,6 +7,7 @@ const styles = css`
     width: 100%;
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     justify-content: space-between;
+    align-items: flex-end;
   }
 
   .text-container {

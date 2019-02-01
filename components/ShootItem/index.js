@@ -12,7 +12,7 @@ import SmallText from '../SmallText';
 import Icon from '../Icon';
 
 const ShootItem = ({ shoot }) => {
-  const { name, id, date } = shoot;
+  const { name, id, date, archived, photos } = shoot;
   const prettyDate = getPrettyDate(date);
   const href = `/admin/edit-shoot?id=${id}`;
 
@@ -31,7 +31,13 @@ const ShootItem = ({ shoot }) => {
 
         <div className="spacer-hz" />
 
-        <Icon name="edit" size={18} color={colors.lightGrey} />
+        <div className="row">
+          <Icon name="photo" size={18} color={photos ? colors.black : colors.lightGrey} />
+
+          <div className="spacer-hz small" />
+
+          <Icon name="archive" size={18} color={archived ? colors.black : colors.lightGrey} />
+        </div>
 
         <style jsx>{styles}</style>
       </button>

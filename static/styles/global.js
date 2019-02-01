@@ -97,6 +97,10 @@ button {
   min-width: ${rhythm.hz}px;
 }
 
+.spacer-hz.small  {
+  min-width: ${rhythm.hz / 2}px;
+}
+
 .spacer-vt {
   min-height: ${rhythm.vt}px;
   width: 100%;
