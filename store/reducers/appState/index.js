@@ -15,6 +15,18 @@ export default function reducer(state = initialState, action = {}) {
       newState.systemMessage = initialState.systemMessage;
       return newState;
 
+    case 'ADD_PENDING_TRANSACTION':
+      newState = cloneObject(state);
+      newState.pendingTransactions.push(action.payload.event);
+      return newState;
+
+    case 'REMOVE_PENDING_TRANSACTION':
+      newState = cloneObject(state);
+      newState.pendingTransactions = newState.pendingTransactions.filter((event) => {
+        return event.id !== action.payload.id;
+      });
+      return newState;
+
     default:
       return state;
   }

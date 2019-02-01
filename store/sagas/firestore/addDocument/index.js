@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 
 import { firestore } from '../../../../services';
-import { prepareNextAction } from '../../../../utils';
+import { createUID, prepareNextAction } from '../../../../utils';
 
 const { addDocument } = firestore;
 
@@ -10,7 +10,30 @@ export default function* saga(action) {
     const { payload, meta } = action;
     const { url } = meta;
     const { document } = payload;
+
+    // Add a write event
+    const writeEventID = createUID();
+
+    yield put({
+      type: 'ADD_PENDING_TRANSACTION',
+      payload: {
+        event: {
+          id: writeEventID,
+          action,
+        },
+      },
+    });
+
     const response = yield call(addDocument, { url, document });
+
+    // We received a response, remove the write event
+    yield put({
+      type: 'REMOVE_PENDING_TRANSACTION',
+      payload: {
+        id: writeEventID,
+      },
+    });
+
     const nextAction = prepareNextAction(action, response);
 
     if (nextAction) {
