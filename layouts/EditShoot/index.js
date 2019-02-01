@@ -99,6 +99,12 @@ export class EditShoot extends React.Component {
       },
       meta: {
         url: `shoots/${id}`,
+        nextAction: {
+          type: 'SET_SYSTEM_MESSAGE',
+          payload: {
+            message: 'Shoot edited successfully.',
+          },
+        },
       },
     });
   }
