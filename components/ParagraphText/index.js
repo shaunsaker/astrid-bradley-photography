@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const ParagraphText = ({ children, className }) => {
+const ParagraphText = ({ children, className, white }) => {
   return (
     <Fragment>
-      <p className={className}>{children}</p>
+      <p className={`${className} ${white && 'white'}`}>{children}</p>
 
       <style jsx>{styles}</style>
     </Fragment>
@@ -16,6 +16,7 @@ const ParagraphText = ({ children, className }) => {
 ParagraphText.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  white: PropTypes.bool,
 };
 ParagraphText.defaultProps = {};
 

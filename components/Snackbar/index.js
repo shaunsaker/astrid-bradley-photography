@@ -15,7 +15,7 @@ const Snackbar = ({ text }) => {
 
         <div className="spacer-hz" />
 
-        <ParagraphText className="text">{text}</ParagraphText>
+        <ParagraphText white>{text}</ParagraphText>
       </div>
 
       <style jsx>{styles}</style>

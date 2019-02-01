@@ -18,10 +18,6 @@ const styles = css`
     padding: ${rhythm.vt}px ${rhythm.hz}px;
   }
 
-  .text {
-    color: ${colors.white};
-  }
-
   @keyframes translate-up {
     from {
       opacity: 0;
