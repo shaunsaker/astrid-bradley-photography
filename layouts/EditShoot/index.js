@@ -80,8 +80,12 @@ export class EditShoot extends React.Component {
   }
 
   saveShoot(id, shoot) {
-    const { dispatch } = this.props;
-    const document = shoot;
+    const { dispatch, shoots, shootID } = this.props;
+    const existingShoot = shoots.filter((item) => item.id === shootID)[0];
+    const document = {
+      ...existingShoot,
+      ...shoot,
+    };
 
     // Add a date_modified field with the current time
     document.date_modified = Date.now();
