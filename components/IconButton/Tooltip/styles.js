@@ -15,10 +15,6 @@ const styles = css`
     padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
     background-color: ${colors.transBlack};
   }
-
-  .text {
-    color: ${colors.white};
-  }
 `;
 
 export default styles;

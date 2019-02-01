@@ -71,7 +71,7 @@ class Admin extends React.Component {
   render() {
     const { currentCategory } = this.state;
     const { shoots } = this.props;
-    const loadingComponent = !shoots && <LoadingSection />;
+    const loadingComponent = !shoots.length && <LoadingSection />;
 
     // Map categories to select options
     const selectOptions = categories.map((category) => {

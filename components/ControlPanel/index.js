@@ -9,13 +9,17 @@ import IconButton from '../IconButton';
 const ControlPanel = ({ controls }) => {
   return (
     <div className="container">
-      {controls.map((control) => {
+      {controls.map((control, index) => {
         const { iconName, label, link, handleClick } = control;
+
+        // IF its not the last control
+        // THEN display the spacer
+        const spacerComponent = index < controls.length - 1 && <div className="spacer-hz" />;
         const contentComponent = (
           <div className="row">
             <IconButton iconName={iconName} label={label} handleClick={handleClick} />
 
-            <div className="spacer-hz" />
+            {spacerComponent}
           </div>
         );
 

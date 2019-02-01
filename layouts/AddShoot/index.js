@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { shootFormFields } from '../../config';
+
 import Layout from '../../components/Layout';
-import FormSection from './FormSection';
+import Form from '../../components/Form';
 import LoadingSection from '../../components/LoadingSection';
 import SuccessSection from './SuccessSection';
 
@@ -99,11 +101,11 @@ export class AddShoot extends React.Component {
     // THEN display the loading section
     const loadingComponent = isLoading && <LoadingSection />;
     let mainComponent = (
-      <div className="relative">
-        <FormSection handleSubmit={this.onSubmit} />
+      <section className="relative">
+        <Form formName="add-shoot" fields={shootFormFields} handleSubmit={this.onSubmit} />
 
         {loadingComponent}
-      </div>
+      </section>
     );
 
     // IF not loading and we have the shoot in props

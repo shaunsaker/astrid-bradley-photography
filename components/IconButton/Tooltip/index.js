@@ -8,7 +8,7 @@ import SmallText from '../../SmallText';
 const Tooltip = ({ text }) => {
   return (
     <div className="container shadow-lg">
-      <SmallText className="text">{text}</SmallText>
+      <SmallText white>{text}</SmallText>
 
       <style jsx>{styles}</style>
     </div>

@@ -8,6 +8,10 @@ const styles = css`
     line-height: 1.25em;
     color: ${colors.grey};
   }
+
+  .white {
+    color: ${colors.white};
+  }
 `;
 
 export default styles;

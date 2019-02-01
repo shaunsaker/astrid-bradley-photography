@@ -14,7 +14,7 @@ import Icon from '../Icon';
 const ShootItem = ({ shoot }) => {
   const { name, id, date } = shoot;
   const prettyDate = getPrettyDate(date);
-  const href = `/admin/edit-shoot?${id}`;
+  const href = `/admin/edit-shoot?id=${id}`;
 
   return (
     <Link href={href}>

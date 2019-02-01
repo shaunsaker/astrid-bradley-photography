@@ -10,6 +10,7 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -20,12 +21,14 @@ export default class Form extends React.Component {
         type: PropTypes.string, // text, password, textarea etc
         name: PropTypes.string,
         label: PropTypes.string,
+        value: PropTypes.any, // eslint-disable-line
         isRequired: PropTypes.bool,
         multiple: PropTypes.bool, // if type === 'file'
         accept: PropTypes.string, // if type === 'file'
       }),
     ).isRequired,
     submitText: PropTypes.string,
+    handleChange: PropTypes.func,
     handleSubmit: PropTypes.func, // if not supplied, assume it is a netlify form
     children: PropTypes.node, // children to render before the submit button
   };
@@ -33,6 +36,15 @@ export default class Form extends React.Component {
   static defaultProps = {
     submitText: 'Submit',
   };
+
+  onChange(event) {
+    const { handleChange } = this.props;
+    const { target } = event;
+    const { name, value } = target;
+
+    // TODO: May not work for files
+    handleChange(name, value);
+  }
 
   onSubmit(event) {
     const { fields, handleSubmit } = this.props;
@@ -53,7 +65,8 @@ export default class Form extends React.Component {
   }
 
   render() {
-    const { formName, fields, submitText, handleSubmit, children } = this.props;
+    const { formName, fields, submitText, handleChange, handleSubmit, children } = this.props;
+    const onChange = handleChange && this.onChange;
 
     return (
       <form
@@ -63,21 +76,29 @@ export default class Form extends React.Component {
         data-netlify={!handleSubmit && 'true'}
       >
         {fields.map((field) => {
-          const { type, options, name, label, isRequired, multiple, accept } = field;
+          const { type, options, name, label, value, isRequired, multiple, accept } = field;
           const id = `input-${name}`;
           const inputComponent =
             type === 'select' ? (
-              <Select fieldName={name} id={id} options={options} />
+              <Select
+                fieldName={name}
+                id={id}
+                options={options}
+                value={value}
+                handleChange={onChange}
+              />
             ) : type === 'textarea' ? (
-              <textarea name={name} id={id} required={isRequired} />
+              <textarea name={name} id={id} value={value} required={isRequired} />
             ) : (
               <input
                 type={type}
                 name={name}
                 id={id}
+                value={value}
                 required={isRequired}
                 multiple={multiple}
                 accept={accept}
+                onChange={onChange}
               />
             );
           const selectLabelComponent = label && type === 'select' && (

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const SmallText = ({ children }) => {
+const SmallText = ({ children, white }) => {
   return (
     <Fragment>
-      <small>{children}</small>
+      <small className={white && 'white'}>{children}</small>
 
       <style jsx>{styles}</style>
     </Fragment>
@@ -15,6 +15,7 @@ const SmallText = ({ children }) => {
 
 SmallText.propTypes = {
   children: PropTypes.any, // eslint-disable-line
+  white: PropTypes.bool,
 };
 SmallText.defaultProps = {};
 

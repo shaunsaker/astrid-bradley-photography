@@ -14,7 +14,7 @@ const ParagraphText = ({ children, className }) => {
 };
 
 ParagraphText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 ParagraphText.defaultProps = {};

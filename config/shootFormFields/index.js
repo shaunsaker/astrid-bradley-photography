@@ -1,6 +1,6 @@
-import { categories } from '../../../config';
+import categories from '../categories';
 
-const fields = [
+const shootFormFields = [
   {
     type: 'text',
     name: 'name',
@@ -35,4 +35,4 @@ const fields = [
   },
 ];
 
-export default fields;
+export default shootFormFields;
