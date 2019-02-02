@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import CONTROLS from './controls';
 import { categories } from '../../config';
-import { sortArrayOfObjectsByKey } from '../../utils';
+import { mapToSelectOptions, sortArrayOfObjectsByKey } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
@@ -74,14 +74,7 @@ class Admin extends React.Component {
     const loadingComponent = !shoots.length && <LoadingSection />;
 
     // Map categories to select options
-    const selectOptions = categories.map((category) => {
-      const { name, id } = category;
-
-      return {
-        name,
-        value: id,
-      };
-    });
+    const selectOptions = mapToSelectOptions(categories);
 
     // Filter shoots on category_id
     // Sort by wedding date
