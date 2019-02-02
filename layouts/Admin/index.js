@@ -8,7 +8,7 @@ import { sortArrayOfObjectsByKey } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
-import Select from '../../components/Select';
+import SelectCategorySection from '../../components/SelectCategorySection';
 import HeadingText from '../../components/HeadingText';
 import ShootItem from '../../components/ShootItem';
 import LoadingSection from '../../components/LoadingSection';
@@ -110,13 +110,7 @@ class Admin extends React.Component {
 
     return (
       <Layout title="Admin Dashboard">
-        <div className="row category-container">
-          <label>Select a category</label>
-
-          <div className="spacer-hz" />
-
-          <Select options={selectOptions} handleChange={this.onSelectCategory} />
-        </div>
+        <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
 
         <div className="spacer-vt large" />
 
