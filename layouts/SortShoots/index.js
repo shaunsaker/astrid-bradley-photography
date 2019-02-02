@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -8,6 +8,8 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import SelectCategorySection from '../../components/SelectCategorySection';
+import DraggableList from '../../components/DraggableList';
+import ShootItem from '../../components/ShootItem';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -16,6 +18,7 @@ export class SortShoots extends React.Component {
     super(props);
 
     this.onSelectCategory = this.onSelectCategory.bind(this);
+    this.onDrag = this.onDrag.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
 
     this.state = {
@@ -37,15 +40,32 @@ export class SortShoots extends React.Component {
     this.setCurrentCategory(category);
   }
 
+  onDrag(sourceIndex, targetIndex) {
+    console.log(sourceIndex, targetIndex);
+  }
+
   setCurrentCategory(currentCategory) {
     this.setState({
       currentCategory,
     });
   }
 
+  renderShootItem(shoot) {
+    return (
+      <Fragment>
+        <ShootItem shoot={shoot} />
+
+        <div className="spacer-vt" />
+      </Fragment>
+    );
+  }
+
   render() {
     const { currentCategory } = this.state;
     const { shoots } = this.props;
+
+    // TODO: Filter by category
+    // TODO: Keep shoots in state so that we can save their order
 
     // Map categories to select options
     const selectOptions = mapToSelectOptions(categories);
@@ -55,6 +75,8 @@ export class SortShoots extends React.Component {
         <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
 
         <div className="spacer-vt large" />
+
+        <DraggableList items={shoots} renderItem={this.renderShootItem} handleDrag={this.onDrag} />
       </Layout>
     );
   }
