@@ -11,7 +11,6 @@ import Layout from '../../components/Layout';
 import SelectCategorySection from '../../components/SelectCategorySection';
 import HeadingText from '../../components/HeadingText';
 import ShootItem from '../../components/ShootItem';
-import LoadingSection from '../../components/LoadingSection';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
@@ -71,7 +70,6 @@ class Admin extends React.Component {
   render() {
     const { currentCategory } = this.state;
     const { shoots } = this.props;
-    const loadingComponent = !shoots.length && <LoadingSection />;
 
     // Map categories to select options
     const selectOptions = mapToSelectOptions(categories);
@@ -130,8 +128,6 @@ class Admin extends React.Component {
             </section>
           );
         })}
-
-        {loadingComponent}
 
         <ControlPanel
           controls={[
