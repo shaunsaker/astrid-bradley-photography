@@ -4,8 +4,7 @@ const colors = {
   white: '#FFFFFF',
   grey: '#9C9C9C',
   lightGrey: '#CCCCCC',
-  accent1: '#69411D',
-  accent2: '#BB7D46',
+  accent: '#BB7D46',
 };
 
 const rhythm = {

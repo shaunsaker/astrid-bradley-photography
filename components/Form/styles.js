@@ -56,7 +56,7 @@ const styles = css`
 
   input:focus,
   textarea:focus {
-    border-color: ${colors.accent2};
+    border-color: ${colors.accent};
   }
 
   input:focus ~ label,
@@ -68,7 +68,7 @@ const styles = css`
   }
 
   input:valid ~ label {
-    color: ${colors.accent2};
+    color: ${colors.accent};
   }
 
   .static-label {
