@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { categories } from '../../config';
+import { mapToSelectOptions } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
+import SelectCategorySection from '../../components/SelectCategorySection';
 
-export default class SortShoots extends React.Component {
+import withAuth from '../../wrappers/withAuth';
+
+export class SortShoots extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +23,10 @@ export default class SortShoots extends React.Component {
     };
   }
 
-  static propTypes = {};
+  static propTypes = {
+    shoots: PropTypes.arrayOf(PropTypes.shape({ category_id: PropTypes.string })),
+    dispatch: PropTypes.func,
+  };
 
   static defaultProps = {};
 
@@ -37,13 +45,25 @@ export default class SortShoots extends React.Component {
 
   render() {
     const { currentCategory } = this.state;
+    const { shoots } = this.props;
 
-    // Map to select options
+    // Map categories to select options
+    const selectOptions = mapToSelectOptions(categories);
 
     return (
       <Layout title="Sort Shoots">
-        <div>Select category section</div>
+        <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
+
+        <div className="spacer-vt large" />
       </Layout>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    shoots: state.shoots,
+  };
+};
+
+export default withAuth(connect(mapStateToProps)(SortShoots));
