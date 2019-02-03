@@ -8,7 +8,6 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import SelectCategorySection from '../../components/SelectCategorySection';
-import DraggableList from '../../components/DraggableList';
 import ShootItem from '../../components/ShootItem';
 
 import withAuth from '../../wrappers/withAuth';
@@ -92,13 +91,6 @@ export class SortShoots extends React.Component {
         <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
 
         <div className="spacer-vt large" />
-
-        <DraggableList
-          items={shootsArray}
-          renderItem={this.renderShootItem}
-          renderItemPlaceholder={this.renderItemPlaceholder}
-          handleDrag={this.onDrag}
-        />
 
         <style jsx>{styles}</style>
       </Layout>
