@@ -8,11 +8,11 @@ const styles = css`
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     justify-content: space-between;
     align-items: flex-end;
+    background-color: ${colors.white};
   }
 
   .container.secondary {
     background-color: ${colors.transBlack};
-    border: 2px solid black;
   }
 
   .text-container {
