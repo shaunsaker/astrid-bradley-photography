@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   MdAdd,
-  MdAddAPhoto,
+  MdPhoto,
   MdArchive,
   MdClose,
   MdEdit,
@@ -23,7 +23,7 @@ const icons = {
   info: (props) => <MdInfo {...props} />,
   lock: (props) => <MdLock {...props} />,
   mail: (props) => <MdMail {...props} />,
-  photo: (props) => <MdAddAPhoto {...props} />,
+  photo: (props) => <MdPhoto {...props} />,
   save: (props) => <MdSave {...props} />,
   sort: (props) => <MdSort {...props} />,
   unarchive: (props) => <MdUnarchive {...props} />,

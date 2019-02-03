@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Router from 'next/router';
 
 import { shootFormFields } from '../../config';
 
@@ -15,15 +16,27 @@ export class AddShoot extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.saveShoot = this.saveShoot.bind(this);
+    this.goBack = this.goBack.bind(this);
 
     this.state = {};
   }
 
   static propTypes = {
     dispatch: PropTypes.func,
+    isLoading: PropTypes.bool,
   };
 
   static defaultProps = {};
+
+  componentDidUpdate(prevProps) {
+    const { isLoading } = this.props;
+
+    // IF the app is not loading
+    // IF the app was loading
+    if (!isLoading && prevProps.isLoading) {
+      this.goBack();
+    }
+  }
 
   onSubmit(values) {
     const shoot = values;
@@ -65,6 +78,10 @@ export class AddShoot extends React.Component {
     });
   }
 
+  goBack() {
+    Router.back();
+  }
+
   render() {
     const title = 'Add a Shoot';
 
@@ -78,8 +95,14 @@ export class AddShoot extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  const { appState } = state;
+  const { pendingTransactions } = appState;
+  const isLoading = pendingTransactions.length ? true : false;
+
+  return {
+    isLoading,
+  };
 };
 
 export default withAuth(connect(mapStateToProps)(AddShoot));
