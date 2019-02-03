@@ -124,7 +124,7 @@ button {
 }
 
 button:focus {
-  outline: 1px solid ${colors.white};
+  outline: 2px solid ${colors.accent};
 }
 
 h1, h2, p {

@@ -23,6 +23,7 @@ const styles = css`
 
   @media (min-width: 768px) {
     .page-container {
+      padding: 0;
       padding-top: ${rhythm.vt * 4}px;
     }
   }
