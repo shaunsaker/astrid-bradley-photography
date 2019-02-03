@@ -18,7 +18,7 @@ const ShootItem = ({ shoot }) => {
 
   return (
     <Link href={href}>
-      <button type="button" className="container flex row shadow-sm shadow-hover xs-wrap">
+      <div className="container flex row shadow-sm shadow-hover xs-wrap">
         <div className="text-container">
           <ParagraphText>
             <b>{name}</b>
@@ -40,7 +40,7 @@ const ShootItem = ({ shoot }) => {
         </div>
 
         <style jsx>{styles}</style>
-      </button>
+      </div>
     </Link>
   );
 };
