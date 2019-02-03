@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { categories } from '../../config';
-import { mapToSelectOptions, reorderArrayItems } from '../../utils';
-import firebase from '../../services/firebase';
-import { getRef } from '../../services/firestore';
+import { mapToSelectOptions, reorderArrayItems, sortArrayOfObjectsByKey } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
@@ -77,7 +75,13 @@ export class SortShoots extends React.Component {
     // Separate the shoots into their categories
     categories.forEach((category) => {
       const { id } = category;
-      const relevantShoots = shoots.filter((shoot) => shoot.category_id === id);
+
+      // Filter on category ID
+      // Sort by order (if present)
+      const relevantShoots = sortArrayOfObjectsByKey(
+        shoots.filter((shoot) => shoot.category_id === id),
+        'order',
+      );
 
       separatedShoots[id] = relevantShoots;
     });
