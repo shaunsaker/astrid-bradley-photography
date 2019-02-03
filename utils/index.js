@@ -5,6 +5,7 @@ import getFormDate from './getFormDate';
 import getPrettyDate from './getPrettyDate';
 import mapToSelectOptions from './mapToSelectOptions';
 import prepareNextAction from './prepareNextAction';
+import reorderArrayItems from './reorderArrayItems';
 import sortArrayOfObjectsByKey from './sortArrayOfObjectsByKey';
 
 const utils = {
@@ -15,6 +16,7 @@ const utils = {
   getPrettyDate,
   mapToSelectOptions,
   prepareNextAction,
+  reorderArrayItems,
   sortArrayOfObjectsByKey,
 };
 
@@ -26,6 +28,7 @@ export {
   getPrettyDate,
   mapToSelectOptions,
   prepareNextAction,
+  reorderArrayItems,
   sortArrayOfObjectsByKey,
 };
 
