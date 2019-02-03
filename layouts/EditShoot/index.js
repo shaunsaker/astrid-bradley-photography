@@ -125,9 +125,9 @@ export class EditShoot extends React.Component {
     const controls = [
       {
         iconName: 'photo',
-        label: 'Upload Photos',
+        label: 'Manage Photos',
         link: {
-          href: `/admin/upload-photos?id=${id}`,
+          href: `/admin/manage-photos?id=${id}`,
         },
       },
     ];
