@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
-import AddPhotoButton from '../../components/AddPhotoButton';
+import AddButton from '../../components/AddButton';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
@@ -51,7 +51,7 @@ export class ManagePhotos extends React.Component {
     return (
       <Layout title={title}>
         <section className="flex row">
-          <AddPhotoButton handleClick={this.onAddPhotos} />
+          <AddButton handleClick={this.onAddPhotos} />
         </section>
 
         <ControlPanel controls={controls} />

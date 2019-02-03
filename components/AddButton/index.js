@@ -7,7 +7,7 @@ import styles from './styles';
 
 import Icon from '../Icon';
 
-const AddPhotoButton = ({ handleClick }) => {
+const AddButton = ({ handleClick }) => {
   return (
     <button type="button" className="container flex shadow-sm shadow-hover" onClick={handleClick}>
       <Icon name="add" size={36} color={colors.accent} />
@@ -17,9 +17,9 @@ const AddPhotoButton = ({ handleClick }) => {
   );
 };
 
-AddPhotoButton.propTypes = {
+AddButton.propTypes = {
   handleClick: PropTypes.func,
 };
-AddPhotoButton.defaultProps = {};
+AddButton.defaultProps = {};
 
-export default AddPhotoButton;
+export default AddButton;
