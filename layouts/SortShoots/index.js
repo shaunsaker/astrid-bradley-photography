@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 
 import { categories } from '../../config';
 import { mapToSelectOptions, reorderArrayItems } from '../../utils';
+import firebase from '../../services/firebase';
+import { getRef } from '../../services/firestore';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
 import SelectCategorySection from '../../components/SelectCategorySection';
 import DraggableList from '../../components/DraggableList';
 import ShootItem from '../../components/ShootItem';
+import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -19,9 +22,12 @@ export class SortShoots extends React.Component {
 
     this.onSelectCategory = this.onSelectCategory.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.onSave = this.onSave.bind(this);
     this.getShootsState = this.getShootsState.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
     this.setShoots = this.setShoots.bind(this);
+    this.getShootsWithOrder = this.getShootsWithOrder.bind(this);
+    this.saveBatchUpdate = this.saveBatchUpdate.bind(this);
     this.renderItem = this.renderItem.bind(this);
 
     this.state = {
@@ -58,6 +64,12 @@ export class SortShoots extends React.Component {
     }
   }
 
+  onSave() {
+    const newShoots = this.getShootsWithOrder();
+
+    this.saveBatchUpdate(newShoots);
+  }
+
   getShootsState() {
     const { shoots } = this.props;
     const separatedShoots = {};
@@ -85,6 +97,52 @@ export class SortShoots extends React.Component {
     });
   }
 
+  getShootsWithOrder() {
+    const { shoots } = this.state;
+    const newShoots = [];
+
+    // Map over the shoots keys (categories)
+    // Add an order field to the shoot (based on index)
+    // Push the shoot to newShoots
+    Object.keys(shoots).forEach((categoryID) => {
+      const relevantShoots = shoots[categoryID];
+
+      relevantShoots.forEach((shoot, index) => {
+        const order = index + 1;
+        const now = Date.now();
+        const newShoot = {
+          ...shoot,
+          order,
+          date_modified: now,
+        };
+
+        newShoots.push(newShoot);
+      });
+    });
+
+    return newShoots;
+  }
+
+  saveBatchUpdate(shoots) {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'batchUpdate',
+      payload: {
+        documents: shoots,
+      },
+      meta: {
+        url: 'shoots',
+        nextAction: {
+          type: 'SET_SYSTEM_MESSAGE',
+          payload: {
+            message: 'Shoot order saved successfully.',
+          },
+        },
+      },
+    });
+  }
+
   renderItem(shoot, isDragging) {
     return (
       <Fragment>
@@ -105,17 +163,29 @@ export class SortShoots extends React.Component {
     // Get the relevant shoots from state
     const relevantShoots = shoots[currentCategory.id];
 
+    const controls = [
+      {
+        iconName: 'save',
+        label: 'Save Order',
+        handleClick: this.onSave,
+      },
+    ];
+
     return (
       <Layout title="Sort Shoots">
-        <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
+        <section>
+          <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
 
-        <div className="spacer-vt large" />
+          <div className="spacer-vt large" />
 
-        <DraggableList
-          items={relevantShoots}
-          renderItem={this.renderItem}
-          handleDragEnd={this.onDragEnd}
-        />
+          <DraggableList
+            items={relevantShoots}
+            renderItem={this.renderItem}
+            handleDragEnd={this.onDragEnd}
+          />
+        </section>
+
+        <ControlPanel controls={controls} />
 
         <style jsx>{styles}</style>
       </Layout>
