@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { rhythm } from '../../static/styles/styleConstants';
+import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
   .container {
@@ -8,6 +8,11 @@ const styles = css`
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     justify-content: space-between;
     align-items: flex-end;
+  }
+
+  .container.secondary {
+    background-color: ${colors.transBlack};
+    border: 2px solid black;
   }
 
   .text-container {

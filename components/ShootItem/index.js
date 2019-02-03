@@ -11,16 +11,18 @@ import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 import Icon from '../Icon';
 
-const ShootItem = ({ shoot }) => {
+const ShootItem = ({ shoot, secondary }) => {
   const { name, id, date, archived, photos } = shoot;
   const prettyDate = getPrettyDate(date);
   const href = `/admin/edit-shoot?id=${id}`;
 
   return (
     <Link href={href}>
-      <div className="container flex row shadow-sm shadow-hover xs-wrap">
+      <div
+        className={`container flex row shadow-sm shadow-hover xs-wrap ${secondary && 'secondary'}`}
+      >
         <div className="text-container">
-          <ParagraphText>
+          <ParagraphText white={secondary}>
             <b>{name}</b>
           </ParagraphText>
 
@@ -51,6 +53,7 @@ ShootItem.propTypes = {
     id: PropTypes.string,
     date: PropTypes.number,
   }),
+  secondary: PropTypes.bool,
 };
 ShootItem.defaultProps = {};
 
