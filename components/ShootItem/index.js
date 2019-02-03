@@ -11,40 +11,43 @@ import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 import Icon from '../Icon';
 
-const ShootItem = ({ shoot, secondary }) => {
+const ShootItem = ({ shoot, secondary, disabled }) => {
   const { name, id, date, archived, photos } = shoot;
   const prettyDate = getPrettyDate(date);
   const href = `/admin/edit-shoot?id=${id}`;
+  const contentComponent = (
+    <div
+      className={`container flex row shadow-sm shadow-hover xs-wrap ${secondary && 'secondary'}`}
+    >
+      <div className="text-container">
+        <ParagraphText white={secondary}>
+          <b>{name}</b>
+        </ParagraphText>
 
-  return (
-    <Link href={href}>
-      <div
-        className={`container flex row shadow-sm shadow-hover xs-wrap ${secondary && 'secondary'}`}
-      >
-        <div className="text-container">
-          <ParagraphText white={secondary}>
-            <b>{name}</b>
-          </ParagraphText>
+        <div className="spacer-vt" />
 
-          <div className="spacer-vt" />
-
-          <SmallText className="text">{prettyDate}</SmallText>
-        </div>
-
-        <div className="spacer-hz" />
-
-        <div className="row">
-          <Icon name="photo" size={18} color={photos ? colors.black : colors.lightGrey} />
-
-          <div className="spacer-hz small" />
-
-          <Icon name="archive" size={18} color={archived ? colors.black : colors.lightGrey} />
-        </div>
-
-        <style jsx>{styles}</style>
+        <SmallText className="text">{prettyDate}</SmallText>
       </div>
-    </Link>
+
+      <div className="spacer-hz" />
+
+      <div className="row">
+        <Icon name="photo" size={18} color={photos ? colors.black : colors.lightGrey} />
+
+        <div className="spacer-hz small" />
+
+        <Icon name="archive" size={18} color={archived ? colors.black : colors.lightGrey} />
+      </div>
+
+      <style jsx>{styles}</style>
+    </div>
   );
+
+  if (disabled) {
+    return contentComponent;
+  }
+
+  return <Link href={href}>{contentComponent}</Link>;
 };
 
 ShootItem.propTypes = {
@@ -54,6 +57,7 @@ ShootItem.propTypes = {
     date: PropTypes.number,
   }),
   secondary: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 ShootItem.defaultProps = {};
 
