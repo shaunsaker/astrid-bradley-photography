@@ -20,9 +20,14 @@ export class SortShoots extends React.Component {
     this.onSelectCategory = this.onSelectCategory.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
+    this.renderShootItem = this.renderShootItem.bind(this);
+    this.renderItemPlaceholder = this.renderItemPlaceholder.bind(this);
+
+    const { shoots } = props;
 
     this.state = {
-      currentCategory: null,
+      currentCategory: categories[0],
+      shoots,
     };
   }
 
@@ -41,7 +46,7 @@ export class SortShoots extends React.Component {
   }
 
   onDrag(sourceIndex, targetIndex) {
-    console.log(sourceIndex, targetIndex);
+    // console.log(sourceIndex, targetIndex);
   }
 
   setCurrentCategory(currentCategory) {
@@ -60,15 +65,27 @@ export class SortShoots extends React.Component {
     );
   }
 
+  renderItemPlaceholder(height) {
+    return (
+      <Fragment>
+        <div className="item-placeholder-container" style={{ height }} />
+
+        <div className="spacer-vt" />
+
+        <style jsx>{styles}</style>
+      </Fragment>
+    );
+  }
+
   render() {
     const { currentCategory } = this.state;
-    const { shoots } = this.props;
-
-    // TODO: Filter by category
-    // TODO: Keep shoots in state so that we can save their order
+    const { shoots } = this.state;
 
     // Map categories to select options
     const selectOptions = mapToSelectOptions(categories);
+
+    // Filter shoots on category_id
+    const shootsArray = shoots.filter((shoot) => shoot.category_id === currentCategory.id);
 
     return (
       <Layout title="Sort Shoots">
@@ -76,7 +93,14 @@ export class SortShoots extends React.Component {
 
         <div className="spacer-vt large" />
 
-        <DraggableList items={shoots} renderItem={this.renderShootItem} handleDrag={this.onDrag} />
+        <DraggableList
+          items={shootsArray}
+          renderItem={this.renderShootItem}
+          renderItemPlaceholder={this.renderItemPlaceholder}
+          handleDrag={this.onDrag}
+        />
+
+        <style jsx>{styles}</style>
       </Layout>
     );
   }

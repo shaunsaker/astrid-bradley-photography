@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { getElementRect } from '../../utils';
+
 export default class DraggableList extends React.Component {
   constructor(props) {
     super(props);
@@ -8,10 +10,15 @@ export default class DraggableList extends React.Component {
     this.onDragStart = this.onDragStart.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
-    this.setDraggedItemIndex = this.setDraggedItemIndex.bind(this);
+    this.getItemHeight = this.getItemHeight.bind(this);
+    this.setItemHeight = this.setItemHeight.bind(this);
+    this.setDraggedFromItemIndex = this.setDraggedFromItemIndex.bind(this);
+    this.setDraggedToItemIndex = this.setDraggedToItemIndex.bind(this);
 
     this.state = {
-      draggedItemIndex: null,
+      draggedFromItemIndex: null,
+      draggedToItemIndex: null,
+      itemHeight: null,
     };
   }
 
@@ -22,15 +29,20 @@ export default class DraggableList extends React.Component {
       }),
     ),
     renderItem: PropTypes.func,
+    renderItemPlaceholder: PropTypes.func,
     handleDrag: PropTypes.func.isRequired,
   };
 
   static defaultProps = {};
 
+  componentDidMount() {
+    this.getItemHeight();
+  }
+
   onDragStart(event, index) {
     const { dataTransfer } = event;
 
-    this.setDraggedItemIndex(index);
+    this.setDraggedFromItemIndex(index);
 
     // Do some browser stuff
     dataTransfer.effectAllowed = 'move';
@@ -39,34 +51,70 @@ export default class DraggableList extends React.Component {
   }
 
   onDragOver(index) {
-    const { draggedItemIndex } = this.state;
+    const { draggedFromItemIndex } = this.state;
     const { handleDrag } = this.props;
 
-    handleDrag(draggedItemIndex, index);
+    this.setDraggedToItemIndex(index);
+
+    handleDrag(draggedFromItemIndex, index);
   }
 
-  setDraggedItemIndex(draggedItemIndex) {
+  getItemHeight() {
+    // GET the first item's dimensions
+    // GET the height from the dimensions
+    // SET it to state
+    const { items } = this.props;
+    const firstItem = items[0];
+    const { id } = firstItem;
+    const rect = getElementRect(id);
+    const { height } = rect;
+
+    this.setItemHeight(height);
+  }
+
+  setItemHeight(itemHeight) {
     this.setState({
-      draggedItemIndex,
+      itemHeight,
+    });
+  }
+
+  setDraggedFromItemIndex(draggedFromItemIndex) {
+    this.setState({
+      draggedFromItemIndex,
+    });
+  }
+
+  setDraggedToItemIndex(draggedToItemIndex) {
+    this.setState({
+      draggedToItemIndex,
     });
   }
 
   onDragEnd() {
-    this.setDraggedItemIndex(null);
+    this.setDraggedFromItemIndex(null);
+    this.setDraggedToItemIndex(null);
   }
 
   render() {
-    const { items, renderItem } = this.props;
+    const { draggedToItemIndex, itemHeight } = this.state;
+    const { items, renderItem, renderItemPlaceholder } = this.props;
 
     return (
       <ul>
         {items.map((item, index) => {
           const { id } = item;
+          const placeholderComponent =
+            itemHeight &&
+            index === draggedToItemIndex &&
+            renderItemPlaceholder &&
+            renderItemPlaceholder(itemHeight);
 
           return (
             <li key={id} onDragOver={() => this.onDragOver(index)}>
+              {placeholderComponent}
+
               <div
-                className="drag"
+                id={id}
                 draggable
                 onDragStart={(event) => this.onDragStart(event, index)}
                 onDragEnd={this.onDragEnd}
