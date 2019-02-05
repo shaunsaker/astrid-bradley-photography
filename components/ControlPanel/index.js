@@ -6,7 +6,7 @@ import styles from './styles';
 
 import IconButton from '../IconButton';
 
-const ControlPanel = ({ controls }) => {
+const ControlPanel = ({ controls, children }) => {
   return (
     <div className="container">
       {controls.map((control, index) => {
@@ -36,6 +36,8 @@ const ControlPanel = ({ controls }) => {
         return <div key={label}>{contentComponent}</div>;
       })}
 
+      {children}
+
       <style jsx>{styles}</style>
     </div>
   );
@@ -53,6 +55,7 @@ ControlPanel.propTypes = {
       handleClick: PropTypes.func,
     }),
   ),
+  children: PropTypes.node,
 };
 ControlPanel.defaultProps = {};
 
