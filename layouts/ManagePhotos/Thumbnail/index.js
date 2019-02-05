@@ -9,6 +9,8 @@ const Thumbnail = ({ src, alt, handleDelete }) => {
   const deleteComponent = handleDelete && (
     <div className="icon-button-container">
       <IconButton iconName="close" label="Delete Photo" small handleClick={handleDelete} />
+
+      <style jsx>{styles}</style>
     </div>
   );
 
