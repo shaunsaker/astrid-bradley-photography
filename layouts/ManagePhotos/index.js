@@ -106,10 +106,25 @@ export class ManagePhotos extends React.Component {
 
     console.log(photos, filesArray);
 
+    // TODO: Files thumbnails
+    // TODO: Add button bottom RHS
+
     return (
       <Layout title={title}>
-        <section className="container flex row">
-          <div />
+        <section id="thumbnails-container" className="container flex row wrap">
+          {photos.map((photo, index) => {
+            const alt = `${name}-${index}`;
+
+            // TODO: Delete icon and action
+
+            return (
+              <div key={photo} className="thumbnail-container">
+                <img src={photo} alt={alt} className="thumbnail" />
+
+                <div className="spacer-vt" />
+              </div>
+            );
+          })}
         </section>
 
         <ControlPanel controls={controls} />

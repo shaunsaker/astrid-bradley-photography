@@ -4,28 +4,17 @@ import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
   .container {
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
   }
 
-  .item-container {
-    width: 33.3%;
-    margin-bottom: ${rhythm.vt}px;
+  .thumbnail-container {
+    width: 23.3%; /* to taste */
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: ${colors.transWhite};
-  }
-
-  .progress-container {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  .thumbnail {
+    object-fit: cover;
+    height: 100%;
   }
 `;
 
