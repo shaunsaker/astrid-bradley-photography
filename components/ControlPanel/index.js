@@ -9,6 +9,8 @@ import IconButton from '../IconButton';
 const ControlPanel = ({ controls, children }) => {
   return (
     <div className="container">
+      {children}
+
       {controls.map((control, index) => {
         const { iconName, label, link, handleClick } = control;
 
@@ -35,8 +37,6 @@ const ControlPanel = ({ controls, children }) => {
 
         return <div key={label}>{contentComponent}</div>;
       })}
-
-      {children}
 
       <style jsx>{styles}</style>
     </div>
