@@ -59,8 +59,7 @@ button {
 }
 
 button:focus, .button:focus, a:focus, input:focus {
-  outline-style: solid;
-  outline-width: 2px;
+  outline: 2px solid ${colors.accent2};
 }
 
 // HELPERS

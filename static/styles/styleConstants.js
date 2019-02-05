@@ -6,7 +6,7 @@ const colors = {
   grey: '#9C9C9C',
   lightGrey: '#CCCCCC',
   accent1: '#BB7D46',
-  accent2: '#46BBB7',
+  accent2: '#61A1FF',
 };
 
 const rhythm = {

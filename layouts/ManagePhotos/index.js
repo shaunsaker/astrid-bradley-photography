@@ -7,6 +7,7 @@ import styles from './styles';
 import Layout from '../../components/Layout';
 import Thumbnail from './Thumbnail';
 import ControlPanel from '../../components/ControlPanel';
+import AddPhotosButton from './AddPhotosButton';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -111,8 +112,6 @@ export class ManagePhotos extends React.Component {
       },
     ];
 
-    console.log(photos, filesArray);
-
     // TODO: Files thumbnails
     // TODO: Add button bottom RHS
 
@@ -134,7 +133,9 @@ export class ManagePhotos extends React.Component {
         </section>
 
         <ControlPanel controls={controls}>
-          <div />
+          <AddPhotosButton handleChange={this.onAddPhotos} />
+
+          <div className="spacer-hz" />
         </ControlPanel>
 
         <style jsx>{styles}</style>
