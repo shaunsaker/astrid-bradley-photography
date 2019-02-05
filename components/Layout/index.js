@@ -15,7 +15,7 @@ const Layout = ({ title, children }) => {
     <Page>
       <Header />
 
-      <div className="spacer-vt large" />
+      <div className="spacer-vt large hidden-md-down" />
 
       {titleTextComponent}
 
