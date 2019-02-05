@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const ProgressBar = ({ progress }) => {
-  const text = `${progress}%`;
-
   return (
-    <div className="container shadow-sm">
-      <div className="bar shadow-md" style={{ width: text }} />
+    <div className="container">
+      <div style={{ width: progress || 5 }} className="bar shadow-md" />
 
       <style jsx>{styles}</style>
     </div>

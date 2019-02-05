@@ -5,7 +5,7 @@ import styles from './styles';
 
 import IconButton from '../../../components/IconButton';
 
-const Thumbnail = ({ src, alt, handleDelete }) => {
+const Thumbnail = ({ src, alt, handleDelete, children }) => {
   const deleteComponent = handleDelete && (
     <div className="icon-button-container">
       <IconButton iconName="close" label="Delete Photo" small handleClick={handleDelete} />
@@ -17,6 +17,8 @@ const Thumbnail = ({ src, alt, handleDelete }) => {
   return (
     <div key={src} className="container relative">
       <img src={src} alt={alt} className="thumbnail" />
+
+      {children}
 
       {deleteComponent}
 
@@ -31,6 +33,7 @@ Thumbnail.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
   handleDelete: PropTypes.func,
+  children: PropTypes.node,
 };
 Thumbnail.defaultProps = {};
 

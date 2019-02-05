@@ -6,6 +6,7 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import Thumbnail from './Thumbnail';
+import ProgressBar from './ProgressBar';
 import ControlPanel from '../../components/ControlPanel';
 import AddPhotosButton from './AddPhotosButton';
 
@@ -129,9 +130,6 @@ export class ManagePhotos extends React.Component {
       },
     ];
 
-    console.log(files);
-    // TODO: Files thumbnails
-
     return (
       <Layout title={title}>
         <section id="thumbnails-container" className="container flex row wrap">
@@ -151,6 +149,7 @@ export class ManagePhotos extends React.Component {
           {files.map((file, index) => {
             const src = URL.createObjectURL(file);
             const alt = `${name}-temp-${index}`;
+            const progressComponent = index === 0 && <ProgressBar progress={progress} />;
 
             return (
               <Thumbnail
@@ -158,7 +157,13 @@ export class ManagePhotos extends React.Component {
                 src={src}
                 alt={alt}
                 handleDelete={() => this.onDeleteFile(index)}
-              />
+              >
+                <div className="overlay">
+                  {progressComponent}
+
+                  <div className="spacer-vt" />
+                </div>
+              </Thumbnail>
             );
           })}
         </section>

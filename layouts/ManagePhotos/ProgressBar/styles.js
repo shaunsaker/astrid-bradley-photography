@@ -4,13 +4,15 @@ import { colors, rhythm } from '../../../static/styles/styleConstants';
 
 const styles = css`
   .container {
-    background-color: ${colors.transBlack};
-    padding: ${rhythm.vt}px ${rhythm.hz}px;
+    align-self: stretch;
+    background-color: ${colors.white};
+    margin: ${rhythm.vt / 4}px ${rhythm.hz / 4}px;
   }
 
   .bar {
-    height: ${rhythm.vt}px;
-    background-color: ${colors.accent1};
+    border: 1px solid ${colors.white};
+    height: ${rhythm.vt / 2}px;
+    background-color: ${colors.accent2};
     justify-content: center;
     align-items: center;
     transition: 0.5s width ease;
