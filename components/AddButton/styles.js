@@ -12,12 +12,6 @@ const styles = css`
     justify-content: center;
     align-items: center;
   }
-
-  @media (min-width: 720px) {
-    .container {
-      width: ${SIZE}px;
-    }
-  }
 `;
 
 export default styles;

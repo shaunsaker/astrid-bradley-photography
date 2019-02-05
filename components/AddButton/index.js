@@ -9,8 +9,13 @@ import Icon from '../Icon';
 
 const AddButton = ({ handleClick }) => {
   return (
-    <button type="button" className="container flex shadow-sm shadow-hover" onClick={handleClick}>
-      <Icon name="add" size={36} color={colors.accent} />
+    <button
+      type="button"
+      className={`container flex ${handleClick && 'shadow-sm shadow-hover'}`}
+      onClick={handleClick}
+      disabled={!handleClick}
+    >
+      <Icon name="add" size={36} color={colors.accent1} />
 
       <style jsx>{styles}</style>
     </button>
