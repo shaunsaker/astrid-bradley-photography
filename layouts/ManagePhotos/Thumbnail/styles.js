@@ -13,6 +13,7 @@ const styles = css`
   .thumbnail {
     object-fit: cover;
     height: 100%;
+    max-height: 125px;
   }
 
   .icon-button-container {
@@ -27,7 +28,7 @@ const styles = css`
       margin-right: ${rhythm.vt}px;
     }
 
-    .container:nth-of-type(${COLUMNS}) {
+    .container:nth-child(${COLUMNS + 'n'}) {
       margin-right: 0;
     }
   }

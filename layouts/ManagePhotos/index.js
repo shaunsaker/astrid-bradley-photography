@@ -17,6 +17,7 @@ export class ManagePhotos extends React.Component {
 
     this.onAddPhotos = this.onAddPhotos.bind(this);
     this.onDeletePhoto = this.onDeletePhoto.bind(this);
+    this.onDeleteFile = this.onDeleteFile.bind(this);
     this.setFiles = this.setFiles.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.deleteFile = this.deleteFile.bind(this);
@@ -68,6 +69,16 @@ export class ManagePhotos extends React.Component {
     // TODO:
     // Save shoot
     // Remove from storag
+  }
+
+  onDeleteFile(index) {
+    const { files } = this.state;
+
+    files.splice(index, 1);
+
+    this.setState({
+      files,
+    });
   }
 
   setFiles(files) {
@@ -141,7 +152,14 @@ export class ManagePhotos extends React.Component {
             const src = URL.createObjectURL(file);
             const alt = `${name}-temp-${index}`;
 
-            return <Thumbnail key={src} src={src} alt={alt} />;
+            return (
+              <Thumbnail
+                key={src}
+                src={src}
+                alt={alt}
+                handleDelete={() => this.onDeleteFile(index)}
+              />
+            );
           })}
         </section>
 
