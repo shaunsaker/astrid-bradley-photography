@@ -3,6 +3,7 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 import { colors } from '../../static/styles/styleConstants';
 
 const SIZE = 50;
+const SMALL_SIZE = 20;
 
 const styles = css`
   .container {
@@ -11,6 +12,17 @@ const styles = css`
     width: ${SIZE}px;
     height: ${SIZE}px;
     border-radius: ${SIZE / 2}px;
+  }
+
+  .container.small {
+    width: ${SMALL_SIZE}px;
+    height: ${SMALL_SIZE}px;
+    border-radius: ${SMALL_SIZE / 2}px;
+  }
+
+  .icon-container {
+    justify-content: center;
+    align-items: center;
   }
 
   .tooltip-container {

@@ -7,12 +7,18 @@ import styles from './styles';
 import Icon from '../Icon';
 import Tooltip from './Tooltip';
 
-const IconButton = ({ iconName, label, handleClick }) => {
+const IconButton = ({ iconName, label, small, handleClick }) => {
   const tooltipComponent = label && <Tooltip text={label} />;
 
   return (
-    <button type="button" onClick={handleClick} className="container shadow-lg shadow-hover-lg">
-      <Icon name={iconName} color={colors.white} />
+    <button
+      type="button"
+      onClick={handleClick}
+      className={`container shadow-lg shadow-hover-lg ${small && 'small'}`}
+    >
+      <div className="icon-container">
+        <Icon name={iconName} color={colors.white} size={small && 16} />
+      </div>
 
       <div className="tooltip-container">{tooltipComponent}</div>
 
@@ -24,6 +30,7 @@ const IconButton = ({ iconName, label, handleClick }) => {
 IconButton.propTypes = {
   iconName: PropTypes.string,
   label: PropTypes.string, // for tooltip
+  small: PropTypes.bool,
   handleClick: PropTypes.func,
 };
 IconButton.defaultProps = {};
