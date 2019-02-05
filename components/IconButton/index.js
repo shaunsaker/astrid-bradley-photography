@@ -14,7 +14,9 @@ const IconButton = ({ iconName, label, small, handleClick }) => {
     <button
       type="button"
       onClick={handleClick}
-      className={`container shadow-lg shadow-hover-lg ${small && 'small'}`}
+      className={`container ${
+        small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'
+      }`}
     >
       <div className="icon-container">
         <Icon name={iconName} color={colors.white} size={small && 16} />
