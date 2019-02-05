@@ -1,5 +1,8 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
+import { rhythm } from '../../../static/styles/styleConstants';
+
+const COLUMNS = 4;
 const ICON_BUTTON_SIZE = 20;
 
 const styles = css`
@@ -20,7 +23,12 @@ const styles = css`
 
   @media (min-width: 480px) {
     .container {
-      width: 23.3%; /* to taste */
+      width: calc(${100 / COLUMNS}% - ${((COLUMNS - 1) * rhythm.vt) / COLUMNS}px);
+      margin-right: ${rhythm.vt}px;
+    }
+
+    .container:nth-of-type(${COLUMNS}) {
+      margin-right: 0;
     }
   }
 `;

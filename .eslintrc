@@ -51,7 +51,8 @@
     "camelcase": "off",
     "no-unneeded-ternary": "off",
     "react/button-has-type": "off",
-    "brace-style": "off"
+    "brace-style": "off",
+    "react/destructuring-assignment": "off"
   },
   "plugins": ["react"],
   "globals": {

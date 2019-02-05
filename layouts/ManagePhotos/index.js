@@ -24,7 +24,7 @@ export class ManagePhotos extends React.Component {
     this.saveShoot = this.saveShoot.bind(this);
 
     this.state = {
-      files: null,
+      files: [],
       progress: 0,
     };
   }
@@ -53,8 +53,15 @@ export class ManagePhotos extends React.Component {
 
   onAddPhotos(event) {
     const { files } = event.target;
+    const stateFiles = this.state.files;
 
-    this.setFiles(files);
+    // Convert the files object to an array
+    const filesArray = Object.keys(files).map((key) => files[key]);
+
+    // Concat the filesArray onto the stateFiles
+    const newFiles = stateFiles.concat(filesArray);
+
+    this.setFiles(newFiles);
   }
 
   onDeletePhoto(index) {
@@ -99,7 +106,6 @@ export class ManagePhotos extends React.Component {
     const shoot = shoots.filter((item) => item.id === shootID)[0];
     const { name, id, photos } = shoot;
     const title = `Manage Photos: ${name}`;
-    const filesArray = files && Object.keys(files).map((key) => files[key]);
 
     // Create the controls (needs to be dynamic)
     const controls = [
@@ -112,8 +118,8 @@ export class ManagePhotos extends React.Component {
       },
     ];
 
+    console.log(files);
     // TODO: Files thumbnails
-    // TODO: Add button bottom RHS
 
     return (
       <Layout title={title}>
@@ -129,6 +135,13 @@ export class ManagePhotos extends React.Component {
                 handleDelete={() => this.onDeletePhoto(index)}
               />
             );
+          })}
+
+          {files.map((file, index) => {
+            const src = URL.createObjectURL(file);
+            const alt = `${name}-temp-${index}`;
+
+            return <Thumbnail key={src} src={src} alt={alt} />;
           })}
         </section>
 
