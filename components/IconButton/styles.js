@@ -7,7 +7,7 @@ const SIZE = 50;
 const styles = css`
   .container {
     position: relative;
-    background-color: ${colors.accent};
+    background-color: ${colors.accent1};
     width: ${SIZE}px;
     height: ${SIZE}px;
     border-radius: ${SIZE / 2}px;

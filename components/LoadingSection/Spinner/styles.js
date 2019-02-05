@@ -16,7 +16,7 @@ const styles = css`
   }
 
   border: ${BORDER_SIZE}px solid ${colors.lightGrey};
-  border-top: ${BORDER_SIZE}px solid ${colors.accent};
+  border-top: ${BORDER_SIZE}px solid ${colors.accent1};
   width: ${SIZE}px;
   height: ${SIZE}px;
   border-radius: ${SIZE / 2}px;

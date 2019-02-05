@@ -58,6 +58,11 @@ button {
   font-family: 'Arial', sans-serif;
 }
 
+button:focus, .button:focus, a:focus, input:focus {
+  outline-style: solid;
+  outline-width: 2px;
+}
+
 // HELPERS
 .flex {
   display: flex;
@@ -121,10 +126,6 @@ button {
 
 .relative {
   position: relative;
-}
-
-button:focus {
-  outline: 2px solid ${colors.accent};
 }
 
 h1, h2, p {

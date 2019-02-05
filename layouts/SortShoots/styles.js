@@ -6,7 +6,7 @@ const styles = css`
   .item-placeholder-container {
     width: 100%;
     background-color: ${colors.lightGrey};
-    border: 2px solid ${colors.accent};
+    border: 2px solid ${colors.accent1};
   }
 `;
 

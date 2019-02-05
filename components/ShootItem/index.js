@@ -17,7 +17,10 @@ const ShootItem = ({ shoot, secondary, disabled }) => {
   const href = `/admin/edit-shoot?id=${id}`;
   const contentComponent = (
     <div
-      className={`container flex row shadow-sm shadow-hover xs-wrap ${secondary && 'secondary'}`}
+      role="button"
+      tabIndex={0}
+      className={`container button flex row shadow-sm shadow-hover xs-wrap ${secondary &&
+        'secondary'}`}
     >
       <div className="text-container">
         <ParagraphText white={secondary}>
