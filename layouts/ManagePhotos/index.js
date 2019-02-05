@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
-import ProgressBar from './ProgressBar';
+import Thumbnail from './Thumbnail';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
@@ -15,8 +15,10 @@ export class ManagePhotos extends React.Component {
     super(props);
 
     this.onAddPhotos = this.onAddPhotos.bind(this);
+    this.onDeletePhoto = this.onDeletePhoto.bind(this);
     this.setFiles = this.setFiles.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
+    this.deleteFile = this.deleteFile.bind(this);
     this.setProgress = this.setProgress.bind(this);
     this.saveShoot = this.saveShoot.bind(this);
 
@@ -41,6 +43,7 @@ export class ManagePhotos extends React.Component {
   static defaultProps = {};
 
   componentDidUpdate(prevProps, prevState) {
+    // TODO:
     // On files change
     // Upload the first one
     // If no files left
@@ -51,14 +54,12 @@ export class ManagePhotos extends React.Component {
     const { files } = event.target;
 
     this.setFiles(files);
+  }
 
-    /*
-      1. Set files to state
-      2. Render Thumbnails from state
-      3. Upload one at a time
-      4. Show progress
-      5. Once complete, save to document
-    */
+  onDeletePhoto(index) {
+    // TODO:
+    // Save shoot
+    // Remove from storag
   }
 
   setFiles(files) {
@@ -68,10 +69,15 @@ export class ManagePhotos extends React.Component {
   }
 
   uploadFile(file) {
+    // TODO:
     // On progress
     // Update state
     // On complete
     // Save shoot
+  }
+
+  deleteFile() {
+    // TODO:
   }
 
   setProgress(progress) {
@@ -81,6 +87,7 @@ export class ManagePhotos extends React.Component {
   }
 
   saveShoot() {
+    // TODO:
     // On save
     // Remove from state
   }
@@ -115,19 +122,20 @@ export class ManagePhotos extends React.Component {
           {photos.map((photo, index) => {
             const alt = `${name}-${index}`;
 
-            // TODO: Delete icon and action
-
             return (
-              <div key={photo} className="thumbnail-container">
-                <img src={photo} alt={alt} className="thumbnail" />
-
-                <div className="spacer-vt" />
-              </div>
+              <Thumbnail
+                key={photo}
+                src={photo}
+                alt={alt}
+                handleDelete={() => this.onDeletePhoto(index)}
+              />
             );
           })}
         </section>
 
-        <ControlPanel controls={controls} />
+        <ControlPanel controls={controls}>
+          <div />
+        </ControlPanel>
 
         <style jsx>{styles}</style>
       </Layout>

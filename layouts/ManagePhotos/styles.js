@@ -7,15 +7,6 @@ const styles = css`
     justify-content: space-between;
     align-items: stretch;
   }
-
-  .thumbnail-container {
-    width: 23.3%; /* to taste */
-  }
-
-  .thumbnail {
-    object-fit: cover;
-    height: 100%;
-  }
 `;
 
 export default styles;
