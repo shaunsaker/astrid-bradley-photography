@@ -10,9 +10,9 @@ const styles = css`
     text-transform: uppercase;
     font-size: 1.25em;
     color: ${colors.black};
-    border-width: 1px 0px;
-    border-style: solid;
-    border-color: ${colors.lightGrey};
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: ${colors.lightGrey};
     padding: ${rhythm.vt}px 0;
     margin-bottom: ${rhythm.vt * 2}px;
   }
