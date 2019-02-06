@@ -30,6 +30,7 @@ export class ManagePhotos extends React.Component {
     this.setProgress = this.setProgress.bind(this);
     this.handleSavePhoto = this.handleSavePhoto.bind(this);
     this.saveShoot = this.saveShoot.bind(this);
+    this.handleError = this.handleError.bind(this);
     this.logError = this.logError.bind(this);
 
     this.state = {
@@ -128,7 +129,7 @@ export class ManagePhotos extends React.Component {
         this.setProgress(progress);
       },
       (error) => {
-        this.logError(error);
+        this.handleError(error);
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -180,6 +181,10 @@ export class ManagePhotos extends React.Component {
         url: `shoots/${shootID}`,
       },
     });
+  }
+
+  handleError(error) {
+    this.logError(error);
   }
 
   logError(error) {
