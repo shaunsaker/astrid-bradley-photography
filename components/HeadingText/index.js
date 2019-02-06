@@ -8,6 +8,8 @@ const HeadingText = ({ children }) => {
     <Fragment>
       <h2>{children}</h2>
 
+      <div className="spacer-vt" />
+
       <style jsx>{styles}</style>
     </Fragment>
   );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
+import GridItem from '../../../components/GridItem';
 import IconButton from '../../../components/IconButton';
 import Spinner from '../../../components/Spinner';
 
@@ -58,7 +59,7 @@ export class Thumbnail extends React.Component {
     );
 
     return (
-      <div key={src} className="container relative">
+      <GridItem key={src} gridSize={4}>
         <img
           src={src}
           alt={alt}
@@ -76,7 +77,7 @@ export class Thumbnail extends React.Component {
         <div className="spacer-vt" />
 
         <style jsx>{styles}</style>
-      </div>
+      </GridItem>
     );
   }
 }

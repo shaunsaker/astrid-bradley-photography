@@ -7,6 +7,7 @@ import { getBlobURL } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
+import HeadingText from '../../components/HeadingText';
 import Thumbnail from './Thumbnail';
 import ProgressBar from './ProgressBar';
 import ControlPanel from '../../components/ControlPanel';
@@ -18,11 +19,11 @@ export class ManagePhotos extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onAddPhotos = this.onAddPhotos.bind(this);
-    this.onDeletePhoto = this.onDeletePhoto.bind(this);
-    this.onDeleteFileFromState = this.onDeleteFileFromState.bind(this);
+    this.onAddCoverPhoto = this.onAddCoverPhoto.bind(this);
+    this.onAddShootPhotos = this.onAddShootPhotos.bind(this);
+    this.onDeleteShootPhoto = this.onDeleteShootPhoto.bind(this);
+    this.onDeleteShootFile = this.onDeleteShootFile.bind(this);
     this.onFileUploadError = this.onFileUploadError.bind(this);
-    this.addFilesToState = this.addFilesToState.bind(this);
     this.deletePhotoFromStorage = this.deletePhotoFromStorage.bind(this);
     this.deleteFileFromState = this.deleteFileFromState.bind(this);
     this.handleNextFileUpload = this.handleNextFileUpload.bind(this);
@@ -54,30 +55,12 @@ export class ManagePhotos extends React.Component {
 
   static defaultProps = {};
 
-  onAddPhotos(event) {
+  onAddCoverPhoto(event) {
     const { files } = event.target;
-
-    this.addFilesToState(files);
   }
 
-  onDeletePhoto(index) {
-    const { shoots, shootID } = this.props;
-    const shoot = shoots.filter((item) => item.id === shootID)[0];
-    const { photos } = shoot;
-    const photo = photos[index];
-
-    this.deletePhotoFromStorage(photo, index);
-  }
-
-  onDeleteFileFromState(index) {
-    this.deleteFileFromState(index);
-  }
-
-  onFileUploadError(error) {
-    this.logError(error);
-  }
-
-  addFilesToState(files) {
+  onAddShootPhotos(event) {
+    const { files } = event.target;
     const stateFiles = this.state.files;
 
     // Convert the files object to an array
@@ -87,6 +70,23 @@ export class ManagePhotos extends React.Component {
     const newFiles = stateFiles.concat(filesArray);
 
     this.setFiles(newFiles, this.handleNextFileUpload);
+  }
+
+  onDeleteShootPhoto(index) {
+    const { shoots, shootID } = this.props;
+    const shoot = shoots.filter((item) => item.id === shootID)[0];
+    const { photos } = shoot;
+    const photo = photos[index];
+
+    this.deletePhotoFromStorage(photo, index);
+  }
+
+  onDeleteShootFile(index) {
+    this.deleteFileFromState(index);
+  }
+
+  onFileUploadError(error) {
+    this.logError(error);
   }
 
   async deletePhotoFromStorage(url, index) {
@@ -257,49 +257,59 @@ export class ManagePhotos extends React.Component {
 
     return (
       <Layout title={title}>
-        <section id="thumbnails-container" className="container flex row wrap">
-          {photos &&
-            photos.map((photo, index) => {
-              const alt = `${name}-${index}`;
+        <section>
+          <HeadingText>Cover Photo</HeadingText>
+
+          <div>
+            <AddPhotosButton handleChange={this.onAddCoverPhoto} />
+          </div>
+        </section>
+
+        <section>
+          <HeadingText>Shoot Photos</HeadingText>
+
+          <div id="thumbnails-container" className="container flex row wrap">
+            {photos &&
+              photos.map((photo, index) => {
+                const alt = `${name}-${index}`;
+
+                return (
+                  <Thumbnail
+                    key={photo}
+                    src={photo}
+                    alt={alt}
+                    handleDelete={() => this.onDeleteShootPhoto(index)}
+                  />
+                );
+              })}
+
+            {files.map((file, index) => {
+              const key = file.name;
+              const src = getBlobURL(file);
+              const alt = `${name}-temp-${index}`;
+              const progressComponent = index === 0 && <ProgressBar progress={progress} />;
 
               return (
                 <Thumbnail
-                  key={photo}
-                  src={photo}
+                  key={key}
+                  src={src}
                   alt={alt}
-                  handleDelete={() => this.onDeletePhoto(index)}
-                />
+                  handleDelete={() => this.onDeleteShootFile(index)}
+                >
+                  <div className="overlay">
+                    {progressComponent}
+
+                    <div className="spacer-vt" />
+                  </div>
+                </Thumbnail>
               );
             })}
 
-          {files.map((file, index) => {
-            const key = file.name;
-            const src = getBlobURL(file);
-            const alt = `${name}-temp-${index}`;
-            const progressComponent = index === 0 && <ProgressBar progress={progress} />;
-
-            return (
-              <Thumbnail
-                key={key}
-                src={src}
-                alt={alt}
-                handleDelete={() => this.onDeleteFileFromState(index)}
-              >
-                <div className="overlay">
-                  {progressComponent}
-
-                  <div className="spacer-vt" />
-                </div>
-              </Thumbnail>
-            );
-          })}
+            <AddPhotosButton gridSize={4} multiple handleChange={this.onAddShootPhotos} />
+          </div>
         </section>
 
-        <ControlPanel controls={controls}>
-          <AddPhotosButton handleChange={this.onAddPhotos} />
-
-          <div className="spacer-hz" />
-        </ControlPanel>
+        <ControlPanel controls={controls} />
 
         <style jsx>{styles}</style>
       </Layout>

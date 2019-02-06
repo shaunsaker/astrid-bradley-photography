@@ -112,8 +112,6 @@ class Admin extends React.Component {
             <section key={year}>
               <HeadingText>{year}</HeadingText>
 
-              <div className="spacer-vt" />
-
               {groupedShootsArray.map((shoot) => {
                 const { id } = shoot;
 
