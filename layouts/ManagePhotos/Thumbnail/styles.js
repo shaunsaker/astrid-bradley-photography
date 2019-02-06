@@ -12,8 +12,7 @@ const styles = css`
 
   .thumbnail {
     object-fit: cover;
-    height: 100%;
-    max-height: 125px;
+    height: 125px;
   }
 
   .icon-button-container {
@@ -28,9 +27,10 @@ const styles = css`
     right: 0;
     bottom: 0;
     left: 0;
+    height: 125px;
     justify-content: center;
     align-items: center;
-    border: 2px solid ${colors.lightGrey};
+    border: 1px solid ${colors.lightGrey};
     margin-bottom: ${rhythm.vt}px;
   }
 
