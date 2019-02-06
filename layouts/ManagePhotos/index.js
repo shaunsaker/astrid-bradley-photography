@@ -20,17 +20,18 @@ export class ManagePhotos extends React.Component {
 
     this.onAddPhotos = this.onAddPhotos.bind(this);
     this.onDeletePhoto = this.onDeletePhoto.bind(this);
-    this.onDeleteFile = this.onDeleteFile.bind(this);
-    this.addFiles = this.addFiles.bind(this);
-    this.deletePhoto = this.deletePhoto.bind(this);
-    this.deleteFile = this.deleteFile.bind(this);
+    this.onDeleteFileFromState = this.onDeleteFileFromState.bind(this);
+    this.onFileUploadError = this.onFileUploadError.bind(this);
+    this.addFilesToState = this.addFilesToState.bind(this);
+    this.deletePhotoFromStorage = this.deletePhotoFromStorage.bind(this);
+    this.deleteFileFromState = this.deleteFileFromState.bind(this);
     this.handleNextFileUpload = this.handleNextFileUpload.bind(this);
     this.setFiles = this.setFiles.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
+    this.uploadFileToStorage = this.uploadFileToStorage.bind(this);
     this.setProgress = this.setProgress.bind(this);
-    this.handleSavePhoto = this.handleSavePhoto.bind(this);
+    this.savePhotoToShoot = this.savePhotoToShoot.bind(this);
+    this.deletePhotoFromShoot = this.deletePhotoFromShoot.bind(this);
     this.saveShoot = this.saveShoot.bind(this);
-    this.handleError = this.handleError.bind(this);
     this.logError = this.logError.bind(this);
 
     this.state = {
@@ -56,20 +57,27 @@ export class ManagePhotos extends React.Component {
   onAddPhotos(event) {
     const { files } = event.target;
 
-    this.addFiles(files);
+    this.addFilesToState(files);
   }
 
   onDeletePhoto(index) {
-    // TODO:
-    // Save shoot
-    // Remove from storag
+    const { shoots, shootID } = this.props;
+    const shoot = shoots.filter((item) => item.id === shootID)[0];
+    const { photos } = shoot;
+    const photo = photos[index];
+
+    this.deletePhotoFromStorage(photo, index);
   }
 
-  onDeleteFile(index) {
-    this.deleteFile(index);
+  onDeleteFileFromState(index) {
+    this.deleteFileFromState(index);
   }
 
-  addFiles(files) {
+  onFileUploadError(error) {
+    this.logError(error);
+  }
+
+  addFilesToState(files) {
     const stateFiles = this.state.files;
 
     // Convert the files object to an array
@@ -81,9 +89,30 @@ export class ManagePhotos extends React.Component {
     this.setFiles(newFiles, this.handleNextFileUpload);
   }
 
-  deletePhoto() {}
+  async deletePhotoFromStorage(url, index) {
+    const { shootID } = this.props;
 
-  deleteFile(index) {
+    // SPLIT the url into X?X
+    // SPLIT the url into X/X/X/X
+    // GET the filename from the last item
+    const urlArray = decodeURIComponent(url)
+      .split('?')[0]
+      .split('/');
+    const fileName = urlArray[urlArray.length - 1];
+    const storageURL = `${shootID}/${fileName}`;
+    const storageRef = await getRef();
+
+    storageRef
+      .child(storageURL)
+      .delete()
+      .then(() => this.deletePhotoFromShoot(index))
+      .catch((error) => {
+        this.logError(error);
+        this.deletePhotoFromShoot(index);
+      });
+  }
+
+  deleteFileFromState(index) {
     const { files } = this.state;
 
     files.splice(index, 1);
@@ -103,7 +132,7 @@ export class ManagePhotos extends React.Component {
       const fileName = firstFile.name; // TODO: Should be unique
       const url = `${folder}/${fileName}`;
 
-      this.uploadFile(firstFile, url);
+      this.uploadFileToStorage(firstFile, url);
     }
   }
 
@@ -116,7 +145,7 @@ export class ManagePhotos extends React.Component {
     );
   }
 
-  async uploadFile(file, url) {
+  async uploadFileToStorage(file, url) {
     const storageRef = await getRef();
     const uploadTask = storageRef.child(url).put(file);
 
@@ -129,15 +158,15 @@ export class ManagePhotos extends React.Component {
         this.setProgress(progress);
       },
       (error) => {
-        this.handleError(error);
+        this.onFileUploadError(error);
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           // Save the photo
-          this.handleSavePhoto(downloadURL);
+          this.savePhotoToShoot(downloadURL);
 
           // Delete the file from state
-          this.deleteFile(0);
+          this.deleteFileFromState(0);
 
           // Upload the next file
           this.handleNextFileUpload();
@@ -152,7 +181,7 @@ export class ManagePhotos extends React.Component {
     });
   }
 
-  handleSavePhoto(url) {
+  savePhotoToShoot(url) {
     const { shoots, shootID } = this.props;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
 
@@ -161,6 +190,19 @@ export class ManagePhotos extends React.Component {
     } else {
       shoot.photos = [url];
     }
+
+    this.saveShoot(shoot);
+  }
+
+  deletePhotoFromShoot(index) {
+    const { shoots, shootID } = this.props;
+    const shoot = shoots.filter((item) => item.id === shootID)[0];
+    const { photos } = shoot;
+    const newPhotos = photos;
+
+    newPhotos.splice(index, 1);
+
+    shoot.photos = newPhotos;
 
     this.saveShoot(shoot);
   }
@@ -181,10 +223,6 @@ export class ManagePhotos extends React.Component {
         url: `shoots/${shootID}`,
       },
     });
-  }
-
-  handleError(error) {
-    this.logError(error);
   }
 
   logError(error) {
@@ -245,7 +283,7 @@ export class ManagePhotos extends React.Component {
                 key={key}
                 src={src}
                 alt={alt}
-                handleDelete={() => this.onDeleteFile(index)}
+                handleDelete={() => this.onDeleteFileFromState(index)}
               >
                 <div className="overlay">
                   {progressComponent}
