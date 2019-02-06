@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../../static/styles/styleConstants';
+import { colors } from '../../static/styles/styleConstants';
 
 const SIZE = 40;
 const BORDER_SIZE = 4;

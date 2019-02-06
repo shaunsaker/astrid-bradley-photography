@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const ProgressBar = ({ progress }) => {
+  const progressPercent = `${progress}%`;
+
   return (
     <div className="container">
-      <div style={{ width: progress || 5 }} className="bar shadow-md" />
+      <div style={{ width: progressPercent }} className="bar shadow-md" />
 
       <style jsx>{styles}</style>
     </div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Spinner from './Spinner';
+import Spinner from '../Spinner';
 
 const LoadingSection = () => {
   return (

@@ -16,6 +16,7 @@ const styles = css`
     justify-content: center;
     align-items: center;
     transition: 0.5s width ease;
+    width: 0%;
   }
 `;
 

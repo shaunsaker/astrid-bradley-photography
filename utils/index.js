@@ -1,5 +1,6 @@
 import cloneObject from './cloneObject';
 import createUID from './createUID';
+import getBlobURL from './getBlobURL';
 import getElementRect from './getElementRect';
 import getFormDate from './getFormDate';
 import getPrettyDate from './getPrettyDate';
@@ -11,6 +12,7 @@ import sortArrayOfObjectsByKey from './sortArrayOfObjectsByKey';
 const utils = {
   cloneObject,
   createUID,
+  getBlobURL,
   getElementRect,
   getFormDate,
   getPrettyDate,
@@ -23,6 +25,7 @@ const utils = {
 export {
   cloneObject,
   createUID,
+  getBlobURL,
   getElementRect,
   getFormDate,
   getPrettyDate,
