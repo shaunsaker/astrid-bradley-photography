@@ -21,6 +21,7 @@ export class ManagePhotos extends React.Component {
 
     this.onAddCoverPhoto = this.onAddCoverPhoto.bind(this);
     this.onAddShootPhotos = this.onAddShootPhotos.bind(this);
+    this.onDeleteCoverPhoto = this.onDeleteCoverPhoto.bind(this);
     this.onDeleteShootPhoto = this.onDeleteShootPhoto.bind(this);
     this.onDeleteShootFile = this.onDeleteShootFile.bind(this);
     this.onFileUploadError = this.onFileUploadError.bind(this);
@@ -57,6 +58,12 @@ export class ManagePhotos extends React.Component {
 
   onAddCoverPhoto(event) {
     const { files } = event.target;
+
+    // Convert the files object to an array
+    const filesArray = Object.keys(files).map((key) => files[key]);
+    const file = filesArray[0];
+
+    // TODO: Upload the file
   }
 
   onAddShootPhotos(event) {
@@ -71,6 +78,8 @@ export class ManagePhotos extends React.Component {
 
     this.setFiles(newFiles, this.handleNextFileUpload);
   }
+
+  onDeleteCoverPhoto() {}
 
   onDeleteShootPhoto(index) {
     const { shoots, shootID } = this.props;
@@ -241,8 +250,14 @@ export class ManagePhotos extends React.Component {
     const { files, progress } = this.state;
     const { shoots, shootID } = this.props;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
-    const { name, id, photos } = shoot;
+    const { name, id, cover_photo_url, photos } = shoot;
     const title = `Manage Photos: ${name}`;
+
+    const coverPhotoComponent = cover_photo_url ? (
+      <Thumbnail src={cover_photo_url} alt={name} handleDelete={this.onDeleteCoverPhoto} />
+    ) : (
+      <AddPhotosButton handleChange={this.onAddCoverPhoto} />
+    );
 
     // Create the controls (needs to be dynamic)
     const controls = [
@@ -260,9 +275,7 @@ export class ManagePhotos extends React.Component {
         <section>
           <HeadingText>Cover Photo</HeadingText>
 
-          <div>
-            <AddPhotosButton handleChange={this.onAddCoverPhoto} />
-          </div>
+          {coverPhotoComponent}
         </section>
 
         <section>
@@ -276,6 +289,7 @@ export class ManagePhotos extends React.Component {
                 return (
                   <Thumbnail
                     key={photo}
+                    gridSize={4}
                     src={photo}
                     alt={alt}
                     handleDelete={() => this.onDeleteShootPhoto(index)}
@@ -292,6 +306,7 @@ export class ManagePhotos extends React.Component {
               return (
                 <Thumbnail
                   key={key}
+                  gridSize={4}
                   src={src}
                   alt={alt}
                   handleDelete={() => this.onDeleteShootFile(index)}

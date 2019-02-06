@@ -21,6 +21,7 @@ export class Thumbnail extends React.Component {
 
   static propTypes = {
     src: PropTypes.string,
+    gridSize: PropTypes.number,
     alt: PropTypes.string,
     handleDelete: PropTypes.func,
     children: PropTypes.node,
@@ -40,7 +41,7 @@ export class Thumbnail extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { src, alt, handleDelete, children } = this.props;
+    const { gridSize, src, alt, handleDelete, children } = this.props;
 
     const deleteComponent = handleDelete && !loading && (
       <div className="icon-button-container">
@@ -59,7 +60,7 @@ export class Thumbnail extends React.Component {
     );
 
     return (
-      <GridItem key={src} gridSize={4}>
+      <GridItem key={src} gridSize={gridSize}>
         <img
           src={src}
           alt={alt}
