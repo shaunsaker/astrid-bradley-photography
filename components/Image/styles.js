@@ -7,7 +7,7 @@ const ICON_BUTTON_SIZE = 20;
 const styles = css`
   .image {
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .icon-button-container {
