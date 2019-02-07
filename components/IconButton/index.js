@@ -4,23 +4,27 @@ import PropTypes from 'prop-types';
 import { colors } from '../../static/styles/styleConstants';
 import styles from './styles';
 
+import Spinner from '../Spinner';
 import Icon from '../Icon';
 import Tooltip from './Tooltip';
 
-const IconButton = ({ iconName, label, small, handleClick }) => {
+const IconButton = ({ iconName, label, small, loading, handleClick }) => {
+  const iconComponent = loading ? (
+    <Spinner small={small} />
+  ) : (
+    <Icon name={iconName} color={small ? colors.black : colors.white} size={small && 16} />
+  );
   const tooltipComponent = label && <Tooltip text={label} />;
 
   return (
     <button
       type="button"
       onClick={handleClick}
-      className={`container flex-center ${
-        small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'
-      }`}
+      className={`container ${small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'}
+      ${loading && 'loading'}
+      `}
     >
-      <div className="icon-container">
-        <Icon name={iconName} color={colors.white} size={small && 16} />
-      </div>
+      <div className="icon-container flex-center">{iconComponent}</div>
 
       <div className="tooltip-container">{tooltipComponent}</div>
 
@@ -33,6 +37,7 @@ IconButton.propTypes = {
   iconName: PropTypes.string,
   label: PropTypes.string, // for tooltip
   small: PropTypes.bool,
+  loading: PropTypes.bool,
   handleClick: PropTypes.func,
 };
 IconButton.defaultProps = {};

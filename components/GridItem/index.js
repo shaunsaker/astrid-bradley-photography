@@ -6,6 +6,8 @@ import { rhythm } from '../../static/styles/styleConstants';
 import styles from './styles';
 
 const GridItem = ({ gridSize, children }) => {
+  const height = gridSize === 1 ? 250 : 125;
+
   return (
     <div className="container">
       {children}
@@ -13,6 +15,11 @@ const GridItem = ({ gridSize, children }) => {
       <style jsx>{styles}</style>
 
       <style jsx>{`
+        .container {
+          height: ${height}px;
+          max-height: ${height}px;
+        }
+
         @media (min-width: 480px) {
           .container {
             width: calc(${100 / gridSize}% - ${((gridSize - 1) * rhythm.vt) / gridSize}px);

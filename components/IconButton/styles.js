@@ -18,7 +18,7 @@ const styles = css`
     width: ${SMALL_SIZE}px;
     height: ${SMALL_SIZE}px;
     border-radius: ${SMALL_SIZE / 2}px;
-    background-color: ${colors.grey};
+    background-color: ${colors.white};
   }
 
   .icon-container {

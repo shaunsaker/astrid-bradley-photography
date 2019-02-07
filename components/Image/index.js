@@ -54,7 +54,7 @@ export class Image extends React.Component {
         <img
           src={src}
           alt={alt}
-          className="thumbnail"
+          className="image"
           onLoad={this.onLoadEnd}
           onError={this.onLoadEnd}
         />
@@ -62,8 +62,6 @@ export class Image extends React.Component {
         {children}
 
         {loadingComponent}
-
-        <div className="spacer-vt" />
 
         <style jsx>{styles}</style>
       </GridItem>

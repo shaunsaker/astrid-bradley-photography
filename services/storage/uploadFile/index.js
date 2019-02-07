@@ -22,6 +22,6 @@ export default async (url, file, onProgress, onError, onFileUploaded) => {
       },
     );
   } catch (error) {
-    throw error;
+    onError(error);
   }
 };

@@ -10,6 +10,6 @@ export default async (url, onFileDelete, onError) => {
       .then(onFileDelete)
       .catch(onError);
   } catch (error) {
-    throw error;
+    onError(error);
   }
 };

@@ -1,13 +1,13 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors, rhythm } from '../../static/styles/styleConstants';
+import { colors } from '../../static/styles/styleConstants';
 
 const ICON_BUTTON_SIZE = 20;
 
 const styles = css`
-  .thumbnail {
-    object-fit: cover;
-    height: 125px;
+  .image {
+    height: 100%;
+    object-fit: contain;
   }
 
   .icon-button-container {
@@ -17,9 +17,7 @@ const styles = css`
   }
 
   .loading-container {
-    height: 125px;
     border: 1px solid ${colors.lightGrey};
-    margin-bottom: ${rhythm.vt}px;
   }
 `;
 

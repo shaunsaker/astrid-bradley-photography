@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { getBlobURL } from '../../../utils';
 import { uploadFile } from '../../../services/storage';
@@ -23,6 +24,7 @@ export class PhotoUploadList extends React.Component {
     this.removeFileAtIndex = this.removeFileAtIndex.bind(this);
     this.setFiles = this.setFiles.bind(this);
     this.setProgress = this.setProgress.bind(this);
+    this.logError = this.logError.bind(this);
 
     this.state = {
       files: [],
@@ -32,7 +34,8 @@ export class PhotoUploadList extends React.Component {
 
   static propTypes = {
     dir: PropTypes.string, // dir to upload files to
-    handleFileUploaded: PropTypes.func.isRequired,
+    gridSize: PropTypes.number,
+    handlePhotoUploaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func,
   };
 
@@ -59,9 +62,9 @@ export class PhotoUploadList extends React.Component {
   }
 
   onFileUploaded(downloadURL) {
-    const { handleFileUploaded } = this.props;
+    const { handlePhotoUploaded } = this.props;
 
-    handleFileUploaded(downloadURL);
+    handlePhotoUploaded(downloadURL);
 
     this.removeFileAtIndex(0);
     this.handleNextFileUpload();
@@ -72,14 +75,14 @@ export class PhotoUploadList extends React.Component {
   }
 
   handleNextFileUpload() {
-    // const { files } = this.state;
-    // const file = files[0];
-    // if (file) {
-    //   const { name } = file;
-    //   const { dir } = this.props;
-    //   const url = `${dir}/${name}`;
-    //   uploadFile(url, file, this.onProgress, this.onError, this.onFileUploaded);
-    // }
+    const { files } = this.state;
+    const file = files[0];
+    if (file) {
+      const { name } = file;
+      const { dir } = this.props;
+      const url = `${dir}/${name}`;
+      uploadFile(url, file, this.onProgress, this.onError, this.onFileUploaded);
+    }
   }
 
   removeFileAtIndex(index) {
@@ -117,9 +120,15 @@ export class PhotoUploadList extends React.Component {
 
   render() {
     const { files, progress } = this.state;
+    const { gridSize } = this.props;
+
+    const addFileButtonComponent = (((!gridSize || gridSize === 1) && !files.length) ||
+      gridSize > 1) && (
+      <AddFileButton gridSize={gridSize} multiple handleAddFiles={this.onAddFiles} />
+    );
 
     return (
-      <div className="container row wrap">
+      <Fragment>
         {files.map((file, index) => {
           const key = file.name;
           const src = getBlobURL(file);
@@ -132,7 +141,7 @@ export class PhotoUploadList extends React.Component {
             ) : null;
 
           return (
-            <Image key={key} src={src} alt={alt} gridSize={4}>
+            <Image key={key} src={src} alt={alt} gridSize={gridSize}>
               <div className="overlay abs-stretch" />
 
               {progressComponent}
@@ -149,12 +158,12 @@ export class PhotoUploadList extends React.Component {
           );
         })}
 
-        <AddFileButton gridSize={4} multiple handleAddFiles={this.onAddFiles} />
+        {addFileButtonComponent}
 
         <style jsx>{styles}</style>
-      </div>
+      </Fragment>
     );
   }
 }
 
-export default PhotoUploadList;
+export default connect()(PhotoUploadList);

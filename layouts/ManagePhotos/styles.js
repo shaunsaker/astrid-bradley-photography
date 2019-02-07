@@ -4,12 +4,6 @@ const styles = css`
   .container {
     align-items: stretch;
   }
-
-  .file-delete-button-container {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-  }
 `;
 
 export default styles;

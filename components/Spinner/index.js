@@ -1,16 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const Spinner = () => {
+const Spinner = ({ small }) => {
   return (
-    <div className={styles.container}>
+    <div className={`container ${small && 'small'}`}>
       <style jsx>{styles}</style>
     </div>
   );
 };
 
-Spinner.propTypes = {};
+Spinner.propTypes = {
+  small: PropTypes.bool,
+};
 Spinner.defaultProps = {};
 
 export default Spinner;
