@@ -1,8 +1,11 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors, rhythm } from '../../../static/styles/styleConstants';
+import { colors, rhythm } from '../../../../static/styles/styleConstants';
 
 const styles = css`
+  .wrapper {
+  }
+
   .container {
     align-self: stretch;
     background-color: ${colors.white};
@@ -13,8 +16,6 @@ const styles = css`
     border: 1px solid ${colors.white};
     height: ${rhythm.vt / 2}px;
     background-color: ${colors.accent2};
-    justify-content: center;
-    align-items: center;
     transition: 0.5s width ease;
     width: 0%;
   }

@@ -31,7 +31,6 @@ const styles = css`
 
   .dots-container {
     padding-top: ${rhythm.vt}px;
-    justify-content: center;
   }
 
   .dot {

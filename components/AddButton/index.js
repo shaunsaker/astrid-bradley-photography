@@ -11,7 +11,7 @@ const AddButton = ({ handleClick }) => {
   return (
     <button
       type="button"
-      className={`container flex ${handleClick && 'shadow-sm shadow-hover'}`}
+      className={`container flex flex-center ${handleClick && 'shadow-sm shadow-hover'}`}
       onClick={handleClick}
       disabled={!handleClick}
     >

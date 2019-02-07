@@ -15,7 +15,7 @@ const Springboard = ({ image, text, link }) => {
       <div className="container shadow-sm shadow-hover relative">
         <img src={src} alt={alt} />
 
-        <div className="text-container">
+        <div className="text-container abs-stretch flex-center">
           <Button text={text} noShadow />
         </div>
 

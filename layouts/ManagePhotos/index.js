@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getRef } from '../../services/storage';
-import { getBlobURL } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
 import HeadingText from '../../components/HeadingText';
-import Thumbnail from './Thumbnail';
-import ProgressBar from './ProgressBar';
+// import Image from '../../components/Image';
+// import FileUploadButton from './FileUploadButton';
+// import FileDeleteButton from './FileDeleteButton';
+import PhotoUploadList from './PhotoUploadList';
 import ControlPanel from '../../components/ControlPanel';
-import AddPhotosButton from './AddPhotosButton';
 
 import withAuth from '../../wrappers/withAuth';
 
@@ -19,22 +18,24 @@ export class ManagePhotos extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onAddCoverPhoto = this.onAddCoverPhoto.bind(this);
-    this.onAddShootPhotos = this.onAddShootPhotos.bind(this);
-    this.onDeleteCoverPhoto = this.onDeleteCoverPhoto.bind(this);
-    this.onDeleteShootPhoto = this.onDeleteShootPhoto.bind(this);
-    this.onDeleteShootFile = this.onDeleteShootFile.bind(this);
-    this.onFileUploadError = this.onFileUploadError.bind(this);
-    this.deletePhotoFromStorage = this.deletePhotoFromStorage.bind(this);
-    this.deleteFileFromState = this.deleteFileFromState.bind(this);
-    this.handleNextFileUpload = this.handleNextFileUpload.bind(this);
-    this.setFiles = this.setFiles.bind(this);
-    this.uploadFileToStorage = this.uploadFileToStorage.bind(this);
-    this.setProgress = this.setProgress.bind(this);
-    this.savePhotoToShoot = this.savePhotoToShoot.bind(this);
-    this.deletePhotoFromShoot = this.deletePhotoFromShoot.bind(this);
-    this.saveShoot = this.saveShoot.bind(this);
-    this.logError = this.logError.bind(this);
+    this.onFileUploaded = this.onFileUploaded.bind(this);
+
+    // this.onAddCoverPhoto = this.onAddCoverPhoto.bind(this);
+    // this.onAddShootPhotos = this.onAddShootPhotos.bind(this);
+    // this.onDeleteCoverPhoto = this.onDeleteCoverPhoto.bind(this);
+    // this.onDeleteShootPhoto = this.onDeleteShootPhoto.bind(this);
+    // this.onDeleteShootFile = this.onDeleteShootFile.bind(this);
+    // this.onFileUploadError = this.onFileUploadError.bind(this);
+    // this.deletePhotoFromStorage = this.deletePhotoFromStorage.bind(this);
+    // this.deleteFileFromState = this.deleteFileFromState.bind(this);
+    // this.handleNextFileUpload = this.handleNextFileUpload.bind(this);
+    // this.setFiles = this.setFiles.bind(this);
+    // this.uploadFileToStorage = this.uploadFileToStorage.bind(this);
+    // this.setProgress = this.setProgress.bind(this);
+    // this.savePhotoToShoot = this.savePhotoToShoot.bind(this);
+    // this.deletePhotoFromShoot = this.deletePhotoFromShoot.bind(this);
+    // this.saveShoot = this.saveShoot.bind(this);
+    // this.logError = this.logError.bind(this);
 
     this.state = {
       files: [],
@@ -56,195 +57,197 @@ export class ManagePhotos extends React.Component {
 
   static defaultProps = {};
 
-  onAddCoverPhoto(event) {
-    const { files } = event.target;
+  onFileUploaded(downloadURL) {}
 
-    // Convert the files object to an array
-    const filesArray = Object.keys(files).map((key) => files[key]);
-    const file = filesArray[0];
+  // onAddCoverPhoto(event) {
+  //   const { files } = event.target;
 
-    // TODO: Upload the file
-  }
+  //   // Convert the files object to an array
+  //   const filesArray = Object.keys(files).map((key) => files[key]);
+  //   const file = filesArray[0];
 
-  onAddShootPhotos(event) {
-    const { files } = event.target;
-    const stateFiles = this.state.files;
+  //   // TODO: Upload the file
+  // }
 
-    // Convert the files object to an array
-    const filesArray = Object.keys(files).map((key) => files[key]);
+  // onAddShootPhotos(event) {
+  //   const { files } = event.target;
+  //   const stateFiles = this.state.files;
 
-    // Concat the filesArray onto the stateFiles
-    const newFiles = stateFiles.concat(filesArray);
+  //   // Convert the files object to an array
+  //   const filesArray = Object.keys(files).map((key) => files[key]);
 
-    this.setFiles(newFiles, this.handleNextFileUpload);
-  }
+  //   // Concat the filesArray onto the stateFiles
+  //   const newFiles = stateFiles.concat(filesArray);
 
-  onDeleteCoverPhoto() {}
+  //   this.setFiles(newFiles, this.handleNextFileUpload);
+  // }
 
-  onDeleteShootPhoto(index) {
-    const { shoots, shootID } = this.props;
-    const shoot = shoots.filter((item) => item.id === shootID)[0];
-    const { photos } = shoot;
-    const photo = photos[index];
+  // onDeleteCoverPhoto() {}
 
-    this.deletePhotoFromStorage(photo, index);
-  }
+  // onDeleteShootPhoto(index) {
+  //   const { shoots, shootID } = this.props;
+  //   const shoot = shoots.filter((item) => item.id === shootID)[0];
+  //   const { photos } = shoot;
+  //   const photo = photos[index];
 
-  onDeleteShootFile(index) {
-    this.deleteFileFromState(index);
-  }
+  //   this.deletePhotoFromStorage(photo, index);
+  // }
 
-  onFileUploadError(error) {
-    this.logError(error);
-  }
+  // onDeleteShootFile(index) {
+  //   this.deleteFileFromState(index);
+  // }
 
-  async deletePhotoFromStorage(url, index) {
-    const { shootID } = this.props;
+  // onFileUploadError(error) {
+  //   this.logError(error);
+  // }
 
-    // SPLIT the url into X?X
-    // SPLIT the url into X/X/X/X
-    // GET the filename from the last item
-    const urlArray = decodeURIComponent(url)
-      .split('?')[0]
-      .split('/');
-    const fileName = urlArray[urlArray.length - 1];
-    const storageURL = `${shootID}/${fileName}`;
-    const storageRef = await getRef();
+  // async deletePhotoFromStorage(url, index) {
+  //   const { shootID } = this.props;
 
-    storageRef
-      .child(storageURL)
-      .delete()
-      .then(() => this.deletePhotoFromShoot(index))
-      .catch((error) => {
-        this.logError(error);
-        this.deletePhotoFromShoot(index);
-      });
-  }
+  //   // SPLIT the url into X?X
+  //   // SPLIT the url into X/X/X/X
+  //   // GET the filename from the last item
+  //   const urlArray = decodeURIComponent(url)
+  //     .split('?')[0]
+  //     .split('/');
+  //   const fileName = urlArray[urlArray.length - 1];
+  //   const storageURL = `${shootID}/${fileName}`;
+  //   const storageRef = await getRef();
 
-  deleteFileFromState(index) {
-    const { files } = this.state;
+  //   storageRef
+  //     .child(storageURL)
+  //     .delete()
+  //     .then(() => this.deletePhotoFromShoot(index))
+  //     .catch((error) => {
+  //       this.logError(error);
+  //       this.deletePhotoFromShoot(index);
+  //     });
+  // }
 
-    files.splice(index, 1);
+  // deleteFileFromState(index) {
+  //   const { files } = this.state;
 
-    this.setState({
-      files,
-    });
-  }
+  //   files.splice(index, 1);
 
-  handleNextFileUpload() {
-    const { files } = this.state;
-    const firstFile = files[0];
+  //   this.setState({
+  //     files,
+  //   });
+  // }
 
-    if (firstFile) {
-      const { shootID } = this.props;
-      const folder = shootID;
-      const fileName = firstFile.name; // TODO: Should be unique
-      const url = `${folder}/${fileName}`;
+  // handleNextFileUpload() {
+  //   const { files } = this.state;
+  //   const firstFile = files[0];
 
-      this.uploadFileToStorage(firstFile, url);
-    }
-  }
+  //   if (firstFile) {
+  //     const { shootID } = this.props;
+  //     const folder = shootID;
+  //     const fileName = firstFile.name; // TODO: Should be unique
+  //     const url = `${folder}/${fileName}`;
 
-  setFiles(files, callback) {
-    this.setState(
-      {
-        files,
-      },
-      callback,
-    );
-  }
+  //     this.uploadFileToStorage(firstFile, url);
+  //   }
+  // }
 
-  async uploadFileToStorage(file, url) {
-    const storageRef = await getRef();
-    const uploadTask = storageRef.child(url).put(file);
+  // setFiles(files, callback) {
+  //   this.setState(
+  //     {
+  //       files,
+  //     },
+  //     callback,
+  //   );
+  // }
 
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const { bytesTransferred, totalBytes } = snapshot;
-        const progress = (100 * bytesTransferred) / totalBytes;
+  // async uploadFileToStorage(file, url) {
+  //   const storageRef = await getRef();
+  //   const uploadTask = storageRef.child(url).put(file);
 
-        this.setProgress(progress);
-      },
-      (error) => {
-        this.onFileUploadError(error);
-      },
-      () => {
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          // Save the photo
-          this.savePhotoToShoot(downloadURL);
+  //   uploadTask.on(
+  //     'state_changed',
+  //     (snapshot) => {
+  //       const { bytesTransferred, totalBytes } = snapshot;
+  //       const progress = (100 * bytesTransferred) / totalBytes;
 
-          // Delete the file from state
-          this.deleteFileFromState(0);
+  //       this.setProgress(progress);
+  //     },
+  //     (error) => {
+  //       this.onFileUploadError(error);
+  //     },
+  //     () => {
+  //       uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+  //         // Save the photo
+  //         this.savePhotoToShoot(downloadURL);
 
-          // Upload the next file
-          this.handleNextFileUpload();
-        });
-      },
-    );
-  }
+  //         // Delete the file from state
+  //         this.deleteFileFromState(0);
 
-  setProgress(progress) {
-    this.setState({
-      progress,
-    });
-  }
+  //         // Upload the next file
+  //         this.handleNextFileUpload();
+  //       });
+  //     },
+  //   );
+  // }
 
-  savePhotoToShoot(url) {
-    const { shoots, shootID } = this.props;
-    const shoot = shoots.filter((item) => item.id === shootID)[0];
+  // setProgress(progress) {
+  //   this.setState({
+  //     progress,
+  //   });
+  // }
 
-    if (shoot.photos) {
-      shoot.photos.push(url);
-    } else {
-      shoot.photos = [url];
-    }
+  // savePhotoToShoot(url) {
+  //   const { shoots, shootID } = this.props;
+  //   const shoot = shoots.filter((item) => item.id === shootID)[0];
 
-    this.saveShoot(shoot);
-  }
+  //   if (shoot.photos) {
+  //     shoot.photos.push(url);
+  //   } else {
+  //     shoot.photos = [url];
+  //   }
 
-  deletePhotoFromShoot(index) {
-    const { shoots, shootID } = this.props;
-    const shoot = shoots.filter((item) => item.id === shootID)[0];
-    const { photos } = shoot;
-    const newPhotos = photos;
+  //   this.saveShoot(shoot);
+  // }
 
-    newPhotos.splice(index, 1);
+  // deletePhotoFromShoot(index) {
+  //   const { shoots, shootID } = this.props;
+  //   const shoot = shoots.filter((item) => item.id === shootID)[0];
+  //   const { photos } = shoot;
+  //   const newPhotos = photos;
 
-    shoot.photos = newPhotos;
+  //   newPhotos.splice(index, 1);
 
-    this.saveShoot(shoot);
-  }
+  //   shoot.photos = newPhotos;
 
-  saveShoot(shoot) {
-    const { dispatch, shootID } = this.props;
-    const document = shoot;
+  //   this.saveShoot(shoot);
+  // }
 
-    // Add a date_modified field with the current time
-    document.date_modified = Date.now();
+  // saveShoot(shoot) {
+  //   const { dispatch, shootID } = this.props;
+  //   const document = shoot;
 
-    dispatch({
-      type: 'setDocument',
-      payload: {
-        document,
-      },
-      meta: {
-        url: `shoots/${shootID}`,
-      },
-    });
-  }
+  //   // Add a date_modified field with the current time
+  //   document.date_modified = Date.now();
 
-  logError(error) {
-    const { dispatch } = this.props;
-    const { message } = error;
+  //   dispatch({
+  //     type: 'setDocument',
+  //     payload: {
+  //       document,
+  //     },
+  //     meta: {
+  //       url: `shoots/${shootID}`,
+  //     },
+  //   });
+  // }
 
-    dispatch({
-      type: 'SET_SYSTEM_MESSAGE',
-      payload: {
-        message,
-      },
-    });
-  }
+  // logError(error) {
+  //   const { dispatch } = this.props;
+  //   const { message } = error;
+
+  //   dispatch({
+  //     type: 'SET_SYSTEM_MESSAGE',
+  //     payload: {
+  //       message,
+  //     },
+  //   });
+  // }
 
   render() {
     const { files, progress } = this.state;
@@ -253,11 +256,11 @@ export class ManagePhotos extends React.Component {
     const { name, id, cover_photo_url, photos } = shoot;
     const title = `Manage Photos: ${name}`;
 
-    const coverPhotoComponent = cover_photo_url ? (
-      <Thumbnail src={cover_photo_url} alt={name} handleDelete={this.onDeleteCoverPhoto} />
-    ) : (
-      <AddPhotosButton handleChange={this.onAddCoverPhoto} />
-    );
+    // const coverPhotoComponent = cover_photo_url ? (
+    //   <Image src={cover_photo_url} alt={name} />
+    // ) : (
+    //   <FileUploadButton onProgress={null} onError={null} onFileUpload={null} />
+    // );
 
     // Create the controls (needs to be dynamic)
     const controls = [
@@ -272,56 +275,16 @@ export class ManagePhotos extends React.Component {
 
     return (
       <Layout title={title}>
-        <section>
+        {/* <section>
           <HeadingText>Cover Photo</HeadingText>
 
           {coverPhotoComponent}
-        </section>
+        </section> */}
 
         <section>
           <HeadingText>Shoot Photos</HeadingText>
 
-          <div id="thumbnails-container" className="container flex row wrap">
-            {photos &&
-              photos.map((photo, index) => {
-                const alt = `${name}-${index}`;
-
-                return (
-                  <Thumbnail
-                    key={photo}
-                    gridSize={4}
-                    src={photo}
-                    alt={alt}
-                    handleDelete={() => this.onDeleteShootPhoto(index)}
-                  />
-                );
-              })}
-
-            {files.map((file, index) => {
-              const key = file.name;
-              const src = getBlobURL(file);
-              const alt = `${name}-temp-${index}`;
-              const progressComponent = index === 0 && <ProgressBar progress={progress} />;
-
-              return (
-                <Thumbnail
-                  key={key}
-                  gridSize={4}
-                  src={src}
-                  alt={alt}
-                  handleDelete={() => this.onDeleteShootFile(index)}
-                >
-                  <div className="overlay">
-                    {progressComponent}
-
-                    <div className="spacer-vt" />
-                  </div>
-                </Thumbnail>
-              );
-            })}
-
-            <AddPhotosButton gridSize={4} multiple handleChange={this.onAddShootPhotos} />
-          </div>
+          <PhotoUploadList dir={name} handleFileUploaded={this.onFileUploaded} />
         </section>
 
         <ControlPanel controls={controls} />

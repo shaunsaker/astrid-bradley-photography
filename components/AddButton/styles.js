@@ -9,8 +9,6 @@ const styles = css`
     width: 100%;
     height: ${SIZE}px;
     border: 1px dashed ${colors.lightGrey};
-    justify-content: center;
-    align-items: center;
   }
 `;
 

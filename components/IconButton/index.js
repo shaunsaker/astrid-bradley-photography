@@ -14,7 +14,7 @@ const IconButton = ({ iconName, label, small, handleClick }) => {
     <button
       type="button"
       onClick={handleClick}
-      className={`container ${
+      className={`container flex-center ${
         small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'
       }`}
     >

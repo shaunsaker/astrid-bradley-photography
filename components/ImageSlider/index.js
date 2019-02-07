@@ -168,7 +168,7 @@ export default class ImageSlider extends React.Component {
           })}
         </div>
 
-        <div className="dots-container row">
+        <div className="dots-container row flex-center">
           {images.map((image, index) => {
             const { src } = image;
             const isActive = index === slideIndex;

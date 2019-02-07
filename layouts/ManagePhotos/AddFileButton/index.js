@@ -8,18 +8,18 @@ import styles from './styles';
 import GridItem from '../../../components/GridItem';
 import Icon from '../../../components/Icon';
 
-const AddPhotosButton = ({ gridSize, multiple, handleChange }) => {
+const Button = ({ gridSize, multiple, handleAddFiles }) => {
   return (
     <GridItem gridSize={gridSize}>
-      <div className="container relative">
+      <div className="container relative flex-center">
         <Icon name="add" color={colors.accent1} />
 
         <input
           type="file"
           multiple={multiple}
           accepts="image/*"
-          onChange={handleChange}
-          className="input"
+          onChange={(event) => handleAddFiles(event.target.files)}
+          className="input abs-stretch"
         />
       </div>
 
@@ -28,11 +28,11 @@ const AddPhotosButton = ({ gridSize, multiple, handleChange }) => {
   );
 };
 
-AddPhotosButton.propTypes = {
+Button.propTypes = {
   gridSize: PropTypes.number,
   multiple: PropTypes.bool,
-  handleChange: PropTypes.func,
+  handleAddFiles: PropTypes.func,
 };
-AddPhotosButton.defaultProps = {};
+Button.defaultProps = {};
 
-export default AddPhotosButton;
+export default Button;

@@ -22,8 +22,6 @@ const styles = css`
   }
 
   .icon-container {
-    justify-content: center;
-    align-items: center;
   }
 
   .tooltip-container {

@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import GridItem from '../../../components/GridItem';
-import IconButton from '../../../components/IconButton';
-import Spinner from '../../../components/Spinner';
+import GridItem from '../GridItem';
+import Spinner from '../Spinner';
 
-export class Thumbnail extends React.Component {
+export class Image extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +22,6 @@ export class Thumbnail extends React.Component {
     src: PropTypes.string,
     gridSize: PropTypes.number,
     alt: PropTypes.string,
-    handleDelete: PropTypes.func,
     children: PropTypes.node,
   };
 
@@ -41,18 +39,10 @@ export class Thumbnail extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { gridSize, src, alt, handleDelete, children } = this.props;
-
-    const deleteComponent = handleDelete && !loading && (
-      <div className="icon-button-container">
-        <IconButton iconName="close" label="Delete Photo" small handleClick={handleDelete} />
-
-        <style jsx>{styles}</style>
-      </div>
-    );
+    const { gridSize, src, alt, children } = this.props;
 
     const loadingComponent = loading && (
-      <div className="loading-container">
+      <div className="loading-container abs-stretch flex-center">
         <Spinner />
 
         <style jsx>{styles}</style>
@@ -73,8 +63,6 @@ export class Thumbnail extends React.Component {
 
         {loadingComponent}
 
-        {deleteComponent}
-
         <div className="spacer-vt" />
 
         <style jsx>{styles}</style>
@@ -83,4 +71,4 @@ export class Thumbnail extends React.Component {
   }
 }
 
-export default Thumbnail;
+export default Image;

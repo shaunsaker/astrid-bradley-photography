@@ -1,8 +1,14 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
+import { colors } from '../../../static/styles/styleConstants';
+
 const styles = css`
   .container {
-    align-items: stretch;
+    align-self: stretch;
+  }
+
+  .overlay {
+    background-color: ${colors.transWhite};
   }
 
   .file-delete-button-container {

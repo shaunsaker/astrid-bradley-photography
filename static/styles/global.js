@@ -131,6 +131,19 @@ button:focus, .button:focus, a:focus, input:focus {
   position: relative;
 }
 
+.abs-stretch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
 h1, h2, p {
   margin: 0;
 }

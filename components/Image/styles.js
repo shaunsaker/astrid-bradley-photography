@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors, rhythm } from '../../../static/styles/styleConstants';
+import { colors, rhythm } from '../../static/styles/styleConstants';
 
 const ICON_BUTTON_SIZE = 20;
 
@@ -17,14 +17,7 @@ const styles = css`
   }
 
   .loading-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     height: 125px;
-    justify-content: center;
-    align-items: center;
     border: 1px solid ${colors.lightGrey};
     margin-bottom: ${rhythm.vt}px;
   }

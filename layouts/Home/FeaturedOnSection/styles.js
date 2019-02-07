@@ -6,7 +6,6 @@ const IMAGE_SIZE = 132;
 
 const styles = css`
   ul {
-    justify-content: center;
   }
 
   li {

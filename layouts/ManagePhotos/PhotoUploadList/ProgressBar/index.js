@@ -7,8 +7,12 @@ const ProgressBar = ({ progress }) => {
   const progressPercent = `${progress}%`;
 
   return (
-    <div className="container">
-      <div style={{ width: progressPercent }} className="bar shadow-md" />
+    <div className="wrapper abs-stretch flex-center">
+      <div className="container">
+        <div style={{ width: progressPercent }} className="bar flex-center shadow-md" />
+      </div>
+
+      <div className="spacer-vt" />
 
       <style jsx>{styles}</style>
     </div>

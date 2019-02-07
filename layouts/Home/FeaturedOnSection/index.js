@@ -12,7 +12,7 @@ const FeaturedOnSection = () => {
       <TitleText>Featured On</TitleText>
 
       {
-        <ul className="row wrap">
+        <ul className="row wrap flex-center">
           {FEATURES.map((feature) => {
             const { image, href } = feature;
             const { src, alt } = image;
