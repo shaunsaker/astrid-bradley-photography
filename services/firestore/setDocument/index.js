@@ -1,14 +1,18 @@
 import getRef from '../getRef';
 
-export default async ({ url, document }) => {
-  const ref = await getRef(url);
+export default ({ url, document }) => {
+  return new Promise(async (resolve, reject) => {
+    const ref = await getRef(url);
 
-  try {
-    const response = ref.set(document);
-    const { id } = response;
+    ref
+      .set(document)
+      .then((response) => {
+        const { id } = response;
 
-    return { id };
-  } catch (error) {
-    throw error;
-  }
+        resolve(id);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      });
+  });
 };

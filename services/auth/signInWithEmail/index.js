@@ -1,13 +1,14 @@
 import firebase from '../../firebase';
 
-export default async ({ email, password }) => {
-  const fb = await firebase();
+export default ({ email, password }) => {
+  return new Promise(async (resolve, reject) => {
+    const fb = await firebase();
 
-  try {
-    const response = await fb.auth().signInWithEmailAndPassword(email, password);
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
+    fb.auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => reject(new Error(error)));
+  });
 };

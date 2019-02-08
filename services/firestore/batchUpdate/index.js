@@ -1,6 +1,7 @@
 import firebase from '../../firebase';
 import getRef from '../getRef';
 
+// FIXME: Use Promises
 export default async ({ url, documents }) => {
   const collectionRef = await getRef(url);
   const fb = await firebase();

@@ -3,10 +3,10 @@ import firebase from '../../firebase';
 // Takes a string of url format, collction/
 // e.g. collection/doc/collection/doc
 // and returns a firestore ref
-export default async (url) => {
-  const fb = await firebase();
+export default (url) => {
+  return new Promise(async (resolve) => {
+    const fb = await firebase();
 
-  try {
     let ref = fb.firestore();
     const pathParts = url.split('/');
     let isCollection = true;
@@ -16,8 +16,6 @@ export default async (url) => {
       isCollection = !isCollection;
     });
 
-    return ref;
-  } catch (error) {
-    throw error;
-  }
+    resolve(ref);
+  });
 };

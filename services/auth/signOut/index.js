@@ -1,13 +1,14 @@
 import firebase from '../../firebase';
 
-export default async () => {
-  const fb = await firebase();
+export default () => {
+  return new Promise(async (resolve, reject) => {
+    const fb = await firebase();
 
-  try {
-    const response = await fb.auth().signOut();
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
+    fb.auth()
+      .signOut()
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => reject(new Error(error)));
+  });
 };
