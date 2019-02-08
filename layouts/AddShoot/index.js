@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Router from 'next/router';
 
 import { shootFormFields } from '../../config';
 
@@ -9,21 +8,20 @@ import Layout from '../../components/Layout';
 import Form from '../../components/Form';
 
 import withAuth from '../../wrappers/withAuth';
+import withSaveShoot from '../../wrappers/withSaveShoot';
 
 export class AddShoot extends React.Component {
   constructor(props) {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.saveShoot = this.saveShoot.bind(this);
-    this.goBack = this.goBack.bind(this);
 
     this.state = {};
   }
 
   static propTypes = {
-    dispatch: PropTypes.func,
     isLoading: PropTypes.bool,
+    onSaveShoot: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -40,6 +38,7 @@ export class AddShoot extends React.Component {
 
   onSubmit(values) {
     const shoot = values;
+    const { onSaveShoot } = this.props;
 
     // Replace the date value with js time (in ms)
     const time = new Date(shoot.date).getTime();
@@ -51,35 +50,7 @@ export class AddShoot extends React.Component {
       .join('-')
       .toLowerCase();
 
-    this.saveShoot(id, shoot);
-  }
-
-  saveShoot(id, shoot) {
-    const { dispatch } = this.props;
-    const document = shoot;
-
-    // Add a date created field with the current time
-    document.date_created = Date.now();
-
-    dispatch({
-      type: 'setDocument',
-      payload: {
-        document,
-      },
-      meta: {
-        url: `shoots/${id}`,
-        nextAction: {
-          type: 'SET_SYSTEM_MESSAGE',
-          payload: {
-            message: 'Shoot added successfully.',
-          },
-        },
-      },
-    });
-  }
-
-  goBack() {
-    Router.back();
+    onSaveShoot(shoot, id);
   }
 
   render() {
@@ -105,4 +76,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(connect(mapStateToProps)(AddShoot));
+export default withAuth(withSaveShoot(connect(mapStateToProps)(AddShoot)));
