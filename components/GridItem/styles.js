@@ -6,7 +6,6 @@ const styles = css`
   .container {
     width: 100%;
     position: relative;
-    overflow: hidden;
     margin-bottom: ${rhythm.hz}px;
   }
 `;
