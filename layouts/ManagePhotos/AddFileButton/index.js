@@ -1,30 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { colors } from '../../../static/styles/styleConstants';
-
 import styles from './styles';
 
-import GridItem from '../../../components/GridItem';
-import Icon from '../../../components/Icon';
+import AddButton from '../../../components/AddButton';
 
 const Button = ({ gridSize, multiple, handleAddFiles }) => {
   return (
-    <GridItem gridSize={gridSize}>
-      <div className="container relative flex-center">
-        <Icon name="add" color={colors.accent1} />
-
-        <input
-          type="file"
-          multiple={multiple}
-          accepts="image/*"
-          onChange={(event) => handleAddFiles(event.target.files)}
-          className="input abs-stretch"
-        />
-      </div>
+    <AddButton gridSize={gridSize}>
+      <input
+        type="file"
+        multiple={multiple}
+        accepts="image/*"
+        onChange={(event) => handleAddFiles(event.target.files)}
+        className="input abs-stretch"
+      />
 
       <style jsx>{styles}</style>
-    </GridItem>
+    </AddButton>
   );
 };
 
