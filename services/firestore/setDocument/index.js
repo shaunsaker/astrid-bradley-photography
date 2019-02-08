@@ -7,7 +7,8 @@ export default ({ url, document }) => {
     ref
       .set(document)
       .then((response) => {
-        const { id } = response;
+        // No response when shoot already exists
+        const id = response && response.id;
 
         resolve(id);
       })
