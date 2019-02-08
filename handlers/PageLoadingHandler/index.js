@@ -20,6 +20,7 @@ export class PageLoadingHandler extends React.Component {
 
   static propTypes = {
     pendingTransactions: PropTypes.arrayOf(PropTypes.shape({})),
+    systemMessage: PropTypes.string,
   };
 
   static defaultProps = {};
@@ -30,7 +31,8 @@ export class PageLoadingHandler extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { pendingTransactions } = this.props;
+    const { isLoading } = this.state;
+    const { pendingTransactions, systemMessage } = this.props;
 
     // IF pt has length
     // IF previous pt does not have length
@@ -41,8 +43,16 @@ export class PageLoadingHandler extends React.Component {
 
     // IF pt does not have length
     // IF previous pt has length
-    // THEN we are loading
+    // THEN we should not be loading
     else if (!pendingTransactions.length && prevProps.pendingTransactions.length) {
+      this.setIsLoading(false);
+    }
+
+    // IF isLoading
+    // IF systemMessage (we had an error)
+    // IF no previous systemMessage
+    // THEN we should not be loading
+    else if (isLoading && systemMessage && !prevProps.systemMessage) {
       this.setIsLoading(false);
     }
   }
@@ -79,10 +89,11 @@ export class PageLoadingHandler extends React.Component {
 
 const mapStateToProps = (state) => {
   const { appState } = state;
-  const { pendingTransactions } = appState;
+  const { pendingTransactions, systemMessage } = appState;
 
   return {
     pendingTransactions,
+    systemMessage,
   };
 };
 
