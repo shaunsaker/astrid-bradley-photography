@@ -8,6 +8,7 @@ import Layout from '../../components/Layout';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
+import withSaveShoot from '../../wrappers/withSaveShoot';
 
 class ManageLayout extends React.Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class ManageLayout extends React.Component {
 
     this.onSave = this.onSave.bind(this);
     this.getShoot = this.getShoot.bind(this);
-    this.saveShoot = this.saveShoot.bind(this);
 
     this.state = {};
   }
@@ -24,6 +24,7 @@ class ManageLayout extends React.Component {
     shoots: PropTypes.arrayOf(PropTypes.shape()),
     dispatch: PropTypes.func,
     shootID: PropTypes.string,
+    onSaveShoot: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -37,24 +38,6 @@ class ManageLayout extends React.Component {
     const shoot = shoots.filter((item) => item.id === shootID)[0];
 
     return shoot;
-  }
-
-  saveShoot(shoot) {
-    const { dispatch, shootID } = this.props;
-    const document = shoot;
-
-    // Add a date_modified field with the current time
-    document.date_modified = Date.now();
-
-    dispatch({
-      type: 'setDocument',
-      payload: {
-        document,
-      },
-      meta: {
-        url: `shoots/${shootID}`,
-      },
-    });
   }
 
   render() {
@@ -93,4 +76,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(connect(mapStateToProps)(ManageLayout));
+export default withAuth(withSaveShoot(connect(mapStateToProps)(ManageLayout)));
