@@ -11,6 +11,7 @@ import Form from '../../components/Form';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
+import withSaveShoot from '../../wrappers/withSaveShoot';
 
 export class EditShoot extends React.Component {
   constructor(props) {
@@ -20,7 +21,6 @@ export class EditShoot extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.setValue = this.setValue.bind(this);
-    this.saveShoot = this.saveShoot.bind(this);
 
     this.state = {
       values: this.getInitialState(),
@@ -28,9 +28,9 @@ export class EditShoot extends React.Component {
   }
 
   static propTypes = {
-    dispatch: PropTypes.func,
     shoots: PropTypes.arrayOf(PropTypes.shape({})),
     shootID: PropTypes.string,
+    onSaveShoot: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -64,7 +64,7 @@ export class EditShoot extends React.Component {
 
   onSubmit() {
     const { values } = this.state;
-    const { shootID } = this.props;
+    const { shootID, shoots, onSaveShoot } = this.props;
 
     // Clone values otherwise we mutate the state
     const newValues = cloneObject(values);
@@ -73,38 +73,15 @@ export class EditShoot extends React.Component {
     const time = new Date(newValues.date).getTime();
     newValues.date = time;
 
-    // Keep the original shoot ID (otherwise we create a new document)
-    const id = shootID;
-
-    this.saveShoot(id, newValues);
-  }
-
-  saveShoot(id, shoot) {
-    const { dispatch, shoots, shootID } = this.props;
     const existingShoot = shoots.filter((item) => item.id === shootID)[0];
-    const document = {
+
+    // Keep the existing values but overwrite if edited
+    const shoot = {
       ...existingShoot,
-      ...shoot,
+      ...newValues,
     };
 
-    // Add a date_modified field with the current time
-    document.date_modified = Date.now();
-
-    dispatch({
-      type: 'setDocument',
-      payload: {
-        document,
-      },
-      meta: {
-        url: `shoots/${id}`,
-        nextAction: {
-          type: 'SET_SYSTEM_MESSAGE',
-          payload: {
-            message: 'Shoot edited successfully.',
-          },
-        },
-      },
-    });
+    onSaveShoot(shoot, shootID);
   }
 
   setValue(name, value) {
@@ -167,4 +144,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(connect(mapStateToProps)(EditShoot));
+export default withAuth(withSaveShoot(connect(mapStateToProps)(EditShoot)));

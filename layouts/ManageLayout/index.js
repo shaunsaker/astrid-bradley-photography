@@ -15,6 +15,7 @@ class ManageLayout extends React.Component {
 
     this.onSave = this.onSave.bind(this);
     this.getShoot = this.getShoot.bind(this);
+    this.saveShoot = this.saveShoot.bind(this);
 
     this.state = {};
   }

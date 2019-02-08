@@ -15,17 +15,16 @@ export default (ComposedComponent) => {
 
     static propTypes = {
       dispatch: PropTypes.func,
-      shootID: PropTypes.string,
     };
 
     static defaultProps = {};
 
-    onSaveShoot(shoot) {
-      this.saveShoot(shoot);
+    onSaveShoot(shoot, shootID) {
+      this.saveShoot(shoot, shootID);
     }
 
-    saveShoot(shoot) {
-      const { dispatch, shootID } = this.props;
+    saveShoot(shoot, shootID) {
+      const { dispatch } = this.props;
       const document = shoot;
 
       // Add a date_modified field with the current time
@@ -49,7 +48,7 @@ export default (ComposedComponent) => {
     }
 
     render() {
-      return <ComposedComponent handleSaveShoot={this.onSaveShoot} {...this.props} />;
+      return <ComposedComponent onSaveShoot={this.onSaveShoot} {...this.props} />;
     }
   }
 
