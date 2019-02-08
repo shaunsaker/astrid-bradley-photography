@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles';
 
 import Spinner from '../Spinner';
 
-const LoadingSection = () => {
+const LoadingSection = ({ isFixed }) => {
   return (
-    <div className="container abs-stretch flex-center">
+    <div className={`container abs-stretch flex-center ${isFixed && 'fixed'}`}>
       <Spinner />
 
       <style jsx>{styles}</style>
@@ -14,7 +15,9 @@ const LoadingSection = () => {
   );
 };
 
-LoadingSection.propTypes = {};
+LoadingSection.propTypes = {
+  isFixed: PropTypes.bool,
+};
 LoadingSection.defaultProps = {};
 
 export default LoadingSection;

@@ -15,6 +15,10 @@ const styles = css`
       }
     }
   }
+
+  .container.fixed {
+    position: fixed;
+  }
 `;
 
 export default styles;

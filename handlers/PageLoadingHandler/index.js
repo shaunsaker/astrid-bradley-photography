@@ -70,7 +70,7 @@ export class PageLoadingHandler extends React.Component {
     const { isLoading } = this.state;
 
     if (isLoading) {
-      return <LoadingSection />;
+      return <LoadingSection isFixed />;
     }
 
     return null;
