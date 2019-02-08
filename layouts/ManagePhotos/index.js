@@ -11,6 +11,7 @@ import PhotoUploadList from './PhotoUploadList';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
+import withSaveShoot from '../../wrappers/withSaveShoot';
 
 export class ManagePhotos extends React.Component {
   constructor(props) {
@@ -21,13 +22,11 @@ export class ManagePhotos extends React.Component {
     this.onShootPhotoUploaded = this.onShootPhotoUploaded.bind(this);
     this.onShootPhotoDeleted = this.onShootPhotoDeleted.bind(this);
     this.getShoot = this.getShoot.bind(this);
-    this.saveShoot = this.saveShoot.bind(this);
 
     this.state = {};
   }
 
   static propTypes = {
-    dispatch: PropTypes.func,
     shoots: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
@@ -36,27 +35,31 @@ export class ManagePhotos extends React.Component {
       }),
     ),
     shootID: PropTypes.string,
+    onSaveShoot: PropTypes.func,
   };
 
   static defaultProps = {};
 
   onCoverPhotoUploaded(downloadURL) {
+    const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
 
     shoot.cover_photo_url = downloadURL;
 
-    this.saveShoot(shoot);
+    onSaveShoot(shoot, shootID);
   }
 
   onCoverPhotoDeleted() {
+    const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
 
     shoot.cover_photo_url = null;
 
-    this.saveShoot(shoot);
+    onSaveShoot(shoot, shootID);
   }
 
   onShootPhotoUploaded(downloadURL) {
+    const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
 
     if (shoot.photos) {
@@ -65,15 +68,16 @@ export class ManagePhotos extends React.Component {
       shoot.photos = [downloadURL];
     }
 
-    this.saveShoot(shoot);
+    onSaveShoot(shoot, shootID);
   }
 
   onShootPhotoDeleted(index) {
+    const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
 
     shoot.photos.splice(index, 1);
 
-    this.saveShoot(shoot);
+    onSaveShoot(shoot, shootID);
   }
 
   getShoot() {
@@ -81,24 +85,6 @@ export class ManagePhotos extends React.Component {
     const shoot = shoots.filter((item) => item.id === shootID)[0];
 
     return shoot;
-  }
-
-  saveShoot(shoot) {
-    const { dispatch, shootID } = this.props;
-    const document = shoot;
-
-    // Add a date_modified field with the current time
-    document.date_modified = Date.now();
-
-    dispatch({
-      type: 'setDocument',
-      payload: {
-        document,
-      },
-      meta: {
-        url: `shoots/${shootID}`,
-      },
-    });
   }
 
   render() {
@@ -178,4 +164,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default withAuth(connect(mapStateToProps)(ManagePhotos));
+export default withAuth(withSaveShoot(connect(mapStateToProps)(ManagePhotos)));
