@@ -6,9 +6,8 @@ import { getBlobURL } from '../../../utils';
 import { uploadFile } from '../../../services/storage';
 import styles from './styles';
 
-import GridItem from '../../../components/GridItem';
-import Image from '../../../components/Image';
 import ProgressBar from './ProgressBar';
+import Image from '../../../components/Image';
 import IconButton from '../../../components/IconButton';
 import AddFileButton from '../AddFileButton';
 
@@ -35,8 +34,6 @@ export class PhotoUploadList extends React.Component {
 
   static propTypes = {
     dir: PropTypes.string, // dir to upload files to
-    gridSize: PropTypes.number,
-    isThumbnail: PropTypes.bool,
     handlePhotoUploaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func,
   };
@@ -122,17 +119,6 @@ export class PhotoUploadList extends React.Component {
 
   render() {
     const { files, progress } = this.state;
-    const { gridSize, isThumbnail } = this.props;
-
-    const addFileButtonComponent = (((!gridSize || gridSize === 1) && !files.length) ||
-      gridSize > 1) && (
-      <AddFileButton
-        gridSize={gridSize}
-        multiple
-        isThumbnail={isThumbnail}
-        handleAddFiles={this.onAddFiles}
-      />
-    );
 
     return (
       <Fragment>
@@ -148,26 +134,26 @@ export class PhotoUploadList extends React.Component {
             ) : null;
 
           return (
-            <GridItem key={key} gridSize={gridSize} isThumbnail={isThumbnail}>
-              <Image src={src} alt={alt}>
-                <div className="overlay abs-stretch" />
+            <div key={key} className="image-container relative">
+              <Image src={src} alt={alt} />
 
-                {progressComponent}
+              <div className="overlay abs-stretch" />
 
-                <div className="file-delete-button-container">
-                  <IconButton
-                    iconName="close"
-                    label="Remove Photo"
-                    small
-                    handleClick={() => this.onRemovePhoto(index)}
-                  />
-                </div>
-              </Image>
-            </GridItem>
+              {progressComponent}
+
+              <div className="file-delete-button-container">
+                <IconButton
+                  iconName="close"
+                  label="Remove Photo"
+                  small
+                  handleClick={() => this.onRemovePhoto(index)}
+                />
+              </div>
+            </div>
           );
         })}
 
-        {addFileButtonComponent}
+        <AddFileButton multiple handleAddFiles={this.onAddFiles} />
 
         <style jsx>{styles}</style>
       </Fragment>

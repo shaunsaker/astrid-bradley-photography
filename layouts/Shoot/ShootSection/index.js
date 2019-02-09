@@ -5,16 +5,16 @@ import { getPrettyDate } from '../../../utils';
 import styles from './styles';
 
 import HeadingText from '../../../components/HeadingText';
+import Image from '../../../components/Image';
 
 const ShootSection = ({ shoot }) => {
   const { name, date, location, photos } = shoot;
   const prettyDate = getPrettyDate(date);
+  const headingText = `${prettyDate} | ${location}`;
 
   return (
     <section className="container">
-      <HeadingText>
-        {prettyDate} | {location}
-      </HeadingText>
+      <HeadingText>{headingText}</HeadingText>
 
       <div className="spacer-vt" />
 
@@ -22,7 +22,7 @@ const ShootSection = ({ shoot }) => {
         {photos.map((photo, index) => {
           return (
             <div key={photo} className="image-container">
-              <img src={photo} alt={`${name}-${index + 1}`} />
+              <Image src={photo} alt={`${name}-${index + 1}`} />
             </div>
           );
         })}

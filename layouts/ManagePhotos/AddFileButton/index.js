@@ -5,9 +5,9 @@ import styles from './styles';
 
 import AddButton from '../../../components/AddButton';
 
-const Button = ({ gridSize, multiple, isThumbnail, handleAddFiles }) => {
+const Button = ({ multiple, handleAddFiles }) => {
   return (
-    <AddButton gridSize={gridSize} isThumbnail={isThumbnail}>
+    <AddButton>
       <input
         type="file"
         multiple={multiple}
@@ -22,9 +22,7 @@ const Button = ({ gridSize, multiple, isThumbnail, handleAddFiles }) => {
 };
 
 Button.propTypes = {
-  gridSize: PropTypes.number,
   multiple: PropTypes.bool,
-  isThumbnail: PropTypes.bool,
   handleAddFiles: PropTypes.func,
 };
 Button.defaultProps = {};

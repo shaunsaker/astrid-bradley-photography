@@ -3,68 +3,23 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Spinner from '../Spinner';
+const Image = ({ src, alt, children }) => {
+  return (
+    <div className="container relative">
+      <img src={src} alt={alt} className="image" />
 
-export class Image extends React.Component {
-  constructor(props) {
-    super(props);
+      {children}
 
-    this.onLoadEnd = this.onLoadEnd.bind(this);
-    this.setLoading = this.setLoading.bind(this);
+      <style jsx>{styles}</style>
+    </div>
+  );
+};
 
-    this.state = {
-      loading: true,
-    };
-  }
-
-  static propTypes = {
-    src: PropTypes.string,
-    alt: PropTypes.string,
-    children: PropTypes.node,
-  };
-
-  static defaultProps = {};
-
-  onLoadEnd() {
-    this.setLoading(false);
-  }
-
-  setLoading(loading) {
-    this.setState({
-      loading,
-    });
-  }
-
-  render() {
-    const { loading } = this.state;
-    const { src, alt, children } = this.props;
-
-    const loadingComponent = loading && (
-      <div className="loading-container abs-stretch flex-center">
-        <Spinner small />
-
-        <style jsx>{styles}</style>
-      </div>
-    );
-
-    return (
-      <div className="container relative">
-        <img
-          src={src}
-          alt={alt}
-          className="image"
-          onLoad={this.onLoadEnd}
-          onError={this.onLoadEnd}
-        />
-
-        {children}
-
-        {loadingComponent}
-
-        <style jsx>{styles}</style>
-      </div>
-    );
-  }
-}
+Image.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
+  children: PropTypes.node,
+};
+Image.defaultProps = {};
 
 export default Image;

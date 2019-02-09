@@ -8,13 +8,15 @@ import DeleteFileButton from './DeleteFileButton';
 
 const Photo = ({ src, alt, dir, handlePhotoDeleted }) => {
   return (
-    <Image src={src} alt={alt}>
+    <div className="container relative">
+      <Image src={src} alt={alt} />
+
       <div className="file-delete-button-container">
         <DeleteFileButton dir={dir} url={src} handleFileDeleted={handlePhotoDeleted} />
       </div>
 
       <style jsx>{styles}</style>
-    </Image>
+    </div>
   );
 };
 

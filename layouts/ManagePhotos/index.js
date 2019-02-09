@@ -6,7 +6,6 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import HeadingText from '../../components/HeadingText';
-import GridItem from '../../components/GridItem';
 import Photo from './Photo';
 import PhotoUploadList from './PhotoUploadList';
 import ControlPanel from '../../components/ControlPanel';
@@ -138,14 +137,13 @@ export class ManagePhotos extends React.Component {
                 const alt = `${name}-${index}`;
 
                 return (
-                  <GridItem key={photo} gridSize={4} isThumbnail>
-                    <Photo
-                      src={photo}
-                      alt={alt}
-                      dir={id}
-                      handlePhotoDeleted={() => this.onShootPhotoDeleted(index)}
-                    />
-                  </GridItem>
+                  <Photo
+                    key={photo}
+                    src={photo}
+                    alt={alt}
+                    dir={id}
+                    handlePhotoDeleted={() => this.onShootPhotoDeleted(index)}
+                  />
                 );
               })}
 
