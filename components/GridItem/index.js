@@ -9,7 +9,7 @@ const GridItem = ({ gridSize, children }) => {
   const height = gridSize === 1 ? sizes.coverPhotoHeight : sizes.thumbnailHeight;
 
   return (
-    <div className="container">
+    <div className={`container ${gridSize > 1 && 'margin'}`}>
       {children}
 
       <style jsx>{styles}</style>
