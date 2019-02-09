@@ -125,7 +125,7 @@ export class ManagePhotos extends React.Component {
         <section>
           <HeadingText>Shoot Photos</HeadingText>
 
-          <div className="row wrap">
+          <div className="photos-container row wrap">
             {photos &&
               photos.map((photo, index) => {
                 const alt = `${name}-${index}`;
@@ -137,6 +137,7 @@ export class ManagePhotos extends React.Component {
                     alt={alt}
                     dir={id}
                     gridSize={4}
+                    isThumbnail
                     handlePhotoDeleted={() => this.onShootPhotoDeleted(index)}
                   />
                 );
@@ -145,6 +146,7 @@ export class ManagePhotos extends React.Component {
             <PhotoUploadList
               dir={id}
               gridSize={4}
+              isThumbnail
               handlePhotoUploaded={this.onShootPhotoUploaded}
             />
           </div>

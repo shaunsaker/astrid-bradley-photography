@@ -8,9 +8,9 @@ import styles from './styles';
 import Placeholder from '../Placeholder';
 import Icon from '../Icon';
 
-const AddButton = ({ gridSize, children, handleClick }) => {
+const AddButton = ({ gridSize, isThumbnail, children, handleClick }) => {
   return (
-    <Placeholder gridSize={gridSize}>
+    <Placeholder gridSize={gridSize} isThumbnail={isThumbnail}>
       <button
         type="button"
         onClick={handleClick}
@@ -29,6 +29,7 @@ const AddButton = ({ gridSize, children, handleClick }) => {
 
 AddButton.propTypes = {
   gridSize: PropTypes.number,
+  isThumbnail: PropTypes.bool,
   children: PropTypes.node, // typically used to pass an input[type=file]
   handleClick: PropTypes.func,
 };

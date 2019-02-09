@@ -22,6 +22,7 @@ export class GridImage extends React.Component {
     src: PropTypes.string,
     gridSize: PropTypes.number,
     alt: PropTypes.string,
+    isThumbnail: PropTypes.bool,
     children: PropTypes.node,
   };
 
@@ -39,7 +40,7 @@ export class GridImage extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { gridSize, src, alt, children } = this.props;
+    const { gridSize, src, alt, isThumbnail, children } = this.props;
 
     const loadingComponent = loading && (
       <div className="loading-container abs-stretch flex-center">
@@ -50,7 +51,7 @@ export class GridImage extends React.Component {
     );
 
     return (
-      <GridItem key={src} gridSize={gridSize}>
+      <GridItem key={src} gridSize={gridSize} isThumbnail={isThumbnail}>
         <img
           src={src}
           alt={alt}

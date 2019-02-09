@@ -1,25 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { rhythm, sizes } from '../../static/styles/styleConstants';
+import { rhythm } from '../../static/styles/styleConstants';
 
 import styles from './styles';
 
-const GridItem = ({ gridSize, children }) => {
-  const height = gridSize === 1 ? sizes.coverPhotoHeight : sizes.thumbnailHeight;
-
+// Controls width based on given gridSize
+// Controls height
+const GridItem = ({ gridSize, isThumbnail, children }) => {
   return (
-    <div className={`container ${gridSize > 1 && 'margin'}`}>
+    <div className={`container relative ${gridSize > 1 && 'margin'} ${isThumbnail && 'thumbnail'}`}>
       {children}
 
       <style jsx>{styles}</style>
 
       <style jsx>{`
-        .container {
-          height: ${height}px;
-          max-height: ${height}px;
-        }
-
         @media (min-width: 480px) {
           .container {
             width: calc(${100 / gridSize}% - ${((gridSize - 1) * rhythm.vt) / gridSize}px);
@@ -37,6 +32,7 @@ const GridItem = ({ gridSize, children }) => {
 
 GridItem.propTypes = {
   gridSize: PropTypes.number,
+  isThumbnail: PropTypes.bool,
   children: PropTypes.node,
 };
 GridItem.defaultProps = {

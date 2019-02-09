@@ -15,9 +15,9 @@ const rhythm = {
 };
 
 const sizes = {
-  maxScreenWidth: 940,
+  maxScreenWidth: 720, // TODO: Change to 940
   thumbnailHeight: 125,
-  coverPhotoHeight: 330,
+  photoHeight: 330,
   button: {
     small: 20,
     default: 50,

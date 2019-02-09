@@ -35,6 +35,7 @@ export class PhotoUploadList extends React.Component {
   static propTypes = {
     dir: PropTypes.string, // dir to upload files to
     gridSize: PropTypes.number,
+    isThumbnail: PropTypes.bool,
     handlePhotoUploaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func,
   };
@@ -120,11 +121,16 @@ export class PhotoUploadList extends React.Component {
 
   render() {
     const { files, progress } = this.state;
-    const { gridSize } = this.props;
+    const { gridSize, isThumbnail } = this.props;
 
     const addFileButtonComponent = (((!gridSize || gridSize === 1) && !files.length) ||
       gridSize > 1) && (
-      <AddFileButton gridSize={gridSize} multiple handleAddFiles={this.onAddFiles} />
+      <AddFileButton
+        gridSize={gridSize}
+        multiple
+        isThumbnail={isThumbnail}
+        handleAddFiles={this.onAddFiles}
+      />
     );
 
     return (
@@ -141,7 +147,7 @@ export class PhotoUploadList extends React.Component {
             ) : null;
 
           return (
-            <GridImage key={key} src={src} alt={alt} gridSize={gridSize}>
+            <GridImage key={key} src={src} alt={alt} gridSize={gridSize} isThumbnail={isThumbnail}>
               <div className="overlay abs-stretch" />
 
               {progressComponent}

@@ -5,9 +5,9 @@ import styles from './styles';
 
 import GridItem from '../GridItem';
 
-const Placeholder = ({ gridSize, children }) => {
+const Placeholder = ({ gridSize, isThumbnail, children }) => {
   return (
-    <GridItem gridSize={gridSize}>
+    <GridItem gridSize={gridSize} isThumbnail={isThumbnail}>
       <div className="container relative">{children}</div>
 
       <style jsx>{styles}</style>
@@ -17,6 +17,7 @@ const Placeholder = ({ gridSize, children }) => {
 
 Placeholder.propTypes = {
   gridSize: PropTypes.number,
+  isThumbnail: PropTypes.bool,
   children: PropTypes.node,
 };
 Placeholder.defaultProps = {};
