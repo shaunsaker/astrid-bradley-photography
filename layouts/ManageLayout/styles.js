@@ -5,16 +5,16 @@ import { rhythm, sizes } from '../../static/styles/styleConstants';
 const styles = css`
   .delete-button-container {
     position: absolute;
-    top: -${sizes.button.small}px;
-    right: -${sizes.button.small}px;
+    top: -${sizes.button.small / 2}px;
+    right: -${sizes.button.small / 2}px;
   }
 
   .add-button-container {
     position: absolute;
     top: 0;
-    right: -${sizes.coverPhotoHeight + rhythm.hz}px;
+    right: -${sizes.photoHeight + rhythm.hz}px;
     bottom: 0;
-    width: ${sizes.coverPhotoHeight}px;
+    width: ${sizes.photoHeight}px;
   }
 
   /* TODO: Responsive styling */
