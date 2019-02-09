@@ -5,12 +5,12 @@ import { colors } from '../../static/styles/styleConstants';
 
 import styles from './styles';
 
-import GridItem from '../GridItem';
+import Placeholder from '../Placeholder';
 import Icon from '../Icon';
 
 const AddButton = ({ gridSize, children, handleClick }) => {
   return (
-    <GridItem gridSize={gridSize}>
+    <Placeholder gridSize={gridSize}>
       <button
         type="button"
         onClick={handleClick}
@@ -23,7 +23,7 @@ const AddButton = ({ gridSize, children, handleClick }) => {
       </button>
 
       <style jsx>{styles}</style>
-    </GridItem>
+    </Placeholder>
   );
 };
 
