@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-
 export default class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -61,15 +59,11 @@ export default class ImageSlider extends React.Component {
   }
 
   startInterval() {
-    if (!IS_DEV) {
-      this.interval = setInterval(this.onInterval, this.timerInterval);
-    }
+    this.interval = setInterval(this.onInterval, this.timerInterval);
   }
 
   clearInterval() {
-    if (!IS_DEV) {
-      clearInterval(this.interval);
-    }
+    clearInterval(this.interval);
   }
 
   onInterval() {
