@@ -12,6 +12,7 @@ const styles = css`
     width: ${SIZE}px;
     height: ${SIZE}px;
     border-radius: ${SIZE / 2}px;
+    z-index: 1;
   }
 
   .container.small {
@@ -27,7 +28,7 @@ const styles = css`
   .tooltip-container {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.375s ease;
   }
 
   .container:hover > .tooltip-container {
