@@ -14,20 +14,11 @@ const rhythm = {
   hz: 24,
 };
 
-// Calculate the grid size for 3 columns
-const columns = 3;
-const third = (720 - 2 * rhythm.hz) / columns;
-
-const grid = {
-  third,
-};
-
 const styleConstants = {
   colors,
-  grid,
   rhythm,
 };
 
-export { colors, grid, rhythm };
+export { colors, rhythm };
 
 export default styleConstants;
