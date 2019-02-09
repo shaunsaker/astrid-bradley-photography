@@ -6,7 +6,7 @@ import styles from './styles';
 import GridItem from '../GridItem';
 import Spinner from '../Spinner';
 
-export class Image extends React.Component {
+export class GridImage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -69,4 +69,4 @@ export class Image extends React.Component {
   }
 }
 
-export default Image;
+export default GridImage;

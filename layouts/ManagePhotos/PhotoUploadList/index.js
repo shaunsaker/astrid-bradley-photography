@@ -6,7 +6,7 @@ import { getBlobURL } from '../../../utils';
 import { uploadFile } from '../../../services/storage';
 import styles from './styles';
 
-import Image from '../../../components/Image';
+import GridImage from '../../../components/GridImage';
 import ProgressBar from './ProgressBar';
 import IconButton from '../../../components/IconButton';
 import AddFileButton from '../AddFileButton';
@@ -141,7 +141,7 @@ export class PhotoUploadList extends React.Component {
             ) : null;
 
           return (
-            <Image key={key} src={src} alt={alt} gridSize={gridSize}>
+            <GridImage key={key} src={src} alt={alt} gridSize={gridSize}>
               <div className="overlay abs-stretch" />
 
               {progressComponent}
@@ -154,7 +154,7 @@ export class PhotoUploadList extends React.Component {
                   handleClick={() => this.onRemovePhoto(index)}
                 />
               </div>
-            </Image>
+            </GridImage>
           );
         })}
 
