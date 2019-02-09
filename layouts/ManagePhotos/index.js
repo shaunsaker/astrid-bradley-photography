@@ -78,6 +78,12 @@ export class ManagePhotos extends React.Component {
 
     shoot.photos.splice(index, 1);
 
+    // IF photos is empty
+    // THEN remove it entirely
+    if (!shoot.photos.length) {
+      shoot.photos = null;
+    }
+
     onSaveShoot(shoot, shootID);
   }
 
