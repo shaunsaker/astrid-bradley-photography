@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { rhythm } from '../../static/styles/styleConstants';
+import { rhythm, sizes } from '../../static/styles/styleConstants';
 
 import styles from './styles';
 
 const GridItem = ({ gridSize, children }) => {
-  const height = gridSize === 1 ? 250 : 125;
+  const height = gridSize === 1 ? sizes.coverPhotoHeight : sizes.thumbnailHeight;
 
   return (
     <div className="container">

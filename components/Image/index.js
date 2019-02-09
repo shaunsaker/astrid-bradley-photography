@@ -43,7 +43,7 @@ export class Image extends React.Component {
 
     const loadingComponent = loading && (
       <div className="loading-container abs-stretch flex-center">
-        <Spinner />
+        <Spinner small />
 
         <style jsx>{styles}</style>
       </div>

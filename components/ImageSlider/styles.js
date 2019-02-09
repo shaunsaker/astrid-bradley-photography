@@ -26,9 +26,6 @@ const styles = css`
     scroll-snap-align: center;
   }
 
-  .image {
-  }
-
   .dots-container {
     padding-top: ${rhythm.vt}px;
   }

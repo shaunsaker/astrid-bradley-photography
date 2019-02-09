@@ -1,20 +1,20 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { rhythm } from '../../static/styles/styleConstants';
+import { rhythm, sizes } from '../../static/styles/styleConstants';
 
 const styles = css`
   .delete-button-container {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -${sizes.button.small}px;
+    right: -${sizes.button.small}px;
   }
 
   .add-button-container {
     position: absolute;
     top: 0;
-    right: -${250 + rhythm.hz}px;
+    right: -${sizes.coverPhotoHeight + rhythm.hz}px;
     bottom: 0;
-    width: 250px;
+    width: ${sizes.coverPhotoHeight}px;
   }
 
   /* TODO: Responsive styling */

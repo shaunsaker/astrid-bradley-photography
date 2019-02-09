@@ -14,11 +14,26 @@ const rhythm = {
   hz: 24,
 };
 
+const sizes = {
+  maxScreenWidth: 940,
+  thumbnailHeight: 125,
+  coverPhotoHeight: 330,
+  button: {
+    small: 20,
+    default: 50,
+  },
+  spinner: {
+    small: 20,
+    default: 50,
+  },
+};
+
 const styleConstants = {
   colors,
   rhythm,
+  sizes,
 };
 
-export { colors, rhythm };
+export { colors, rhythm, sizes };
 
 export default styleConstants;

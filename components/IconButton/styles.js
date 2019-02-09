@@ -1,9 +1,9 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors, sizes } from '../../static/styles/styleConstants';
 
-const SIZE = 50;
-const SMALL_SIZE = 20;
+const SIZE = sizes.button.default;
+const SMALL_SIZE = sizes.button.small;
 
 const styles = css`
   .container {

@@ -1,8 +1,8 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors, sizes } from '../../static/styles/styleConstants';
 
-const ICON_BUTTON_SIZE = 20;
+const ICON_BUTTON_SIZE = sizes.button.small;
 
 const styles = css`
   .image {

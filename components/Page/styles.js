@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { rhythm } from '../../static/styles/styleConstants';
+import { rhythm, sizes } from '../../static/styles/styleConstants';
 
 const styles = css`
   .page-wrapper {
@@ -9,7 +9,7 @@ const styles = css`
 
   .page-container {
     align-self: center;
-    max-width: 720px;
+    max-width: ${sizes.maxScreenWidth}px;
     height: 100%;
     padding: 0px ${rhythm.hz}px 0;
     padding-top: ${105 + rhythm.vt}px; /* header height + spacing */

@@ -1,9 +1,9 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors } from '../../static/styles/styleConstants';
+import { colors, sizes } from '../../static/styles/styleConstants';
 
-const SIZE = 40;
-const SMALL_SIZE = 20;
+const SIZE = sizes.spinner.default;
+const SMALL_SIZE = sizes.spinner.small;
 const BORDER_SIZE = SIZE / 10;
 const SMALL_BORDER_SIZE = 3;
 
