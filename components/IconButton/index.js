@@ -9,8 +9,12 @@ import Icon from '../Icon';
 import Tooltip from './Tooltip';
 
 const IconButton = ({ iconName, label, small, loading, handleClick }) => {
+  if (loading && small) {
+    return <Spinner small={small} />;
+  }
+
   const iconComponent = loading ? (
-    <Spinner small={small} />
+    <Spinner small />
   ) : (
     <Icon name={iconName} color={small ? colors.black : colors.white} size={small && 16} />
   );
@@ -20,9 +24,9 @@ const IconButton = ({ iconName, label, small, loading, handleClick }) => {
     <button
       type="button"
       onClick={handleClick}
-      className={`container ${small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'}
-      ${loading && 'loading'}
-      `}
+      className={`container ${
+        small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'
+      }`}
     >
       <div className="icon-container flex-center">{iconComponent}</div>
 
