@@ -9,7 +9,7 @@ import styles from './styles';
 // Controls height
 const GridItem = ({ gridSize, isThumbnail, children }) => {
   return (
-    <div className={`container relative ${gridSize > 1 && 'margin'} ${isThumbnail && 'thumbnail'}`}>
+    <div className={`container relative ${isThumbnail && 'thumbnail'}`}>
       {children}
 
       <style jsx>{styles}</style>

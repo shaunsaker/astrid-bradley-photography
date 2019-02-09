@@ -8,9 +8,6 @@ const styles = css`
     position: relative;
     height: ${sizes.photoHeight}px;
     max-height: ${sizes.photoHeight}px;
-  }
-
-  .container.margin {
     margin-bottom: ${rhythm.hz}px;
   }
 
