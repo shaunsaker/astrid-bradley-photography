@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import GridImage from '../../../components/GridImage';
+import Image from '../../../components/Image';
 import DeleteFileButton from './DeleteFileButton';
 
-const Photo = ({ src, alt, dir, gridSize, isThumbnail, handlePhotoDeleted }) => {
+const Photo = ({ src, alt, dir, handlePhotoDeleted }) => {
   return (
-    <GridImage src={src} alt={alt} gridSize={gridSize} isThumbnail={isThumbnail}>
+    <Image src={src} alt={alt}>
       <div className="file-delete-button-container">
         <DeleteFileButton dir={dir} url={src} handleFileDeleted={handlePhotoDeleted} />
       </div>
 
       <style jsx>{styles}</style>
-    </GridImage>
+    </Image>
   );
 };
 
@@ -22,8 +22,6 @@ Photo.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
   dir: PropTypes.string,
-  gridSize: PropTypes.number,
-  isThumbnail: PropTypes.bool,
   handlePhotoDeleted: PropTypes.func,
 };
 Photo.defaultProps = {};

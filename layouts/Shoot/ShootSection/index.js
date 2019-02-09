@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { getPrettyDate } from '../../../utils';
 import styles from './styles';
 
 import ParagraphText from '../../../components/ParagraphText';
+import Image from '../../../components/Image';
 
 const ShootSection = ({ shoot }) => {
   const { name, date, location, photos } = shoot;
@@ -18,9 +19,17 @@ const ShootSection = ({ shoot }) => {
 
       <div className="spacer-vt" />
 
-      {photos.map((photo, index) => {
-        return <img key={photo} src={photo} alt={`${name}-${index + 1}`} className="spacer-vt" />;
-      })}
+      <div className="row wrap">
+        {photos.map((photo, index) => {
+          return (
+            <Fragment key={photo}>
+              <Image src={photo} alt={`${name}-${index + 1}`} />
+
+              <div className="spacer-vt" />
+            </Fragment>
+          );
+        })}
+      </div>
 
       <style jsx>{styles}</style>
     </section>

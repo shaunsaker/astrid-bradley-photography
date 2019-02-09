@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import GridItem from '../GridItem';
 import Spinner from '../Spinner';
 
-export class GridImage extends React.Component {
+export class Image extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,9 +19,7 @@ export class GridImage extends React.Component {
 
   static propTypes = {
     src: PropTypes.string,
-    gridSize: PropTypes.number,
     alt: PropTypes.string,
-    isThumbnail: PropTypes.bool,
     children: PropTypes.node,
   };
 
@@ -40,7 +37,7 @@ export class GridImage extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { gridSize, src, alt, isThumbnail, children } = this.props;
+    const { src, alt, children } = this.props;
 
     const loadingComponent = loading && (
       <div className="loading-container abs-stretch flex-center">
@@ -51,7 +48,7 @@ export class GridImage extends React.Component {
     );
 
     return (
-      <GridItem key={src} gridSize={gridSize} isThumbnail={isThumbnail}>
+      <div className="container relative">
         <img
           src={src}
           alt={alt}
@@ -65,9 +62,9 @@ export class GridImage extends React.Component {
         {loadingComponent}
 
         <style jsx>{styles}</style>
-      </GridItem>
+      </div>
     );
   }
 }
 
-export default GridImage;
+export default Image;

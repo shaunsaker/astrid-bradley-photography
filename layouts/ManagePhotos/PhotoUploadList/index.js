@@ -6,7 +6,8 @@ import { getBlobURL } from '../../../utils';
 import { uploadFile } from '../../../services/storage';
 import styles from './styles';
 
-import GridImage from '../../../components/GridImage';
+import GridItem from '../../../components/GridItem';
+import Image from '../../../components/Image';
 import ProgressBar from './ProgressBar';
 import IconButton from '../../../components/IconButton';
 import AddFileButton from '../AddFileButton';
@@ -147,20 +148,22 @@ export class PhotoUploadList extends React.Component {
             ) : null;
 
           return (
-            <GridImage key={key} src={src} alt={alt} gridSize={gridSize} isThumbnail={isThumbnail}>
-              <div className="overlay abs-stretch" />
+            <GridItem key={key} gridSize={gridSize} isThumbnail={isThumbnail}>
+              <Image src={src} alt={alt}>
+                <div className="overlay abs-stretch" />
 
-              {progressComponent}
+                {progressComponent}
 
-              <div className="file-delete-button-container">
-                <IconButton
-                  iconName="close"
-                  label="Remove Photo"
-                  small
-                  handleClick={() => this.onRemovePhoto(index)}
-                />
-              </div>
-            </GridImage>
+                <div className="file-delete-button-container">
+                  <IconButton
+                    iconName="close"
+                    label="Remove Photo"
+                    small
+                    handleClick={() => this.onRemovePhoto(index)}
+                  />
+                </div>
+              </Image>
+            </GridItem>
           );
         })}
 
