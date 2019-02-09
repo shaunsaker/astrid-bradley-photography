@@ -10,7 +10,16 @@ const styles = css`
     right: 0;
     background-color: ${colors.black};
     z-index: 2;
+    transition: transform 0.5s ease;
     animation: translate-up 0.5s ease;
+  }
+
+  .animate-in {
+    transform: translateY(0);
+  }
+
+  .animate-out {
+    transform: translateY(100%);
   }
 
   .container {
@@ -20,11 +29,9 @@ const styles = css`
 
   @keyframes translate-up {
     from {
-      opacity: 0;
-      transform: translateY(56px);
+      transform: translateY(100%);
     }
     to {
-      opacity: 1;
       transform: translateY(0);
     }
   }

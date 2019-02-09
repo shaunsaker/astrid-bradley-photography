@@ -9,10 +9,7 @@ export class SystemMessageHandler extends React.Component {
     super(props);
 
     this.onClose = this.onClose.bind(this);
-    this.clearTimer = this.clearTimer.bind(this);
     this.resetSystemMessage = this.resetSystemMessage.bind(this);
-
-    this.timer = null;
 
     this.state = {};
   }
@@ -24,22 +21,8 @@ export class SystemMessageHandler extends React.Component {
 
   static defaultProps = {};
 
-  componentDidUpdate(prevProps) {
-    const { systemMessage } = this.props;
-
-    if (systemMessage && systemMessage !== prevProps.systemMessage) {
-      // Reset the system message after 3s
-      this.timer = setTimeout(this.resetSystemMessage, 3000);
-    }
-  }
-
   onClose() {
-    this.clearTimer();
     this.resetSystemMessage();
-  }
-
-  clearTimer() {
-    clearTimeout(this.timer);
   }
 
   resetSystemMessage() {
