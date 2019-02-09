@@ -10,7 +10,7 @@ const styles = css`
     bottom: 100%;
     left: 50%;
     margin-left: ${WIDTH / -2}px;
-    margin-bottom: ${rhythm.vt}px;
+    margin-bottom: ${rhythm.vt / 2}px;
     width: ${WIDTH}px;
     padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
     background-color: ${colors.transBlack};
