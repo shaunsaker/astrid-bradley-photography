@@ -9,7 +9,7 @@ const styles = css`
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 1em;
-    color: ${colors.black};
+    color: ${colors.grey};
   }
 `;
 
