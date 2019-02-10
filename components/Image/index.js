@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { rhythm } from '../../static/styles/styleConstants';
+
 import styles from './styles';
 
 import Spinner from '../Spinner';
@@ -53,7 +55,7 @@ export default class Image extends React.Component {
     );
 
     return (
-      <div className="container relative">
+      <div style={{ width, height }} className="container relative">
         <img
           src={src}
           alt={alt}
@@ -68,8 +70,6 @@ export default class Image extends React.Component {
         {children}
 
         {loadingComponent}
-
-        <style jsx>{``}</style>
 
         <style jsx>{styles}</style>
       </div>

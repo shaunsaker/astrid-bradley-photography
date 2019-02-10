@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import styles from './styles';
 
-import Image from '../Image';
 import Button from '../Button';
 
 const Springboard = ({ image, text, link }) => {
@@ -13,7 +12,7 @@ const Springboard = ({ image, text, link }) => {
   return (
     <Link href={href} as={as}>
       <div className="container shadow-sm shadow-hover relative">
-        <Image {...image} />
+        <img {...image} />
 
         <div className="text-container abs-stretch flex-center">
           <Button text={text} noShadow />

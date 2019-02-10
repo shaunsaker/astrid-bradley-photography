@@ -160,7 +160,7 @@ export class ManagePhotos extends React.Component {
                 );
               })}
 
-            <PhotoUploadList dir={dir} handlePhotoUploaded={this.onShootPhotoUploaded} />
+            <PhotoUploadList dir={dir} multiple handlePhotoUploaded={this.onShootPhotoUploaded} />
           </div>
         </section>
 

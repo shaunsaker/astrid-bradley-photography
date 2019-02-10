@@ -34,6 +34,7 @@ export class PhotoUploadList extends React.Component {
 
   static propTypes = {
     dir: PropTypes.string, // dir to upload files to
+    multiple: PropTypes.bool,
     handlePhotoUploaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func,
   };
@@ -133,6 +134,7 @@ export class PhotoUploadList extends React.Component {
 
   render() {
     const { files, progress } = this.state;
+    const { multiple } = this.props;
 
     return (
       <Fragment>
@@ -167,7 +169,7 @@ export class PhotoUploadList extends React.Component {
           );
         })}
 
-        <AddFileButton multiple handleAddFiles={this.onAddFiles} />
+        <AddFileButton multiple={multiple} handleAddFiles={this.onAddFiles} />
 
         <style jsx>{styles}</style>
       </Fragment>

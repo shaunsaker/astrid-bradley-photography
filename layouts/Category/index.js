@@ -12,10 +12,12 @@ const Category = ({ categoryID, shoots }) => {
   const title = categoryID.replace('-', ' '); // FIXME: Title could come from db categories collection (overkill for now)
 
   // Filter on category_id
+  // IF cover photo exists
   // IF photos exist
   // IF not archived
   const relevantShoots = shoots.filter(
-    (shoot) => shoot.category_id === categoryID && shoot.photos && !shoot.archived,
+    (shoot) =>
+      shoot.category_id === categoryID && shoot.cover_photo && shoot.photos && !shoot.archived,
   );
 
   // Sort by order
