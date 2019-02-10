@@ -46,6 +46,7 @@ export default function* saga(action) {
       type: 'SET_SYSTEM_MESSAGE',
       payload: {
         message,
+        isError: true,
       },
     });
   }

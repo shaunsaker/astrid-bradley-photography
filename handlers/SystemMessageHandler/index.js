@@ -16,7 +16,7 @@ export class SystemMessageHandler extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
-    systemMessage: PropTypes.string,
+    systemMessage: PropTypes.shape({}),
   };
 
   static defaultProps = {};
@@ -35,8 +35,9 @@ export class SystemMessageHandler extends React.Component {
 
   render() {
     const { systemMessage } = this.props;
+    const { message } = systemMessage;
 
-    return systemMessage && <Snackbar text={systemMessage} handleClose={this.onClose} />;
+    return message && <Snackbar {...systemMessage} handleClose={this.onClose} />;
   }
 }
 

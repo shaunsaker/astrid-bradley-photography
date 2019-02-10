@@ -20,7 +20,7 @@ export class PageLoadingHandler extends React.Component {
 
   static propTypes = {
     pendingTransactions: PropTypes.arrayOf(PropTypes.shape({})),
-    systemMessage: PropTypes.string,
+    systemMessage: PropTypes.shape({}),
   };
 
   static defaultProps = {};
@@ -71,9 +71,9 @@ export class PageLoadingHandler extends React.Component {
   }
 
   setIsLoading(isLoading) {
-    this.setState({
-      isLoading,
-    });
+    // this.setState({
+    //   isLoading,
+    // });
   }
 
   render() {

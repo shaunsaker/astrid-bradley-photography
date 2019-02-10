@@ -41,6 +41,7 @@ export default (ComposedComponent) => {
             type: 'SET_SYSTEM_MESSAGE',
             payload: {
               message: 'Shoot saved successfully',
+              isSuccess: true,
             },
           },
         },

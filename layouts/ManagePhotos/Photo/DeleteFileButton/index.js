@@ -68,7 +68,7 @@ export class DeleteFileButton extends React.Component {
 
     dispatch({
       type: 'SET_SYSTEM_MESSAGE',
-      payload: { message },
+      payload: { message, isError: true },
     });
   }
 

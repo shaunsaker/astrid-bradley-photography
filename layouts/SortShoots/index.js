@@ -141,6 +141,7 @@ export class SortShoots extends React.Component {
           type: 'SET_SYSTEM_MESSAGE',
           payload: {
             message: 'Shoot order saved successfully.',
+            isSuccess: true,
           },
         },
       },

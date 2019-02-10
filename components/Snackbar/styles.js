@@ -5,13 +5,12 @@ import { rhythm, colors } from '../../static/styles/styleConstants';
 const styles = css`
   .wrapper {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    top: 0;
     right: 0;
-    background-color: ${colors.black};
+    background-color: ${colors.transBlack};
     z-index: 2;
     transition: transform 0.5s ease;
-    animation: translate-up 0.5s ease;
+    animation: translate-left 0.5s ease;
   }
 
   .animate-in {
@@ -19,20 +18,20 @@ const styles = css`
   }
 
   .animate-out {
-    transform: translateY(100%);
+    transform: translateX(100%);
   }
 
   .container {
     position: relative;
-    padding: ${rhythm.vt}px ${rhythm.hz}px;
+    padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
   }
 
-  @keyframes translate-up {
+  @keyframes translate-left {
     from {
-      transform: translateY(100%);
+      transform: translateX(100%);
     }
     to {
-      transform: translateY(0);
+      transform: translateX(0);
     }
   }
 `;
