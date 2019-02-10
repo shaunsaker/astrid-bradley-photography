@@ -24,7 +24,7 @@ const ShootSection = ({ shoot }) => {
 
           return (
             <div key={id} className="image-container">
-              <img {...photo} />
+              <Image {...photo} />
             </div>
           );
         })}
