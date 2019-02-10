@@ -100,7 +100,7 @@ export class ManagePhotos extends React.Component {
   createPhoto({ downloadURL, width, height, fileName, id }) {
     const shoot = this.getShoot();
     const { name } = shoot;
-    const alt = `${name} Cover Photo`;
+    const alt = name;
     const photo = {
       src: downloadURL,
       alt,
@@ -138,7 +138,7 @@ export class ManagePhotos extends React.Component {
 
     return (
       <Layout title={title}>
-        <section>
+        <section id="cover-photo-container">
           <HeadingText>Cover Photo</HeadingText>
 
           {coverPhotoComponent}
