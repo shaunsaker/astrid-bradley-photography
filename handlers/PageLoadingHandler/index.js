@@ -12,6 +12,7 @@ export class PageLoadingHandler extends React.Component {
     this.onRouteChangeStart = this.onRouteChangeStart.bind(this);
     this.onRouteChangeComplete = this.onRouteChangeComplete.bind(this);
     this.setIsLoading = this.setIsLoading.bind(this);
+    this.setSavingSystemMessage = this.setSavingSystemMessage.bind(this);
 
     this.state = {
       isLoading: false,
@@ -21,6 +22,7 @@ export class PageLoadingHandler extends React.Component {
   static propTypes = {
     pendingTransactions: PropTypes.arrayOf(PropTypes.shape({})),
     systemMessage: PropTypes.shape({}),
+    dispatch: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -31,29 +33,13 @@ export class PageLoadingHandler extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isLoading } = this.state;
-    const { pendingTransactions, systemMessage } = this.props;
+    const { pendingTransactions } = this.props;
 
     // IF pt has length
     // IF previous pt does not have length
     // THEN we are loading
     if (pendingTransactions.length && !prevProps.pendingTransactions.length) {
-      this.setIsLoading(true);
-    }
-
-    // IF pt does not have length
-    // IF previous pt has length
-    // THEN we should not be loading
-    else if (!pendingTransactions.length && prevProps.pendingTransactions.length) {
-      this.setIsLoading(false);
-    }
-
-    // IF isLoading
-    // IF systemMessage (we had an error)
-    // IF no previous systemMessage
-    // THEN we should not be loading
-    else if (isLoading && systemMessage && !prevProps.systemMessage) {
-      this.setIsLoading(false);
+      this.setSavingSystemMessage();
     }
   }
 
@@ -71,9 +57,21 @@ export class PageLoadingHandler extends React.Component {
   }
 
   setIsLoading(isLoading) {
-    // this.setState({
-    //   isLoading,
-    // });
+    this.setState({
+      isLoading,
+    });
+  }
+
+  setSavingSystemMessage() {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'SET_SYSTEM_MESSAGE',
+      payload: {
+        message: 'Saving',
+        isLoading: true,
+      },
+    });
   }
 
   render() {

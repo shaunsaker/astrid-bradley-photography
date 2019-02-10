@@ -40,6 +40,17 @@ export default class Snackbar extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { message, isLoading } = this.props;
+
+    // IF the message changed
+    // IF its not a loading message
+    // THEN auto hide
+    if (message !== prevProps.message && !isLoading) {
+      setTimeout(this.handleClose, 3000);
+    }
+  }
+
   handleClose() {
     const { handleClose } = this.props;
 

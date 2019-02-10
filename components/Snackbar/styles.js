@@ -11,6 +11,8 @@ const styles = css`
     z-index: 2;
     transition: transform 0.5s ease;
     animation: translate-left 0.5s ease;
+    height: 40px;
+    justify-content: center;
   }
 
   .animate-in {
