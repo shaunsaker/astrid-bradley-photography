@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { reorderArrayItems } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
+import DraggableList from '../../components/DraggableList';
+import Image from '../../components/Image';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
@@ -14,10 +17,18 @@ class ManageLayout extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.onSave = this.onSave.bind(this);
     this.getShoot = this.getShoot.bind(this);
+    this.setPhotos = this.setPhotos.bind(this);
+    this.renderPhoto = this.renderPhoto.bind(this);
 
-    this.state = {};
+    const shoot = this.getShoot();
+    const { photos } = shoot;
+
+    this.state = {
+      photos,
+    };
   }
 
   static propTypes = {
@@ -28,7 +39,27 @@ class ManageLayout extends React.Component {
 
   static defaultProps = {};
 
-  onSave() {}
+  onDragEnd(result) {
+    const { photos } = this.state;
+    const { source, destination } = result;
+
+    // Dropped inside the list
+    if (result.destination) {
+      const reorderedPhotos = reorderArrayItems(photos, source.index, destination.index);
+
+      this.setPhotos(reorderedPhotos);
+    }
+  }
+
+  onSave() {
+    const { photos } = this.state;
+    const { onSaveShoot, shootID } = this.props;
+    const shoot = this.getShoot();
+
+    shoot.photos = photos;
+
+    onSaveShoot(shoot, shootID);
+  }
 
   getShoot() {
     const { shoots, shootID } = this.props;
@@ -37,7 +68,24 @@ class ManageLayout extends React.Component {
     return shoot;
   }
 
+  setPhotos(photos) {
+    this.setState({
+      photos,
+    });
+  }
+
+  renderPhoto(photo) {
+    return (
+      <Fragment>
+        <Image {...photo} />
+
+        <div className="spacer-vt" />
+      </Fragment>
+    );
+  }
+
   render() {
+    const { photos } = this.state;
     const shoot = this.getShoot();
     const { name } = shoot;
     const title = `Manage Layout: ${name}`;
@@ -53,6 +101,12 @@ class ManageLayout extends React.Component {
 
     return (
       <Layout title={title}>
+        <DraggableList
+          items={photos}
+          renderItem={this.renderPhoto}
+          handleDragEnd={this.onDragEnd}
+        />
+
         <ControlPanel controls={controls} />
 
         <style jsx>{styles}</style>
