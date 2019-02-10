@@ -2,16 +2,19 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 
 import { rhythm, colors } from '../../static/styles/styleConstants';
 
+const HEIGHT = 40;
+const TRANSLATE = 100;
+
 const styles = css`
   .wrapper {
     position: fixed;
-    top: 0;
-    right: 0;
+    top: ${rhythm.vt}px;
+    right: ${rhythm.hz}px;
     background-color: ${colors.transBlack};
     z-index: 2;
     transition: transform 0.5s ease;
     animation: translate-left 0.5s ease;
-    height: 40px;
+    height: ${HEIGHT}px;
     justify-content: center;
   }
 
@@ -20,7 +23,7 @@ const styles = css`
   }
 
   .animate-out {
-    transform: translateX(100%);
+    transform: translateY(-${TRANSLATE}px);
   }
 
   .container {
@@ -30,10 +33,10 @@ const styles = css`
 
   @keyframes translate-left {
     from {
-      transform: translateX(100%);
+      transform: translateY(-${TRANSLATE}px);
     }
     to {
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
 `;
