@@ -7,6 +7,7 @@ const styles = css`
   }
 
   .image {
+    object-fit: cover;
   }
 
   .loading-container {
