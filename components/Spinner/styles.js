@@ -26,6 +26,7 @@ const styles = css`
     height: ${SIZE}px;
     border-radius: 50%;
     animation: spin 0.5s linear infinite;
+    z-index: 1;
   }
 
   .container.small {

@@ -14,6 +14,10 @@ export default class Snackbar extends React.Component {
 
     this.handleClose = this.handleClose.bind(this);
     this.setShouldAnimateOut = this.setShouldAnimateOut.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    this.clearTimer = this.clearTimer.bind(this);
+
+    this.timer = null;
 
     this.state = {
       shouldAnimateOut: false,
@@ -36,7 +40,7 @@ export default class Snackbar extends React.Component {
 
     // Only auto hide if its not the loading state
     if (!isLoading) {
-      setTimeout(this.handleClose, 3000);
+      this.startTimer();
     }
   }
 
@@ -46,8 +50,15 @@ export default class Snackbar extends React.Component {
     // IF the message changed
     // IF its not a loading message
     // THEN auto hide
-    if (message !== prevProps.message && !isLoading) {
-      setTimeout(this.handleClose, 3000);
+    if (message !== prevProps.message) {
+      if (this.timer) {
+        this.clearTimer();
+      }
+
+      // Only auto hide if its not the loading state
+      if (!isLoading) {
+        this.startTimer();
+      }
     }
   }
 
@@ -63,6 +74,14 @@ export default class Snackbar extends React.Component {
     this.setState({
       shouldAnimateOut,
     });
+  }
+
+  startTimer() {
+    this.timer = setTimeout(this.handleClose, 3000);
+  }
+
+  clearTimer() {
+    clearTimeout(this.timer);
   }
 
   render() {
