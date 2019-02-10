@@ -8,7 +8,7 @@ import HeadingText from '../../../components/HeadingText';
 import Image from '../../../components/Image';
 
 const ShootSection = ({ shoot }) => {
-  const { name, date, location, photos } = shoot;
+  const { date, location, photos } = shoot;
   const prettyDate = getPrettyDate(date);
   const headingText = `${prettyDate} | ${location}`;
 
@@ -19,10 +19,12 @@ const ShootSection = ({ shoot }) => {
       <div className="spacer-vt" />
 
       <div className="images-container row wrap">
-        {photos.map((photo, index) => {
+        {photos.map((photo) => {
+          const { id } = photo;
+
           return (
-            <div key={photo} className="image-container">
-              <Image src={photo} alt={`${name}-${index + 1}`} />
+            <div key={id} className="image-container">
+              <Image {...photo} />
             </div>
           );
         })}
@@ -38,7 +40,7 @@ ShootSection.propTypes = {
     name: PropTypes.string,
     date: PropTypes.number,
     location: PropTypes.string,
-    photos: PropTypes.arrayOf(PropTypes.string),
+    photos: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string })),
   }).isRequired,
 };
 ShootSection.defaultProps = {};

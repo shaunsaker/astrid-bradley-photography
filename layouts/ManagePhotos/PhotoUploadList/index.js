@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getBlobURL } from '../../../utils';
+import { createUID, getBlobURL } from '../../../utils';
 import { uploadFile } from '../../../services/storage';
 import styles from './styles';
 
@@ -61,9 +61,22 @@ export class PhotoUploadList extends React.Component {
   }
 
   onFileUploaded(downloadURL) {
+    const { files } = this.state;
     const { handlePhotoUploaded } = this.props;
+    const image = document.getElementById('image-preview-0');
+    const width = image.naturalWidth;
+    const height = image.naturalHeight;
+    const file = files[0];
+    const fileName = file.name;
+    const photo = {
+      downloadURL,
+      width,
+      height,
+      fileName,
+      id: createUID(),
+    };
 
-    handlePhotoUploaded(downloadURL);
+    handlePhotoUploaded(photo);
 
     this.removeFileAtIndex(0);
     this.handleNextFileUpload();
@@ -76,6 +89,7 @@ export class PhotoUploadList extends React.Component {
   handleNextFileUpload() {
     const { files } = this.state;
     const file = files[0];
+
     if (file) {
       const { name } = file;
       const { dir } = this.props;
@@ -135,7 +149,7 @@ export class PhotoUploadList extends React.Component {
 
           return (
             <div key={key} className="image-container relative">
-              <Image src={src} alt={alt} />
+              <Image id={`image-preview-${index}`} src={src} alt={alt} />
 
               <div className="overlay abs-stretch" />
 

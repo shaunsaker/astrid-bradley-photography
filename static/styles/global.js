@@ -30,6 +30,7 @@ body {
 img {
   width: 100%;
   max-width: 100%;
+  height: auto;
 }
 
 div, ul {
@@ -41,7 +42,7 @@ section {
   margin-bottom: ${rhythm.vt * 4}px;
 }
 
-ul {
+ul, figure {
   margin: 0;
   padding: 0;
 }

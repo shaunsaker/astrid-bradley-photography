@@ -8,13 +8,12 @@ import Image from '../Image';
 import Button from '../Button';
 
 const Springboard = ({ image, text, link }) => {
-  const { src, alt } = image;
   const { href, as } = link;
 
   return (
     <Link href={href} as={as}>
       <div className="container shadow-sm shadow-hover relative">
-        <Image src={src} alt={alt} />
+        <Image {...image} />
 
         <div className="text-container abs-stretch flex-center">
           <Button text={text} noShadow />

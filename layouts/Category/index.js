@@ -30,10 +30,10 @@ const Category = ({ categoryID, shoots }) => {
 
   // Map to springboards data type
   const springboards = sortedShoots.map((shoot) => {
-    const { name, cover_photo_url, id } = shoot;
+    const { name, cover_photo, id } = shoot;
 
     return {
-      image: { src: cover_photo_url, alt: name },
+      image: cover_photo,
       text: name,
       link: { href: `/shoot?id=${id}`, as: `/shoot/${id}` },
     };

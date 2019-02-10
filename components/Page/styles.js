@@ -10,6 +10,7 @@ const styles = css`
   .page-container {
     align-self: center;
     max-width: ${sizes.maxScreenWidth}px;
+    width: 100%;
     height: 100%;
     padding: 0px ${rhythm.hz}px 0;
     padding-top: ${105 + rhythm.vt}px; /* header height + spacing */

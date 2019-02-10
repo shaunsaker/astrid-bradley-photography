@@ -14,7 +14,7 @@ const Shoot = ({ shootID, shoots }) => {
 
   return (
     <Layout title={name}>
-      <main>{shootComponent}</main>
+      {shootComponent}
 
       <ContactButton />
     </Layout>

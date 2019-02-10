@@ -1,8 +1,12 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors, sizes } from '../../../static/styles/styleConstants';
+import { colors, rhythm, sizes } from '../../../static/styles/styleConstants';
 
 const styles = css`
+  .image-container {
+    margin-bottom: ${rhythm.vt}px;
+  }
+
   .overlay {
     height: 100%;
     background-color: ${colors.transWhite};

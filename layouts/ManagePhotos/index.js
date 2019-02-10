@@ -22,6 +22,7 @@ export class ManagePhotos extends React.Component {
     this.onShootPhotoUploaded = this.onShootPhotoUploaded.bind(this);
     this.onShootPhotoDeleted = this.onShootPhotoDeleted.bind(this);
     this.getShoot = this.getShoot.bind(this);
+    this.createPhoto = this.createPhoto.bind(this);
 
     this.state = {};
   }
@@ -31,7 +32,8 @@ export class ManagePhotos extends React.Component {
       PropTypes.shape({
         name: PropTypes.string,
         id: PropTypes.string,
-        photos: PropTypes.arrayOf(PropTypes.string),
+        cover_photo: PropTypes.shape({}),
+        photos: PropTypes.arrayOf(PropTypes.shape({})),
       }),
     ),
     shootID: PropTypes.string,
@@ -40,11 +42,12 @@ export class ManagePhotos extends React.Component {
 
   static defaultProps = {};
 
-  onCoverPhotoUploaded(downloadURL) {
+  onCoverPhotoUploaded(file) {
     const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
+    const photo = this.createPhoto(file);
 
-    shoot.cover_photo_url = downloadURL;
+    shoot.cover_photo = photo;
 
     onSaveShoot(shoot, shootID);
   }
@@ -53,19 +56,20 @@ export class ManagePhotos extends React.Component {
     const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
 
-    shoot.cover_photo_url = null;
+    shoot.cover_photo = null;
 
     onSaveShoot(shoot, shootID);
   }
 
-  onShootPhotoUploaded(downloadURL) {
+  onShootPhotoUploaded(file) {
     const { shootID, onSaveShoot } = this.props;
     const shoot = this.getShoot();
+    const photo = this.createPhoto(file);
 
     if (shoot.photos) {
-      shoot.photos.push(downloadURL);
+      shoot.photos.push(photo);
     } else {
-      shoot.photos = [downloadURL];
+      shoot.photos = [photo];
     }
 
     onSaveShoot(shoot, shootID);
@@ -93,18 +97,30 @@ export class ManagePhotos extends React.Component {
     return shoot;
   }
 
+  createPhoto({ downloadURL, width, height, fileName, id }) {
+    const shoot = this.getShoot();
+    const { name } = shoot;
+    const alt = `${name} Cover Photo`;
+    const photo = {
+      src: downloadURL,
+      alt,
+      width,
+      height,
+      file_name: fileName,
+      id,
+    };
+
+    return photo;
+  }
+
   render() {
     const shoot = this.getShoot();
-    const { name, id, cover_photo_url, photos } = shoot;
+    const { name, id, cover_photo, photos } = shoot;
+    const dir = id; // directory to save photos to
     const title = `Manage Photos: ${name}`;
 
-    const coverPhotoComponent = cover_photo_url ? (
-      <Photo
-        src={cover_photo_url}
-        alt={name}
-        dir={id}
-        handlePhotoDeleted={this.onCoverPhotoDeleted}
-      />
+    const coverPhotoComponent = cover_photo ? (
+      <Photo {...cover_photo} dir={id} handlePhotoDeleted={this.onCoverPhotoDeleted} />
     ) : (
       <PhotoUploadList dir={id} handlePhotoUploaded={this.onCoverPhotoUploaded} />
     );
@@ -134,25 +150,17 @@ export class ManagePhotos extends React.Component {
           <div className="photos-container row wrap">
             {photos &&
               photos.map((photo, index) => {
-                const alt = `${name}-${index}`;
-
                 return (
                   <Photo
-                    key={photo}
-                    src={photo}
-                    alt={alt}
-                    dir={id}
+                    key={photo.id}
+                    {...photo}
+                    dir={dir}
                     handlePhotoDeleted={() => this.onShootPhotoDeleted(index)}
                   />
                 );
               })}
 
-            <PhotoUploadList
-              dir={id}
-              gridSize={4}
-              isThumbnail
-              handlePhotoUploaded={this.onShootPhotoUploaded}
-            />
+            <PhotoUploadList dir={dir} handlePhotoUploaded={this.onShootPhotoUploaded} />
           </div>
         </section>
 
