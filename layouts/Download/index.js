@@ -13,7 +13,11 @@ const Download = ({ shootID, shoots }) => {
   return (
     <Layout title={title}>
       <section>
-        <Springboard image={cover_photo} text="Download Shoot" action={{}} />
+        <Springboard
+          image={cover_photo}
+          text="Download Shoot"
+          action={{ link: { href: '', target: '_blank' } }}
+        />
       </section>
     </Layout>
   );

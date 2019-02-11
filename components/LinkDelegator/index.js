@@ -31,7 +31,7 @@ const LinkDelegator = ({ action, children }) => {
     );
   }
 
-  return null;
+  return <div>{children}</div>;
 };
 
 LinkDelegator.propTypes = {
