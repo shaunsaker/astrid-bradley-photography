@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 
 import styles from './styles';
 
 import Image from '../Image';
+import LinkDelegator from '../LinkDelegator';
 import Button from '../Button';
 
-const Springboard = ({ image, text, link }) => {
-  const { href, as } = link;
-
+const Springboard = ({ image, text, action }) => {
   return (
-    <Link href={href} as={as}>
+    <LinkDelegator action={action}>
       <div className="container shadow-sm shadow-hover relative">
         <Image {...image} />
 
@@ -21,17 +19,14 @@ const Springboard = ({ image, text, link }) => {
 
         <style jsx>{styles}</style>
       </div>
-    </Link>
+    </LinkDelegator>
   );
 };
 
 Springboard.propTypes = {
   image: PropTypes.shape({ src: PropTypes.string, alt: PropTypes.string }).isRequired,
   text: PropTypes.string,
-  link: PropTypes.shape({
-    href: PropTypes.string,
-    as: PropTypes.string,
-  }),
+  action: PropTypes.shape({}),
 };
 Springboard.defaultProps = {};
 

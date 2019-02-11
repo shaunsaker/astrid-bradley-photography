@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-const LinkComponent = ({ action, children }) => {
+const LinkDelegator = ({ action, children }) => {
   const { link, nextLink, handleClick } = action;
 
   if (link) {
@@ -14,7 +14,7 @@ const LinkComponent = ({ action, children }) => {
       </a>
     );
   } else if (nextLink) {
-    const { href, as } = link;
+    const { href, as } = nextLink;
 
     return (
       <Link href={href} as={as}>
@@ -22,26 +22,30 @@ const LinkComponent = ({ action, children }) => {
       </Link>
     );
   } else if (handleClick) {
-    return <button>{children}</button>;
+    return (
+      <button type="button" onClick={handleClick}>
+        {children}
+      </button>
+    );
   }
 
   return null;
 };
 
-LinkComponent.propTypes = {
+LinkDelegator.propTypes = {
   action: PropTypes.shape({
     link: PropTypes.shape({
       href: PropTypes.string,
       target: PropTypes.string,
-    }),
-    nextLink: {
+    }).isRequired,
+    nextLink: PropTypes.shape({
       href: PropTypes.string,
       as: PropTypes.string,
-    },
+    }),
     handleClick: PropTypes.func,
   }),
   children: PropTypes.node,
 };
-LinkComponent.defaultProps = {};
+LinkDelegator.defaultProps = {};
 
-export default LinkComponent;
+export default LinkDelegator;
