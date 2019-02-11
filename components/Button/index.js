@@ -1,50 +1,31 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 
 import styles from './styles';
 
-const Wrapper = ({ link, children }) => {
-  if (link) {
-    const { href, as } = link;
+import LinkDelegator from '../LinkDelegator';
 
-    return (
-      <Link href={href} as={as}>
-        {children}
-      </Link>
-    );
-  }
+const Button = ({ text, type, action }) => {
+  const delegatorAction = {
+    button: {
+      ...action,
+      type,
+    },
+  };
 
-  return children;
-};
-
-const Button = ({ text, type, noShadow, handleClick, link }) => {
   return (
-    <Fragment>
-      <Wrapper link={link}>
-        <button
-          type={type}
-          onClick={handleClick}
-          className={`container ${!noShadow && 'shadow-sm shadow-hover'}`}
-        >
-          {text}
-        </button>
-      </Wrapper>
+    <LinkDelegator action={delegatorAction}>
+      <div className="button shadow-sm shadow-hover">{text}</div>
 
       <style jsx>{styles}</style>
-    </Fragment>
+    </LinkDelegator>
   );
 };
 
 Button.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string,
-  noShadow: PropTypes.bool,
-  handleClick: PropTypes.func,
-  link: PropTypes.shape({
-    href: PropTypes.string,
-    as: PropTypes.string,
-  }),
+  action: PropTypes.shape({}),
 };
 Button.defaultProps = {
   type: 'button',

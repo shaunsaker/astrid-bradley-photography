@@ -13,13 +13,7 @@ const Download = ({ shootID, shoots }) => {
   return (
     <Layout title={title}>
       <section>
-        <Springboard
-          image={cover_photo}
-          text="Download Shoot"
-          action={{
-            handleClick: () => console.log('Test'),
-          }}
-        />
+        <Springboard image={cover_photo} text="Download Shoot" action={{}} />
       </section>
     </Layout>
   );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 const LinkDelegator = ({ action, children }) => {
-  const { link, nextLink, handleClick } = action;
+  const { link, nextLink, button } = action;
 
   if (link) {
     const { href, target } = link;
@@ -21,9 +21,11 @@ const LinkDelegator = ({ action, children }) => {
         {children}
       </Link>
     );
-  } else if (handleClick) {
+  } else if (button) {
+    const { type, handleClick } = button;
+
     return (
-      <button type="button" onClick={handleClick}>
+      <button type={type} onClick={handleClick}>
         {children}
       </button>
     );
@@ -42,10 +44,15 @@ LinkDelegator.propTypes = {
       href: PropTypes.string,
       as: PropTypes.string,
     }),
-    handleClick: PropTypes.func,
-  }).isRequired,
+    button: PropTypes.shape({
+      type: PropTypes.string,
+      handleClick: PropTypes.func,
+    }),
+  }),
   children: PropTypes.node,
 };
-LinkDelegator.defaultProps = {};
+LinkDelegator.defaultProps = {
+  action: {},
+};
 
 export default LinkDelegator;

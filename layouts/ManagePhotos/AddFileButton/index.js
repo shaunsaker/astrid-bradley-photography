@@ -5,7 +5,7 @@ import styles from './styles';
 
 import AddButton from '../../../components/AddButton';
 
-const Button = ({ multiple, handleAddFiles }) => {
+const AddFileButton = ({ multiple, handleAddFiles }) => {
   return (
     <AddButton>
       <input
@@ -21,10 +21,10 @@ const Button = ({ multiple, handleAddFiles }) => {
   );
 };
 
-Button.propTypes = {
+AddFileButton.propTypes = {
   multiple: PropTypes.bool,
   handleAddFiles: PropTypes.func,
 };
-Button.defaultProps = {};
+AddFileButton.defaultProps = {};
 
-export default Button;
+export default AddFileButton;
