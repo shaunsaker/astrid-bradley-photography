@@ -52,7 +52,8 @@
     "no-unneeded-ternary": "off",
     "react/button-has-type": "off",
     "brace-style": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "no-else-return": "off"
   },
   "plugins": ["react"],
   "globals": {
