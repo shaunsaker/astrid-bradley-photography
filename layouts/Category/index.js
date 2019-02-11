@@ -37,7 +37,9 @@ const Category = ({ categoryID, shoots }) => {
     return {
       image: cover_photo,
       text: name,
-      link: { href: `/shoot?id=${id}`, as: `/shoot/${id}` },
+      action: {
+        nextLink: { href: `/shoot?id=${id}`, as: `/shoot/${id}` },
+      },
     };
   });
 

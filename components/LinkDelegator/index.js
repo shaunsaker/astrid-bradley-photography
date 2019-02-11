@@ -37,13 +37,13 @@ LinkDelegator.propTypes = {
     link: PropTypes.shape({
       href: PropTypes.string,
       target: PropTypes.string,
-    }).isRequired,
+    }),
     nextLink: PropTypes.shape({
       href: PropTypes.string,
       as: PropTypes.string,
     }),
     handleClick: PropTypes.func,
-  }),
+  }).isRequired,
   children: PropTypes.node,
 };
 LinkDelegator.defaultProps = {};

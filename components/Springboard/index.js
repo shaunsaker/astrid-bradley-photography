@@ -5,7 +5,6 @@ import styles from './styles';
 
 import Image from '../Image';
 import LinkDelegator from '../LinkDelegator';
-import Button from '../Button';
 
 const Springboard = ({ image, text, action }) => {
   return (
@@ -14,7 +13,7 @@ const Springboard = ({ image, text, action }) => {
         <Image {...image} />
 
         <div className="text-container abs-stretch flex-center">
-          <Button text={text} noShadow />
+          <div className="button">{text}</div>
         </div>
 
         <style jsx>{styles}</style>

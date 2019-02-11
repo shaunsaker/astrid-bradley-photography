@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './styles';
 import SPRINGBOARDS from './springboards';

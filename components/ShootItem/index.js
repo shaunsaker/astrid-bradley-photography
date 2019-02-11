@@ -19,8 +19,7 @@ const ShootItem = ({ shoot, secondary, disabled }) => {
     <div
       role="button"
       tabIndex={0}
-      className={`container button flex row shadow-sm shadow-hover xs-wrap ${secondary &&
-        'secondary'}`}
+      className={`container flex row shadow-sm shadow-hover xs-wrap ${secondary && 'secondary'}`}
     >
       <div className="text-container">
         <ParagraphText white={secondary}>

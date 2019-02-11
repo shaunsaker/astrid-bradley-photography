@@ -11,9 +11,11 @@ const springboards = categories.slice(0, 2).map((category) => {
       alt: name,
     },
     text: name,
-    link: {
-      href: `/category?id=${id}`,
-      as: `/category/${id}`,
+    action: {
+      nextLink: {
+        href: `/category?id=${id}`,
+        as: `/category/${id}`,
+      },
     },
   };
 });

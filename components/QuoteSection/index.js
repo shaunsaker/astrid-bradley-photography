@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './styles';
 
@@ -14,7 +13,7 @@ const PortfolioSection = () => {
           alt: 'Build a quote',
         }}
         text="Build a Quote"
-        link={{ href: '/build-quote' }}
+        action={{ nextLink: { href: '/build-quote' } }}
       />
 
       <style jsx>{styles}</style>
