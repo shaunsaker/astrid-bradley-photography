@@ -12,6 +12,7 @@ import SmallText from '../SmallText';
 import Icon from '../Icon';
 
 const ShootItem = ({ shoot, secondary, disabled, admin }) => {
+  // TODO: ShootItem handle click depends on admin flag (otherwise go to shoot page)
   const { name, location, date, download_url, delivered, archived, id } = shoot;
   const prettyDate = getPrettyDate(date);
   const href = `/admin/edit-shoot?id=${id}`;

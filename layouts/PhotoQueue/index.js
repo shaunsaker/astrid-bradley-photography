@@ -1,59 +1,70 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import { sortArrayOfObjectsByKey } from '../../utils';
 
 import styles from './styles';
 
 import Layout from '../../components/Layout';
 import HeadingText from '../../components/HeadingText';
+import ShootItem from '../../components/ShootItem';
 import ContactButton from '../../components/ContactButton';
 
 const PhotoQueue = ({ shoots }) => {
-  console.log(shoots);
+  // Filter out the archived shoots
+  // Sort by date (earliest to latest)
+  const relevantShoots = sortArrayOfObjectsByKey(shoots.filter((shoot) => !shoot.archived), 'date');
 
-  // TODO: Don't display archived shoots
+  // Get the incomplete shoots (the ones without download urls)
+  const incompleteShoots = relevantShoots.filter((shoot) => !shoot.download_url);
+  const inProgressShoot = incompleteShoots[0];
 
-  /*
-    Each shoot item has states:
+  // Remove the first incomplete shoot (we have it as in progress already)
+  incompleteShoots.splice(0, 1);
 
-    - In progress
-      -- Estimated delivery (next upcoming without download URL)
-    - Completed
-      -- Job Complete (Has download URL)
-      -- Waiting delivery (Delivered on Edit Shoot)
-    - Upcoming
-      -- Date of shoot (no download url)
-  */
-
-  // In progress
-  // Completed (for year)
-  // Job complete
-  // Waiting delivery
-  // Upcoming
-
-  /*
-    TITLE
-    SHOOT DATE
-    ESTIMATED DELIVERY DATE
-    COMPLETE (has download url)
-    DELIVERED (is delivered)
-    ARCHIVED (admin only - is archived)
-
-    - TODO: with labels
-  */
+  // Get the completed shoots (the ones with download urls)
+  // Reverse the array items so that we show the latest first
+  const completedShoots = relevantShoots.filter((shoot) => shoot.download_url).reverse();
 
   return (
     <Layout title="Photo Queue">
       <section>
         <HeadingText>In Progress</HeadingText>
+
+        <ShootItem shoot={inProgressShoot} />
       </section>
 
       <section>
         <HeadingText>Upcoming</HeadingText>
+
+        {incompleteShoots.map((shoot) => {
+          const { id } = shoot;
+
+          return (
+            <Fragment key={id}>
+              <ShootItem shoot={shoot} />
+
+              <div className="spacer-vt" />
+            </Fragment>
+          );
+        })}
       </section>
 
       <section>
         <HeadingText>Completed</HeadingText>
+
+        {completedShoots.map((shoot) => {
+          const { id } = shoot;
+
+          return (
+            <Fragment key={id}>
+              <ShootItem shoot={shoot} />
+
+              <div className="spacer-vt" />
+            </Fragment>
+          );
+        })}
       </section>
 
       <ContactButton />
