@@ -37,7 +37,11 @@ const shootFormFields = [
     type: 'checkbox',
     name: 'archived',
     label: 'Archive Shoot:',
-    isRequired: false,
+  },
+  {
+    type: 'text',
+    name: 'download_url',
+    label: 'Download URL',
   },
 ];
 

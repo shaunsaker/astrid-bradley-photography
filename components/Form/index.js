@@ -108,7 +108,7 @@ export default class Form extends React.Component {
                 type={type}
                 name={name}
                 id={id}
-                value={value}
+                value={value || ''}
                 checked={type === 'checkbox' ? value : null}
                 required={isRequired}
                 multiple={multiple}

@@ -8,12 +8,6 @@ const styles = css.global`
   box-sizing: border-box;
 }
 
-
-body,
-html, #__next {
-  min-height: 100%;
-}
-
 main {
   flex: 1;
 }

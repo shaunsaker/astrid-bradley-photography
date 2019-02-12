@@ -5,6 +5,10 @@ const styles = css`
     cursor: pointer;
   }
 
+  .disabled {
+    opacity: 0.5;
+  }
+
   .text-container {
   }
 `;
