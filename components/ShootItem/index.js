@@ -12,7 +12,7 @@ import SmallText from '../SmallText';
 import Icon from '../Icon';
 
 const ShootItem = ({ shoot, secondary, disabled, admin }) => {
-  const { name, id, date, download_url, delivered, archived } = shoot;
+  const { name, location, date, download_url, delivered, archived, id } = shoot;
   const prettyDate = getPrettyDate(date);
   const href = `/admin/edit-shoot?id=${id}`;
   const estimatedDeliveryDate = getPrettyDate(getFutureTime(date, 70)); // 10 weeks
@@ -31,7 +31,7 @@ const ShootItem = ({ shoot, secondary, disabled, admin }) => {
     >
       <div className="text-container">
         <ParagraphText white={secondary}>
-          <b>{name}</b>
+          <b>{name}</b> - {location}
         </ParagraphText>
 
         <div className="spacer-vt" />
