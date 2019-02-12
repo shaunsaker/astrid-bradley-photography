@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'; // eslint-disable-line
 
-import { colors, rhythm } from '../../static/styles/styleConstants';
+import { rhythm } from '../../static/styles/styleConstants';
 
 const styles = css`
   select {
@@ -11,10 +11,6 @@ const styles = css`
     background: none;
     padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
     cursor: pointer;
-  }
-
-  select:focus {
-    outline: 2px solid ${colors.white};
   }
 `;
 

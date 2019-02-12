@@ -53,7 +53,8 @@
     "react/button-has-type": "off",
     "brace-style": "off",
     "react/destructuring-assignment": "off",
-    "no-else-return": "off"
+    "no-else-return": "off",
+    "jsx-a11y/no-noninteractive-tabindex": "off"
   },
   "plugins": ["react"],
   "globals": {

@@ -40,7 +40,7 @@ const shootFormFields = [
   },
   {
     type: 'checkbox',
-    name: 'delivery',
+    name: 'delivered',
     label: 'Delivered:',
   },
   {

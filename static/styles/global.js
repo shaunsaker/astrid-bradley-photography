@@ -68,7 +68,7 @@ button {
   color: ${colors.white};
 }
 
-button:focus, .button:focus, a:focus, input:focus {
+button:focus, .button:focus, a:focus, input:focus, select:focus, div[role='button']:focus {
   outline: 2px solid ${colors.accent2};
 }
 

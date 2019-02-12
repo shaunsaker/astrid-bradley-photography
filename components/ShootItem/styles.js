@@ -12,6 +12,11 @@ const styles = css`
     cursor: pointer;
   }
 
+  .untouchable {
+    cursor: default;
+    border: 1px solid ${colors.lightGrey};
+  }
+
   .container.secondary {
     background-color: ${colors.transBlack};
   }
