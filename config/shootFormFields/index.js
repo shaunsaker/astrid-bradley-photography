@@ -43,6 +43,11 @@ const shootFormFields = [
     name: 'download_url',
     label: 'Download URL',
   },
+  {
+    type: 'checkbox',
+    name: 'delivery',
+    label: 'Delivered:',
+  },
 ];
 
 export default shootFormFields;
