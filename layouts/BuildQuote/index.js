@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FIELDS from './fields';
+import SLIDES from './slides';
+import styles from './styles';
 
 import Layout from '../../components/Layout';
 import ProgressItem from './ProgressItem';
@@ -23,7 +25,10 @@ class BuildQuote extends React.Component {
   }
 
   onSubmitForm(values) {
-    console.log(values);
+    const { slideIndex } = this.state;
+
+    this.setFormValues(values);
+    this.setSlideIndex(slideIndex + 1);
   }
 
   setSlideIndex(slideIndex) {
@@ -44,9 +49,26 @@ class BuildQuote extends React.Component {
     return (
       <Layout title="Build Quote">
         <section>
-          <ProgressItem number={slideIndex + 1} text="Enter Info" />
+          <div className="row wrap">
+            {SLIDES.map((slide, index) => {
+              const { title } = slide;
+              const number = index + 1;
+              const opacity = index > slideIndex;
 
-          <div className="spacer-vt" />
+              // Only display one progress item ahead, if any
+              if (index <= slideIndex + 1) {
+                return (
+                  <div key={title} className={`progress-item-container ${opacity && 'opacity'}`}>
+                    <ProgressItem number={number} text={title} />
+                  </div>
+                );
+              }
+
+              return null;
+            })}
+          </div>
+
+          <div className="spacer-vt " />
 
           <Form
             formName="build-quote"
@@ -57,6 +79,8 @@ class BuildQuote extends React.Component {
         </section>
 
         <ContactButton />
+
+        <style jsx>{styles}</style>
       </Layout>
     );
   }
