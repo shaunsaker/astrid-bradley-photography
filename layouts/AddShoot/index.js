@@ -32,7 +32,7 @@ export class AddShoot extends React.Component {
     // IF the app is not loading
     // IF the app was loading
     if (!isLoading && prevProps.isLoading) {
-      this.goBack();
+      // TODO:
     }
   }
 
