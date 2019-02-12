@@ -15,14 +15,6 @@ const controls = [
       as: null,
     },
   },
-  {
-    iconName: 'event',
-    label: 'Manage Photo Queue',
-    link: {
-      href: '/admin/manage-photo-queue',
-      as: null,
-    },
-  },
 ];
 
 export default controls;
