@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getElapsedDays, getPrettyDate } from '../../utils';
+import { getElapsedDays, getFutureTime, getPrettyDate } from '../../utils';
 
 import Layout from '../../components/Layout';
 import Springboard from '../../components/Springboard';
@@ -22,7 +22,7 @@ const Download = ({ shootID, shoots }) => {
     // Link is ready
     // Check if it is still valid
     const elapsedDays = getElapsedDays(date_modified);
-    const expiryDate = getPrettyDate(date_modified + 30 * 24 * 60 * 60 * 1000); // day * hr * min * sec * ms
+    const expiryDate = getPrettyDate(getFutureTime(date_modified, 30));
     const isLinkValid = elapsedDays <= 30;
 
     if (isLinkValid) {

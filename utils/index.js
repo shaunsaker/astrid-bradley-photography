@@ -4,6 +4,7 @@ import getBlobURL from './getBlobURL';
 import getElapsedDays from './getElapsedDays';
 import getElementRect from './getElementRect';
 import getFormDate from './getFormDate';
+import getFutureTime from './getFutureTime';
 import getPrettyDate from './getPrettyDate';
 import mapToSelectOptions from './mapToSelectOptions';
 import prepareNextAction from './prepareNextAction';
@@ -17,6 +18,7 @@ const utils = {
   getElapsedDays,
   getElementRect,
   getFormDate,
+  getFutureTime,
   getPrettyDate,
   mapToSelectOptions,
   prepareNextAction,
@@ -31,6 +33,7 @@ export {
   getElapsedDays,
   getElementRect,
   getFormDate,
+  getFutureTime,
   getPrettyDate,
   mapToSelectOptions,
   prepareNextAction,

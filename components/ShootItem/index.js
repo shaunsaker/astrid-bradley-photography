@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
+import { getFutureTime, getPrettyDate } from '../../utils';
 import { colors } from '../../static/styles/styleConstants';
-import { getPrettyDate } from '../../utils';
 
 import styles from './styles';
 
@@ -11,10 +11,18 @@ import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 import Icon from '../Icon';
 
-const ShootItem = ({ shoot, secondary, disabled }) => {
-  const { name, id, date, archived, photos } = shoot;
+const ShootItem = ({ shoot, secondary, disabled, admin }) => {
+  const { name, id, date, download_url, delivered, archived } = shoot;
   const prettyDate = getPrettyDate(date);
   const href = `/admin/edit-shoot?id=${id}`;
+  const estimatedDeliveryDate = getPrettyDate(getFutureTime(date, 70)); // 10 weeks
+  const archiveComponent = admin && (
+    <Fragment>
+      <div className="spacer-hz small" />
+
+      <Icon name="archive" size={18} color={archived ? colors.black : colors.lightGrey} />
+    </Fragment>
+  );
   const contentComponent = (
     <div
       role="button"
@@ -28,17 +36,21 @@ const ShootItem = ({ shoot, secondary, disabled }) => {
 
         <div className="spacer-vt" />
 
-        <SmallText className="text">{prettyDate}</SmallText>
+        <SmallText className="text">
+          {prettyDate} (Est. delivery: {estimatedDeliveryDate})
+        </SmallText>
       </div>
 
       <div className="spacer-hz" />
 
       <div className="row">
-        <Icon name="photo" size={18} color={photos ? colors.black : colors.lightGrey} />
+        <Icon name="check" size={18} color={download_url ? colors.black : colors.lightGrey} />
 
         <div className="spacer-hz small" />
 
-        <Icon name="archive" size={18} color={archived ? colors.black : colors.lightGrey} />
+        <Icon name="send" size={18} color={delivered ? colors.black : colors.lightGrey} />
+
+        {archiveComponent}
       </div>
 
       <style jsx>{styles}</style>
@@ -60,6 +72,7 @@ ShootItem.propTypes = {
   }),
   secondary: PropTypes.bool,
   disabled: PropTypes.bool,
+  admin: PropTypes.bool,
 };
 ShootItem.defaultProps = {};
 

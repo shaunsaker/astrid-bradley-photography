@@ -13,6 +13,7 @@ import {
   MdPhoto,
   MdPhotoSizeSelectLarge,
   MdSave,
+  MdSend,
   MdSort,
   MdUnarchive,
 } from 'react-icons/md';
@@ -31,6 +32,7 @@ const icons = {
   mail: (props) => <MdMail {...props} />,
   photo: (props) => <MdPhoto {...props} />,
   save: (props) => <MdSave {...props} />,
+  send: (props) => <MdSend {...props} />,
   sort: (props) => <MdSort {...props} />,
   unarchive: (props) => <MdUnarchive {...props} />,
 };

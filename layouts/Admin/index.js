@@ -117,7 +117,7 @@ class Admin extends React.Component {
 
                 return (
                   <Fragment key={id}>
-                    <ShootItem shoot={shoot} />
+                    <ShootItem shoot={shoot} admin />
 
                     <div className="spacer-vt" />
                   </Fragment>
