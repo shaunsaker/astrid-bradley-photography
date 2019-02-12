@@ -34,11 +34,6 @@ const shootFormFields = [
     isRequired: true,
   },
   {
-    type: 'checkbox',
-    name: 'archived',
-    label: 'Archive Shoot:',
-  },
-  {
     type: 'text',
     name: 'download_url',
     label: 'Download URL',
@@ -47,6 +42,11 @@ const shootFormFields = [
     type: 'checkbox',
     name: 'delivery',
     label: 'Delivered:',
+  },
+  {
+    type: 'checkbox',
+    name: 'archived',
+    label: 'Archive Shoot:',
   },
 ];
 
