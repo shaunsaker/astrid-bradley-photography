@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { shootFormFields } from '../../config';
 
@@ -22,6 +23,9 @@ export class AddShoot extends React.Component {
   static propTypes = {
     isLoading: PropTypes.bool,
     onSaveShoot: PropTypes.func,
+    router: PropTypes.shape({
+      back: PropTypes.func,
+    }),
   };
 
   static defaultProps = {};
@@ -32,7 +36,10 @@ export class AddShoot extends React.Component {
     // IF the app is not loading
     // IF the app was loading
     if (!isLoading && prevProps.isLoading) {
-      // TODO:
+      const { router } = this.props;
+      const { back } = router;
+
+      back();
     }
   }
 
@@ -76,4 +83,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(withSaveShoot(connect(mapStateToProps)(AddShoot)));
+export default withAuth(withRouter(withSaveShoot(connect(mapStateToProps)(AddShoot))));
