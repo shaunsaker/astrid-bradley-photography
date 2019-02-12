@@ -36,6 +36,8 @@ const TestimonialsSection = () => {
                       <div className="spacer-vt" />
 
                       <HeadingText>{name}</HeadingText>
+
+                      <div className="spacer-vt" />
                     </div>
 
                     <span>▼</span>

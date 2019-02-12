@@ -65,7 +65,7 @@ export class AddShoot extends React.Component {
 
     return (
       <Layout title={title}>
-        <section className="relative">
+        <section>
           <Form formName="add-shoot" fields={shootFormFields} handleSubmit={this.onSubmit} />
         </section>
       </Layout>

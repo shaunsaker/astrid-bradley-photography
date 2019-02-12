@@ -141,11 +141,15 @@ export class ManagePhotos extends React.Component {
         <section id="cover-photo-container">
           <HeadingText>Cover Photo</HeadingText>
 
+          <div className="spacer-vt" />
+
           {coverPhotoComponent}
         </section>
 
         <section>
           <HeadingText>Shoot Photos</HeadingText>
+
+          <div className="spacer-vt" />
 
           <div className="photos-container row wrap">
             {photos &&

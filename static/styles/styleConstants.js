@@ -7,7 +7,7 @@ const colors = {
   lightGrey: '#CCCCCC',
   accent1: '#BB7D46',
   accent2: '#61A1FF',
-  green: '#4caf50',
+  green: '#8bc34a',
   red: '#f44336',
 };
 

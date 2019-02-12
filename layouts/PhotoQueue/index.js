@@ -32,11 +32,15 @@ const PhotoQueue = ({ shoots }) => {
       <section>
         <HeadingText>In Progress</HeadingText>
 
+        <div className="spacer-vt" />
+
         <ShootItem shoot={inProgressShoot} />
       </section>
 
       <section>
         <HeadingText>Upcoming</HeadingText>
+
+        <div className="spacer-vt" />
 
         {incompleteShoots.map((shoot) => {
           const { id } = shoot;
@@ -53,6 +57,8 @@ const PhotoQueue = ({ shoots }) => {
 
       <section>
         <HeadingText>Completed</HeadingText>
+
+        <div className="spacer-vt" />
 
         {completedShoots.map((shoot) => {
           const { id } = shoot;

@@ -1,17 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 
 const HeadingText = ({ children }) => {
   return (
-    <Fragment>
+    <div>
       <h2>{children}</h2>
 
-      <div className="spacer-vt" />
-
       <style jsx>{styles}</style>
-    </Fragment>
+    </div>
   );
 };
 
