@@ -57,7 +57,7 @@ export class AddDocumentSection extends React.Component {
     // Parse number strings into ints (if any)
     Object.keys(values).forEach((key) => {
       const value = values[key];
-      const parsedValue = parseInt(value, 10) || value;
+      const parsedValue = Number(value) || value;
 
       document[key] = parsedValue;
     });
