@@ -18,7 +18,7 @@ export default class Form extends React.Component {
     formName: PropTypes.string,
     fields: PropTypes.arrayOf(
       PropTypes.shape({
-        type: PropTypes.string, // text, password, textarea etc
+        type: PropTypes.string, // text, number, email, password, textarea, file, checkbox, select etc
         name: PropTypes.string,
         label: PropTypes.string,
         value: PropTypes.any, // eslint-disable-line

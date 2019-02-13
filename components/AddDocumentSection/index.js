@@ -21,6 +21,7 @@ export class AddDocumentSection extends React.Component {
   static propTypes = {
     // Parent
     formName: PropTypes.string,
+    extraFields: PropTypes.arrayOf(PropTypes.shape({})),
     collectionURL: PropTypes.string,
 
     // connect
@@ -35,7 +36,9 @@ export class AddDocumentSection extends React.Component {
     }),
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    extraFields: [],
+  };
 
   componentDidUpdate(prevProps) {
     const { isLoading } = this.props;
@@ -74,8 +77,11 @@ export class AddDocumentSection extends React.Component {
   }
 
   render() {
-    const { formName } = this.props;
-    const form = forms[formName];
+    const { formName, extraFields } = this.props;
+    let form = forms[formName];
+
+    // Concat the extra fields, if any
+    form = form.concat(extraFields);
 
     return (
       <section>
