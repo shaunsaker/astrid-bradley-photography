@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AddShoot from '../../../layouts/AddShoot';
+import AddDocument from '../../../layouts/AddDocument';
 
 const Page = (props) => {
-  return <AddShoot {...props} />;
+  return <AddDocument title="Add Shoot" formName="shootForm" collectionURL="shoots" {...props} />;
 };
 
 Page.getInitialProps = async () => {};
