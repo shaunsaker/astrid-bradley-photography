@@ -7,12 +7,14 @@ export class DataHandler extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleGetShoots = this.handleGetShoots.bind(this);
+    this.handleSyncData = this.handleSyncData.bind(this);
+    this.setHaveSyncedData = this.setHaveSyncedData.bind(this);
+    this.syncPackages = this.syncPackages.bind(this);
+    this.syncProducts = this.syncProducts.bind(this);
     this.syncShoots = this.syncShoots.bind(this);
-    this.setHaveSyncedShoots = this.setHaveSyncedShoots.bind(this);
 
     this.state = {
-      haveSyncedShoots: false,
+      haveSyncedData: false,
     };
   }
 
@@ -26,17 +28,17 @@ export class DataHandler extends React.Component {
   static defaultProps = {};
 
   componentDidMount() {
-    Router.events.on('routeChangeComplete', this.handleGetShoots);
+    Router.events.on('routeChangeComplete', this.handleSyncData);
 
-    this.handleGetShoots();
+    this.handleSyncData();
   }
 
   componentWillUnmount() {
-    Router.events.off('routeChangeComplete', this.handleGetShoots);
+    Router.events.off('routeChangeComplete', this.handleSyncData);
   }
 
-  handleGetShoots() {
-    const { haveSyncedShoots } = this.state;
+  handleSyncData() {
+    const { haveSyncedData } = this.state;
     const { router } = this.props;
     const { pathname } = router;
 
@@ -45,14 +47,48 @@ export class DataHandler extends React.Component {
     // If the user navigated to the shoot page THEN
     // Sync all of the shoots
     if (
-      !haveSyncedShoots &&
+      !haveSyncedData &&
       (pathname.indexOf('admin') > -1 ||
         pathname.indexOf('category') > -1 ||
         pathname.indexOf('shoot') > -1)
     ) {
-      this.setHaveSyncedShoots(true);
+      this.setHaveSyncedData(true);
+      this.syncPackages();
+      this.syncProducts();
       this.syncShoots();
     }
+  }
+
+  setHaveSyncedData(haveSyncedData) {
+    this.setState({ haveSyncedData });
+  }
+
+  syncPackages() {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'sync',
+      meta: {
+        url: 'packages',
+        nextAction: {
+          type: 'SET_PACKAGES',
+        },
+      },
+    });
+  }
+
+  syncProducts() {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'sync',
+      meta: {
+        url: 'products',
+        nextAction: {
+          type: 'SET_PRODUCTS',
+        },
+      },
+    });
   }
 
   syncShoots() {
@@ -67,10 +103,6 @@ export class DataHandler extends React.Component {
         },
       },
     });
-  }
-
-  setHaveSyncedShoots(haveSyncedShoots) {
-    this.setState({ haveSyncedShoots });
   }
 
   render() {

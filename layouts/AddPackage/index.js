@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout';
 import AddDocumentSection from '../../components/AddDocumentSection';
@@ -17,4 +18,8 @@ const AddProduct = () => {
 AddProduct.propTypes = {};
 AddProduct.defaultProps = {};
 
-export default withAuth(AddProduct);
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default withAuth(connect(mapStateToProps)(AddProduct));
