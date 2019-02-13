@@ -1,6 +1,6 @@
-import categories from '../categories';
+import categories from '../../categories';
 
-const shootFormFields = [
+const shootForm = [
   {
     type: 'text',
     name: 'name',
@@ -50,4 +50,4 @@ const shootFormFields = [
   },
 ];
 
-export default shootFormFields;
+export default shootForm;

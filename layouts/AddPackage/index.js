@@ -11,7 +11,7 @@ import Form from '../../components/Form';
 import withAuth from '../../wrappers/withAuth';
 import withSaveShoot from '../../wrappers/withSaveShoot';
 
-export class AddShoot extends React.Component {
+export class AddPackage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(withRouter(withSaveShoot(connect(mapStateToProps)(AddShoot))));
+export default withAuth(withRouter(withSaveShoot(connect(mapStateToProps)(AddPackage))));

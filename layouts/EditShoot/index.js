@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { shootFormFields } from '../../config';
+import { shootForm } from '../../config/forms';
 import { cloneObject, getFormDate } from '../../utils';
 import styles from './styles';
 
@@ -42,7 +42,7 @@ export class EditShoot extends React.Component {
 
     // Use the form fields to generate the values object
     // Use the values from the shoot
-    shootFormFields.forEach((field) => {
+    shootForm.forEach((field) => {
       const { name } = field;
       let value = shoot[name];
 
@@ -110,7 +110,7 @@ export class EditShoot extends React.Component {
     ];
 
     // Append the relevant value to each field
-    const fieldsWithValues = shootFormFields.map((field) => {
+    const fieldsWithValues = shootForm.map((field) => {
       const value = values[field.name];
 
       return {
