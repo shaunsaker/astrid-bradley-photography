@@ -1,15 +1,15 @@
 const slides = [
   {
-    title: 'Enter info',
+    title: 'Select package',
+  },
+  {
+    title: 'Customise package',
   },
   {
     title: 'Check availability',
   },
   {
-    title: 'Select package',
-  },
-  {
-    title: 'Customise package',
+    title: 'Enter info',
   },
   {
     title: 'Done',

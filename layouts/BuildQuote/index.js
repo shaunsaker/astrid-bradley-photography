@@ -28,7 +28,7 @@ class BuildQuote extends React.Component {
     const { slideIndex } = this.state;
 
     this.setFormValues(values);
-    this.setSlideIndex(slideIndex + 1);
+    // TODO:
   }
 
   setSlideIndex(slideIndex) {
@@ -70,12 +70,12 @@ class BuildQuote extends React.Component {
 
           <div className="spacer-vt " />
 
-          <Form
+          {/* <Form
             formName="build-quote"
             fields={FIELDS}
             handleSubmit={this.onSubmitForm}
             submitText="Next"
-          />
+          /> */}
         </section>
 
         <ContactButton />
