@@ -1,9 +1,11 @@
 import React from 'react';
 
-import AddPackage from '../../../layouts/AddPackage';
+import AddDocument from '../../../layouts/AddDocument';
 
 const Page = (props) => {
-  return <AddPackage {...props} />;
+  return (
+    <AddDocument title="Add Package" formName="packageForm" collectionURL="packages" {...props} />
+  );
 };
 
 Page.getInitialProps = async () => {};

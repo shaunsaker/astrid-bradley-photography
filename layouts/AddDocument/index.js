@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
-import { shootForm } from '../../config/forms';
+import { forms } from '../../config';
 
 import Layout from '../../components/Layout';
 import Form from '../../components/Form';
 
-import withAuth from '../../wrappers/withAuth';
-import withSaveShoot from '../../wrappers/withSaveShoot';
+import withSaveDocument from '../../wrappers/withSaveDocument';
 
-export class AddPackage extends React.Component {
+export class AddDocument extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,8 +20,18 @@ export class AddPackage extends React.Component {
   }
 
   static propTypes = {
+    // Parent
+    title: PropTypes.string,
+    formName: PropTypes.string,
+    collectionURL: PropTypes.string,
+
+    // connect
     isLoading: PropTypes.bool,
-    onSaveShoot: PropTypes.func,
+
+    // withSaveDocument
+    onSaveDocument: PropTypes.func,
+
+    // withRouter
     router: PropTypes.shape({
       back: PropTypes.func,
     }),
@@ -44,29 +53,36 @@ export class AddPackage extends React.Component {
   }
 
   onSubmit(values) {
-    const shoot = values;
-    const { onSaveShoot } = this.props;
+    const { collectionURL, onSaveDocument } = this.props;
+    const document = {};
 
-    // Replace the date value with js time (in ms)
-    const time = new Date(shoot.date).getTime();
-    shoot.date = time;
+    // Parse number strings into ints (if any)
+    Object.keys(values).forEach((key) => {
+      const value = values[key];
+      const parsedValue = parseInt(value, 10) || value;
+
+      document[key] = parsedValue;
+    });
 
     // Use the name as the id
-    const id = shoot.name
+    const id = document.name
       .split(' ')
       .join('-')
       .toLowerCase();
 
-    onSaveShoot(shoot, id);
+    const url = `${collectionURL}/${id}`;
+
+    onSaveDocument(document, url);
   }
 
   render() {
-    const title = 'Add a Shoot';
+    const { title, formName } = this.props;
+    const form = forms[formName];
 
     return (
       <Layout title={title}>
         <section>
-          <Form formName="add-shoot" fields={shootForm} handleSubmit={this.onSubmit} />
+          <Form formName={formName} fields={form} handleSubmit={this.onSubmit} />
         </section>
       </Layout>
     );
@@ -83,4 +99,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(withRouter(withSaveShoot(connect(mapStateToProps)(AddPackage))));
+export default withRouter(withSaveDocument(connect(mapStateToProps)(AddDocument)));
