@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Layout from '../../components/Layout';
 import AddDocumentSection from '../../components/AddDocumentSection';
 
+import withAuth from '../../wrappers/withAuth';
+
 const AddProduct = () => {
   return (
     <Layout title="Add Shoot">
@@ -15,4 +17,4 @@ const AddProduct = () => {
 AddProduct.propTypes = {};
 AddProduct.defaultProps = {};
 
-export default AddProduct;
+export default withAuth(AddProduct);
