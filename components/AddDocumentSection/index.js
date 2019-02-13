@@ -5,12 +5,11 @@ import { withRouter } from 'next/router';
 
 import { forms } from '../../config';
 
-import Layout from '../../components/Layout';
-import Form from '../../components/Form';
+import Form from '../Form';
 
 import withSaveDocument from '../../wrappers/withSaveDocument';
 
-export class AddDocument extends React.Component {
+export class AddDocumentSection extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +20,6 @@ export class AddDocument extends React.Component {
 
   static propTypes = {
     // Parent
-    title: PropTypes.string,
     formName: PropTypes.string,
     collectionURL: PropTypes.string,
 
@@ -76,15 +74,13 @@ export class AddDocument extends React.Component {
   }
 
   render() {
-    const { title, formName } = this.props;
+    const { formName } = this.props;
     const form = forms[formName];
 
     return (
-      <Layout title={title}>
-        <section>
-          <Form formName={formName} fields={form} handleSubmit={this.onSubmit} />
-        </section>
-      </Layout>
+      <section>
+        <Form formName={formName} fields={form} handleSubmit={this.onSubmit} />
+      </section>
     );
   }
 }
@@ -99,4 +95,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(withSaveDocument(connect(mapStateToProps)(AddDocument)));
+export default withRouter(withSaveDocument(connect(mapStateToProps)(AddDocumentSection)));

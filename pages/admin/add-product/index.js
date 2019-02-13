@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AddPackage from '../../../layouts/AddPackage';
+import AddProduct from '../../../layouts/AddProduct';
 
 const Page = (props) => {
-  return <AddPackage {...props} />;
+  return <AddProduct {...props} />;
 };
 
 Page.getInitialProps = async () => {};
