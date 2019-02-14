@@ -84,15 +84,15 @@ const styles = global`
     color: ${colors.grey};
   }
 
-  input:focus + label,
-  input:valid + label,
-  textarea:focus + label,
-  textarea:valid + label {
+  input:focus + label:not(.inline-right),
+  input:valid + label:not(.inline-right),
+  textarea:focus + label:not(.inline-right),
+  textarea:valid + label:not(.inline-right) {
     top: -${rhythm.vt / 2}px;
     font-size: 0.8em;
   }
 
-  input:valid + label {
+  input:valid + label:not(.inline-right) {
     color: ${colors.accent1};
   }
 `;

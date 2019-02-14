@@ -41,12 +41,12 @@ const shootForm = [
   {
     type: 'checkbox',
     name: 'delivered',
-    label: 'Delivered:',
+    label: 'Delivered',
   },
   {
     type: 'checkbox',
     name: 'archived',
-    label: 'Archive Shoot:',
+    label: 'Archive Shoot',
   },
 ];
 
