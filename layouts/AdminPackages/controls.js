@@ -3,7 +3,7 @@ const controls = [
     iconName: 'add',
     label: 'Add Shoot',
     link: {
-      href: '/admin/add-shoot',
+      href: '/admin/shoots/add',
       as: null,
     },
   },
@@ -11,7 +11,7 @@ const controls = [
     iconName: 'sort',
     label: 'Sort Shoots',
     link: {
-      href: '/admin/sort-shoots',
+      href: '/admin/shoots/sort',
       as: null,
     },
   },

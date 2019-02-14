@@ -72,7 +72,7 @@ const ShootItem = ({ shoot, secondary, disabled, admin }) => {
     // THEN go to the relevant edit shoot page
     // ELSE
     // THEN go to the relevant shoot page
-    const href = admin ? `/admin/edit-shoot?id=${id}` : `/shoot?id=${id}`;
+    const href = admin ? `/admin/shoots/edit?id=${id}` : `/shoots/shoot?id=${id}`;
 
     return <Link href={href}>{contentComponent}</Link>;
   }

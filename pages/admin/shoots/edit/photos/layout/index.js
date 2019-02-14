@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ManageLayout from '../../../../layouts/ManageLayout';
+import ManageLayout from '../../../../../../layouts/ManageLayout';
 
 const Page = (props) => {
   return <ManageLayout {...props} />;

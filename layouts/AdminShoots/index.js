@@ -20,9 +20,7 @@ class Admin extends React.Component {
     super(props);
 
     this.onSelectCategory = this.onSelectCategory.bind(this);
-    this.onSignOut = this.onSignOut.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
-    this.signOut = this.signOut.bind(this);
 
     this.state = {
       currentCategory: categories[0],
@@ -31,7 +29,6 @@ class Admin extends React.Component {
 
   static propTypes = {
     shoots: PropTypes.arrayOf(PropTypes.shape({ category_id: PropTypes.string })),
-    dispatch: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -43,27 +40,9 @@ class Admin extends React.Component {
     this.setCurrentCategory(category);
   }
 
-  onSignOut() {
-    this.signOut();
-  }
-
   setCurrentCategory(currentCategory) {
     this.setState({
       currentCategory,
-    });
-  }
-
-  signOut() {
-    const { dispatch } = this.props;
-
-    dispatch({
-      type: 'signOut',
-      meta: {
-        nextAction: {
-          type: 'SIGN_OUT_USER',
-          // TODO: How to also display error message?
-        },
-      },
     });
   }
 
@@ -129,12 +108,7 @@ class Admin extends React.Component {
           );
         })}
 
-        <ControlPanel
-          controls={[
-            ...CONTROLS,
-            { iconName: 'lock', label: 'Sign Out', handleClick: this.signOut },
-          ]}
-        />
+        <ControlPanel controls={CONTROLS} />
 
         <style jsx>{styles}</style>
       </Layout>

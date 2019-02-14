@@ -131,7 +131,7 @@ export class ManagePhotos extends React.Component {
         iconName: 'layout',
         label: 'Manage Layout',
         link: {
-          href: `/admin/manage-layout?id=${id}`,
+          href: `/admin/shoots/edit/photos/layout?id=${id}`,
         },
       },
     ];

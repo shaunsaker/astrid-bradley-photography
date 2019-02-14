@@ -104,7 +104,7 @@ export class EditShoot extends React.Component {
         iconName: 'photo',
         label: 'Manage Photos',
         link: {
-          href: `/admin/manage-photos?id=${id}`,
+          href: `/admin/shoots/edit/photos?id=${id}`,
         },
       },
     ];
