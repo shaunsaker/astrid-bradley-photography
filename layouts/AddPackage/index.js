@@ -27,7 +27,7 @@ const AddProduct = ({ products }) => {
     {
       type: 'group',
       name: 'products-available',
-      label: 'Products available:',
+      label: 'Products available as add-ons:',
       fields: products.map((product) => {
         const { id, name } = product;
 
