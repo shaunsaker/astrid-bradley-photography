@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Select from '../Select';
+import Label from './Label';
+import Input from './Input';
 import Button from '../Button';
 
 export default class Form extends React.Component {
@@ -16,18 +17,7 @@ export default class Form extends React.Component {
 
   static propTypes = {
     formName: PropTypes.string,
-    fields: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.string, // text, number, email, password, textarea, file, checkbox, select etc
-        name: PropTypes.string,
-        label: PropTypes.string,
-        value: PropTypes.any, // eslint-disable-line
-        checked: PropTypes.bool,
-        isRequired: PropTypes.bool,
-        multiple: PropTypes.bool, // if type === 'file'
-        accept: PropTypes.string, // if type === 'file'
-      }),
-    ).isRequired,
+    fields: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     submitText: PropTypes.string,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func, // if not supplied, assume it is a netlify form
@@ -90,59 +80,11 @@ export default class Form extends React.Component {
         data-netlify={!handleSubmit && 'true'}
       >
         {fields.map((field) => {
-          const { type, options, name, label, value, isRequired, multiple, accept } = field;
-          const id = `input-${name}`;
-          const inputComponent =
-            type === 'select' ? (
-              <Select
-                fieldName={name}
-                id={id}
-                options={options}
-                value={value}
-                handleChange={onChange}
-              />
-            ) : type === 'textarea' ? (
-              <textarea name={name} id={id} value={value} required={isRequired} />
-            ) : (
-              <input
-                type={type}
-                name={name}
-                id={id}
-                value={value}
-                checked={type === 'checkbox' ? value : null}
-                required={isRequired}
-                multiple={multiple}
-                accept={accept}
-                onChange={onChange}
-              />
-            );
-
-          let staticLabelComponent;
-          let absoluteLabelComponent;
-
-          // IF a label was provided
-          if (label) {
-            // IF the input is of type select or checkbox
-            const isOtherLabel = type === 'select' || type === 'checkbox';
-
-            if (isOtherLabel) {
-              staticLabelComponent = (
-                <label htmlFor={id} className="static-label">
-                  {label}
-                </label>
-              );
-            } else {
-              absoluteLabelComponent = <label htmlFor={id}>{label}</label>;
-            }
-          }
+          const { name } = field;
 
           return (
             <fieldset key={name}>
-              {staticLabelComponent}
-
-              {inputComponent}
-
-              {absoluteLabelComponent}
+              <Input {...field} onChange={onChange} />
             </fieldset>
           );
         })}

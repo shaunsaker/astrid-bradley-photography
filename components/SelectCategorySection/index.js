@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Select from '../Select';
+import Select from '../Form/Select';
 
 const SelectCategorySection = ({ options, handleChange }) => {
   return (

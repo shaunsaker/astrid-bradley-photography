@@ -1,14 +1,18 @@
-import css from 'styled-jsx/css'; // eslint-disable-line
+import { global } from 'styled-jsx/css'; // eslint-disable-line
 
 import { colors, rhythm } from '../../static/styles/styleConstants';
 
-const styles = css`
+const styles = global`
   fieldset {
     border: none;
     padding: 0;
     margin: 0;
     position: relative;
     margin-bottom: ${rhythm.vt * 2}px;
+  }
+
+  fieldset.group {
+    margin-bottom: 0;
   }
 
   input,
@@ -30,17 +34,6 @@ const styles = css`
     color: ${colors.black};
   }
 
-  label {
-    position: absolute;
-    top: 10px;
-    left: ${rhythm.hz / 4}px;
-    transition: all 0.5s ease;
-    padding: 0 ${rhythm.hz / 4}px;
-    background-color: ${colors.white};
-    color: ${colors.grey};
-    cursor: text;
-  }
-
   input,
   textarea {
     width: 100%;
@@ -59,29 +52,48 @@ const styles = css`
     border-color: ${colors.accent1};
   }
 
-  input:focus ~ label,
-  input:valid ~ label,
-  textarea:focus ~ label,
-  textarea:valid ~ label {
+  input[type='file'] {
+    line-height: 1em;
+  }
+
+  label {
+    transition: all 0.5s ease;
+    color: ${colors.black};
+  }
+
+  label.static {
+    display: block;
+    margin-bottom: ${rhythm.vt}px;
+  }
+
+  label.inline-left {
+    margin-right: ${rhythm.hz}px;
+  }
+
+  label.inline-right {
+    margin-left: ${rhythm.hz / 2}px;
+  }
+
+  label.absolute {
+    position: absolute;
+    top: 10px;
+    left: ${rhythm.hz / 4}px;
+    padding: 0 ${rhythm.hz / 4}px;
+    background-color: ${colors.white};
+    cursor: text;
+    color: ${colors.grey};
+  }
+
+  input:focus + label,
+  input:valid + label,
+  textarea:focus + label,
+  textarea:valid + label {
     top: -${rhythm.vt / 2}px;
     font-size: 0.8em;
   }
 
-  input:valid ~ label {
+  input:valid + label {
     color: ${colors.accent1};
-  }
-
-  .static-label {
-    position: static;
-    top: auto;
-    left: auto;
-    padding: 0;
-    margin-right: ${rhythm.hz}px;
-    color: ${colors.black};
-  }
-
-  input[type='file'] {
-    line-height: 1em;
   }
 `;
 

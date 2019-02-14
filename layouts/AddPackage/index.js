@@ -8,17 +8,37 @@ import AddDocumentSection from '../../components/AddDocumentSection';
 import withAuth from '../../wrappers/withAuth';
 
 const AddProduct = ({ products }) => {
-  const extraFields = products.map((product) => {
-    const { id, name } = product;
-    const fieldName = `product-${id}`;
-    const label = `${name} (qty)`;
+  const extraFields = [
+    {
+      type: 'group',
+      name: 'products-included',
+      label: 'Products included:',
+      fields: products.map((product) => {
+        const { id, name } = product;
+        const label = `${name} (qty)`;
 
-    return {
-      type: 'number',
-      name: fieldName,
-      label,
-    };
-  });
+        return {
+          type: 'number',
+          name: id,
+          label,
+        };
+      }),
+    },
+    {
+      type: 'group',
+      name: 'products-available',
+      label: 'Products available:',
+      fields: products.map((product) => {
+        const { id, name } = product;
+
+        return {
+          type: 'checkbox',
+          name: id,
+          label: name,
+        };
+      }),
+    },
+  ];
 
   return (
     <Layout title="Add Package">
