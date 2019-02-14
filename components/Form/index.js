@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import Label from './Label';
 import Input from './Input';
 import Button from '../Button';
 
