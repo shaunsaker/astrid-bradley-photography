@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 
 import Layout from '../../components/Layout';
+import Springboard from '../../components/Springboard';
 import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../wrappers/withAuth';
@@ -46,7 +46,29 @@ class Admin extends React.Component {
   render() {
     return (
       <Layout title="Admin Dashboard">
-        <section />
+        <section className="flex row">
+          <Springboard
+            image={{ src: '/static/images/springboard-lifestyle.jpg', alt: 'Shoots' }}
+            text="Manage Shoots"
+            action={{
+              nextLink: {
+                href: '/admin/shoots',
+              },
+            }}
+          />
+
+          <div className="spacer-hz" />
+
+          <Springboard
+            image={{ src: '/static/images/springboard-quote.jpg', alt: 'Packages' }}
+            text="Manage Packages"
+            action={{
+              nextLink: {
+                href: '/admin/packages',
+              },
+            }}
+          />
+        </section>
 
         <ControlPanel
           controls={[{ iconName: 'lock', label: 'Sign Out', handleClick: this.signOut }]}
@@ -58,8 +80,4 @@ class Admin extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
-
-export default withAuth(connect(mapStateToProps)(Admin));
+export default withAuth(Admin);
