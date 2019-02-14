@@ -79,7 +79,7 @@ class Admin extends React.Component {
     });
 
     return (
-      <Layout title="Admin Dashboard">
+      <Layout title="Manage Shoots">
         <SelectCategorySection options={selectOptions} handleChange={this.onSelectCategory} />
 
         <div className="spacer-vt large" />

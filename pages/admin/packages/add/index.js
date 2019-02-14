@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddPackage from '../../../layouts/AddPackage';
+import AddPackage from '../../../../layouts/AddPackage';
 
 const Page = (props) => {
   return <AddPackage {...props} />;

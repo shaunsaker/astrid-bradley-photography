@@ -1,18 +1,16 @@
 const controls = [
   {
     iconName: 'add',
-    label: 'Add Shoot',
+    label: 'Add Package',
     link: {
-      href: '/admin/shoots/add',
-      as: null,
+      href: '/admin/packages/add',
     },
   },
   {
-    iconName: 'sort',
-    label: 'Sort Shoots',
+    iconName: 'shopping-cart',
+    label: 'Manage Products',
     link: {
-      href: '/admin/shoots/sort',
-      as: null,
+      href: '/admin/packages/products',
     },
   },
 ];

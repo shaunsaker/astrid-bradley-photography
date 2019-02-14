@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddProduct from '../../../layouts/AddProduct';
+import AddProduct from '../../../../layouts/AddProduct';
 
 const Page = (props) => {
   return <AddProduct {...props} />;
