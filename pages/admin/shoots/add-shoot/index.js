@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SortShoots from '../../../layouts/SortShoots';
+import AddShoot from '../../../../layouts/AddShoot';
 
 const Page = (props) => {
-  return <SortShoots {...props} />;
+  return <AddShoot {...props} />;
 };
 
 Page.getInitialProps = async () => {};

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import EditShoot from '../../../layouts/EditShoot';
+import ManageLayout from '../../../../layouts/ManageLayout';
 
 const Page = (props) => {
-  return <EditShoot {...props} />;
+  return <ManageLayout {...props} />;
 };
 
 Page.getInitialProps = async ({ query }) => {
