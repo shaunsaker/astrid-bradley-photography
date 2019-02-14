@@ -6,13 +6,6 @@ const controls = [
       href: '/admin/packages/add',
     },
   },
-  {
-    iconName: 'shopping-cart',
-    label: 'Manage Products',
-    link: {
-      href: '/admin/packages/products',
-    },
-  },
 ];
 
 export default controls;

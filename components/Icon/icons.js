@@ -14,7 +14,6 @@ import {
   MdPhotoSizeSelectLarge,
   MdSave,
   MdSend,
-  MdShoppingCart,
   MdSort,
   MdUnarchive,
 } from 'react-icons/md';
@@ -34,7 +33,6 @@ const icons = {
   photo: (props) => <MdPhoto {...props} />,
   save: (props) => <MdSave {...props} />,
   send: (props) => <MdSend {...props} />,
-  'shopping-cart': (props) => <MdShoppingCart {...props} />,
   sort: (props) => <MdSort {...props} />,
   unarchive: (props) => <MdUnarchive {...props} />,
 };

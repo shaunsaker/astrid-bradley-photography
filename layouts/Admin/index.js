@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import SPRINGBOARDS from './springboards';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
@@ -44,30 +45,30 @@ class Admin extends React.Component {
   }
 
   render() {
+    const firstSpringboard = SPRINGBOARDS[0];
+    const otherSpringboards = SPRINGBOARDS.slice(1, 3);
+
     return (
       <Layout title="Admin Dashboard">
         <section className="flex row">
-          <Springboard
-            image={{ src: '/static/images/springboard-lifestyle.jpg', alt: 'Shoots' }}
-            text="Manage Shoots"
-            action={{
-              nextLink: {
-                href: '/admin/shoots',
-              },
-            }}
-          />
+          <Springboard {...firstSpringboard} />
+        </section>
 
-          <div className="spacer-hz" />
+        <section className="flex row">
+          {otherSpringboards.map((springboard, index) => {
+            const { text } = springboard;
 
-          <Springboard
-            image={{ src: '/static/images/springboard-quote.jpg', alt: 'Packages' }}
-            text="Manage Packages"
-            action={{
-              nextLink: {
-                href: '/admin/packages',
-              },
-            }}
-          />
+            // Add a spacer for every odd item
+            const spacerComponent = index % 2 === 0 && <div className="spacer-hz" />;
+
+            return (
+              <Fragment key={text}>
+                <Springboard {...springboard} />
+
+                {spacerComponent}
+              </Fragment>
+            );
+          })}
         </section>
 
         <ControlPanel
