@@ -82,7 +82,7 @@ ShootItem.propTypes = {
   shoot: PropTypes.shape({
     name: PropTypes.string,
     id: PropTypes.string,
-    date: PropTypes.number,
+    date: PropTypes.string,
   }),
   secondary: PropTypes.bool,
   disabled: PropTypes.bool,

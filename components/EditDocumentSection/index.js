@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { forms } from '../../config';
-import { cloneObject, getFormDate } from '../../utils';
 
 import Form from '../Form';
 
@@ -44,13 +43,7 @@ export class EditShoot extends React.Component {
     // Use the values from the shoot
     form.forEach((field) => {
       const { name } = field;
-      let value = document[name] || false;
-
-      // IF its the date field
-      // THEN convert the js time in ms to a form date
-      if (name === 'date') {
-        value = getFormDate(value);
-      }
+      const value = document[name];
       values[name] = value;
     });
     return values;
@@ -63,14 +56,6 @@ export class EditShoot extends React.Component {
   onSubmit() {
     const { values } = this.state;
     const { document, collectionURL, onSaveDocument } = this.props;
-
-    // Clone values otherwise we mutate the state
-    const newValues = cloneObject(values);
-
-    // Replace the date value with js time (in ms)
-    // TODO: Only if the date is a form date
-    const time = new Date(newValues.date).getTime();
-    newValues.date = time;
 
     // Keep the existing values but overwrite if edited
     const newDocument = {
