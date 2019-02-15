@@ -128,6 +128,11 @@ button:focus, .button:focus, a:focus, input:focus, select:focus, div[role='butto
   width: 100%;
 }
 
+.spacer-vt.small {
+  min-height: ${rhythm.vt / 2}px;
+  width: 100%;
+}
+
 .spacer-vt.large {
   min-height: ${rhythm.vt * 2}px;
 }

@@ -72,7 +72,17 @@ class Admin extends React.Component {
           {packages.map((item) => {
             const { id } = item;
 
-            return <PackageItem key={id} packageItem={item} />;
+            return (
+              <PackageItem
+                key={id}
+                packageItem={item}
+                action={{
+                  nextLink: {
+                    href: `/admin/packages/edit?id=${id}`,
+                  },
+                }}
+              />
+            );
           })}
         </section>
 
