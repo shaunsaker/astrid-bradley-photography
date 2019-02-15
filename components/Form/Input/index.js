@@ -22,11 +22,11 @@ const Input = ({
     ) : type === 'group' ? (
       <fieldset name={name} className="group">
         {fields.map((item) => {
-          return <Input key={item.name} {...item} />;
+          return <Input key={item.name} {...item} onChange={onChange} />;
         })}
       </fieldset>
     ) : type === 'textarea' ? (
-      <textarea name={name} id={name} value={value} required={isRequired} />
+      <textarea name={name} id={name} value={value} required={isRequired} onChange={onChange} />
     ) : (
       <input
         type={type}
