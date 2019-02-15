@@ -49,9 +49,12 @@ const PackageItem = ({ packageItem, products, action }) => {
 
         <div className="spacer-vt" />
 
-        {includedProducts.map((product) => {
+        {includedProducts.map((product, index) => {
           const { id, qty } = product;
           const productName = product.name;
+          const spacerComponent = index !== includedProducts.length - 1 && (
+            <div className="spacer-vt" />
+          );
 
           return (
             <Fragment key={id}>
@@ -59,7 +62,7 @@ const PackageItem = ({ packageItem, products, action }) => {
                 {qty} X {productName}
               </ParagraphText>
 
-              <div className="spacer-vt" />
+              {spacerComponent}
             </Fragment>
           );
         })}
