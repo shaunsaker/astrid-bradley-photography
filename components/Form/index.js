@@ -61,6 +61,12 @@ export default class Form extends React.Component {
         inputValue = checked;
       }
 
+      // IF its a number input
+      // THEN parse the number string into an int
+      if (type === 'number') {
+        inputValue = Number(value);
+      }
+
       values[name] = inputValue;
     });
 
