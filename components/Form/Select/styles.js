@@ -10,7 +10,6 @@ const styles = css`
     border-radius: 0;
     background: none;
     padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
-    cursor: pointer;
   }
 `;
 

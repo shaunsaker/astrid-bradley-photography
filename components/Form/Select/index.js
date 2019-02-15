@@ -5,7 +5,12 @@ import styles from './styles';
 
 const Select = ({ fieldName, id, options, handleChange }) => {
   return (
-    <select name={fieldName} id={id} onChange={handleChange} className="shadow-sm shadow-hover">
+    <select
+      name={fieldName}
+      id={id}
+      onChange={handleChange}
+      className="shadow-sm shadow-hover clickable"
+    >
       {options.map((option) => {
         const { name, value } = option;
 

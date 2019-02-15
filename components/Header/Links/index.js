@@ -38,7 +38,7 @@ const Links = ({ router, authenticated }) => {
           return (
             <li key={href}>
               <Link href={href} prefetch={prefetch} as={as}>
-                <span className={`nav-link ${isActive && 'active'}`}>{title}</span>
+                <span className={`nav-link clickable ${isActive && 'active'}`}>{title}</span>
               </Link>
             </li>
           );

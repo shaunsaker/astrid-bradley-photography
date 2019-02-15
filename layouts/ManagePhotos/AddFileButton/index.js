@@ -13,7 +13,7 @@ const AddFileButton = ({ multiple, handleAddFiles }) => {
         multiple={multiple}
         accepts="image/*"
         onChange={(event) => handleAddFiles(event.target.files)}
-        className="input abs-stretch"
+        className="input abs-stretch clickable"
       />
 
       <style jsx>{styles}</style>

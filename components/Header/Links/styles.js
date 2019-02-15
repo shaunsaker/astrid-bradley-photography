@@ -9,7 +9,6 @@ const styles = css`
   }
 
   .nav-link {
-    cursor: pointer;
     transition: color 0.5s ease;
   }
 

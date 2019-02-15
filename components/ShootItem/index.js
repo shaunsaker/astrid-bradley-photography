@@ -34,7 +34,7 @@ const ShootItem = ({ shoot, secondary, disabled, admin }) => {
       role={isButton && 'button'}
       tabIndex={isButton && 0}
       className={`container flex row ${
-        isButton ? 'shadow-sm shadow-hover' : 'untouchable'
+        isButton ? 'shadow-sm shadow-hover clickable' : ''
       } xs-wrap ${secondary && 'secondary'}`}
     >
       <div className="text-container">

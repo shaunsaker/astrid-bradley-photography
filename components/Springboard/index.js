@@ -9,7 +9,7 @@ import LinkDelegator from '../LinkDelegator';
 const Springboard = ({ image, text, action }) => {
   return (
     <LinkDelegator action={action}>
-      <div className="container shadow-sm shadow-hover relative">
+      <div className="container shadow-sm shadow-hover clickable relative">
         <Image {...image} />
 
         <div className="text-container abs-stretch flex-center">

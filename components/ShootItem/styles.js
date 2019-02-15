@@ -9,11 +9,6 @@ const styles = css`
     justify-content: space-between;
     align-items: flex-end;
     background-color: ${colors.white};
-    cursor: pointer;
-  }
-
-  .untouchable {
-    cursor: default;
     border: 1px solid ${colors.lightGrey};
   }
 
