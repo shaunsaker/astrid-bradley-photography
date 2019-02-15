@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import { forms } from '../../config';
 
 import Form from '../Form';
 
 import withSaveDocument from '../../enhancers/withSaveDocument';
 
-export class EditShoot extends React.Component {
+export class EditDocumentSection extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,6 +13,7 @@ export class EditShoot extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.setValue = this.setValue.bind(this);
+    this.getDocumentURL = this.getDocumentURL.bind(this);
 
     this.state = {
       values: this.getInitialState(),
@@ -24,9 +22,13 @@ export class EditShoot extends React.Component {
 
   static propTypes = {
     // Parent
-    formName: PropTypes.string,
+    form: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
     document: PropTypes.shape({}),
-    collectionURL: PropTypes.string,
+    collectionURL: PropTypes.string.isRequired,
 
     // withSaveDocument
     onSaveDocument: PropTypes.func,
@@ -35,27 +37,33 @@ export class EditShoot extends React.Component {
   static defaultProps = {};
 
   getInitialState() {
-    const { formName, document } = this.props;
-    const form = forms[formName];
-    const values = {};
+    const { form, document } = this.props;
 
-    // Use the form fields to generate the values object
-    // Use the values from the shoot
-    form.forEach((field) => {
-      const { name } = field;
-      const value = document[name];
-      values[name] = value;
-    });
-    return values;
+    // IF there's a document
+    // It means we're editing
+    if (document) {
+      const values = {};
+
+      // Use the form fields to generate the values object
+      // Use the values from the shoot
+      form.forEach((field) => {
+        const { name } = field;
+        const value = document[name];
+        values[name] = value;
+      });
+      return values;
+    }
+
+    // ELSE it means we're creating
+    return null;
   }
 
   onChange(name, value) {
     this.setValue(name, value);
   }
 
-  onSubmit() {
-    const { values } = this.state;
-    const { document, collectionURL, onSaveDocument } = this.props;
+  onSubmit(values) {
+    const { document, onSaveDocument } = this.props;
 
     // Keep the existing values but overwrite if edited
     const newDocument = {
@@ -63,15 +71,9 @@ export class EditShoot extends React.Component {
       ...values,
     };
 
-    // Use the name as the id
-    const id = document.name
-      .split(' ')
-      .join('-')
-      .toLowerCase();
+    const documentURL = this.getDocumentURL(values);
 
-    const url = `${collectionURL}/${id}`;
-
-    onSaveDocument(newDocument, url);
+    onSaveDocument(newDocument, documentURL);
   }
 
   setValue(name, value) {
@@ -81,27 +83,62 @@ export class EditShoot extends React.Component {
     this.setState({ values });
   }
 
+  getDocumentURL(values) {
+    const { document, collectionURL } = this.props;
+
+    let id;
+
+    // IF there's a document
+    // It means we're editing
+    if (document) {
+      id = document.id; // eslint-disable-line
+    } else {
+      // ELSE it means we're creating
+      // Use the name as the id
+      const { name } = values;
+      id = name
+        .split(' ')
+        .join('-')
+        .toLowerCase();
+    }
+
+    const url = `${collectionURL}/${id}`;
+
+    return url;
+  }
+
   render() {
     const { values } = this.state;
-    const { formName } = this.props;
-    const form = forms[formName];
+    const { document, form } = this.props;
+    let fields;
+    let name;
 
-    // Append the relevant value to each field
-    const fieldsWithValues = form.map((field) => {
-      const value = values[field.name];
+    // IF there's a document
+    // It means we're editing
+    if (document) {
+      name = 'edit-form';
 
-      return {
-        ...field,
-        value,
-      };
-    });
+      // Append the relevant value to each field
+      fields = form.map((field) => {
+        const value = values[field.name];
+
+        return {
+          ...field,
+          value,
+        };
+      });
+    } else {
+      // ELSE it means we're creating
+      name = 'add-form';
+      fields = form;
+    }
 
     return (
       <section>
         <Form
-          name={formName}
-          fields={fieldsWithValues}
-          handleChange={this.onChange}
+          name={name}
+          fields={fields}
+          handleChange={document ? this.onChange : null}
           handleSubmit={this.onSubmit}
         />
       </section>
@@ -109,8 +146,4 @@ export class EditShoot extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
-};
-
-export default withSaveDocument(connect(mapStateToProps)(EditShoot));
+export default withSaveDocument(EditDocumentSection);

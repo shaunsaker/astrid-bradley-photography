@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { packageForm } from '../../config/forms';
+
 import Layout from '../../components/Layout';
 import EditDocumentSection from '../../components/EditDocumentSection';
 
@@ -30,7 +32,7 @@ export class EditPackage extends React.Component {
     return (
       <Layout title={title}>
         <EditDocumentSection
-          formName="packageForm"
+          form={packageForm}
           document={packageDocument}
           collectionURL="packages"
         />

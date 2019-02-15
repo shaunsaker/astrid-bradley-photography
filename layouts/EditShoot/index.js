@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import styles from './styles';
+import { shootForm } from '../../config/forms';
 
 import Layout from '../../components/Layout';
 import EditDocumentSection from '../../components/EditDocumentSection';
@@ -43,11 +43,9 @@ export class EditShoot extends React.Component {
 
     return (
       <Layout title={title}>
-        <EditDocumentSection formName="shootForm" document={shoot} collectionURL="shoots" />
+        <EditDocumentSection form={shootForm} document={shoot} collectionURL="shoots" />
 
         <ControlPanel controls={controls} />
-
-        <style jsx>{styles}</style>
       </Layout>
     );
   }

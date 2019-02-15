@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { productForm } from '../../config/forms';
+
 import Layout from '../../components/Layout';
 import EditDocumentSection from '../../components/EditDocumentSection';
 
@@ -29,7 +31,7 @@ export class EditProduct extends React.Component {
 
     return (
       <Layout title={title}>
-        <EditDocumentSection formName="productForm" document={product} collectionURL="products" />
+        <EditDocumentSection form={productForm} document={product} collectionURL="products" />
       </Layout>
     );
   }
