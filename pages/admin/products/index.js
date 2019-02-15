@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AdminProducts from '../../../layouts/AdminProducts';
+import ManageProducts from '../../../layouts/ManageProducts';
 
 const Page = (props) => {
-  return <AdminProducts {...props} />;
+  return <ManageProducts {...props} />;
 };
 
 Page.getInitialProps = async () => {};

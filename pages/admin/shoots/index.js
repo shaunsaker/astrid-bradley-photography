@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AdminShoots from '../../../layouts/AdminShoots';
+import ManageShoots from '../../../layouts/ManageShoots';
 
 const Page = (props) => {
-  return <AdminShoots {...props} />;
+  return <ManageShoots {...props} />;
 };
 
 Page.getInitialProps = async () => {};

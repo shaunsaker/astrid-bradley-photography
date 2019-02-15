@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AdminPackages from '../../../layouts/AdminPackages';
+import ManagePackages from '../../../layouts/ManagePackages';
 
 const Page = (props) => {
-  return <AdminPackages {...props} />;
+  return <ManagePackages {...props} />;
 };
 
 Page.getInitialProps = async () => {};

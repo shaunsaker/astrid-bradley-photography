@@ -10,7 +10,7 @@ import ControlPanel from '../../components/ControlPanel';
 
 import withAuth from '../../enhancers/withAuth';
 
-class AdminProducts extends React.Component {
+class ManageProducts extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-export default withAuth(connect(mapStateToProps)(AdminProducts));
+export default withAuth(connect(mapStateToProps)(ManageProducts));
