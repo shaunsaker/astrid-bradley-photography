@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { packageForm } from '../../config/forms';
+
 import Layout from '../../components/Layout';
-import AddDocumentSection from '../../components/AddDocumentSection';
+import EditDocumentSection from '../../components/EditDocumentSection';
 
 import withAuth from '../../enhancers/withAuth';
 import withGoBackOnSave from '../../enhancers/withGoBackOnSave';
 
-const AddProduct = ({ products }) => {
+const AddPackage = ({ products }) => {
   const extraFields = [
     {
       type: 'group',
@@ -41,18 +43,16 @@ const AddProduct = ({ products }) => {
     },
   ];
 
+  const formWithExtraFields = packageForm.concat(extraFields);
+
   return (
     <Layout title="Add Package">
-      <AddDocumentSection
-        formName="packageForm"
-        extraFields={extraFields}
-        collectionURL="packages"
-      />
+      <EditDocumentSection form={formWithExtraFields} collectionURL="packages" />
     </Layout>
   );
 };
 
-AddProduct.propTypes = {
+AddPackage.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -60,7 +60,7 @@ AddProduct.propTypes = {
     }),
   ),
 };
-AddProduct.defaultProps = {};
+AddPackage.defaultProps = {};
 
 const mapStateToProps = (state) => {
   const { products } = state;
@@ -70,4 +70,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(withGoBackOnSave(connect(mapStateToProps)(AddProduct)));
+export default withAuth(withGoBackOnSave(connect(mapStateToProps)(AddPackage)));

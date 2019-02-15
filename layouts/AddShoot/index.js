@@ -1,20 +1,22 @@
 import React from 'react';
 
+import { shootForm } from '../../config/forms';
+
 import Layout from '../../components/Layout';
-import AddDocumentSection from '../../components/AddDocumentSection';
+import EditDocumentSection from '../../components/EditDocumentSection';
 
 import withAuth from '../../enhancers/withAuth';
 import withGoBackOnSave from '../../enhancers/withGoBackOnSave';
 
-const AddProduct = () => {
+const AddShoot = () => {
   return (
     <Layout title="Add Shoot">
-      <AddDocumentSection formName="shootForm" collectionURL="shoots" />
+      <EditDocumentSection form={shootForm} collectionURL="shoots" />
     </Layout>
   );
 };
 
-AddProduct.propTypes = {};
-AddProduct.defaultProps = {};
+AddShoot.propTypes = {};
+AddShoot.defaultProps = {};
 
-export default withAuth(withGoBackOnSave(AddProduct));
+export default withAuth(withGoBackOnSave(AddShoot));

@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { productForm } from '../../config/forms';
+
 import Layout from '../../components/Layout';
-import AddDocumentSection from '../../components/AddDocumentSection';
+import EditDocumentSection from '../../components/EditDocumentSection';
 
 import withAuth from '../../enhancers/withAuth';
 import withGoBackOnSave from '../../enhancers/withGoBackOnSave';
@@ -9,7 +11,7 @@ import withGoBackOnSave from '../../enhancers/withGoBackOnSave';
 const AddProduct = () => {
   return (
     <Layout title="Add Product">
-      <AddDocumentSection formName="productForm" collectionURL="products" />
+      <EditDocumentSection form={productForm} collectionURL="products" />
     </Layout>
   );
 };

@@ -94,7 +94,7 @@ export class EditDocumentSection extends React.Component {
       id = document.id; // eslint-disable-line
     } else {
       // ELSE it means we're creating
-      // Use the name as the id
+      // Use the name as the document id
       const { name } = values;
       id = name
         .split(' ')
@@ -129,6 +129,7 @@ export class EditDocumentSection extends React.Component {
       });
     } else {
       // ELSE it means we're creating
+      // Just use the form as is
       name = 'add-form';
       fields = form;
     }
