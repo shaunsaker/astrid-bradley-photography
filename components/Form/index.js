@@ -81,11 +81,7 @@ export default class Form extends React.Component {
         {fields.map((field) => {
           const { name } = field;
 
-          return (
-            <fieldset key={name}>
-              <Input {...field} onChange={onChange} />
-            </fieldset>
-          );
+          return <Input key={name} {...field} onChange={onChange} />;
         })}
 
         {children}

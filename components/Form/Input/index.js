@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import HeadingText from '../../HeadingText';
 import Label from './Label';
 import Select from '../Select';
 
-const Input = ({ type, options, name, value, label, isRequired, multiple, accept, onChange }) => {
+const Input = ({
+  type,
+  options,
+  name,
+  value,
+  label,
+  headerText,
+  isRequired,
+  multiple,
+  accept,
+  onChange,
+}) => {
   const inputComponent =
     type === 'select' ? (
       <Select fieldName={name} id={name} options={options} value={value} handleChange={onChange} />
@@ -24,12 +36,23 @@ const Input = ({ type, options, name, value, label, isRequired, multiple, accept
       />
     );
 
+  // FIXME: Would be better to pass this in (not very dynamic)
+  const headerTextComponent = headerText && (
+    <Fragment>
+      <HeadingText>{headerText}</HeadingText> <div className="spacer-vt large" />
+    </Fragment>
+  );
+
   return (
-    <fieldset key={name}>
-      <Label type={type} name={name} label={label}>
-        {inputComponent}
-      </Label>
-    </fieldset>
+    <Fragment>
+      {headerTextComponent}
+
+      <fieldset className="relative">
+        <Label type={type} name={name} label={label}>
+          {inputComponent}
+        </Label>
+      </fieldset>
+    </Fragment>
   );
 };
 
@@ -38,6 +61,7 @@ Input.propTypes = {
   name: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
   label: PropTypes.string,
+  headerText: PropTypes.string,
   isRequired: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.shape({})), // if type === 'select'
   multiple: PropTypes.bool, // if type === 'file'

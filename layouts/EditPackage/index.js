@@ -8,6 +8,7 @@ import Layout from '../../components/Layout';
 import EditDocumentSection from '../../components/EditDocumentSection';
 
 import withAuth from '../../enhancers/withAuth';
+import withProductFields from '../../enhancers/withProductFields';
 
 export class EditPackage extends React.Component {
   constructor(props) {
@@ -17,55 +18,23 @@ export class EditPackage extends React.Component {
   }
 
   static propTypes = {
-    packages: PropTypes.arrayOf(PropTypes.shape({})),
-    products: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-        id: PropTypes.string,
-      }),
-    ),
+    // Router
     packageID: PropTypes.string,
+
+    // connect
+    packages: PropTypes.arrayOf(PropTypes.shape({})),
+
+    // withProductFields
+    productFields: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {};
 
   render() {
-    const { packages, packageID, products } = this.props;
+    const { packages, packageID, productFields } = this.props;
     const packageDocument = packages.filter((item) => item.id === packageID)[0];
     const title = `Editing: ${packageDocument.name}`;
-    const extraFields = [
-      {
-        type: 'group',
-        name: 'products-included',
-        label: 'Products included:',
-        fields: products.map((product) => {
-          const { id, name } = product;
-          const label = `${name} (qty)`;
-
-          return {
-            type: 'number',
-            name: id,
-            label,
-          };
-        }),
-      },
-      {
-        type: 'group',
-        name: 'products-available',
-        label: 'Products available as add-ons:',
-        fields: products.map((product) => {
-          const { id, name } = product;
-
-          return {
-            type: 'checkbox',
-            name: id,
-            label: name,
-          };
-        }),
-      },
-    ];
-
-    const formWithExtraFields = packageForm.concat(extraFields);
+    const formWithExtraFields = packageForm.concat(productFields);
 
     return (
       <Layout title={title}>
@@ -80,12 +49,11 @@ export class EditPackage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { packages, products } = state;
+  const { packages } = state;
 
   return {
     packages,
-    products,
   };
 };
 
-export default withAuth(connect(mapStateToProps)(EditPackage));
+export default withAuth(withProductFields(connect(mapStateToProps)(EditPackage)));
