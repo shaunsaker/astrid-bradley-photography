@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 export default (ComposedComponent) => {
   class withGoBackOnSave extends React.Component {
@@ -53,5 +54,5 @@ export default (ComposedComponent) => {
     };
   };
 
-  return connect(mapStateToProps)(withGoBackOnSave);
+  return withRouter(connect(mapStateToProps)(withGoBackOnSave));
 };
