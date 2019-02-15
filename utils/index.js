@@ -1,3 +1,4 @@
+import cleanObject from './cleanObject';
 import cloneObject from './cloneObject';
 import createUID from './createUID';
 import getBlobURL from './getBlobURL';
@@ -11,6 +12,7 @@ import reorderArrayItems from './reorderArrayItems';
 import sortArrayOfObjectsByKey from './sortArrayOfObjectsByKey';
 
 const utils = {
+  cleanObject,
   cloneObject,
   createUID,
   getBlobURL,
@@ -25,6 +27,7 @@ const utils = {
 };
 
 export {
+  cleanObject,
   cloneObject,
   createUID,
   getBlobURL,

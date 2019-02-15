@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { cleanObject } from '../../utils';
+
 export default (ComposedComponent) => {
   class withSaveDocument extends React.Component {
     constructor(props) {
@@ -20,7 +22,9 @@ export default (ComposedComponent) => {
     static defaultProps = {};
 
     onSaveDocument(document, url) {
-      this.saveDocument(document, url);
+      const cleanDocument = cleanObject(document);
+
+      this.saveDocument(cleanDocument, url);
     }
 
     saveDocument(document, url) {
