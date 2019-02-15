@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import AddDocumentSection from '../../components/AddDocumentSection';
 
 import withAuth from '../../wrappers/withAuth';
+import withGoBackOnSave from '../../wrappers/withGoBackOnSave';
 
 const AddProduct = ({ products }) => {
   const extraFields = [
@@ -69,4 +70,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(connect(mapStateToProps)(AddProduct));
+export default withAuth(withGoBackOnSave(connect(mapStateToProps)(AddProduct)));
