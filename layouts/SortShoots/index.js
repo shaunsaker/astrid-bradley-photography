@@ -12,7 +12,7 @@ import DraggableList from '../../components/DraggableList';
 import ShootItem from '../../components/ShootItem';
 import ControlPanel from '../../components/ControlPanel';
 
-import withAuth from '../../wrappers/withAuth';
+import withAuth from '../../enhancers/withAuth';
 
 export class SortShoots extends React.Component {
   constructor(props) {

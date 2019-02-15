@@ -10,8 +10,8 @@ import DraggableList from '../../components/DraggableList';
 import Image from '../../components/Image';
 import ControlPanel from '../../components/ControlPanel';
 
-import withAuth from '../../wrappers/withAuth';
-import withSaveShoot from '../../wrappers/withSaveShoot';
+import withAuth from '../../enhancers/withAuth';
+import withSaveShoot from '../../enhancers/withSaveShoot';
 
 class ManageLayout extends React.Component {
   constructor(props) {

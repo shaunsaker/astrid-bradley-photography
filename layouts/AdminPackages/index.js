@@ -8,7 +8,7 @@ import styles from './styles';
 import Layout from '../../components/Layout';
 import ControlPanel from '../../components/ControlPanel';
 
-import withAuth from '../../wrappers/withAuth';
+import withAuth from '../../enhancers/withAuth';
 
 class Admin extends React.Component {
   constructor(props) {

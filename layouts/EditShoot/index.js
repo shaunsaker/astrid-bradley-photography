@@ -8,7 +8,7 @@ import Layout from '../../components/Layout';
 import EditDocumentSection from '../../components/EditDocumentSection';
 import ControlPanel from '../../components/ControlPanel';
 
-import withAuth from '../../wrappers/withAuth';
+import withAuth from '../../enhancers/withAuth';
 
 export class EditShoot extends React.Component {
   constructor(props) {

@@ -6,7 +6,7 @@ import { forms } from '../../config';
 
 import Form from '../Form';
 
-import withSaveDocument from '../../wrappers/withSaveDocument';
+import withSaveDocument from '../../enhancers/withSaveDocument';
 
 export class EditShoot extends React.Component {
   constructor(props) {

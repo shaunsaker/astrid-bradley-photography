@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import EditDocumentSection from '../../components/EditDocumentSection';
 
-import withAuth from '../../wrappers/withAuth';
+import withAuth from '../../enhancers/withAuth';
 
 export class EditPackage extends React.Component {
   constructor(props) {

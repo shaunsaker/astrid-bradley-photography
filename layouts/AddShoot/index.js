@@ -3,8 +3,8 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import AddDocumentSection from '../../components/AddDocumentSection';
 
-import withAuth from '../../wrappers/withAuth';
-import withGoBackOnSave from '../../wrappers/withGoBackOnSave';
+import withAuth from '../../enhancers/withAuth';
+import withGoBackOnSave from '../../enhancers/withGoBackOnSave';
 
 const AddProduct = () => {
   return (

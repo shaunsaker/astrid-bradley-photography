@@ -13,7 +13,7 @@ import HeadingText from '../../components/HeadingText';
 import ShootItem from '../../components/ShootItem';
 import ControlPanel from '../../components/ControlPanel';
 
-import withAuth from '../../wrappers/withAuth';
+import withAuth from '../../enhancers/withAuth';
 
 class Admin extends React.Component {
   constructor(props) {

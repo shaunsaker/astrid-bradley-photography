@@ -10,8 +10,8 @@ import Photo from './Photo';
 import PhotoUploadList from './PhotoUploadList';
 import ControlPanel from '../../components/ControlPanel';
 
-import withAuth from '../../wrappers/withAuth';
-import withSaveShoot from '../../wrappers/withSaveShoot';
+import withAuth from '../../enhancers/withAuth';
+import withSaveShoot from '../../enhancers/withSaveShoot';
 
 export class ManagePhotos extends React.Component {
   constructor(props) {

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import AddDocumentSection from '../../components/AddDocumentSection';
 
-import withAuth from '../../wrappers/withAuth';
-import withGoBackOnSave from '../../wrappers/withGoBackOnSave';
+import withAuth from '../../enhancers/withAuth';
+import withGoBackOnSave from '../../enhancers/withGoBackOnSave';
 
 const AddProduct = ({ products }) => {
   const extraFields = [
