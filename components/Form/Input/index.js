@@ -42,9 +42,11 @@ const Input = ({
     );
 
   return (
-    <Label type={type} name={name} label={label}>
-      {inputComponent}
-    </Label>
+    <fieldset key={name}>
+      <Label type={type} name={name} label={label}>
+        {inputComponent}
+      </Label>
+    </fieldset>
   );
 };
 
