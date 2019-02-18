@@ -8,6 +8,11 @@ const styles = css`
     background-color: ${colors.white};
     border: 1px solid ${colors.lightGrey};
   }
+
+  .container.secondary {
+    background-color: ${colors.transBlack};
+    border: none;
+  }
 `;
 
 export default styles;

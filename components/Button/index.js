@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import LinkDelegator from '../LinkDelegator';
+import Card from '../Card';
 
 const Button = ({ text, type, action }) => {
   const delegatorAction = {
@@ -14,11 +14,11 @@ const Button = ({ text, type, action }) => {
   };
 
   return (
-    <LinkDelegator action={delegatorAction}>
-      <div className="button shadow-sm shadow-hover">{text}</div>
+    <Card action={delegatorAction} secondary>
+      <p className="text">{text}</p>
 
       <style jsx>{styles}</style>
-    </LinkDelegator>
+    </Card>
   );
 };
 

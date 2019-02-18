@@ -53,21 +53,6 @@ button {
   font-family: 'Arial', sans-serif;
 }
 
-.button {
-  background-color: ${colors.transBlack};
-  padding: ${rhythm.vt}px ${rhythm.hz}px;
-  color: ${colors.white};
-  cursor: pointer;
-  text-align: center;
-  font-family: 'Futura', sans-serif;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-size: 0.8em;
-  line-height: 1.5em;
-  color: ${colors.white};
-}
-
 button:focus, .button:focus, a:focus, input:focus, select:focus, div[role='button']:focus {
   outline: 2px solid ${colors.accent2};
 }
@@ -174,10 +159,6 @@ h1, h2, p {
   font-weight: 400;
   font-style: medium;
   font-display: swap;
-}
-
-button {
-  font-size: 1em;
 }
 
 // RESPONSIVE HELPERS

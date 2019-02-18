@@ -1,20 +1,19 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 
 import { getFutureTime, getPrettyDate } from '../../utils';
 import { colors } from '../../static/styles/styleConstants';
 
 import styles from './styles';
 
+import Card from '../Card';
 import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 import Icon from '../Icon';
 
-const ShootItem = ({ shoot, secondary, disabled, admin }) => {
-  const { name, location, photos, date, download_url, delivered, archived, id } = shoot;
+const ShootItem = ({ shoot, secondary, admin }) => {
+  const { name, location, date, photos, download_url, delivered, archived, id } = shoot;
   const prettyDate = getPrettyDate(date);
-  const isButton = photos || admin;
 
   // GET the estimated delivery date 10 weeks from the shoot date
   const estimatedDeliveryDate = getPrettyDate(getFutureTime(date, 70));
@@ -29,53 +28,43 @@ const ShootItem = ({ shoot, secondary, disabled, admin }) => {
     </Fragment>
   );
 
-  const contentComponent = (
-    <div
-      role={isButton && 'button'}
-      tabIndex={isButton && 0}
-      className={`container flex row ${
-        isButton ? 'shadow-sm shadow-hover clickable' : ''
-      } xs-wrap ${secondary && 'secondary'}`}
-    >
-      <div className="text-container">
-        <ParagraphText white={secondary}>
-          <b>{name}</b> - {location}
-        </ParagraphText>
+  // IF on the admin page
+  // THEN go to the relevant edit shoot page
+  // ELSE
+  // THEN go to the relevant shoot page
+  const href = admin ? `/admin/shoots/edit?id=${id}` : photos ? `/shoots/shoot?id=${id}` : null;
+  const action = href && { nextLink: { href } };
 
-        <div className="spacer-vt" />
+  return (
+    <Card action={action} secondary={secondary}>
+      <div className="container row">
+        <div className="text-container">
+          <ParagraphText white={secondary}>
+            <b>{name}</b> - {location}
+          </ParagraphText>
 
-        <SmallText className="text">
-          {prettyDate} (Est. delivery: {estimatedDeliveryDate})
-        </SmallText>
+          <div className="spacer-vt" />
+
+          <SmallText className="text">
+            {prettyDate} (Est. delivery: {estimatedDeliveryDate})
+          </SmallText>
+        </div>
+
+        <div className="spacer-hz" />
+
+        <div className="row">
+          <Icon name="check" size={18} color={download_url ? colors.green : colors.lightGrey} />
+
+          <div className="spacer-hz small" />
+
+          <Icon name="send" size={18} color={delivered ? colors.green : colors.lightGrey} />
+
+          {archiveComponent}
+        </div>
       </div>
-
-      <div className="spacer-hz" />
-
-      <div className="row">
-        <Icon name="check" size={18} color={download_url ? colors.green : colors.lightGrey} />
-
-        <div className="spacer-hz small" />
-
-        <Icon name="send" size={18} color={delivered ? colors.green : colors.lightGrey} />
-
-        {archiveComponent}
-      </div>
-
       <style jsx>{styles}</style>
-    </div>
+    </Card>
   );
-
-  if (disabled || !isButton) {
-    return contentComponent;
-  } else {
-    // IF on the admin page
-    // THEN go to the relevant edit shoot page
-    // ELSE
-    // THEN go to the relevant shoot page
-    const href = admin ? `/admin/shoots/edit?id=${id}` : `/shoots/shoot?id=${id}`;
-
-    return <Link href={href}>{contentComponent}</Link>;
-  }
 };
 
 ShootItem.propTypes = {

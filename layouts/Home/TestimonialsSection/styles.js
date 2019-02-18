@@ -27,10 +27,9 @@ const styles = css`
   span {
     align-self: center;
     transform: scaleX(2);
-    color: ${colors.white};
+    color: ${colors.lightGrey};
     font-size: 1em;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
-    margin-top: -3px;
+    margin-top: -4px;
   }
 
   img {

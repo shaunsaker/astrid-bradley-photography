@@ -151,7 +151,7 @@ export class SortShoots extends React.Component {
   renderItem(shoot, isDragging) {
     return (
       <Fragment>
-        <ShootItem shoot={shoot} secondary={isDragging} disabled admin />
+        <ShootItem shoot={shoot} secondary={isDragging} admin />
 
         <div className="spacer-vt" />
       </Fragment>

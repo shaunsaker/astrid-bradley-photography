@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './styles';
 import TESTIMONIALS from './testimonials';
 
+import Card from '../../../components/Card';
 import TitleText from '../../../components/TitleText';
 import HeadingText from '../../../components/HeadingText';
 import SmallText from '../../../components/SmallText';
@@ -30,7 +30,7 @@ const TestimonialsSection = () => {
               <Fragment key={name}>
                 <li>
                   <div className="card-wrapper">
-                    <div className="card-container shadow-sm">
+                    <Card>
                       <SmallText>&quot;{text}&quot;</SmallText>
 
                       <div className="spacer-vt" />
@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
                       <HeadingText>{name}</HeadingText>
 
                       <div className="spacer-vt" />
-                    </div>
+                    </Card>
 
                     <span>▼</span>
                   </div>

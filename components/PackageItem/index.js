@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getIncludedProducts } from '../../utils';
 import styles from './styles';
 
-import LinkDelegator from '../LinkDelegator';
+import Card from '../Card';
 import TitleText from '../TitleText';
 import HeadingText from '../HeadingText';
 import ParagraphText from '../ParagraphText';
@@ -25,53 +25,51 @@ const PackageItem = ({ packageItem, products, action }) => {
   );
 
   return (
-    <LinkDelegator action={action}>
-      <div className="container shadow-sm shadow-hover clickable center">
-        <HeadingText>{name}</HeadingText>
+    <Card action={action}>
+      <HeadingText>{name}</HeadingText>
 
-        <div className="spacer-vt" />
+      <div className="spacer-vt" />
 
-        <TitleText>{`R ${price}`}</TitleText>
+      <TitleText>{`R ${price}`}</TitleText>
 
-        <ParagraphText>{time} hour</ParagraphText>
+      <ParagraphText>{time} hour</ParagraphText>
 
-        <div className="spacer-vt" />
+      <div className="spacer-vt" />
 
-        <ParagraphText>{photos} photos</ParagraphText>
+      <ParagraphText>{photos} photos</ParagraphText>
 
-        <div className="spacer-vt" />
+      <div className="spacer-vt" />
 
-        <SmallText>Includes:</SmallText>
+      <SmallText>Includes:</SmallText>
 
-        <div className="spacer-vt small" />
+      <div className="spacer-vt small" />
 
-        <ParagraphText>{distance * 2}km of travel</ParagraphText>
+      <ParagraphText>{distance * 2}km of travel</ParagraphText>
 
-        <div className="spacer-vt" />
+      <div className="spacer-vt" />
 
-        {includedProducts.map((product, index) => {
-          const { id, qty } = product;
-          const productName = product.name;
-          const spacerComponent = index !== includedProducts.length - 1 && (
-            <div className="spacer-vt" />
-          );
+      {includedProducts.map((product, index) => {
+        const { id, qty } = product;
+        const productName = product.name;
+        const spacerComponent = index !== includedProducts.length - 1 && (
+          <div className="spacer-vt" />
+        );
 
-          return (
-            <Fragment key={id}>
-              <ParagraphText>
-                {qty} X {productName}
-              </ParagraphText>
+        return (
+          <Fragment key={id}>
+            <ParagraphText>
+              {qty} X {productName}
+            </ParagraphText>
 
-              {spacerComponent}
-            </Fragment>
-          );
-        })}
+            {spacerComponent}
+          </Fragment>
+        );
+      })}
 
-        {notesComponent}
+      {notesComponent}
 
-        <style jsx>{styles}</style>
-      </div>
-    </LinkDelegator>
+      <style jsx>{styles}</style>
+    </Card>
   );
 };
 

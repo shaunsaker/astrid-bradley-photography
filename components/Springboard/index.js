@@ -3,22 +3,21 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
+import Card from '../Card';
 import Image from '../Image';
-import LinkDelegator from '../LinkDelegator';
+import Button from '../Button';
 
 const Springboard = ({ image, text, action }) => {
   return (
-    <LinkDelegator action={action}>
-      <div className="container shadow-sm shadow-hover clickable relative">
-        <Image {...image} />
+    <Card action={action} style={{ padding: 0 }}>
+      <Image {...image} />
 
-        <div className="text-container abs-stretch flex-center">
-          <div className="button">{text}</div>
-        </div>
-
-        <style jsx>{styles}</style>
+      <div className="text-container abs-stretch flex-center">
+        <Button text={text} />
       </div>
-    </LinkDelegator>
+
+      <style jsx>{styles}</style>
+    </Card>
   );
 };
 
