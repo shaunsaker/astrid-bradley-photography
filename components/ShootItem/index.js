@@ -33,7 +33,7 @@ const ShootItem = ({ shoot, secondary, admin }) => {
   // ELSE
   // THEN go to the relevant shoot page
   const href = admin ? `/admin/shoots/edit?id=${id}` : photos ? `/shoots/shoot?id=${id}` : null;
-  const action = href && { nextLink: { href } };
+  const action = href ? { nextLink: { href } } : undefined;
 
   return (
     <Card action={action} secondary={secondary}>
