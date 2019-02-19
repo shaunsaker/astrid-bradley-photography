@@ -8,7 +8,8 @@ const styles = css`
     font-weight: 400;
     letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 1.25em;
+    font-size: 20px;
+    line-height: 24px;
     color: ${colors.black};
     border-bottom-width: 1px;
     border-bottom-style: solid;

@@ -4,8 +4,8 @@ import { colors } from '../../static/styles/styleConstants';
 
 const styles = css`
   small {
-    font-size: 0.8em;
-    line-height: 1.25em;
+    font-size: 14px;
+    line-height: 20px;
     color: ${colors.grey};
   }
 

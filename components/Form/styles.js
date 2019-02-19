@@ -18,8 +18,8 @@ const styles = global`
   input,
   textarea,
   label {
-    font-size: 1em;
-    line-height: 1.5em;
+    font-size: 16px;
+    line-height: 24px;
     color: ${colors.black};
   }
 
@@ -29,8 +29,8 @@ const styles = global`
 
   select {
     font-family: 'Arial';
-    font-size: 0.8em;
-    line-height: 1.25em;
+    font-size: 14px;
+    line-height: 20px;
     color: ${colors.black};
   }
 
@@ -53,7 +53,7 @@ const styles = global`
   }
 
   input[type='file'] {
-    line-height: 1em;
+    line-height: 16px;
   }
 
   label {
@@ -89,7 +89,7 @@ const styles = global`
   textarea:focus + label:not(.inline-right),
   textarea:valid + label:not(.inline-right) {
     top: -${rhythm.vt / 2}px;
-    font-size: 0.8em;
+    font-size: 14px;
   }
 
   input:valid + label:not(.inline-right) {

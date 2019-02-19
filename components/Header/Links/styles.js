@@ -4,7 +4,7 @@ import { colors } from '../../../static/styles/styleConstants';
 
 const styles = css`
   .nav-link {
-    font-size: 0.8em;
+    font-size: 14px;
     color: ${colors.grey};
   }
 

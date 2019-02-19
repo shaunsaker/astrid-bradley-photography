@@ -9,8 +9,8 @@ const styles = css`
     font-weight: 400;
     letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 1em;
-    line-height: 1.5em;
+    font-size: 14px;
+    line-height: 20px;
     color: ${colors.white};
   }
 `;

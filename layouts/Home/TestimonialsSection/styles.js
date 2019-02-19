@@ -28,8 +28,9 @@ const styles = css`
     align-self: center;
     transform: scaleX(2);
     color: ${colors.lightGrey};
-    font-size: 1em;
-    margin-top: -4px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: -5px;
   }
 
   img {
