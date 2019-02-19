@@ -90,6 +90,7 @@ const styles = global`
   textarea:valid + label:not(.inline-right) {
     top: -${rhythm.vt / 2}px;
     font-size: 14px;
+    line-height: 20px;
   }
 
   input:valid + label:not(.inline-right) {
