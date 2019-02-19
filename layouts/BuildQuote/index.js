@@ -1,34 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FIELDS from './fields';
 import SLIDES from './slides';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
 import ProgressItem from './ProgressItem';
-import Form from '../../components/Form';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onSubmitForm = this.onSubmitForm.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
-    this.setFormValues = this.setFormValues.bind(this);
 
     this.state = {
       slideIndex: 0,
-      formValues: null,
     };
-  }
-
-  onSubmitForm(values) {
-    const { slideIndex } = this.state;
-
-    this.setFormValues(values);
-    // TODO:
   }
 
   setSlideIndex(slideIndex) {
@@ -37,46 +25,36 @@ class BuildQuote extends React.Component {
     });
   }
 
-  setFormValues(formValues) {
-    this.setState({
-      formValues,
-    });
-  }
-
   render() {
     const { slideIndex } = this.state;
+    const currentSlide = SLIDES[slideIndex];
+    const Component = currentSlide.component;
+    const currentComponent = Component && <Component />;
 
     return (
       <Layout title="Build Quote">
-        <section>
-          <div className="row wrap">
-            {SLIDES.map((slide, index) => {
-              const { title } = slide;
-              const number = index + 1;
-              const opacity = index > slideIndex;
+        <div className="row wrap">
+          {SLIDES.map((slide, index) => {
+            const { title } = slide;
+            const number = index + 1;
+            const opacity = index > slideIndex;
 
-              // Only display one progress item ahead, if any
-              if (index <= slideIndex + 1) {
-                return (
-                  <div key={title} className={`progress-item-container ${opacity && 'opacity'}`}>
-                    <ProgressItem number={number} text={title} />
-                  </div>
-                );
-              }
+            // Only display one progress item ahead, if any
+            if (index <= slideIndex + 1) {
+              return (
+                <div key={title} className={`progress-item-container ${opacity && 'opacity'}`}>
+                  <ProgressItem number={number} text={title} />
+                </div>
+              );
+            }
 
-              return null;
-            })}
-          </div>
+            return null;
+          })}
+        </div>
 
-          <div className="spacer-vt " />
+        <div className="spacer-vt large" />
 
-          {/* <Form
-            formName="build-quote"
-            fields={FIELDS}
-            handleSubmit={this.onSubmitForm}
-            submitText="Next"
-          /> */}
-        </section>
+        {currentComponent}
 
         <ContactButton />
 

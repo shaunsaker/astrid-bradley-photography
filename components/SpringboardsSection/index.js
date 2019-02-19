@@ -23,13 +23,7 @@ const SpringboardsSection = ({ springboards }) => {
 };
 
 SpringboardsSection.propTypes = {
-  springboards: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.shape({ src: PropTypes.string, alt: PropTypes.string }).isRequired,
-      text: PropTypes.string,
-      href: PropTypes.string,
-    }),
-  ),
+  springboards: PropTypes.arrayOf(PropTypes.shape({})),
 };
 SpringboardsSection.defaultProps = {};
 
