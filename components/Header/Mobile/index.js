@@ -1,11 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { MdMenu as MenuIcon } from 'react-icons/md';
 
-import { colors } from '../../../static/styles/styleConstants';
 import styles from './styles';
 
 import Logo from '../../Logo';
+import Icon from '../../Icon';
 import Menu from './Menu';
 
 export class Mobile extends React.Component {
@@ -66,7 +64,7 @@ export class Mobile extends React.Component {
       <div className={`container hidden-md-up ${hasShadow && 'shadow-lg'}`}>
         <div className="buttonContainer">
           <button type="button" onClick={this.toggleMenu}>
-            <MenuIcon size={24} color={colors.black} />
+            <Icon name="menu" />
           </button>
         </div>
 

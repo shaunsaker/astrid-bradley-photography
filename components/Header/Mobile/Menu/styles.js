@@ -4,27 +4,29 @@ import { colors, rhythm } from '../../../../static/styles/styleConstants';
 
 const styles = css`
   ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: ${rhythm.hz * 4}px;
+    bottom: 0;
     background-color: ${colors.white};
-    padding: ${rhythm.vt}px ${rhythm.hz / 2}px 0;
-    margin-top: ${rhythm.vt}px;
+    padding: ${rhythm.vt}px ${rhythm.hz}px;
+    align-items: flex-start;
 
-    @keyframes grow {
+    @keyframes translate-x {
       from {
-        opacity: 0;
-        max-height: 0;
+        transform: translateX(-100%);
       }
       to {
-        opacity: 1;
-        max-height: 500px; /* anything value bigger than the menu */
+        transform: translateX(0);
       }
     }
 
-    animation: grow 0.5s ease;
+    animation: translate-x 0.5s ease;
   }
 
   ul > :global(li) {
     margin-bottom: ${rhythm.vt}px;
-    text-align: center;
   }
 `;
 
