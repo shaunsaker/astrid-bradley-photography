@@ -42,6 +42,7 @@ Input.propTypes = {
     'email',
     'password',
     'date',
+    'tel',
     'textarea',
     'file',
     'checkbox',
