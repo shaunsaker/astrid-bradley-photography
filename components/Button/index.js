@@ -6,12 +6,15 @@ import styles from './styles';
 import Card from '../Card';
 
 const Button = ({ text, type, action }) => {
-  const delegatorAction = (action || type === 'submit') && {
-    button: {
-      ...action,
-      type,
-    },
-  };
+  const delegatorAction =
+    action || type === 'submit'
+      ? {
+          button: {
+            ...action,
+            type,
+          },
+        }
+      : undefined;
 
   return (
     <Card action={delegatorAction} secondary>
