@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 export default (ComposedComponent) => {
-  class withGoBackOnSave extends React.Component {
+  class withProductFields extends React.Component {
     constructor(props) {
       super(props);
 
@@ -23,30 +23,38 @@ export default (ComposedComponent) => {
 
     render() {
       const { products } = this.props;
+      const includedProductFields = products.map((product) => {
+        const { id, name } = product;
+        const label = `${name} (qty)`;
+
+        return {
+          type: 'number',
+          name: id,
+          label,
+        };
+      });
+      const availableProductFields = products.map((product) => {
+        const { id, name } = product;
+
+        return {
+          type: 'checkbox',
+          name: id,
+          label: name,
+        };
+      });
       const productFields = [
-        ...products.map((product, index) => {
-          const { id, name } = product;
-          const label = `${name} (qty)`;
-          const headerText = index === 0 ? 'Products included:' : null;
-
-          return {
-            type: 'number',
-            name: `products-included-${id}`,
-            label,
-            headerText,
-          };
-        }),
-        ...products.map((product, index) => {
-          const { id, name } = product;
-          const headerText = index === 0 ? 'Products available as add-ons:' : null;
-
-          return {
-            type: 'checkbox',
-            name: `products-available-${id}`,
-            label: name,
-            headerText,
-          };
-        }),
+        {
+          type: 'group',
+          name: 'products_included',
+          label: 'Products included:',
+          fields: includedProductFields,
+        },
+        {
+          type: 'group',
+          name: 'products_available',
+          label: 'Products available:',
+          fields: availableProductFields,
+        },
       ];
 
       return <ComposedComponent productFields={productFields} {...this.props} />;
@@ -61,5 +69,5 @@ export default (ComposedComponent) => {
     };
   };
 
-  return connect(mapStateToProps)(withGoBackOnSave);
+  return connect(mapStateToProps)(withProductFields);
 };

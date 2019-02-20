@@ -45,11 +45,23 @@ export class EditDocumentSection extends React.Component {
       const values = {};
 
       // Use the form fields to generate the values object
-      // Use the values from the shoot
+      // Use the values from the document
       form.forEach((field) => {
-        const { name } = field;
-        const value = document[name];
-        values[name] = value;
+        const { type, name } = field;
+
+        if (type === 'group') {
+          const valuesArray = document[name];
+          values[name] = {};
+
+          valuesArray.forEach((item) => {
+            const key = Object.keys(item)[0];
+            const value = item[key];
+            values[name][key] = value;
+          });
+        } else {
+          const value = document[name];
+          values[name] = value;
+        }
       });
       return values;
     }
@@ -58,8 +70,16 @@ export class EditDocumentSection extends React.Component {
     return null;
   }
 
-  onChange(name, value) {
-    this.setValue(name, value);
+  onChange(name, value, groupName) {
+    if (groupName) {
+      const { values } = this.state;
+      const groupValues = values[groupName];
+      groupValues[name] = value;
+
+      this.setValue(groupName, groupValues);
+    } else {
+      this.setValue(name, value);
+    }
   }
 
   onSubmit(values) {
@@ -120,12 +140,33 @@ export class EditDocumentSection extends React.Component {
 
       // Append the relevant value to each field
       fields = form.map((field) => {
-        const value = values[field.name];
+        const { type } = field;
+        let newField;
 
-        return {
-          ...field,
-          value,
-        };
+        if (type === 'group') {
+          const newFields = field.fields.map((item) => {
+            const groupValues = values[field.name];
+            const value = groupValues && groupValues[item.name];
+
+            return {
+              ...item,
+              value,
+            };
+          });
+
+          newField = {
+            ...field,
+            fields: newFields,
+          };
+        } else {
+          const value = values[field.name];
+          newField = {
+            ...field,
+            value,
+          };
+        }
+
+        return newField;
       });
     } else {
       // ELSE it means we're creating

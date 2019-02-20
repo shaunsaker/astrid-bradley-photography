@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
+import Label from './Label';
 import Input from './Input';
 import Button from '../Button';
 
@@ -12,11 +13,18 @@ export default class Form extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.getInputValue = this.getInputValue.bind(this);
   }
 
   static propTypes = {
     formName: PropTypes.string,
-    fields: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    fields: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.string,
+        name: PropTypes.string,
+        fields: PropTypes.arrayOf(PropTypes.shape({})), // if type === 'group'
+      }),
+    ).isRequired,
     submitText: PropTypes.string,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func, // if not supplied, assume it is a netlify form
@@ -27,19 +35,13 @@ export default class Form extends React.Component {
     submitText: 'Submit',
   };
 
-  onChange(event) {
+  onChange(event, groupName) {
     const { handleChange } = this.props;
-    const { target } = event;
-    const { name, value, type, checked } = target;
-    let inputValue = value;
+    const input = event.target;
+    const { name } = input;
+    const inputValue = this.getInputValue(input);
 
-    // IF its a checkbox
-    // THEN Assign the checked value to the inputValue
-    if (type === 'checkbox') {
-      inputValue = checked;
-    }
-
-    handleChange(name, inputValue);
+    handleChange(name, inputValue, groupName);
   }
 
   onSubmit(event) {
@@ -52,25 +54,45 @@ export default class Form extends React.Component {
     // Grab the relevant fields from event.target
     fields.forEach((field) => {
       const { name } = field;
-      const { value, type, checked } = event.target[name];
-      let inputValue = value;
 
-      // IF its a checkbox
-      // THEN Assign the checked value to the inputValue
-      if (type === 'checkbox') {
-        inputValue = checked;
+      if (field.type === 'group') {
+        const fieldset = event.target[name];
+
+        // Find the fields inputs
+        const inputsCollection = fieldset.getElementsByTagName('input');
+
+        // Convert the html collection into an array
+        const inputsArray = Array.from(inputsCollection);
+
+        // Add as array of objects to values
+        values[name] = inputsArray.map((input) => {
+          const value = {};
+          value[input.name] = this.getInputValue(input);
+
+          return value;
+        });
+      } else {
+        const input = event.target[name];
+
+        values[name] = this.getInputValue(input);
       }
-
-      // IF its a number input
-      // THEN parse the number string into an int
-      if (type === 'number') {
-        inputValue = Number(value);
-      }
-
-      values[name] = inputValue;
     });
 
     handleSubmit(values);
+  }
+
+  getInputValue(input) {
+    const { value, type, checked } = input;
+
+    if (type === 'number') {
+      return Number(value);
+    }
+
+    if (type === 'checkbox') {
+      return checked;
+    }
+
+    return value;
   }
 
   render() {
@@ -85,7 +107,25 @@ export default class Form extends React.Component {
         data-netlify={!handleSubmit && 'true'}
       >
         {fields.map((field) => {
-          const { name } = field;
+          const { type, name } = field;
+
+          if (type === 'group') {
+            return (
+              <fieldset key={name} name={name}>
+                <Label {...field}>
+                  {field.fields.map((item) => {
+                    return (
+                      <Input
+                        key={item.name}
+                        {...item}
+                        onChange={(event) => onChange(event, name)}
+                      />
+                    );
+                  })}
+                </Label>
+              </fieldset>
+            );
+          }
 
           return <Input key={name} {...field} onChange={onChange} />;
         })}
