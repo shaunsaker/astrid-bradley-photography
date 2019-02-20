@@ -53,7 +53,11 @@ const ShootItem = ({ shoot, secondary, admin }) => {
         <div className="spacer-hz" />
 
         <div className="row">
-          <Icon name="check" size={18} color={download_url ? colors.green : colors.lightGrey} />
+          <Icon
+            name="check-circle"
+            size={18}
+            color={download_url ? colors.green : colors.lightGrey}
+          />
 
           <div className="spacer-hz small" />
 

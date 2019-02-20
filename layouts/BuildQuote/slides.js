@@ -1,9 +1,13 @@
 const slides = [
   {
     title: 'Select type of shoot',
+    showStateValue: true,
+    stateValueLabel: 'Shoot Type',
   },
   {
     title: 'Select package',
+    showStateValue: true,
+    stateValueLabel: 'Package',
   },
   {
     title: 'Customise package',

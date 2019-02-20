@@ -6,10 +6,15 @@ import styles from './styles';
 
 import PackageItem from '../../../components/PackageItem';
 
-const SelectPackageSection = ({ packages, handleSelectPackage }) => {
+const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
+  const categoryID = category && category.id;
+
+  // Filter out the packages by category
+  const relevantPackages = packages.filter((item) => item.category_id === categoryID);
+
   return (
     <section className="flex row wrap">
-      {packages.map((item) => {
+      {relevantPackages.map((item) => {
         const { id } = item;
 
         return (
@@ -38,6 +43,7 @@ SelectPackageSection.propTypes = {
     }),
   ),
   // from parent
+  category: PropTypes.shape({ id: PropTypes.string }),
   handleSelectPackage: PropTypes.func,
 };
 SelectPackageSection.defaultProps = {};

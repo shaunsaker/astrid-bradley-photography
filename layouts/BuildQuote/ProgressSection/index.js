@@ -1,30 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SLIDES from '../slides';
 import styles from './styles';
 
 import ProgressItem from './ProgressItem';
 
-const ProgressSection = ({ slideIndex, handleProgressItemClick }) => {
+const ProgressSection = ({ items, itemIndex, handleProgressItemClick }) => {
   return (
     <div className="row wrap">
-      {SLIDES.map((slide, index) => {
-        const { title } = slide;
+      {items.map((slide, index) => {
+        const { text, isChecked } = slide;
         const number = index + 1;
-        const disabled = index > slideIndex;
+        const disabled = index > itemIndex;
 
         // Only display one progress item ahead, if any
-        if (index <= slideIndex + 1) {
+        if (index <= itemIndex + 1) {
           return (
             <button
-              key={title}
+              key={text}
               type="button"
               onClick={() => handleProgressItemClick(index)}
               disabled={disabled}
               className={`progress-item-container ${disabled && 'opacity'}`}
             >
-              <ProgressItem number={number} text={title} />
+              <ProgressItem number={number} text={text} isChecked={isChecked} />
             </button>
           );
         }
@@ -38,7 +37,13 @@ const ProgressSection = ({ slideIndex, handleProgressItemClick }) => {
 };
 
 ProgressSection.propTypes = {
-  slideIndex: PropTypes.number,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      isChecked: PropTypes.bool,
+    }),
+  ),
+  itemIndex: PropTypes.number,
   handleProgressItemClick: PropTypes.func,
 };
 ProgressSection.defaultProps = {};

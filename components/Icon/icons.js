@@ -2,6 +2,7 @@ import React from 'react';
 import {
   MdAdd,
   MdArchive,
+  MdCheck,
   MdCheckCircle,
   MdClose,
   MdEdit,
@@ -22,7 +23,8 @@ import {
 const icons = {
   add: (props) => <MdAdd {...props} />,
   archive: (props) => <MdArchive {...props} />,
-  check: (props) => <MdCheckCircle {...props} />,
+  check: (props) => <MdCheck {...props} />,
+  'check-circle': (props) => <MdCheckCircle {...props} />,
   close: (props) => <MdClose {...props} />,
   edit: (props) => <MdEdit {...props} />,
   'error-outline': (props) => <MdErrorOutline {...props} />,

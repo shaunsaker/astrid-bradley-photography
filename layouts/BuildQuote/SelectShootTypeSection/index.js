@@ -15,7 +15,7 @@ const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) =>
     const imageSrc = `static/images/springboard-${id}.jpg`;
     const action = {
       button: {
-        handleClick: () => handleSelectShootType(id),
+        handleClick: () => handleSelectShootType(category),
       },
     };
 
