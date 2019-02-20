@@ -13,11 +13,11 @@ const Grid = ({ size, items }) => {
   return (
     <div className="container row wrap">
       {items.map((item) => {
-        const { id, component } = item;
+        const { key } = item;
 
         return (
-          <div key={id} className="item-container">
-            {component}
+          <div key={key} className="item-container">
+            {item}
           </div>
         );
       })}
@@ -44,7 +44,7 @@ const Grid = ({ size, items }) => {
 
 Grid.propTypes = {
   size: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string, component: PropTypes.node })),
+  items: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.string.isRequired })),
 };
 Grid.defaultProps = {
   size: 1,

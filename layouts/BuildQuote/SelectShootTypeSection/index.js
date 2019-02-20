@@ -19,19 +19,17 @@ const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) =>
       },
     };
 
-    return {
-      id,
-      component: (
-        <Springboard
-          image={{
-            src: imageSrc,
-            alt: name,
-          }}
-          text={name}
-          action={action}
-        />
-      ),
-    };
+    return (
+      <Springboard
+        key={name}
+        image={{
+          src: imageSrc,
+          alt: name,
+        }}
+        text={name}
+        action={action}
+      />
+    );
   });
 
   return (
