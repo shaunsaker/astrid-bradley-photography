@@ -7,20 +7,44 @@ export default class Slider extends React.Component {
   constructor(props) {
     super(props);
 
+    this.scrollToIndex = this.scrollToIndex.bind(this);
+
+    this.slider = React.createRef();
+
     this.state = {};
   }
 
   static propTypes = {
+    slideIndex: PropTypes.number,
     children: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.string })),
   };
 
   static defaultProps = {};
 
+  componentDidMount() {
+    // FIXME: Handle case where slideIndex is different
+  }
+
+  componentDidUpdate(prevProps) {
+    const { slideIndex } = this.props;
+
+    if (slideIndex !== prevProps.slideIndex) {
+      this.scrollToIndex(slideIndex);
+    }
+  }
+
+  scrollToIndex(index) {
+    const { clientWidth } = this.slider.current;
+    const left = `${index * clientWidth}`;
+
+    this.slider.current.scrollTo({ left, behavior: 'smooth' });
+  }
+
   render() {
     const { children } = this.props;
 
     return (
-      <div id="scroller" className="container">
+      <div ref={this.slider} className="container row">
         {children.map((item) => {
           const { key } = item;
 
@@ -30,6 +54,8 @@ export default class Slider extends React.Component {
             </div>
           );
         })}
+
+        <style jsx>{styles}</style>
       </div>
     );
   }
