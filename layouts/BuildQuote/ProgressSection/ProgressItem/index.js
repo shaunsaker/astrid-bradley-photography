@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-import HeadingText from '../../../components/HeadingText';
-import SmallText from '../../../components/SmallText';
+import ParagraphText from '../../../../components/ParagraphText';
+import SmallText from '../../../../components/SmallText';
 
 const ProgressItem = ({ number, text }) => {
   return (
@@ -13,7 +13,7 @@ const ProgressItem = ({ number, text }) => {
         <SmallText white>{number}</SmallText>
       </div>
 
-      <HeadingText>{text}</HeadingText>
+      <ParagraphText>{text}</ParagraphText>
 
       <style jsx>{styles}</style>
     </div>

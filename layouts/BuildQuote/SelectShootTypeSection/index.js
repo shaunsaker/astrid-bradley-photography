@@ -1,42 +1,42 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { categories } from '../../../config';
 import styles from './styles';
 
+import Grid from '../../../components/Grid';
 import Springboard from '../../../components/Springboard';
 
 const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) => {
-  // TODO: Should be grid
+  const shootTypeItems = packageCategories.map((categoryID) => {
+    const category = categories.filter((item) => item.id === categoryID)[0];
+    const { name, id } = category;
+    const imageSrc = `static/images/springboard-${id}.jpg`;
+    const action = {
+      button: {
+        handleClick: () => handleSelectShootType(id),
+      },
+    };
+
+    return {
+      id,
+      component: (
+        <Springboard
+          image={{
+            src: imageSrc,
+            alt: name,
+          }}
+          text={name}
+          action={action}
+        />
+      ),
+    };
+  });
 
   return (
     <section className="flex row">
-      {packageCategories.map((categoryID, index) => {
-        const category = categories.filter((item) => item.id === categoryID)[0];
-        const { name, id } = category;
-        const imageSrc = `static/images/springboard-${id}.jpg`;
-
-        // Add a spacer for every odd item
-        const spacerComponent = index % 2 === 0 && <div className="spacer-hz" />;
-
-        return (
-          <Fragment key={id}>
-            <Springboard
-              image={{
-                src: imageSrc,
-                alt: name,
-              }}
-              text={name}
-              action={{
-                handleClick: () => handleSelectShootType(id),
-              }}
-            />
-
-            {spacerComponent}
-          </Fragment>
-        );
-      })}
+      <Grid size={2} items={shootTypeItems} />
 
       <style jsx>{styles}</style>
     </section>

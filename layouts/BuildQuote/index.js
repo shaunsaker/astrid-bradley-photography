@@ -1,22 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SLIDES from './slides';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
-import ProgressItem from './ProgressItem';
+import ProgressSection from './ProgressSection';
+import SelectShootTypeSection from './SelectShootTypeSection';
+import SelectPackageSection from './SelectPackageSection';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onSelectShootType = this.onSelectShootType.bind(this);
+    this.setCategoryID = this.setCategoryID.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
 
     this.state = {
       slideIndex: 0,
     };
+  }
+
+  onSelectShootType(shootType) {
+    const { slideIndex } = this.state;
+
+    this.setCategoryID(shootType);
+    this.setSlideIndex(slideIndex + 1);
+  }
+
+  setCategoryID(categoryID) {
+    this.setState({
+      categoryID,
+    });
   }
 
   setSlideIndex(slideIndex) {
@@ -26,35 +42,20 @@ class BuildQuote extends React.Component {
   }
 
   render() {
-    const { slideIndex } = this.state;
-    const currentSlide = SLIDES[slideIndex];
-    const Component = currentSlide.component;
-    const currentComponent = Component && <Component />;
+    const { slideIndex, categoryID } = this.state;
+    console.log(slideIndex, categoryID);
 
     return (
       <Layout title="Build Quote">
-        <div className="row wrap">
-          {SLIDES.map((slide, index) => {
-            const { title } = slide;
-            const number = index + 1;
-            const opacity = index > slideIndex;
+        <ProgressSection slideIndex={slideIndex} />
 
-            // Only display one progress item ahead, if any
-            if (index <= slideIndex + 1) {
-              return (
-                <div key={title} className={`progress-item-container ${opacity && 'opacity'}`}>
-                  <ProgressItem number={number} text={title} />
-                </div>
-              );
-            }
+        <div className="spacer-vt" />
 
-            return null;
-          })}
+        <div>
+          <SelectShootTypeSection handleSelectShootType={this.onSelectShootType} />
+
+          <SelectPackageSection />
         </div>
-
-        <div className="spacer-vt large" />
-
-        {currentComponent}
 
         <ContactButton />
 
