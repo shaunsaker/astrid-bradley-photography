@@ -6,7 +6,7 @@ import styles from './styles';
 import Card from '../Card';
 
 const Button = ({ text, type, action }) => {
-  const delegatorAction = action && {
+  const delegatorAction = (action || type === 'submit') && {
     button: {
       ...action,
       type,
