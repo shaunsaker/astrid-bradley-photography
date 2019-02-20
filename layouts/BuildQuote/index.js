@@ -9,6 +9,7 @@ import ProgressSection from './ProgressSection';
 import Slider from '../../components/Slider';
 import SelectShootTypeSection from './SelectShootTypeSection';
 import SelectPackageSection from './SelectPackageSection';
+import CustomisePackageSection from './CustomisePackageSection';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
@@ -67,6 +68,7 @@ class BuildQuote extends React.Component {
   render() {
     const { slideIndex, values } = this.state;
     const category = values[0];
+    const packageItem = values[1];
 
     // Create the progress items
     const progressItems = SLIDES.map((slide, index) => {
@@ -108,6 +110,8 @@ class BuildQuote extends React.Component {
             category={category}
             handleSelectPackage={this.onSelectValue}
           />
+
+          <CustomisePackageSection key="CustomisePackageSection" packageItem={packageItem} />
         </Slider>
 
         <ContactButton />
