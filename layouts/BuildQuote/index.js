@@ -5,6 +5,7 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import ProgressSection from './ProgressSection';
+import Slider from '../../components/Slider';
 import SelectShootTypeSection from './SelectShootTypeSection';
 import SelectPackageSection from './SelectPackageSection';
 import ContactButton from '../../components/ContactButton';
@@ -43,7 +44,6 @@ class BuildQuote extends React.Component {
 
   render() {
     const { slideIndex, categoryID } = this.state;
-    console.log(slideIndex, categoryID);
 
     return (
       <Layout title="Build Quote">
@@ -51,11 +51,14 @@ class BuildQuote extends React.Component {
 
         <div className="spacer-vt" />
 
-        <div>
-          <SelectShootTypeSection handleSelectShootType={this.onSelectShootType} />
+        <Slider slideIndex={slideIndex}>
+          <SelectShootTypeSection
+            key="SelectShootTypeSection"
+            handleSelectShootType={this.onSelectShootType}
+          />
 
-          <SelectPackageSection />
-        </div>
+          <SelectPackageSection key="SelectPackageSection" />
+        </Slider>
 
         <ContactButton />
 
