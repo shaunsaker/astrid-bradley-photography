@@ -6,20 +6,26 @@ import styles from './styles';
 
 import ProgressItem from './ProgressItem';
 
-const ProgressSection = ({ slideIndex }) => {
+const ProgressSection = ({ slideIndex, handleProgressItemClick }) => {
   return (
     <div className="row wrap">
       {SLIDES.map((slide, index) => {
         const { title } = slide;
         const number = index + 1;
-        const opacity = index > slideIndex;
+        const disabled = index > slideIndex;
 
         // Only display one progress item ahead, if any
         if (index <= slideIndex + 1) {
           return (
-            <div key={title} className={`progress-item-container ${opacity && 'opacity'}`}>
+            <button
+              key={title}
+              type="button"
+              onClick={() => handleProgressItemClick(index)}
+              disabled={disabled}
+              className={`progress-item-container ${disabled && 'opacity'}`}
+            >
               <ProgressItem number={number} text={title} />
-            </div>
+            </button>
           );
         }
 
@@ -33,6 +39,7 @@ const ProgressSection = ({ slideIndex }) => {
 
 ProgressSection.propTypes = {
   slideIndex: PropTypes.number,
+  handleProgressItemClick: PropTypes.func,
 };
 ProgressSection.defaultProps = {};
 

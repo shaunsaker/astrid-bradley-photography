@@ -14,6 +14,7 @@ class BuildQuote extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onProgressItemClick = this.onProgressItemClick.bind(this);
     this.onSelectShootType = this.onSelectShootType.bind(this);
     this.setCategoryID = this.setCategoryID.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
@@ -21,6 +22,10 @@ class BuildQuote extends React.Component {
     this.state = {
       slideIndex: 0,
     };
+  }
+
+  onProgressItemClick(index) {
+    this.setSlideIndex(index);
   }
 
   onSelectShootType(shootType) {
@@ -43,11 +48,14 @@ class BuildQuote extends React.Component {
   }
 
   render() {
-    const { slideIndex, categoryID } = this.state;
+    const { slideIndex } = this.state;
 
     return (
       <Layout title="Build Quote">
-        <ProgressSection slideIndex={slideIndex} />
+        <ProgressSection
+          slideIndex={slideIndex}
+          handleProgressItemClick={this.onProgressItemClick}
+        />
 
         <div className="spacer-vt" />
 

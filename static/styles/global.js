@@ -53,6 +53,10 @@ button {
   font-family: 'Arial', sans-serif;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 button:focus, .button:focus, a:focus, input:focus, select:focus, div[role='button']:focus {
   outline: 2px solid ${colors.accent2};
 }
