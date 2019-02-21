@@ -23,7 +23,7 @@ const PackageItem = ({ packageItem, products, action }) => {
   );
 
   return (
-    <Card action={action}>
+    <Card action={action} style={{ height: '100%' }}>
       <HeadingText>{name}</HeadingText>
 
       <div className="spacer-vt" />
@@ -46,26 +46,28 @@ const PackageItem = ({ packageItem, products, action }) => {
 
       <div className="spacer-vt" />
 
-      {products_included.map((product) => {
-        const id = Object.keys(product)[0];
-        const qty = product[id];
+      {products_included &&
+        products_included.map((product) => {
+          const id = Object.keys(product)[0];
+          const qty = product[id];
 
-        if (!qty) {
-          return null;
-        }
+          if (!qty) {
+            return null;
+          }
 
-        const productName = products.filter((item) => item.id === id)[0].name;
+          const productName = products.filter((item) => item.id === id)[0].name;
 
-        return (
-          <Fragment key={id}>
-            <ParagraphText>
-              {qty} X {productName}
-            </ParagraphText>
+          return (
+            <Fragment key={id}>
+              <ParagraphText>
+                {qty} X {productName}
+                {qty > 1 ? 's' : ''}
+              </ParagraphText>
 
-            <div className="spacer-vt" />
-          </Fragment>
-        );
-      })}
+              <div className="spacer-vt" />
+            </Fragment>
+          );
+        })}
 
       {notesComponent}
 
