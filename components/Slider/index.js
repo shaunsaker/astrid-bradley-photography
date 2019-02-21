@@ -48,11 +48,7 @@ export default class Slider extends React.Component {
     return (
       <div ref={this.slider} className="container row">
         {children.map((item) => {
-          if (!item) {
-            return null;
-          }
-
-          const { key } = item;
+          const key = item && item.key;
 
           return (
             <div key={key} className="item-container">

@@ -11,6 +11,7 @@ import ProgressSection from './ProgressSection';
 import Slider from '../../components/Slider';
 import SelectShootTypeSection from './SelectShootTypeSection';
 import SelectPackageSection from './SelectPackageSection';
+import CheckAvailabilitySection from './CheckAvailabilitySection';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
@@ -90,14 +91,6 @@ class BuildQuote extends React.Component {
       };
     });
 
-    const selectPackageSection = category && (
-      <SelectPackageSection
-        key="SelectPackageSection"
-        category={category}
-        handleSelectPackage={this.onSelectValue}
-      />
-    );
-
     return (
       <Layout title={`Build Quote${packageItem ? ` - R${packageItem.price}` : ''}`}>
         <ProgressSection
@@ -106,16 +99,21 @@ class BuildQuote extends React.Component {
           handleProgressItemClick={this.onProgressItemClick}
         />
 
-        <div className="spacer-vt" />
+        <div className="slider-container">
+          <Slider slideIndex={slideIndex}>
+            <div key="SelectShootTypeSection" className="slide-container">
+              <SelectShootTypeSection handleSelectShootType={this.onSelectValue} />
+            </div>
 
-        <Slider slideIndex={slideIndex}>
-          <SelectShootTypeSection
-            key="SelectShootTypeSection"
-            handleSelectShootType={this.onSelectValue}
-          />
+            <div key="SelectPackageSection" className="slide-container">
+              <SelectPackageSection category={category} handleSelectPackage={this.onSelectValue} />
+            </div>
 
-          {selectPackageSection}
-        </Slider>
+            <div key="CheckAvailabilitySection" className="slide-container">
+              <CheckAvailabilitySection />
+            </div>
+          </Slider>
+        </div>
 
         <ContactButton />
 
