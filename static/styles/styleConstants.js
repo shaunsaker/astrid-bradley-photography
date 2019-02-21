@@ -17,7 +17,7 @@ const rhythm = {
 };
 
 const sizes = {
-  maxScreenWidth: 720,
+  maxScreenWidth: 750,
   photoHeight: 330,
   button: {
     small: 20,
