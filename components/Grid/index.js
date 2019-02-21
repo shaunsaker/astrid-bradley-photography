@@ -9,10 +9,10 @@ import styles from './styles';
 // FIXME: Separate item component out
 // FIXME: External gutter width
 // FIXME: Gutter is component (vt and hz)
-const Grid = ({ size, items }) => {
+const Grid = ({ size, children }) => {
   return (
     <div className="container row wrap">
-      {items.map((item) => {
+      {children.map((item) => {
         const { key } = item;
 
         return (
@@ -44,7 +44,7 @@ const Grid = ({ size, items }) => {
 
 Grid.propTypes = {
   size: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.string.isRequired })),
+  children: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.string.isRequired })),
 };
 Grid.defaultProps = {
   size: 1,

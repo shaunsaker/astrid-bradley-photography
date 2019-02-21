@@ -9,32 +9,32 @@ import Grid from '../../../components/Grid';
 import Springboard from '../../../components/Springboard';
 
 const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) => {
-  const shootTypeItems = packageCategories.map((categoryID) => {
-    const category = categories.filter((item) => item.id === categoryID)[0];
-    const { name, id } = category;
-    const imageSrc = `static/images/springboard-${id}.jpg`;
-    const action = {
-      button: {
-        handleClick: () => handleSelectShootType(category),
-      },
-    };
-
-    return (
-      <Springboard
-        key={name}
-        image={{
-          src: imageSrc,
-          alt: name,
-        }}
-        text={name}
-        action={action}
-      />
-    );
-  });
-
   return (
     <section className="flex row">
-      <Grid size={2} items={shootTypeItems} />
+      <Grid size={2}>
+        {packageCategories.map((categoryID) => {
+          const category = categories.filter((item) => item.id === categoryID)[0];
+          const { name, id } = category;
+          const imageSrc = `static/images/springboard-${id}.jpg`;
+          const action = {
+            button: {
+              handleClick: () => handleSelectShootType(category),
+            },
+          };
+
+          return (
+            <Springboard
+              key={name}
+              image={{
+                src: imageSrc,
+                alt: name,
+              }}
+              text={name}
+              action={action}
+            />
+          );
+        })}
+      </Grid>
 
       <style jsx>{styles}</style>
     </section>
