@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -38,15 +38,18 @@ class ManageProducts extends React.Component {
             const { id } = item;
 
             return (
-              <ProductItem
-                key={id}
-                product={item}
-                action={{
-                  nextLink: {
-                    href: `/admin/products/edit?id=${id}`,
-                  },
-                }}
-              />
+              <Fragment key={id}>
+                <ProductItem
+                  product={item}
+                  action={{
+                    nextLink: {
+                      href: `/admin/products/edit?id=${id}`,
+                    },
+                  }}
+                />
+
+                <div className="spacer-vt" />
+              </Fragment>
             );
           })}
         </section>

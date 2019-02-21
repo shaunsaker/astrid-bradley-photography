@@ -5,7 +5,6 @@ import getBlobURL from './getBlobURL';
 import getElapsedDays from './getElapsedDays';
 import getElementRect from './getElementRect';
 import getFutureTime from './getFutureTime';
-import getIncludedProducts from './getIncludedProducts';
 import getPrettyDate from './getPrettyDate';
 import mapToSelectOptions from './mapToSelectOptions';
 import prepareNextAction from './prepareNextAction';
@@ -20,7 +19,6 @@ const utils = {
   getElapsedDays,
   getElementRect,
   getFutureTime,
-  getIncludedProducts,
   getPrettyDate,
   mapToSelectOptions,
   prepareNextAction,
@@ -36,7 +34,6 @@ export {
   getElapsedDays,
   getElementRect,
   getFutureTime,
-  getIncludedProducts,
   getPrettyDate,
   mapToSelectOptions,
   prepareNextAction,

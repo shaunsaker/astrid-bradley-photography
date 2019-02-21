@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getIncludedProducts } from '../../utils';
 import styles from './styles';
 
 import Card from '../Card';
@@ -12,8 +11,9 @@ import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 
 const PackageItem = ({ packageItem, products, action }) => {
-  const { name, price, time, photos, distance, notes } = packageItem;
-  const includedProducts = getIncludedProducts(packageItem, products);
+  console.log(packageItem, products);
+
+  const { name, price, time, photos, distance, notes, products_included } = packageItem;
   const notesComponent = notes && (
     <Fragment>
       <SmallText>Notes:</SmallText>
@@ -48,12 +48,15 @@ const PackageItem = ({ packageItem, products, action }) => {
 
       <div className="spacer-vt" />
 
-      {includedProducts.map((product, index) => {
-        const { id, qty } = product;
-        const productName = product.name;
-        const spacerComponent = index !== includedProducts.length - 1 && (
-          <div className="spacer-vt" />
-        );
+      {products_included.map((product) => {
+        const id = Object.keys(product)[0];
+        const qty = product[id];
+
+        if (!qty) {
+          return null;
+        }
+
+        const productName = products.filter((item) => item.id === id)[0].name;
 
         return (
           <Fragment key={id}>
@@ -61,7 +64,7 @@ const PackageItem = ({ packageItem, products, action }) => {
               {qty} X {productName}
             </ParagraphText>
 
-            {spacerComponent}
+            <div className="spacer-vt" />
           </Fragment>
         );
       })}
