@@ -5,9 +5,9 @@ import styles from './styles';
 
 import LinkDelegator from '../LinkDelegator';
 
-const Card = ({ action, secondary, style, children }) => {
+const Card = ({ action, secondary, containerStyle, style, children }) => {
   return (
-    <LinkDelegator action={action}>
+    <LinkDelegator action={action} style={containerStyle}>
       <div
         className={`container relative ${action ? 'shadow-sm shadow-hover clickable' : ''} ${
           secondary ? 'secondary' : ''
@@ -25,6 +25,7 @@ const Card = ({ action, secondary, style, children }) => {
 Card.propTypes = {
   action: PropTypes.shape({}),
   secondary: PropTypes.bool,
+  containerStyle: PropTypes.shape({}),
   style: PropTypes.shape({}),
   children: PropTypes.node,
 };

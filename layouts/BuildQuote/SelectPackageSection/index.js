@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import styles from './styles';
 
+import Grid from '../../../components/Grid';
 import PackageItem from '../../../components/PackageItem';
 
 const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
@@ -13,22 +14,24 @@ const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
   const relevantPackages = packages.filter((item) => item.category_id === categoryID);
 
   return (
-    <section className="flex row wrap">
-      {relevantPackages.map((item) => {
-        const { id } = item;
+    <section>
+      <Grid size={3}>
+        {relevantPackages.map((item) => {
+          const { id } = item;
 
-        return (
-          <PackageItem
-            key={id}
-            packageItem={item}
-            action={{
-              button: {
-                handleClick: () => handleSelectPackage(item),
-              },
-            }}
-          />
-        );
-      })}
+          return (
+            <PackageItem
+              key={id}
+              packageItem={item}
+              action={{
+                button: {
+                  handleClick: () => handleSelectPackage(item),
+                },
+              }}
+            />
+          );
+        })}
+      </Grid>
 
       <style jsx>{styles}</style>
     </section>

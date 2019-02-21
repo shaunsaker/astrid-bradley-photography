@@ -23,7 +23,7 @@ const PackageItem = ({ packageItem, products, action }) => {
   );
 
   return (
-    <Card action={action} style={{ height: '100%' }}>
+    <Card action={action} containerStyle={{ height: '100%' }} style={{ height: '100%' }}>
       <HeadingText>{name}</HeadingText>
 
       <div className="spacer-vt" />

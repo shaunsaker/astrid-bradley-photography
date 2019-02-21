@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-const LinkDelegator = ({ action, children }) => {
+const LinkDelegator = ({ action, children, style }) => {
   const { link, nextLink, button } = action;
 
   if (link) {
     const { href, target } = link;
 
     return (
-      <a href={href} target={target} rel="noopener noreferrer">
+      <a href={href} target={target} rel="noopener noreferrer" style={style}>
         {children}
       </a>
     );
@@ -25,7 +25,7 @@ const LinkDelegator = ({ action, children }) => {
     const { type, handleClick } = button;
 
     return (
-      <button type={type} onClick={handleClick}>
+      <button type={type} onClick={handleClick} style={style}>
         {children}
       </button>
     );
@@ -50,6 +50,7 @@ LinkDelegator.propTypes = {
     }),
   }),
   children: PropTypes.node,
+  style: PropTypes.shape({}),
 };
 LinkDelegator.defaultProps = {
   action: {},
