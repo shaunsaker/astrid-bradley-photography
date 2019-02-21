@@ -9,6 +9,7 @@ import styles from './styles';
 
 import Layout from '../../components/Layout';
 import SelectCategorySection from '../../components/SelectCategorySection';
+import Grid from '../../components/Grid';
 import PackageItem from '../../components/PackageItem';
 import ControlPanel from '../../components/ControlPanel';
 
@@ -69,21 +70,23 @@ class Admin extends React.Component {
         <div className="spacer-vt large" />
 
         <section>
-          {packages.map((item) => {
-            const { id } = item;
+          <Grid size={3}>
+            {packages.map((item) => {
+              const { id } = item;
 
-            return (
-              <PackageItem
-                key={id}
-                packageItem={item}
-                action={{
-                  nextLink: {
-                    href: `/admin/packages/edit?id=${id}`,
-                  },
-                }}
-              />
-            );
-          })}
+              return (
+                <PackageItem
+                  key={id}
+                  packageItem={item}
+                  action={{
+                    nextLink: {
+                      href: `/admin/packages/edit?id=${id}`,
+                    },
+                  }}
+                />
+              );
+            })}
+          </Grid>
         </section>
 
         <ControlPanel controls={CONTROLS} />
