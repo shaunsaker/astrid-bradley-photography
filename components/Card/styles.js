@@ -7,6 +7,7 @@ const styles = css`
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     background-color: ${colors.white};
     border: 1px solid ${colors.lightGrey};
+    height: 100%;
   }
 
   .container.secondary {

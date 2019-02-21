@@ -11,8 +11,6 @@ import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 
 const PackageItem = ({ packageItem, products, action }) => {
-  console.log(packageItem, products);
-
   const { name, price, time, photos, distance, notes, products_included } = packageItem;
   const notesComponent = notes && (
     <Fragment>
