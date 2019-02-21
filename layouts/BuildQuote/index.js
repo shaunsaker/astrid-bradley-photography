@@ -90,7 +90,7 @@ class BuildQuote extends React.Component {
     });
 
     return (
-      <Layout title="Build Quote">
+      <Layout title={`Build Quote${packageItem ? ` - R${packageItem.price}` : ''}`}>
         <ProgressSection
           items={progressItems}
           itemIndex={slideIndex}

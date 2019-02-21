@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { sortArrayOfObjectsByKey } from '../../../utils';
 import styles from './styles';
 
 import Grid from '../../../components/Grid';
@@ -11,7 +12,10 @@ const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
   const categoryID = category && category.id;
 
   // Filter out the packages by category
-  const relevantPackages = packages.filter((item) => item.category_id === categoryID);
+  let relevantPackages = packages.filter((item) => item.category_id === categoryID);
+
+  // Sort by price
+  relevantPackages = sortArrayOfObjectsByKey(relevantPackages, 'price');
 
   return (
     <section>

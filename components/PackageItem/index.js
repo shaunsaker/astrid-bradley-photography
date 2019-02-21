@@ -24,52 +24,54 @@ const PackageItem = ({ packageItem, products, action }) => {
 
   return (
     <Card action={action} containerStyle={{ height: '100%' }} style={{ height: '100%' }}>
-      <HeadingText>{name}</HeadingText>
+      <div className="container">
+        <HeadingText>{name}</HeadingText>
 
-      <div className="spacer-vt" />
+        <div className="spacer-vt" />
 
-      <TitleText>{`R ${price}`}</TitleText>
+        <TitleText>{`R ${price}`}</TitleText>
 
-      <ParagraphText>{time} hour</ParagraphText>
+        <ParagraphText>{time} hour</ParagraphText>
 
-      <div className="spacer-vt" />
+        <div className="spacer-vt" />
 
-      <ParagraphText>{photos} photos</ParagraphText>
+        <ParagraphText>{photos} photos</ParagraphText>
 
-      <div className="spacer-vt" />
+        <div className="spacer-vt" />
 
-      <SmallText>Includes:</SmallText>
+        <SmallText>Includes:</SmallText>
 
-      <div className="spacer-vt small" />
+        <div className="spacer-vt small" />
 
-      <ParagraphText>{distance * 2}km of travel</ParagraphText>
+        <ParagraphText>{distance * 2}km of travel</ParagraphText>
 
-      <div className="spacer-vt" />
+        <div className="spacer-vt" />
 
-      {products_included &&
-        products_included.map((product) => {
-          const id = Object.keys(product)[0];
-          const qty = product[id];
+        {products_included &&
+          products_included.map((product) => {
+            const id = Object.keys(product)[0];
+            const qty = product[id];
 
-          if (!qty) {
-            return null;
-          }
+            if (!qty) {
+              return null;
+            }
 
-          const productName = products.filter((item) => item.id === id)[0].name;
+            const productName = products.filter((item) => item.id === id)[0].name;
 
-          return (
-            <Fragment key={id}>
-              <ParagraphText>
-                {qty} X {productName}
-                {qty > 1 ? 's' : ''}
-              </ParagraphText>
+            return (
+              <Fragment key={id}>
+                <ParagraphText>
+                  {qty} X {productName}
+                  {qty > 1 ? 's' : ''}
+                </ParagraphText>
 
-              <div className="spacer-vt" />
-            </Fragment>
-          );
-        })}
+                <div className="spacer-vt" />
+              </Fragment>
+            );
+          })}
 
-      {notesComponent}
+        {notesComponent}
+      </div>
 
       <style jsx>{styles}</style>
     </Card>
