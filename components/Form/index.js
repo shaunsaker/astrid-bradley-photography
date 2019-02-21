@@ -118,7 +118,7 @@ export default class Form extends React.Component {
                       <Input
                         key={item.name}
                         {...item}
-                        onChange={(event) => onChange(event, name)}
+                        onChange={(event) => (onChange ? onChange(event, name) : null)}
                       />
                     );
                   })}
