@@ -22,10 +22,10 @@ const LinkDelegator = ({ action, children, style }) => {
       </Link>
     );
   } else if (button) {
-    const { type, handleClick } = button;
+    const { type, disabled, handleClick } = button;
 
     return (
-      <button type={type} onClick={handleClick} style={style}>
+      <button type={type} disabled={disabled} onClick={handleClick} style={style}>
         {children}
       </button>
     );
@@ -46,6 +46,7 @@ LinkDelegator.propTypes = {
     }),
     button: PropTypes.shape({
       type: PropTypes.string,
+      disabled: PropTypes.bool,
       handleClick: PropTypes.func,
     }),
   }),

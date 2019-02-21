@@ -5,19 +5,21 @@ import styles from './styles';
 
 import Card from '../Card';
 
-const Button = ({ text, type, action }) => {
+const Button = ({ text, type, disabled, action }) => {
   const delegatorAction =
     action || type === 'submit'
       ? {
           button: {
             ...action,
             type,
+            disabled,
           },
         }
       : undefined;
+  const disabledStyles = disabled ? { opacity: 0.3 } : null;
 
   return (
-    <Card action={delegatorAction} secondary>
+    <Card action={delegatorAction} secondary style={disabledStyles}>
       <p className="text">{text}</p>
 
       <style jsx>{styles}</style>
@@ -28,6 +30,7 @@ const Button = ({ text, type, action }) => {
 Button.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.bool,
   action: PropTypes.shape({}),
 };
 Button.defaultProps = {

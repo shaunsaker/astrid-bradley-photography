@@ -26,7 +26,7 @@ class BuildQuote extends React.Component {
 
     this.state = {
       slideIndex: 2,
-      values: [categories[0], props.packages[0]],
+      values: [categories[0], props.packages[0], '2019-02-26'],
     };
   }
 
@@ -110,7 +110,7 @@ class BuildQuote extends React.Component {
             </div>
 
             <div key="CheckAvailabilitySection" className="slide-container">
-              <CheckAvailabilitySection />
+              <CheckAvailabilitySection handleSubmitDate={this.onSelectValue} />
             </div>
           </Slider>
         </div>

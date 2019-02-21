@@ -53,7 +53,7 @@ button {
   font-family: 'Arial', sans-serif;
 }
 
-button:disabled {
+button:disabled, button:disabled > .clickable {
   cursor: not-allowed;
 }
 
