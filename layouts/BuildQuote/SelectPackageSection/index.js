@@ -9,7 +9,7 @@ import Grid from '../../../components/Grid';
 import PackageItem from '../../../components/PackageItem';
 
 const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
-  const categoryID = category && category.id;
+  const categoryID = category.id;
 
   // Filter out the packages by category
   let relevantPackages = packages.filter((item) => item.category_id === categoryID);

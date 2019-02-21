@@ -10,9 +10,6 @@ const slides = [
     stateValueLabel: 'Package',
   },
   {
-    title: 'Customise package',
-  },
-  {
     title: 'Check availability',
   },
   {

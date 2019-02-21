@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { categories } from '../../config';
 import SLIDES from './slides';
 import styles from './styles';
 
@@ -9,7 +11,6 @@ import ProgressSection from './ProgressSection';
 import Slider from '../../components/Slider';
 import SelectShootTypeSection from './SelectShootTypeSection';
 import SelectPackageSection from './SelectPackageSection';
-import CustomisePackageSection from './CustomisePackageSection';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
@@ -23,8 +24,8 @@ class BuildQuote extends React.Component {
     this.setValues = this.setValues.bind(this);
 
     this.state = {
-      slideIndex: 0,
-      values: [],
+      slideIndex: 2,
+      values: [categories[0], props.packages[0]],
     };
   }
 
@@ -89,6 +90,14 @@ class BuildQuote extends React.Component {
       };
     });
 
+    const selectPackageSection = category && (
+      <SelectPackageSection
+        key="SelectPackageSection"
+        category={category}
+        handleSelectPackage={this.onSelectValue}
+      />
+    );
+
     return (
       <Layout title={`Build Quote${packageItem ? ` - R${packageItem.price}` : ''}`}>
         <ProgressSection
@@ -105,13 +114,7 @@ class BuildQuote extends React.Component {
             handleSelectShootType={this.onSelectValue}
           />
 
-          <SelectPackageSection
-            key="SelectPackageSection"
-            category={category}
-            handleSelectPackage={this.onSelectValue}
-          />
-
-          <CustomisePackageSection key="CustomisePackageSection" packageItem={packageItem} />
+          {selectPackageSection}
         </Slider>
 
         <ContactButton />
@@ -125,4 +128,12 @@ class BuildQuote extends React.Component {
 BuildQuote.propTypes = {};
 BuildQuote.defaultProps = {};
 
-export default BuildQuote;
+const mapStateToProps = (state) => {
+  const { packages } = state;
+
+  return {
+    packages,
+  };
+};
+
+export default connect(mapStateToProps)(BuildQuote);

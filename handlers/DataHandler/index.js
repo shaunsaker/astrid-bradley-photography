@@ -46,11 +46,13 @@ export class DataHandler extends React.Component {
     // If the user navigated to the category OR
     // If the user navigated to the shoot page THEN
     // Sync all of the shoots
+    // FIXME: This should come from routes config
     if (
       !haveSyncedData &&
       (pathname.indexOf('admin') > -1 ||
         pathname.indexOf('category') > -1 ||
-        pathname.indexOf('shoot') > -1)
+        pathname.indexOf('shoot') > -1 ||
+        pathname.indexOf('build-quote') > -1)
     ) {
       this.setHaveSyncedData(true);
       this.syncPackages();

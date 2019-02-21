@@ -22,7 +22,9 @@ export default class Slider extends React.Component {
   static defaultProps = {};
 
   componentDidMount() {
-    // FIXME: Handle case where slideIndex is different
+    const { slideIndex } = this.props;
+
+    this.scrollToIndex(slideIndex);
   }
 
   componentDidUpdate(prevProps) {
@@ -46,6 +48,10 @@ export default class Slider extends React.Component {
     return (
       <div ref={this.slider} className="container row">
         {children.map((item) => {
+          if (!item) {
+            return null;
+          }
+
           const { key } = item;
 
           return (
