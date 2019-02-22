@@ -29,7 +29,6 @@ export default class Form extends React.Component {
     submitDisabled: PropTypes.bool,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func, // if not supplied, assume it is a netlify form
-    children: PropTypes.node, // children to render before the submit button
   };
 
   static defaultProps = {
@@ -97,15 +96,7 @@ export default class Form extends React.Component {
   }
 
   render() {
-    const {
-      formName,
-      fields,
-      submitText,
-      submitDisabled,
-      handleChange,
-      handleSubmit,
-      children,
-    } = this.props;
+    const { formName, fields, submitText, submitDisabled, handleChange, handleSubmit } = this.props;
     const onChange = handleChange && this.onChange;
 
     return (
@@ -138,8 +129,6 @@ export default class Form extends React.Component {
 
           return <Input key={name} {...field} onChange={onChange} />;
         })}
-
-        {children}
 
         <Button type="submit" text={submitText} disabled={submitDisabled} />
 
