@@ -12,16 +12,9 @@ const fields = [
     isRequired: true,
   },
   {
-    type: 'date',
-    name: 'date',
-    label: 'Date',
-    isRequired: true,
-  },
-  {
     type: 'text',
     name: 'venue',
     label: 'Venue',
-    isRequired: true,
   },
 ];
 

@@ -12,6 +12,7 @@ import Slider from '../../components/Slider';
 import SelectShootTypeSection from './SelectShootTypeSection';
 import SelectPackageSection from './SelectPackageSection';
 import CheckAvailabilitySection from './CheckAvailabilitySection';
+import EnterInfoSection from './EnterInfoSection';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
@@ -25,8 +26,13 @@ class BuildQuote extends React.Component {
     this.setValues = this.setValues.bind(this);
 
     this.state = {
-      slideIndex: 2,
-      values: [categories[0], props.packages[0], '2019-02-26'],
+      slideIndex: 4,
+      values: [
+        categories[0],
+        props.packages[0],
+        '2019-02-26',
+        { name: 'Mr Shaun Saker', email: 'info@shaunsaker.com', venue: 'Cape Town' },
+      ],
     };
   }
 
@@ -91,6 +97,8 @@ class BuildQuote extends React.Component {
       };
     });
 
+    console.log(values);
+
     return (
       <Layout title={`Build Quote${packageItem ? ` - R${packageItem.price}` : ''}`}>
         <ProgressSection
@@ -111,6 +119,10 @@ class BuildQuote extends React.Component {
 
             <div key="CheckAvailabilitySection" className="slide-container">
               <CheckAvailabilitySection handleSubmitDate={this.onSelectValue} />
+            </div>
+
+            <div key="EnterInfoSection" className="slide-container">
+              <EnterInfoSection handleSubmit={this.onSelectValue} />
             </div>
           </Slider>
         </div>
