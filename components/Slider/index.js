@@ -24,22 +24,22 @@ export default class Slider extends React.Component {
   componentDidMount() {
     const { slideIndex } = this.props;
 
-    this.scrollToIndex(slideIndex);
+    this.scrollToIndex({ slideIndex, animated: false });
   }
 
   componentDidUpdate(prevProps) {
     const { slideIndex } = this.props;
 
     if (slideIndex !== prevProps.slideIndex) {
-      this.scrollToIndex(slideIndex);
+      this.scrollToIndex({ slideIndex, animated: true });
     }
   }
 
-  scrollToIndex(index) {
+  scrollToIndex({ slideIndex, animated }) {
     const { clientWidth } = this.slider.current;
-    const left = `${index * clientWidth}`;
+    const left = `${slideIndex * clientWidth}`;
 
-    this.slider.current.scrollTo({ left, behavior: 'smooth' });
+    this.slider.current.scrollTo({ left, behavior: animated ? 'smooth' : 'auto' });
   }
 
   render() {
