@@ -13,6 +13,7 @@ import SelectShootTypeSection from './SelectShootTypeSection';
 import SelectPackageSection from './SelectPackageSection';
 import CheckAvailabilitySection from './CheckAvailabilitySection';
 import EnterInfoSection from './EnterInfoSection';
+import DoneSection from './DoneSection';
 import ContactButton from '../../components/ContactButton';
 
 class BuildQuote extends React.Component {
@@ -46,11 +47,14 @@ class BuildQuote extends React.Component {
     this.setSlideIndex(index);
   }
 
-  onSelectValue(value) {
+  onSelectValue(value, targetSlideIndex) {
     const { slideIndex } = this.state;
 
-    this.setValue(value);
-    this.setSlideIndex(slideIndex + 1);
+    // This will alleviate bugs from double clicks
+    if (slideIndex === targetSlideIndex) {
+      this.setValue(value);
+      this.setSlideIndex(slideIndex + 1);
+    }
   }
 
   setSlideIndex(slideIndex) {
@@ -80,15 +84,22 @@ class BuildQuote extends React.Component {
 
     // Create the progress items
     const progressItems = SLIDES.map((slide, index) => {
-      const { title, showStateValue, stateValueLabel } = slide;
-      let isChecked;
+      const { title, state } = slide;
+      let isChecked = false;
       let text = title;
-      const value = values[index];
+      const stateValue = values[index];
 
       // IF the index does not equal the slideIndex (ie. not on that slide)
-      if (index !== slideIndex && value) {
+      // OR IF its the last slide
+      if ((index !== slideIndex && stateValue) || slideIndex === SLIDES.length - 1) {
         isChecked = true;
-        text = showStateValue ? `${stateValueLabel}: ${value.name}` : text;
+
+        if (state) {
+          const { label, key } = state;
+          const value = key ? stateValue[key] : stateValue;
+
+          text = `${label}: ${value}`;
+        }
       }
 
       return {
@@ -96,8 +107,6 @@ class BuildQuote extends React.Component {
         isChecked,
       };
     });
-
-    console.log(values);
 
     return (
       <Layout title={`Build Quote${packageItem ? ` - R${packageItem.price}` : ''}`}>
@@ -110,19 +119,30 @@ class BuildQuote extends React.Component {
         <div className="slider-container">
           <Slider slideIndex={slideIndex}>
             <div key="SelectShootTypeSection" className="slide-container">
-              <SelectShootTypeSection handleSelectShootType={this.onSelectValue} />
+              <SelectShootTypeSection
+                handleSelectShootType={(value) => this.onSelectValue(value, 0)}
+              />
             </div>
 
             <div key="SelectPackageSection" className="slide-container">
-              <SelectPackageSection category={category} handleSelectPackage={this.onSelectValue} />
+              <SelectPackageSection
+                category={category}
+                handleSelectPackage={(value) => this.onSelectValue(value, 1)}
+              />
             </div>
 
             <div key="CheckAvailabilitySection" className="slide-container">
-              <CheckAvailabilitySection handleSubmitDate={this.onSelectValue} />
+              <CheckAvailabilitySection
+                handleSubmitDate={(value) => this.onSelectValue(value, 2)}
+              />
             </div>
 
             <div key="EnterInfoSection" className="slide-container">
-              <EnterInfoSection handleSubmit={this.onSelectValue} />
+              <EnterInfoSection handleSubmit={(value) => this.onSelectValue(value, 3)} />
+            </div>
+
+            <div key="DoneSection" className="slide-container">
+              <DoneSection />
             </div>
           </Slider>
         </div>

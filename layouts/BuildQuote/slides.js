@@ -1,16 +1,24 @@
 const slides = [
   {
     title: 'Select type of shoot',
-    showStateValue: true,
-    stateValueLabel: 'Shoot Type',
+    state: {
+      label: 'Shoot Type',
+      key: 'name',
+    },
   },
   {
     title: 'Select package',
-    showStateValue: true,
-    stateValueLabel: 'Package',
+    state: {
+      label: 'Package',
+      key: 'name',
+    },
   },
   {
     title: 'Check availability',
+    state: {
+      label: 'Date',
+      key: null,
+    },
   },
   {
     title: 'Enter info',
