@@ -50,12 +50,26 @@ export class CheckAvailabilitySection extends React.Component {
   render() {
     const { date } = this.state;
     const { shoots } = this.props;
+    const shootDate = date && new Date(date);
+    const shootTime = shootDate && shootDate.getTime();
+    const now = Date.now();
+    const isDateValid = date && shootTime > now;
     const isDateAvailable = date && !shoots.filter((shoot) => shoot.date === date).length;
-    const text = date
-      ? isDateAvailable
-        ? 'Yay! Astrid is available on this date.'
-        : 'Astrid is unfortunately not available on this date. Please select another.'
-      : 'Please enter your shoot date to continue.';
+    let text;
+
+    if (isDateValid) {
+      if (isDateAvailable) {
+        text = 'Yay! Astrid is available on this date.';
+      } else {
+        text = 'Astrid is unfortunately not available on this date. Please select another.';
+      }
+    } else if (date) {
+      text = 'This date has passed. Please select a date in the future.';
+    } else {
+      text = 'Please enter your shoot date to continue.';
+    }
+
+    // FIXME: Move these to if else block above
     const textStyles = date
       ? { color: isDateAvailable ? colors.green : colors.red, transition: 'color 0.5s ease' }
       : null;
