@@ -26,7 +26,7 @@ export default class Form extends React.Component {
       }),
     ).isRequired,
     submitText: PropTypes.string,
-    submitDisabled: PropTypes.bool,
+    isSubmitDisabled: PropTypes.bool,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func, // if not supplied, assume it is a netlify form
   };
@@ -96,7 +96,14 @@ export default class Form extends React.Component {
   }
 
   render() {
-    const { formName, fields, submitText, submitDisabled, handleChange, handleSubmit } = this.props;
+    const {
+      formName,
+      fields,
+      submitText,
+      isSubmitDisabled,
+      handleChange,
+      handleSubmit,
+    } = this.props;
     const onChange = handleChange && this.onChange;
 
     return (
@@ -130,7 +137,7 @@ export default class Form extends React.Component {
           return <Input key={name} {...field} onChange={onChange} />;
         })}
 
-        <Button type="submit" text={submitText} disabled={submitDisabled} />
+        <Button type="submit" text={submitText} disabled={isSubmitDisabled} />
 
         <style jsx>{styles}</style>
       </form>

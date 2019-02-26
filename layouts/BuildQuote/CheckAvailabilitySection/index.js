@@ -56,24 +56,30 @@ export class CheckAvailabilitySection extends React.Component {
     const isDateValid = date && shootTime > now;
     const isDateAvailable = date && !shoots.filter((shoot) => shoot.date === date).length;
     let text;
+    let textStyles;
+    let isSubmitDisabled = true;
 
-    if (isDateValid) {
-      if (isDateAvailable) {
-        text = 'Yay! Astrid is available on this date.';
+    if (date) {
+      textStyles = {
+        color: colors.red,
+        transition: 'color 0.5s ease',
+      };
+
+      if (isDateValid) {
+        if (isDateAvailable) {
+          text = 'Yay! Astrid is available on this date.';
+          isSubmitDisabled = false;
+          textStyles.color = colors.green;
+        } else {
+          text = 'Astrid is unfortunately not available on this date. Please select another.';
+        }
       } else {
-        text = 'Astrid is unfortunately not available on this date. Please select another.';
+        text = 'This date has passed. Please select a date in the future.';
       }
-    } else if (date) {
-      text = 'This date has passed. Please select a date in the future.';
     } else {
       text = 'Please enter your shoot date to continue.';
     }
 
-    // FIXME: Move these to if else block above
-    const textStyles = date
-      ? { color: isDateAvailable ? colors.green : colors.red, transition: 'color 0.5s ease' }
-      : null;
-    const submitDisabled = !isDateAvailable;
     const fields = [
       {
         type: 'date',
@@ -96,7 +102,7 @@ export class CheckAvailabilitySection extends React.Component {
           handleChange={this.onChangeDate}
           handleSubmit={this.onSubmitDate}
           submitText="Continue"
-          submitDisabled={submitDisabled}
+          isSubmitDisabled={isSubmitDisabled}
         />
 
         <style jsx>{styles}</style>
