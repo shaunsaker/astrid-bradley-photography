@@ -156,6 +156,10 @@ h1, h2, p {
   margin: 0;
 }
 
+iframe {
+  height: 100%;
+}
+
 // TYPOGRAPHY
 @font-face {
   font-family: 'Futura';

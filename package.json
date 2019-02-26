@@ -11,6 +11,7 @@
   "author": "Shaun Saker [kolabatory@gmail.com]",
   "license": "MIT",
   "dependencies": {
+    "@react-pdf/renderer": "^1.4.0",
     "autoprefixer": "^9.4.5",
     "express": "^4.16.4",
     "firebase": "^5.8.0",

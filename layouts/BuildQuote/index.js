@@ -108,8 +108,12 @@ class BuildQuote extends React.Component {
       };
     });
 
+    const doneSectionComponent = values[3] && (
+      <DoneSection packageDetails={values[1]} shootDate={values[2]} clientDetails={values[3]} />
+    );
+
     return (
-      <Layout title={`Build Quote${packageItem ? ` - R${packageItem.price}` : ''}`}>
+      <Layout title="Build Quote">
         <ProgressSection
           items={progressItems}
           itemIndex={slideIndex}
@@ -142,7 +146,7 @@ class BuildQuote extends React.Component {
             </div>
 
             <div key="DoneSection" className="slide-container">
-              <DoneSection />
+              {doneSectionComponent}
             </div>
           </Slider>
         </div>
