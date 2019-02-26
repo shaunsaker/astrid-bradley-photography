@@ -6,7 +6,13 @@ const business = {
     website: 'www.astridbradley.com',
     address: 'Cape Town',
   },
-  bankingDetails: {},
+
+  // TODO:
+  bankingDetails: {
+    accountNumber: '12345678',
+    bank: 'FNB',
+    branchCode: '12345',
+  },
 };
 
 export default business;

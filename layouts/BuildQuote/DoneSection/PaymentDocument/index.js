@@ -27,7 +27,7 @@ class PaymentDocument extends React.Component {
                 {row.columns.map((column) => {
                   return (
                     <View
-                      key={column.value}
+                      key={column.key}
                       style={[
                         styles.column,
                         {

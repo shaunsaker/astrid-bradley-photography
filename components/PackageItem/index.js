@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 
@@ -10,7 +9,9 @@ import HeadingText from '../HeadingText';
 import ParagraphText from '../ParagraphText';
 import SmallText from '../SmallText';
 
-const PackageItem = ({ packageItem, products, action }) => {
+import withGetProduct from '../../enhancers/withGetProduct';
+
+const PackageItem = ({ packageItem, getProduct, action }) => {
   const { name, price, time, photos, distance, notes, products_included } = packageItem;
   const notesComponent = notes && (
     <Fragment>
@@ -49,20 +50,17 @@ const PackageItem = ({ packageItem, products, action }) => {
 
         {products_included &&
           products_included.map((product) => {
-            const id = Object.keys(product)[0];
-            const qty = product[id];
+            const actualProduct = getProduct(product);
 
-            if (!qty) {
+            if (!actualProduct.qty) {
               return null;
             }
 
-            const productName = products.filter((item) => item.id === id)[0].name;
-
             return (
-              <Fragment key={id}>
+              <Fragment key={actualProduct.id}>
                 <ParagraphText>
-                  {qty} X {productName}
-                  {qty > 1 ? 's' : ''}
+                  {actualProduct.qty} X {actualProduct.name}
+                  {actualProduct.qty > 1 ? 's' : ''}
                 </ParagraphText>
 
                 <div className="spacer-vt" />
@@ -87,21 +85,9 @@ PackageItem.propTypes = {
     distance: PropTypes.number,
     notes: PropTypes.string,
   }),
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-    }),
-  ),
+  getProduct: PropTypes.func, // withGetProduct
   action: PropTypes.shape({}),
 };
 PackageItem.defaultProps = {};
 
-const mapStateToProps = (state) => {
-  const { products } = state;
-
-  return {
-    products,
-  };
-};
-
-export default connect(mapStateToProps)(PackageItem);
+export default withGetProduct(PackageItem);
