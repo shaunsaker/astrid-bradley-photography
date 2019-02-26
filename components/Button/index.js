@@ -19,7 +19,7 @@ const Button = ({ text, type, disabled, action }) => {
   const disabledStyles = disabled ? { opacity: 0.3 } : null;
 
   return (
-    <Card action={delegatorAction} secondary style={disabledStyles}>
+    <Card action={delegatorAction} secondary shadow style={disabledStyles}>
       <p className="text">{text}</p>
 
       <style jsx>{styles}</style>
