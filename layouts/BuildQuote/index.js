@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { categories } from '../../config';
+// import { categories } from '../../config';
 import SLIDES from './slides';
 import styles from './styles';
 
@@ -27,13 +27,13 @@ class BuildQuote extends React.Component {
     this.setValues = this.setValues.bind(this);
 
     this.state = {
-      slideIndex: 5,
+      slideIndex: 0,
       values: [
-        categories[0],
-        props.packages[0],
-        [{ '8gb-bamboo-flash-drive': 3 }],
-        '2019-05-28',
-        { name: 'Mr Shaun Saker', email: 'info@shaunsaker.com' },
+        // categories[0],
+        // props.packages[0],
+        // [{ '8gb-bamboo-flash-drive': 3 }],
+        // '2019-05-28',
+        // { name: 'Mr Shaun Saker', email: 'info@shaunsaker.com' },
       ],
     };
   }
@@ -55,6 +55,9 @@ class BuildQuote extends React.Component {
     if (slideIndex === targetSlideIndex) {
       this.setValue(value);
       this.setSlideIndex(slideIndex + 1);
+
+      // Scroll to the top of the window
+      window.scrollTo(0, 0);
     }
   }
 
