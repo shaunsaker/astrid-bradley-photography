@@ -125,16 +125,18 @@ export class ManagePhotos extends React.Component {
       <PhotoUploadList dir={id} handlePhotoUploaded={this.onCoverPhotoUploaded} />
     );
 
-    // Create the controls (needs to be dynamic)
-    const controls = [
-      {
+    const controls = [];
+
+    // IF we have photos, add the manage layout control
+    if (photos) {
+      controls.push({
         iconName: 'layout',
         label: 'Manage Layout',
         link: {
           href: `/admin/shoots/edit/photos/layout?id=${id}`,
         },
-      },
-    ];
+      });
+    }
 
     return (
       <Layout title={title}>
