@@ -49,6 +49,8 @@ export default class Image extends React.Component {
     const loadingComponent = src && isLoading && (
       <div className="loading-container abs-stretch flex-center">
         <Spinner small />
+
+        <style jsx>{styles}</style>
       </div>
     );
 
