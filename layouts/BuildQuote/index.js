@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { categories } from '../../config';
@@ -113,6 +112,13 @@ class BuildQuote extends React.Component {
       };
     });
 
+    const customisePackageSectionComponent = packageItem && (
+      <CustomisePackageSection
+        packageItem={packageItem}
+        handleSubmit={(value) => this.onSelectValue(value, 2)}
+      />
+    );
+
     const doneSectionComponent = clientDetails && (
       <DoneSection
         packageDetails={packageItem}
@@ -144,10 +150,7 @@ class BuildQuote extends React.Component {
             </div>
 
             <div key="CustomisePackageSection" className="slide-container">
-              <CustomisePackageSection
-                packageItem={packageItem}
-                handleSubmit={(value) => this.onSelectValue(value, 2)}
-              />
+              {customisePackageSectionComponent}
             </div>
 
             <div key="CheckAvailabilitySection" className="slide-container">

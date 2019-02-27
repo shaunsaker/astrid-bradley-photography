@@ -5,7 +5,8 @@ import { colors, rhythm } from '../../../../static/styles/styleConstants';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    padding: `${rhythm.vt * 2}px ${rhythm.hz * 2}px`,
+    paddingVertical: rhythm.vt * 2,
+    paddingHorizontal: rhythm.hz * 2,
   },
   imageContainer: {
     alignSelf: 'center',
