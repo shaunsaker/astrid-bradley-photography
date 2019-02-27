@@ -26,10 +26,11 @@ export default (ComposedComponent) => {
       const { products } = this.props;
       const id = Object.keys(product)[0];
       const qty = product[id];
-      const { name } = products.filter((item) => item.id === id)[0];
+      const { name, price } = products.filter((item) => item.id === id)[0];
 
       return {
         name,
+        price,
         id,
         qty,
       };

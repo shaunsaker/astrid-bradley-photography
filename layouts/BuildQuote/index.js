@@ -23,7 +23,6 @@ class BuildQuote extends React.Component {
 
     this.onProgressItemClick = this.onProgressItemClick.bind(this);
     this.onSelectValue = this.onSelectValue.bind(this);
-    this.onCustomisePackage = this.onCustomisePackage.bind(this);
     this.onSubmitCustomisedPackage = this.onSubmitCustomisedPackage.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
     this.setValue = this.setValue.bind(this);
@@ -55,11 +54,10 @@ class BuildQuote extends React.Component {
     }
   }
 
-  onCustomisePackage() {}
-
   onSubmitCustomisedPackage() {
     const { slideIndex } = this.state;
 
+    // TODO: Set new packageItem
     this.setValue(null, 2); // set a null value as a placeholder so that our progress items work correctly
     this.setSlideIndex(slideIndex + 1);
   }
@@ -85,6 +83,7 @@ class BuildQuote extends React.Component {
   }
 
   render() {
+    // FIXME: Use object as values in state
     const { slideIndex, values } = this.state;
     const category = values[0];
     const packageItem = values[1];
@@ -154,7 +153,6 @@ class BuildQuote extends React.Component {
             <div key="CustomisePackageSection" className="slide-container">
               <CustomisePackageSection
                 packageItem={packageItem}
-                handleChange={this.onCustomisePackage}
                 handleSubmit={this.onSubmitCustomisedPackage}
               />
             </div>
