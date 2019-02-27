@@ -22,6 +22,10 @@ const styles = css`
     background-color: ${colors.white};
   }
 
+  .container.disabled {
+    opacity: 0.5;
+  }
+
   .icon-container {
   }
 

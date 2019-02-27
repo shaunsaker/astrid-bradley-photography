@@ -2,11 +2,28 @@ import { getPrettyDate } from '../../../../utils';
 import { business, categories } from '../../../../config';
 
 // FIXME: Could generate these sections in a more modular way
-const getSections = ({ documentDetails, packageDetails, shootDate, clientDetails, getProduct }) => {
+const getSections = ({
+  documentDetails,
+  packageDetails,
+  additionalProducts,
+  shootDate,
+  clientDetails,
+  getProduct,
+}) => {
   const { title, documentNumber } = documentDetails;
   const prettyShootDate = getPrettyDate(shootDate);
   const prettyDate = getPrettyDate(Date.now());
   const categoryName = categories.filter((item) => item.id === packageDetails.category_id)[0].name;
+  const totalPrice = additionalProducts
+    .map((item) => {
+      const product = getProduct(item);
+      const cost = product.price * product.qty;
+
+      return cost;
+    })
+    .reduce((total, cost) => {
+      return total + cost;
+    }, packageDetails.price);
 
   const clientDetailsSection = {
     title: 'Client Details',
@@ -246,6 +263,47 @@ const getSections = ({ documentDetails, packageDetails, shootDate, clientDetails
     ],
   };
 
+  const additionalProductsSection = {
+    key: 'additional-products-section',
+    rows: [
+      {
+        key: 'additional-row',
+        smallText: true,
+        columns: [
+          {
+            key: 'additional-label',
+            value: 'Additional',
+          },
+        ],
+      },
+      ...additionalProducts.map((item) => {
+        const product = getProduct(item);
+
+        return {
+          key: `${product.id} - additional`,
+          columns: [
+            {
+              key: `${product.id}-description-additional`,
+              value: `${product.name} (additional)`,
+              flex: 5,
+            },
+            {
+              key: `${product.id}-qty-additional`,
+              value: product.qty,
+              flex: 1,
+            },
+            {
+              key: `${product.id}-total-additional`,
+              value: `R ${product.qty * product.price}`,
+              flex: 'auto',
+              style: { width: 60, textAlign: 'right' },
+            },
+          ],
+        };
+      }),
+    ],
+  };
+
   const totalSection = {
     key: 'total-section',
     rows: [
@@ -263,7 +321,7 @@ const getSections = ({ documentDetails, packageDetails, shootDate, clientDetails
           },
           {
             key: 'total-value',
-            value: `R ${packageDetails.price}`,
+            value: `R ${totalPrice}`,
             flex: 'auto',
             style: { width: 60, textAlign: 'right' },
           },
@@ -429,9 +487,12 @@ const getSections = ({ documentDetails, packageDetails, shootDate, clientDetails
       columns: [clientDetailsSection, { key: 'spacer', flex: 0.1 }, documentDetailsSection],
     },
     {
-      key: 'spacer',
-      flex: 1,
+      key: 'packageDetails',
       columns: [packageDetailsSection],
+    },
+    {
+      key: 'additionalProducts',
+      columns: [additionalProductsSection],
     },
     {
       key: 'total',

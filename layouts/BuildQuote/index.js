@@ -23,14 +23,19 @@ class BuildQuote extends React.Component {
 
     this.onProgressItemClick = this.onProgressItemClick.bind(this);
     this.onSelectValue = this.onSelectValue.bind(this);
-    this.onSubmitCustomisedPackage = this.onSubmitCustomisedPackage.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
     this.setValue = this.setValue.bind(this);
     this.setValues = this.setValues.bind(this);
 
     this.state = {
-      slideIndex: 2,
-      values: [categories[0], props.packages[0]],
+      slideIndex: 5,
+      values: [
+        categories[0],
+        props.packages[0],
+        [{ '8gb-bamboo-flash-drive': 3 }],
+        '2019-05-28',
+        { name: 'Mr Shaun Saker', email: 'info@shaunsaker.com' },
+      ],
     };
   }
 
@@ -54,14 +59,6 @@ class BuildQuote extends React.Component {
     }
   }
 
-  onSubmitCustomisedPackage() {
-    const { slideIndex } = this.state;
-
-    // TODO: Set new packageItem
-    this.setValue(null, 2); // set a null value as a placeholder so that our progress items work correctly
-    this.setSlideIndex(slideIndex + 1);
-  }
-
   setSlideIndex(slideIndex) {
     this.setState({
       slideIndex,
@@ -83,10 +80,10 @@ class BuildQuote extends React.Component {
   }
 
   render() {
-    // FIXME: Use object as values in state
     const { slideIndex, values } = this.state;
     const category = values[0];
     const packageItem = values[1];
+    const additionalProducts = values[2];
     const shootDate = values[3];
     const clientDetails = values[4];
 
@@ -98,13 +95,8 @@ class BuildQuote extends React.Component {
       const stateValue = values[index];
 
       // IF the index does not equal the slideIndex (ie. not on that slide)
-      // OR IF its past the customise slide (index 2)
       // OR IF its the last slide
-      if (
-        (index !== slideIndex && stateValue) ||
-        (index === 2 && slideIndex > index) ||
-        slideIndex === SLIDES.length - 1
-      ) {
+      if ((index !== slideIndex && stateValue) || slideIndex === SLIDES.length - 1) {
         isChecked = true;
 
         if (state) {
@@ -124,6 +116,7 @@ class BuildQuote extends React.Component {
     const doneSectionComponent = clientDetails && (
       <DoneSection
         packageDetails={packageItem}
+        additionalProducts={additionalProducts}
         shootDate={shootDate}
         clientDetails={clientDetails}
       />
@@ -153,7 +146,7 @@ class BuildQuote extends React.Component {
             <div key="CustomisePackageSection" className="slide-container">
               <CustomisePackageSection
                 packageItem={packageItem}
-                handleSubmit={this.onSubmitCustomisedPackage}
+                handleSubmit={(value) => this.onSelectValue(value, 2)}
               />
             </div>
 

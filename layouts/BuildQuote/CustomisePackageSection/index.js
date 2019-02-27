@@ -15,6 +15,7 @@ class CustomisePackageSection extends React.Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.getProducts = this.getProducts.bind(this);
     this.setProducts = this.setProducts.bind(this);
 
@@ -48,6 +49,31 @@ class CustomisePackageSection extends React.Component {
 
       this.setProducts(newProducts);
     }
+  }
+
+  onSubmit() {
+    const { products } = this.state;
+    const { handleSubmit } = this.props;
+
+    // Convert the products into products_included style
+    // Remove the minimum qty so that we're only left with additional products
+    // Filter out the items with 0 qty
+    const additionalProducts = products
+      .map((item) => {
+        const { id, qty, minimum } = item;
+        const product = {};
+        product[id] = qty - minimum;
+
+        return product;
+      })
+      .filter((item) => {
+        const id = Object.keys(item)[0];
+        const qty = item[id];
+
+        return qty > 0;
+      });
+
+    handleSubmit(additionalProducts);
   }
 
   getProducts() {
@@ -98,18 +124,16 @@ class CustomisePackageSection extends React.Component {
 
   render() {
     const { products } = this.state;
-    const { packageItem, handleSubmit } = this.props;
+    const { packageItem } = this.props;
 
     // Map the products to costs (over and above the minimum)
     // Reduce those values into a total cost
     const productsPrice = products
       ? products
           .map((item) => item.price * (item.qty - item.minimum))
-          .reduce((total = 0, cost) => total + cost)
+          .reduce((total, cost) => total + cost, 0)
       : 0;
     const totalPrice = packageItem.price + productsPrice;
-
-    // TODO: Handle submit needs to get products back to products_included
 
     return (
       <section className="container flex">
@@ -120,7 +144,7 @@ class CustomisePackageSection extends React.Component {
         <div className="products-container">
           {products &&
             products.map((item) => {
-              const { id, name, price, qty } = item;
+              const { id, name, price, qty, minimum } = item;
 
               return (
                 <div key={id}>
@@ -129,6 +153,7 @@ class CustomisePackageSection extends React.Component {
                       <IconButton
                         iconName="remove"
                         small
+                        disabled={qty === minimum}
                         handleClick={() => this.onChange(item, -1)}
                       />
 
@@ -160,7 +185,7 @@ class CustomisePackageSection extends React.Component {
 
         <div className="spacer-vt" />
 
-        <Button text="Next" action={{ type: 'button', handleClick: handleSubmit }} />
+        <Button text="Next" action={{ type: 'button', handleClick: this.onSubmit }} />
 
         <style jsx>{styles}</style>
       </section>

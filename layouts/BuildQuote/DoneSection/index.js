@@ -22,6 +22,7 @@ class DoneSection extends React.Component {
 
   static propTypes = {
     packageDetails: PropTypes.shape({}),
+    additionalProducts: PropTypes.arrayOf(PropTypes.shape({})),
     shootDate: PropTypes.string,
     clientDetails: PropTypes.shape({}),
     getProduct: PropTypes.func, // withGetProduct
@@ -30,7 +31,7 @@ class DoneSection extends React.Component {
   static defaultProps = {};
 
   render() {
-    const { packageDetails, shootDate, clientDetails, getProduct } = this.props;
+    const { packageDetails, additionalProducts, shootDate, clientDetails, getProduct } = this.props;
     const title = 'Quotation';
     const documentNumber = 1; // TODO:
     const documentDetails = {
@@ -40,6 +41,7 @@ class DoneSection extends React.Component {
     const sections = getSections({
       documentDetails,
       packageDetails,
+      additionalProducts,
       shootDate,
       clientDetails,
       getProduct,

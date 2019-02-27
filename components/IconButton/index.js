@@ -8,7 +8,7 @@ import Spinner from '../Spinner';
 import Icon from '../Icon';
 import Tooltip from './Tooltip';
 
-const IconButton = ({ iconName, label, small, loading, handleClick }) => {
+const IconButton = ({ iconName, label, small, loading, disabled, handleClick }) => {
   if (loading && small) {
     return <Spinner small={small} />;
   }
@@ -24,9 +24,10 @@ const IconButton = ({ iconName, label, small, loading, handleClick }) => {
     <button
       type="button"
       onClick={handleClick}
+      disabled={disabled}
       className={`container ${
         small ? 'small shadow-sm shadow-hover' : 'shadow-lg shadow-hover-lg'
-      }`}
+      } ${disabled ? 'disabled' : ''}`}
     >
       <div className="icon-container flex-center">{iconComponent}</div>
 
@@ -42,6 +43,7 @@ IconButton.propTypes = {
   label: PropTypes.string, // for tooltip
   small: PropTypes.bool,
   loading: PropTypes.bool,
+  disabled: PropTypes.bool,
   handleClick: PropTypes.func,
 };
 IconButton.defaultProps = {};
