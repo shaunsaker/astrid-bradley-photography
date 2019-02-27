@@ -54,10 +54,12 @@ class DoneSection extends React.Component {
     );
 
     // TODO: Message
+    // TODO: Invoice ?
+    // TODO: Save to db ?
 
     return (
-      <div className="container">
-        <section className="text-container flex">
+      <section className="container flex">
+        <div className="text-container flex">
           <ParagraphText>
             Tada! Some message about how you need to pay before securing your booking.
           </ParagraphText>
@@ -72,7 +74,9 @@ class DoneSection extends React.Component {
           >
             <Button text="Download Quote" />
           </PDFDownloadLink>
-        </section>
+        </div>
+
+        <div className="spacer-vt large" />
 
         <HeadingText>Preview</HeadingText>
 
@@ -81,7 +85,7 @@ class DoneSection extends React.Component {
         <PDFViewer>{quotationComponent}</PDFViewer>
 
         <style jsx>{styles}</style>
-      </div>
+      </section>
     );
   }
 }

@@ -25,7 +25,7 @@ export class CheckAvailabilitySection extends React.Component {
     // connect
     shoots: PropTypes.arrayOf(PropTypes.shape({ date: PropTypes.string })),
     // parent
-    handleSubmitDate: PropTypes.func,
+    handleSubmit: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -36,9 +36,9 @@ export class CheckAvailabilitySection extends React.Component {
 
   onSubmitDate() {
     const { date } = this.state;
-    const { handleSubmitDate } = this.props;
+    const { handleSubmit } = this.props;
 
-    handleSubmitDate(date);
+    handleSubmit(date);
   }
 
   setDate(date) {
@@ -91,7 +91,7 @@ export class CheckAvailabilitySection extends React.Component {
     ];
 
     return (
-      <div className="container">
+      <section className="container">
         <ParagraphText style={textStyles}>{text}</ParagraphText>
 
         <div className="spacer-vt" />
@@ -106,7 +106,7 @@ export class CheckAvailabilitySection extends React.Component {
         />
 
         <style jsx>{styles}</style>
-      </div>
+      </section>
     );
   }
 }

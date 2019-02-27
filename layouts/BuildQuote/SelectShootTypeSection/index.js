@@ -8,7 +8,7 @@ import styles from './styles';
 import Grid from '../../../components/Grid';
 import Springboard from '../../../components/Springboard';
 
-const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) => {
+const SelectShootTypeSection = ({ packageCategories, handleSelect }) => {
   return (
     <section className="flex row">
       <Grid size={2}>
@@ -18,7 +18,7 @@ const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) =>
           const imageSrc = `static/images/springboard-${id}.jpg`;
           const action = {
             button: {
-              handleClick: () => handleSelectShootType(category),
+              handleClick: () => handleSelect(category),
             },
           };
 
@@ -43,7 +43,7 @@ const SelectShootTypeSection = ({ packageCategories, handleSelectShootType }) =>
 
 SelectShootTypeSection.propTypes = {
   packageCategories: PropTypes.arrayOf(PropTypes.string),
-  handleSelectShootType: PropTypes.func,
+  handleSelect: PropTypes.func,
 };
 SelectShootTypeSection.defaultProps = {};
 

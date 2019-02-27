@@ -32,7 +32,9 @@ const PackageItem = ({ packageItem, getProduct, action }) => {
 
         <TitleText>{`R ${price}`}</TitleText>
 
-        <ParagraphText>{time} hour</ParagraphText>
+        <ParagraphText>
+          {time} hour{time > 1 ? 's' : ''}
+        </ParagraphText>
 
         <div className="spacer-vt" />
 

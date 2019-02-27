@@ -8,7 +8,7 @@ import styles from './styles';
 import Grid from '../../../components/Grid';
 import PackageItem from '../../../components/PackageItem';
 
-const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
+const SelectPackageSection = ({ packages, category, handleSelect }) => {
   const categoryID = category && category.id;
 
   // Filter out the packages by category
@@ -29,7 +29,7 @@ const SelectPackageSection = ({ packages, category, handleSelectPackage }) => {
               packageItem={item}
               action={{
                 button: {
-                  handleClick: () => handleSelectPackage(item),
+                  handleClick: () => handleSelect(item),
                 },
               }}
             />
@@ -51,7 +51,7 @@ SelectPackageSection.propTypes = {
   ),
   // from parent
   category: PropTypes.shape({ id: PropTypes.string }),
-  handleSelectPackage: PropTypes.func,
+  handleSelect: PropTypes.func,
 };
 SelectPackageSection.defaultProps = {};
 

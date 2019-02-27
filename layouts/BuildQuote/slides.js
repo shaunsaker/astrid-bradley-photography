@@ -14,6 +14,9 @@ const slides = [
     },
   },
   {
+    title: 'Customise package',
+  },
+  {
     title: 'Check availability',
     state: {
       label: 'Date',
