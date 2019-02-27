@@ -34,6 +34,7 @@ class DoneSection extends React.Component {
     const { packageDetails, additionalProducts, shootDate, clientDetails, getProduct } = this.props;
     const title = 'Quotation';
     const documentNumber = 1; // TODO:
+    const fileName = `${business.name.split(' ').join('-')}-${title}-${documentNumber}`;
     const documentDetails = {
       title,
       documentNumber,
@@ -70,7 +71,7 @@ class DoneSection extends React.Component {
 
           <PDFDownloadLink
             document={quotationComponent}
-            fileName="somename.pdf"
+            fileName={fileName}
             className="download-anchor"
             style={{ textDecoration: 'none' }}
           >
