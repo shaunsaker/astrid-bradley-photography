@@ -67,7 +67,12 @@ export default class Form extends React.Component {
         // Add as array of objects to values
         values[name] = inputsArray.map((input) => {
           const value = {};
-          value[input.name] = this.getInputValue(input);
+          const inputValue = this.getInputValue(input);
+
+          // FIXME: Apply to else block as well
+          if (inputValue) {
+            value[input.name] = inputValue;
+          }
 
           return value;
         });

@@ -15,8 +15,8 @@ const Input = ({ type, options, name, value, label, isRequired, multiple, accept
         type={type}
         name={name}
         id={name}
-        value={value}
-        checked={type === 'checkbox' ? value : null}
+        value={value || (!value && (type === 'number' ? 0 : ''))}
+        checked={type === 'checkbox' ? (value ? true : false) : null}
         required={isRequired}
         multiple={multiple}
         accept={accept}
