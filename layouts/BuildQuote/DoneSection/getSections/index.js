@@ -491,11 +491,8 @@ const getSections = ({
       columns: [packageDetailsSection],
     },
     {
-      key: 'additionalProducts',
-      columns: [additionalProductsSection],
-    },
-    {
       key: 'total',
+      flex: 1,
       columns: [totalSection],
     },
     {
@@ -508,6 +505,15 @@ const getSections = ({
     },
     { key: 'contact', columns: [contactDetailsSection] },
   ];
+
+  // IF there are additional products
+  // THEN add the additional products section
+  if (additionalProducts.length) {
+    sections.splice(2, 0, {
+      key: 'additionalProducts',
+      columns: [additionalProductsSection],
+    });
+  }
 
   return sections;
 };
