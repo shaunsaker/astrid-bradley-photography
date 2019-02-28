@@ -5,13 +5,7 @@ import { colors, rhythm } from '../../../static/styles/styleConstants';
 const IMAGE_SIZE = 75;
 
 const styles = css`
-  ul {
-  }
-
-  li {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  .item-container {
     align-items: center;
   }
 

@@ -10,7 +10,7 @@ const styles = css`
     right: 0;
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     background-color: ${colors.white};
-    z-index: 1;
+    z-index: 2;
   }
 
   .buttonContainer {

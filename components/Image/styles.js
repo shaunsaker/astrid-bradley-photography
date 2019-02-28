@@ -4,6 +4,7 @@ import { colors } from '../../static/styles/styleConstants';
 
 const styles = css`
   .container {
+    min-height: 120px;
   }
 
   .image {

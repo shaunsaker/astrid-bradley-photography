@@ -5,11 +5,9 @@ import { rhythm } from '../../../static/styles/styleConstants';
 const IMAGE_SIZE = 132;
 
 const styles = css`
-  ul {
-  }
-
-  li {
+  .item-container {
     padding: ${rhythm.vt}px;
+    align-items: center;
   }
 
   img {
