@@ -39,7 +39,7 @@ class Admin extends React.Component {
       meta: {
         nextAction: {
           type: 'SIGN_OUT_USER',
-          // TODO: How to also display error message?
+          // FIXME: How to also display error message?
         },
       },
     });

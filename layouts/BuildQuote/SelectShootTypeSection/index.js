@@ -15,7 +15,7 @@ const SelectShootTypeSection = ({ packageCategories, handleSelect }) => {
         {packageCategories.map((categoryID) => {
           const category = categories.filter((item) => item.id === categoryID)[0];
           const { name, id } = category;
-          const imageSrc = `static/images/springboard-${id}.jpg`;
+          const imageSrc = `/static/images/springboard-${id}.jpg`;
           const action = {
             button: {
               handleClick: () => handleSelect(category),
