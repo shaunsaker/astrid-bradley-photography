@@ -21,7 +21,6 @@ export class PageLoadingHandler extends React.Component {
 
   static propTypes = {
     pendingTransactions: PropTypes.arrayOf(PropTypes.shape({})),
-    systemMessage: PropTypes.shape({}),
     dispatch: PropTypes.func,
   };
 
@@ -87,11 +86,10 @@ export class PageLoadingHandler extends React.Component {
 
 const mapStateToProps = (state) => {
   const { appState } = state;
-  const { pendingTransactions, systemMessage } = appState;
+  const { pendingTransactions } = appState;
 
   return {
     pendingTransactions,
-    systemMessage,
   };
 };
 

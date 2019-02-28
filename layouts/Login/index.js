@@ -26,7 +26,7 @@ class Login extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
     authenticated: PropTypes.bool,
-    systemMessage: PropTypes.string,
+    systemMessage: PropTypes.shape({ message: PropTypes.string }),
   };
 
   static defaultProps = {};
@@ -34,7 +34,7 @@ class Login extends React.Component {
   componentDidUpdate(prevProps) {
     const { authenticated, systemMessage } = this.props;
 
-    if (systemMessage !== prevProps.systemMessage) {
+    if (systemMessage.message !== prevProps.systemMessage.message) {
       // Error event
       this.setIsLoading(false);
     }
