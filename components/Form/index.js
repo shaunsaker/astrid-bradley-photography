@@ -122,6 +122,7 @@ export default class Form extends React.Component {
         onSubmit={handleSubmit && this.onSubmit}
         method={!handleSubmit ? 'POST' : 'false'}
         data-netlify={!handleSubmit && 'true'}
+        data-netlify-honeypot="bot-field"
       >
         {formNameField}
 
