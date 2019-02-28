@@ -11,8 +11,6 @@ const PortfolioSection = () => {
         image={{
           src: '/static/images/springboard-quote.jpg',
           alt: 'Build a quote',
-          width: 940,
-          height: 628,
         }}
         text="Build a Quote"
         action={{ nextLink: { href: '/build-quote' } }}
