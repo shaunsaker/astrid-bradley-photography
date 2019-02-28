@@ -112,9 +112,7 @@ export default class Form extends React.Component {
     const onChange = handleChange && this.onChange;
 
     // Necessary for the netlify form submission
-    const formNameField = !handleSubmit && (
-      <input type="hidden" name="form-name" value={formName} />
-    );
+    const formNameField = !handleSubmit && <input type="hidden" name="bot-field" />;
 
     return (
       <form
