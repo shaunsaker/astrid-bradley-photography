@@ -5,6 +5,9 @@ import Label from '../Label';
 import Select from '../Select';
 
 const Input = ({ type, options, name, value, label, isRequired, multiple, accept, onChange }) => {
+  const inputValue = onChange && (value || (!value && (type === 'number' ? 0 : '')));
+  const checked = type === 'checkbox' ? (value ? true : false) : null;
+
   const inputComponent =
     type === 'select' ? (
       <Select fieldName={name} id={name} options={options} value={value} handleChange={onChange} />
@@ -15,8 +18,8 @@ const Input = ({ type, options, name, value, label, isRequired, multiple, accept
         type={type}
         name={name}
         id={name}
-        value={value || (!value && (type === 'number' ? 0 : ''))}
-        checked={type === 'checkbox' ? (value ? true : false) : null}
+        value={inputValue}
+        checked={checked}
         required={isRequired}
         multiple={multiple}
         accept={accept}
