@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { sortArrayOfObjectsByKey } from '../../utils';
 
 import Layout from '../../components/Layout';
+import LoadingSection from '../../components/LoadingSection';
 import SpringboardsSection from '../../components/SpringboardsSection';
 import ContactButton from '../../components/ContactButton';
 
@@ -43,9 +44,15 @@ const Category = ({ categoryID, shoots }) => {
     };
   });
 
+  const springboardsComponent = shoots ? (
+    <SpringboardsSection springboards={springboards} />
+  ) : (
+    <LoadingSection />
+  );
+
   return (
     <Layout title={title}>
-      <SpringboardsSection springboards={springboards} />
+      {springboardsComponent}
 
       <ContactButton />
     </Layout>

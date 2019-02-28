@@ -7,7 +7,7 @@ import Spinner from '../Spinner';
 
 const LoadingSection = ({ isFixed }) => {
   return (
-    <div className={`container abs-stretch flex-center ${isFixed && 'fixed'}`}>
+    <div className={`container flex-center ${isFixed && 'fixed'}`}>
       <Spinner />
 
       <style jsx>{styles}</style>

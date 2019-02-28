@@ -9,7 +9,7 @@ import ContactButton from '../../components/ContactButton';
 
 const Shoot = ({ shootID, shoots }) => {
   const shoot = shoots.filter((item) => item.id === shootID)[0];
-  const { name } = shoot;
+  const name = shoot ? shoot.name : null;
   const shootComponent = shoot ? <ShootSection shoot={shoot} /> : <LoadingSection />;
 
   return (

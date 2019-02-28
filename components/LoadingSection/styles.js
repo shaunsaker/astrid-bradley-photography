@@ -5,6 +5,7 @@ const styles = css`
     background-color: rgba(255, 255, 255, 0.33);
     z-index: 2;
     animation: fade-in 0.5s ease;
+    min-height: 120px;
 
     @keyframes fade-in {
       0% {
