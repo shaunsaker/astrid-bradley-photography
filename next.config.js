@@ -1,11 +1,11 @@
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
-const compose = require('next-compose');
+const withPlugins = require('next-compose-plugins');
 
 const fontsConfig = {};
 const imagesConfig = {};
 
-module.exports = compose([
+module.exports = withPlugins([
   [withFonts, fontsConfig],
   [withImages, imagesConfig],
   {
