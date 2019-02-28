@@ -27,15 +27,19 @@ const PhotoQueue = ({ shoots }) => {
   // Reverse the array items so that we show the latest first
   const completedShoots = relevantShoots.filter((shoot) => shoot.download_url).reverse();
 
+  const inProgressSection = inProgressShoot && (
+    <section>
+      <HeadingText>In Progress</HeadingText>
+
+      <div className="spacer-vt" />
+
+      <ShootItem shoot={inProgressShoot} />
+    </section>
+  );
+
   return (
     <Layout title="Photo Queue">
-      <section>
-        <HeadingText>In Progress</HeadingText>
-
-        <div className="spacer-vt" />
-
-        <ShootItem shoot={inProgressShoot} />
-      </section>
+      {inProgressSection}
 
       <section>
         <HeadingText>Upcoming</HeadingText>
