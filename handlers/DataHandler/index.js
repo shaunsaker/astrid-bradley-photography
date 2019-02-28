@@ -52,7 +52,8 @@ export class DataHandler extends React.Component {
       (pathname.indexOf('admin') > -1 ||
         pathname.indexOf('category') > -1 ||
         pathname.indexOf('shoot') > -1 ||
-        pathname.indexOf('build-quote') > -1)
+        pathname.indexOf('build-quote') > -1 ||
+        pathname.indexOf('photo-queue') > -1)
     ) {
       this.setHaveSyncedData(true);
       this.syncPackages();
