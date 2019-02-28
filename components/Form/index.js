@@ -111,6 +111,11 @@ export default class Form extends React.Component {
     } = this.props;
     const onChange = handleChange && this.onChange;
 
+    // Necessary for the netlify form submission
+    const formNameField = !handleSubmit && (
+      <input type="hidden" name="form-name" value={formName} />
+    );
+
     return (
       <form
         name={formName}
@@ -118,6 +123,8 @@ export default class Form extends React.Component {
         method={!handleSubmit ? 'POST' : 'false'}
         data-netlify={!handleSubmit && 'true'}
       >
+        {formNameField}
+
         {fields.map((field) => {
           const { type, name } = field;
 
