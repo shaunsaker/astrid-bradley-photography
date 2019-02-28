@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import SPRINGBOARDS from './springboards';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
+import Grid from '../../components/Grid';
 import Springboard from '../../components/Springboard';
 import ControlPanel from '../../components/ControlPanel';
 
@@ -54,22 +55,13 @@ class Admin extends React.Component {
           <Springboard {...firstSpringboard} />
         </section>
 
-        <section className="flex row">
-          {otherSpringboards.map((springboard, index) => {
+        <Grid size={2}>
+          {otherSpringboards.map((springboard) => {
             const { text } = springboard;
 
-            // Add a spacer for every odd item
-            const spacerComponent = index % 2 === 0 && <div className="spacer-hz" />;
-
-            return (
-              <Fragment key={text}>
-                <Springboard {...springboard} />
-
-                {spacerComponent}
-              </Fragment>
-            );
+            return <Springboard key={text} {...springboard} />;
           })}
-        </section>
+        </Grid>
 
         <ControlPanel
           controls={[{ iconName: 'lock', label: 'Sign Out', handleClick: this.signOut }]}
