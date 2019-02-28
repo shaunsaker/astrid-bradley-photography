@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
+import { colors } from '../../../static/styles/styleConstants';
 
-import AddButton from '../../../components/AddButton';
+import Icon from '../../../components/Icon';
 
 const AddFileButton = ({ multiple, handleAddFiles }) => {
   return (
-    <AddButton>
+    <div className="container relative flex-center">
+      <Icon name="add" color={colors.accent1} />
+
       <input
         type="file"
         multiple={multiple}
@@ -17,7 +20,7 @@ const AddFileButton = ({ multiple, handleAddFiles }) => {
       />
 
       <style jsx>{styles}</style>
-    </AddButton>
+    </div>
   );
 };
 
