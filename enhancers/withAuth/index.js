@@ -19,7 +19,7 @@ export default (ComposedComponent) => {
 
     static defaultProps = {};
 
-    componentWillMount() {
+    componentDidMount() {
       const { authenticated } = this.props;
 
       if (!authenticated) {
@@ -45,7 +45,11 @@ export default (ComposedComponent) => {
     render() {
       const { authenticated } = this.props;
 
-      return <ComposedComponent authenticated={authenticated} {...this.props} />;
+      return (
+        <div style={{ visibility: !authenticated ? 'hidden' : 'visible' }}>
+          <ComposedComponent {...this.props} />
+        </div>
+      );
     }
   }
 
