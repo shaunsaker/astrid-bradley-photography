@@ -6,10 +6,6 @@ const Page = (props) => {
   return <Category {...props} />;
 };
 
-Page.getInitialProps = async ({ query }) => {
-  const categoryID = query.id;
-
-  return { categoryID };
-};
+Page.getInitialProps = async () => {};
 
 export default Page;

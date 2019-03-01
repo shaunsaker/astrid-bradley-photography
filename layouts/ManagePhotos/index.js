@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import styles from './styles';
 
@@ -28,6 +29,7 @@ export class ManagePhotos extends React.Component {
   }
 
   static propTypes = {
+    // connect
     shoots: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
@@ -36,14 +38,19 @@ export class ManagePhotos extends React.Component {
         photos: PropTypes.arrayOf(PropTypes.shape({})),
       }),
     ),
-    shootID: PropTypes.string,
+
+    // withRouter
+    router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
+
+    // withSaveShoot
     onSaveShoot: PropTypes.func,
   };
 
   static defaultProps = {};
 
   onCoverPhotoUploaded(file) {
-    const { shootID, onSaveShoot } = this.props;
+    const { router, onSaveShoot } = this.props;
+    const shootID = router.query.id;
     const shoot = this.getShoot();
     const photo = this.createPhoto(file);
 
@@ -53,7 +60,8 @@ export class ManagePhotos extends React.Component {
   }
 
   onCoverPhotoDeleted() {
-    const { shootID, onSaveShoot } = this.props;
+    const { router, onSaveShoot } = this.props;
+    const shootID = router.query.id;
     const shoot = this.getShoot();
 
     shoot.cover_photo = null;
@@ -62,7 +70,8 @@ export class ManagePhotos extends React.Component {
   }
 
   onShootPhotoUploaded(file) {
-    const { shootID, onSaveShoot } = this.props;
+    const { router, onSaveShoot } = this.props;
+    const shootID = router.query.id;
     const shoot = this.getShoot();
     const photo = this.createPhoto(file);
 
@@ -76,7 +85,8 @@ export class ManagePhotos extends React.Component {
   }
 
   onShootPhotoDeleted(index) {
-    const { shootID, onSaveShoot } = this.props;
+    const { router, onSaveShoot } = this.props;
+    const shootID = router.query.id;
     const shoot = this.getShoot();
 
     shoot.photos.splice(index, 1);
@@ -91,7 +101,8 @@ export class ManagePhotos extends React.Component {
   }
 
   getShoot() {
-    const { shoots, shootID } = this.props;
+    const { shoots, router } = this.props;
+    const shootID = router.query.id;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
 
     return shoot;
@@ -184,4 +195,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default withAuth(withSaveShoot(connect(mapStateToProps)(ManagePhotos)));
+export default withAuth(withRouter(withSaveShoot(connect(mapStateToProps)(ManagePhotos))));

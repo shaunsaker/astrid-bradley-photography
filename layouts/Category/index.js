@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { sortArrayOfObjectsByKey } from '../../utils';
 
@@ -9,7 +10,8 @@ import LoadingSection from '../../components/LoadingSection';
 import SpringboardsSection from '../../components/SpringboardsSection';
 import ContactButton from '../../components/ContactButton';
 
-const Category = ({ categoryID, shoots }) => {
+const Category = ({ router, shoots }) => {
+  const categoryID = router.query.id;
   const title = categoryID.replace('-', ' '); // FIXME: Title could come from db categories collection (overkill for now)
 
   // Filter on category_id
@@ -60,7 +62,7 @@ const Category = ({ categoryID, shoots }) => {
 };
 
 Category.propTypes = {
-  categoryID: PropTypes.string,
+  // connect
   shoots: PropTypes.arrayOf(
     PropTypes.shape({
       category_id: PropTypes.string,
@@ -69,6 +71,9 @@ Category.propTypes = {
       cover_photo_url: PropTypes.string,
     }),
   ),
+
+  // withRouter
+  router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
 };
 Category.defaultProps = {};
 
@@ -78,4 +83,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Category);
+export default withRouter(connect(mapStateToProps)(Category));

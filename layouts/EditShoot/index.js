@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { shootForm } from '../../config/forms';
 
@@ -18,14 +19,18 @@ export class EditShoot extends React.Component {
   }
 
   static propTypes = {
+    // connect
     shoots: PropTypes.arrayOf(PropTypes.shape({})),
-    shootID: PropTypes.string,
+
+    // withRouter
+    router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
   };
 
   static defaultProps = {};
 
   render() {
-    const { shoots, shootID } = this.props;
+    const { shoots, router } = this.props;
+    const shootID = router.query.id;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
     const { name, id } = shoot;
     const title = `Editing: ${name}`;
@@ -57,4 +62,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(connect(mapStateToProps)(EditShoot));
+export default withAuth(withRouter(connect(mapStateToProps)(EditShoot)));

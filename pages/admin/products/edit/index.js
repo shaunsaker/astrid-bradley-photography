@@ -6,10 +6,6 @@ const Page = (props) => {
   return <EditProduct {...props} />;
 };
 
-Page.getInitialProps = async ({ query }) => {
-  const productID = query.id;
-
-  return { productID };
-};
+Page.getInitialProps = async () => {};
 
 export default Page;

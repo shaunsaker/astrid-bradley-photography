@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { reorderArrayItems } from '../../utils';
 import styles from './styles';
@@ -32,8 +33,13 @@ class ManageLayout extends React.Component {
   }
 
   static propTypes = {
+    // connect
     shoots: PropTypes.arrayOf(PropTypes.shape()),
-    shootID: PropTypes.string,
+
+    // withRouter
+    router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
+
+    // withSaveShoot
     onSaveShoot: PropTypes.func,
   };
 
@@ -53,7 +59,8 @@ class ManageLayout extends React.Component {
 
   onSave() {
     const { photos } = this.state;
-    const { onSaveShoot, shootID } = this.props;
+    const { onSaveShoot, router } = this.props;
+    const shootID = router.query.id;
     const shoot = this.getShoot();
 
     shoot.photos = photos;
@@ -62,7 +69,8 @@ class ManageLayout extends React.Component {
   }
 
   getShoot() {
-    const { shoots, shootID } = this.props;
+    const { shoots, router } = this.props;
+    const shootID = router.query.id;
     const shoot = shoots.filter((item) => item.id === shootID)[0];
 
     return shoot;

@@ -6,10 +6,6 @@ const Page = (props) => {
   return <ManagePhotos {...props} />;
 };
 
-Page.getInitialProps = async ({ query }) => {
-  const shootID = query.id;
-
-  return { shootID };
-};
+Page.getInitialProps = async () => {};
 
 export default Page;

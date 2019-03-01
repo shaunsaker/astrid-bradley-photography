@@ -6,10 +6,6 @@ const Page = (props) => {
   return <EditPackage {...props} />;
 };
 
-Page.getInitialProps = async ({ query }) => {
-  const packageID = query.id;
-
-  return { packageID };
-};
+Page.getInitialProps = async () => {};
 
 export default Page;

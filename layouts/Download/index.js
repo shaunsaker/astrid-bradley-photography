@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { getElapsedDays, getFutureTime, getPrettyDate } from '../../utils';
 
@@ -9,7 +10,8 @@ import Springboard from '../../components/Springboard';
 import ParagraphText from '../../components/ParagraphText';
 import ContactButton from '../../components/ContactButton';
 
-const Download = ({ shootID, shoots }) => {
+const Download = ({ router, shoots }) => {
+  const shootID = router.query.id;
   const shoot = shoots.filter((item) => item.id === shootID)[0];
   const { name, cover_photo, download_url, date_modified } = shoot;
   const title = `DOWNLOAD: ${name}`;
@@ -62,8 +64,11 @@ const Download = ({ shootID, shoots }) => {
 };
 
 Download.propTypes = {
-  shootID: PropTypes.string,
+  // connect
   shoots: PropTypes.arrayOf(PropTypes.shape({})),
+
+  // withRouter
+  router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
 };
 Download.defaultProps = {};
 
@@ -73,4 +78,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Download);
+export default withRouter(connect(mapStateToProps)(Download));

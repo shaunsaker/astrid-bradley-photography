@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { packageForm } from '../../config/forms';
 
@@ -18,11 +19,11 @@ export class EditPackage extends React.Component {
   }
 
   static propTypes = {
-    // Router
-    packageID: PropTypes.string,
-
     // connect
     packages: PropTypes.arrayOf(PropTypes.shape({})),
+
+    // withRouter
+    router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
 
     // withProductFields
     productFields: PropTypes.arrayOf(PropTypes.shape({})),
@@ -31,7 +32,8 @@ export class EditPackage extends React.Component {
   static defaultProps = {};
 
   render() {
-    const { packages, packageID, productFields } = this.props;
+    const { packages, productFields, router } = this.props;
+    const packageID = router.query.id;
     const packageDocument = packages.filter((item) => item.id === packageID)[0];
     const title = `Editing: ${packageDocument.name}`;
     const formWithExtraFields = packageForm.concat(productFields);
@@ -56,4 +58,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(withProductFields(connect(mapStateToProps)(EditPackage)));
+export default withAuth(withRouter(withProductFields(connect(mapStateToProps)(EditPackage))));

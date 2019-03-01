@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 import { productForm } from '../../config/forms';
 
@@ -17,14 +18,18 @@ export class EditProduct extends React.Component {
   }
 
   static propTypes = {
+    // connect
     products: PropTypes.arrayOf(PropTypes.shape({})),
-    productID: PropTypes.string,
+
+    // withRouter
+    router: PropTypes.shape({ query: PropTypes.shape({ id: PropTypes.string }) }),
   };
 
   static defaultProps = {};
 
   render() {
-    const { products, productID } = this.props;
+    const { products, router } = this.props;
+    const productID = router.query.id;
     const product = products.filter((item) => item.id === productID)[0];
     const { name } = product;
     const title = `Editing: ${name}`;
@@ -43,4 +48,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(connect(mapStateToProps)(EditProduct));
+export default withAuth(withRouter(connect(mapStateToProps)(EditProduct)));
