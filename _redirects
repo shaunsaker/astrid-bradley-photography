@@ -1,0 +1,1 @@
+/shoot/:shootID    /shoot shootID=:shootID    301
