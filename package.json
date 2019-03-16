@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node src/server src/app",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "build": "next build src/app",
+    "start": "NODE_ENV=production node server.js",
+    "export": "next export src/app --outdir dist"
   },
   "author": "Shaun Saker [hello.clevelup@gmail.com]",
   "license": "MIT",
