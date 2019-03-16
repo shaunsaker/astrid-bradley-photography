@@ -4,6 +4,7 @@ const withPlugins = require('next-compose-plugins');
 
 const getPathMap = require('../scripts/getPathMap');
 const addCategoryPages = require('../scripts/addCategoryPages');
+const addShootPages = require('../scripts/addShootPages');
 
 const fontsConfig = {};
 const imagesConfig = {};
@@ -14,11 +15,10 @@ module.exports = withPlugins([
   {
     exportPathMap: async () => {
       // TODO: Get fb data
-      // TODO: Overwrite dynamic paths with static paths based on fb data
-      // TODO: Extract to function
       // TODO: Setup webhook in Netlify
       let pathMap = getPathMap();
       pathMap = addCategoryPages(pathMap);
+      pathMap = addShootPages(pathMap);
 
       return pathMap;
     },
