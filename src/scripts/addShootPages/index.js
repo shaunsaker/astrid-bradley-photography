@@ -1,7 +1,8 @@
+const getShoots = require('../getShoots');
 const addDynamicPages = require('../addDynamicPages');
 
-const addShootPages = (pathMap) => {
-  const shoots = []; // TODO: Fetch the shoots
+const addShootPages = async (pathMap) => {
+  const shoots = await getShoots();
   const newPathMap = addDynamicPages({ page: '/shoot', data: shoots, pathMap });
 
   return newPathMap;
