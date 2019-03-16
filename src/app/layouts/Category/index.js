@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
 import { sortArrayOfObjectsByKey } from '../../utils';
+import { categories } from '../../config';
 
 import Layout from '../../components/Layout';
 import LoadingSection from '../../components/LoadingSection';
@@ -13,6 +14,7 @@ import ContactButton from '../../components/ContactButton';
 const Category = ({ router, shoots }) => {
   const categoryID = router.query.id;
   const title = categoryID.replace('-', ' '); // FIXME: Title could come from db categories collection (overkill for now)
+  const { description } = categories.filter((item) => item.id === categoryID)[0];
 
   // Filter on category_id
   // IF cover photo exists
@@ -53,7 +55,7 @@ const Category = ({ router, shoots }) => {
   );
 
   return (
-    <Layout title={title}>
+    <Layout title={title} description={description}>
       {springboardsComponent}
 
       <ContactButton />
