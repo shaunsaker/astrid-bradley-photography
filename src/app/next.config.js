@@ -13,7 +13,6 @@ module.exports = withPlugins([
   [withImages, imagesConfig],
   {
     exportPathMap: (defaultPathMap) => {
-      // TODO: Setup webhook in Netlify
       let pathMap = defaultPathMap;
       pathMap = addCategoryPages(pathMap);
       pathMap = addShootPages(pathMap);
