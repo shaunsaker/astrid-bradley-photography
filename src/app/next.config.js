@@ -9,6 +9,7 @@ module.exports = withPlugins([
   [withFonts, fontsConfig],
   [withImages, imagesConfig],
   {
+    distDir: '../../dist/functions/next',
     webpack: (config) => {
       return config;
     },
