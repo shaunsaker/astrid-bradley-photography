@@ -12,13 +12,21 @@ const getShoots = async () => {
   const ref = await db.collection('shoots');
   const shoots = [];
 
-  await ref.get().then((snapshot) => {
-    snapshot.forEach((document) => {
-      const { id } = document;
+  await ref
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((document) => {
+        const { id } = document;
 
-      shoots.push({ id });
+        shoots.push({ id });
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+
+      // Don't let an error here obstruct the script
+      return shoots;
     });
-  });
 
   return shoots;
 };
