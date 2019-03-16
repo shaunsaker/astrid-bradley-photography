@@ -7,7 +7,7 @@
     "dev": "node src/server src/app",
     "build": "next build src/app",
     "start": "NODE_ENV=production node server.js",
-    "export": "next export src/app --outdir dist"
+    "export": "yarn run build && next export src/app --outdir dist"
   },
   "author": "Shaun Saker [hello.clevelup@gmail.com]",
   "license": "MIT",
