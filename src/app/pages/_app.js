@@ -9,8 +9,6 @@ import { persistStore } from 'redux-persist';
 import globalStyles from '../static/styles/global';
 import configureStore from '../store';
 
-import Head from '../components/Head';
-
 import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
 import SystemMessageHandler from '../handlers/SystemMessageHandler';
@@ -44,12 +42,6 @@ export class TheApp extends App {
       <Container>
         <Provider store={store}>
           <PersistGate loading={null} persistor={this.persistor}>
-            <Head />
-
-            <style jsx global>
-              {globalStyles}
-            </style>
-
             <Component {...pageProps} />
 
             <DataHandler />
@@ -57,6 +49,10 @@ export class TheApp extends App {
             <PageLoadingHandler />
 
             <SystemMessageHandler />
+
+            <style jsx global>
+              {globalStyles}
+            </style>
           </PersistGate>
         </Provider>
       </Container>

@@ -1,10 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 
-const HeadComponent = () => {
+const HeadComponent = ({ title, description }) => {
   return (
     <Head>
-      <title key="title">Astrid Bradley Photography</title>
+      <title key="title">{title}</title>
+
+      <title key="description">{description}</title>
 
       <meta
         key="viewport"
@@ -15,7 +18,13 @@ const HeadComponent = () => {
   );
 };
 
-HeadComponent.propTypes = {};
-HeadComponent.defaultProps = {};
+HeadComponent.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+};
+HeadComponent.defaultProps = {
+  title: 'Astrid Bradley Photography',
+  description: 'Wedding and Lifestyle Photographer based in Cape Town',
+};
 
 export default HeadComponent;

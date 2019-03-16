@@ -8,12 +8,12 @@ import Header from '../Header';
 import TitleText from '../TitleText';
 import Footer from '../Footer';
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, description, children }) => {
   const titleTextComponent = title && <TitleText>{title}</TitleText>;
 
   return (
-    <Page>
-      <Header />
+    <Page title={title} description={description}>
+      <Header title={title} />
 
       <div className="spacer-vt large hidden-md-down" />
 
@@ -30,6 +30,7 @@ const Layout = ({ title, children }) => {
 
 Layout.propTypes = {
   title: PropTypes.string,
+  description: PropTypes.string,
   children: PropTypes.node,
 };
 Layout.defaultProps = {};
