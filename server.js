@@ -2,8 +2,7 @@ const express = require('express');
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
-const dir = process.argv[2] || '.';
-const app = next({ dev, dir });
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app

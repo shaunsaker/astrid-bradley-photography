@@ -6,8 +6,7 @@ settings.json
 # Nextjs
 .next
 out
-src/public
-dist
+public
 
 # Mac
 .DS_Store
