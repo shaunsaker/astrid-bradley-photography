@@ -28,7 +28,7 @@ export default class Form extends React.Component {
     submitText: PropTypes.string,
     isSubmitDisabled: PropTypes.bool,
     handleChange: PropTypes.func,
-    handleSubmit: PropTypes.func, // if not supplied, assume it is a netlify form
+    handleSubmit: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -111,19 +111,8 @@ export default class Form extends React.Component {
     } = this.props;
     const onChange = handleChange && this.onChange;
 
-    // Necessary for the netlify form submission
-    const formNameField = !handleSubmit && <input type="hidden" name="bot-field" />;
-
     return (
-      <form
-        name={formName}
-        onSubmit={handleSubmit && this.onSubmit}
-        method={!handleSubmit ? 'POST' : 'false'}
-        data-netlify={!handleSubmit && 'true'}
-        data-netlify-honeypot="bot-field"
-      >
-        {formNameField}
-
+      <form name={formName} onSubmit={this.onSubmit} method={!handleSubmit ? 'POST' : 'false'}>
         {fields.map((field) => {
           const { type, name } = field;
 
