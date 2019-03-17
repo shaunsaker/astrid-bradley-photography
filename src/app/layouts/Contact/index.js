@@ -1,18 +1,36 @@
 import React from 'react';
 
+import FIELDS from './fields';
+
 import Layout from '../../components/Layout';
-import ContactFormSection from './ContactFormSection';
+import Form from '../../components/Form';
 import QuoteSection from '../../components/QuoteSection';
 
-const Contact = () => {
-  return (
-    <Layout title="Get in Touch">
-      <ContactFormSection />
+export class Contact extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <QuoteSection />
-    </Layout>
-  );
-};
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {};
+  }
+
+  onSubmit(values) {
+    console.log(values);
+  }
+
+  render() {
+    return (
+      <Layout title="Get in Touch">
+        <section>
+          <Form formName="contact" fields={FIELDS} submitText="Send" handleSubmit={this.onSubmit} />
+        </section>
+
+        <QuoteSection />
+      </Layout>
+    );
+  }
+}
 
 Contact.propTypes = {};
 Contact.defaultProps = {};
