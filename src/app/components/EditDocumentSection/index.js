@@ -116,6 +116,8 @@ export class EditDocumentSection extends React.Component {
       // ELSE it means we're creating
       // Use the name as the document id
       const { name } = values;
+
+      // TODO: util
       id = name
         .split(' ')
         .join('-')
