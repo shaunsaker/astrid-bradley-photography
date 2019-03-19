@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev src/app",
     "build": "next build src/app",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start src/app",
     "export": "next export src/app --outdir dist",
     "deploy-funcs": "yarn firebase deploy --only functions"
   },
