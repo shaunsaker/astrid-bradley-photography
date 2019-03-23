@@ -33,7 +33,7 @@ export class TheApp extends App {
 
   componentDidMount() {
     // Helper to purge persistor
-    this.persistor.purge();
+    // this.persistor.purge();
   }
 
   render() {

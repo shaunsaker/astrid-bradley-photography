@@ -39,7 +39,7 @@ class Login extends React.Component {
       this.setIsLoading(false);
     }
 
-    if (authenticated !== prevProps.authenticated) {
+    if (authenticated && !prevProps.authenticated) {
       // New user is signed in
       // Set a system message telling the user that they are signed in
       // Redirect to admin dashboard
@@ -99,8 +99,7 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   const { user, appState } = state;
-  const { uid } = user;
-  const authenticated = uid ? true : false;
+  const authenticated = user.authenticated && !user.isAnonymous;
   const { systemMessage } = appState;
 
   return {

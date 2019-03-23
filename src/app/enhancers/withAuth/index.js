@@ -55,8 +55,7 @@ export default (ComposedComponent) => {
 
   function mapStateToProps(state) {
     const { user } = state;
-    const { uid } = user;
-    const authenticated = uid ? true : false;
+    const authenticated = user.authenticated && !user.isAnonymous;
 
     return {
       authenticated,
