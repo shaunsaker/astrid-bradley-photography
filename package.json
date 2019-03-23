@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev src/app",
-    "build": "next build src/app",
     "start": "next start src/app",
+    "clean": "rimraf src/app/.next dist",
+    "prebuild": "yarn run clean",
+    "build": "next build src/app",
     "export": "next export src/app --outdir dist",
     "postexport": "yarn run makeassets",
     "makeassets": "node ./src/scripts/makeAssets",
@@ -51,6 +53,7 @@
     "firebase-admin": "^7.1.0",
     "firebase-tools": "^6.5.0",
     "glob": "^7.1.3",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "rimraf": "^2.6.3"
   }
 }
