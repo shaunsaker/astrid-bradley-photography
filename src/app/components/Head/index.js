@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 
-import { routes, SEO } from '../../config';
+import { business, routes, SEO } from '../../config';
 import { colors } from '../../static/styles/styleConstants';
 
-const primaryColor = colors.primary;
+const { name } = business;
+const primaryColor = colors.black;
 const defaultTitle = SEO.title;
 const defaultDescription = SEO.description;
 
 const HeadComponent = ({ router }) => {
   const { pathname } = router;
-  const route = routes.filter((item) => item.href === pathname);
-  const title = route.title || defaultTitle;
+  const route = routes.filter((item) => item.href === pathname)[0];
+  const title = `${route.title} | ${name}` || defaultTitle;
   const description = route.description || defaultDescription;
 
   return (
