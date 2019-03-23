@@ -8,6 +8,10 @@
     "build": "next build src/app",
     "start": "next start src/app",
     "export": "next export src/app --outdir dist",
+    "postexport": "yarn run makeassets",
+    "makeassets": "node ./src/scripts/makeAssets",
+    "postmakeassets": "yarn run copyassets",
+    "copyassets": "cp -a ./src/public/. ./dist/",
     "deploy-funcs": "yarn firebase deploy --only functions"
   },
   "author": "Shaun Saker [hello.clevelup@gmail.com]",
