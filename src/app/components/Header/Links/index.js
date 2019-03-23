@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { routes } from '../../../config';
 import styles from './styles';
 
-const Links = ({ router, authenticated }) => {
+const Links = ({ router, authenticated, isAnonymous }) => {
   const { pathname, query } = router;
   const { id } = query;
 
@@ -34,7 +34,7 @@ const Links = ({ router, authenticated }) => {
         // IF the user is admin
         // OR if the mapped route is not an admin route
         // THEN return it
-        if (isNav && ((isAdmin && authenticated) || !isAdmin)) {
+        if (isNav && ((isAdmin && authenticated && !isAnonymous) || !isAdmin)) {
           return (
             <li key={href}>
               <Link href={href} prefetch={prefetch} as={as}>
@@ -60,15 +60,15 @@ Links.propTypes = {
     }),
   }),
   authenticated: PropTypes.bool,
+  isAnonymous: PropTypes.bool,
 };
 Links.defaultProps = {};
 
 const mapStateToProps = (state) => {
   const { user } = state;
-  const { uid } = user;
-  const authenticated = uid ? true : false;
+  const { authenticated, isAnonymous } = user;
 
-  return { authenticated };
+  return { authenticated, isAnonymous };
 };
 
 export default withRouter(connect(mapStateToProps)(Links));
