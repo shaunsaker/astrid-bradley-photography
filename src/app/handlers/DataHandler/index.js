@@ -22,6 +22,7 @@ export class DataHandler extends React.Component {
     router: PropTypes.shape({
       pathname: PropTypes.string,
     }),
+    authenticated: PropTypes.bool,
     dispatch: PropTypes.func,
   };
 
@@ -33,21 +34,32 @@ export class DataHandler extends React.Component {
     this.handleSyncData();
   }
 
+  componentDidUpdate(prevProps) {
+    const { authenticated } = this.props;
+
+    // If the user has just become authenticated
+    if (authenticated && !prevProps.authenticated) {
+      this.handleSyncData();
+    }
+  }
+
   componentWillUnmount() {
     Router.events.off('routeChangeComplete', this.handleSyncData);
   }
 
   handleSyncData() {
     const { haveSyncedData } = this.state;
-    const { router } = this.props;
+    const { router, authenticated } = this.props;
     const { pathname } = router;
 
+    // If the user is authenticated
     // If we have not synced shoots AND
     // If the user navigated to the category OR
     // If the user navigated to the shoot page THEN
     // Sync all of the shoots
     // FIXME: This should come from routes config
     if (
+      authenticated &&
       !haveSyncedData &&
       (pathname.indexOf('admin') > -1 ||
         pathname.indexOf('category') > -1 ||
@@ -113,8 +125,13 @@ export class DataHandler extends React.Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const { user } = state;
+  const { authenticated } = user;
+
+  return {
+    authenticated,
+  };
 }
 
 export default withRouter(connect(mapStateToProps)(DataHandler));

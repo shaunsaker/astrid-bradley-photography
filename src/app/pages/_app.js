@@ -9,6 +9,7 @@ import { persistStore } from 'redux-persist';
 import globalStyles from '../static/styles/global';
 import configureStore from '../store';
 
+import AuthHandler from '../handlers/AuthHandler';
 import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
 import SystemMessageHandler from '../handlers/SystemMessageHandler';
@@ -32,7 +33,7 @@ export class TheApp extends App {
 
   componentDidMount() {
     // Helper to purge persistor
-    // this.persistor.purge();
+    this.persistor.purge();
   }
 
   render() {
@@ -43,6 +44,8 @@ export class TheApp extends App {
         <Provider store={store}>
           <PersistGate loading={null} persistor={this.persistor}>
             <Component {...pageProps} />
+
+            <AuthHandler />
 
             <DataHandler />
 

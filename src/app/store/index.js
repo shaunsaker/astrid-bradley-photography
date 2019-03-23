@@ -8,7 +8,10 @@ import reducers from './reducers';
 import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger({
+  collapsed: true,
+  timestamp: false,
+});
 const middleware = [];
 const persistConfig = {
   key: 'root',
@@ -18,7 +21,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 middleware.push(sagaMiddleware);
-// middleware.push(loggerMiddleware);
+middleware.push(loggerMiddleware);
 
 function configureStore(initialState) {
   const store = createStore(persistedReducer, initialState, applyMiddleware(...middleware));
