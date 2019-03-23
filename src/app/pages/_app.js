@@ -9,6 +9,7 @@ import { persistStore } from 'redux-persist';
 import globalStyles from '../static/styles/global';
 import configureStore from '../store';
 
+import AnalyticsHandler from '../handlers/AnalyticsHandler';
 import AuthHandler from '../handlers/AuthHandler';
 import DataHandler from '../handlers/DataHandler';
 import PageLoadingHandler from '../handlers/PageLoadingHandler';
@@ -44,6 +45,8 @@ export class TheApp extends App {
         <Provider store={store}>
           <PersistGate loading={null} persistor={this.persistor}>
             <Component {...pageProps} />
+
+            <AnalyticsHandler />
 
             <AuthHandler />
 
