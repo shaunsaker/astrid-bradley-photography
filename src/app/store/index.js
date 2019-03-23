@@ -21,7 +21,12 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 middleware.push(sagaMiddleware);
-middleware.push(loggerMiddleware);
+
+const isDev = !process.env.REACT_APP_ENV || process.env.REACT_APP_ENV === 'dev';
+
+if (!isDev) {
+  middleware.push(loggerMiddleware);
+}
 
 function configureStore(initialState) {
   const store = createStore(persistedReducer, initialState, applyMiddleware(...middleware));
