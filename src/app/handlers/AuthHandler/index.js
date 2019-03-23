@@ -64,7 +64,7 @@ export class AuthHandler extends React.Component {
 
 function mapStateToProps(state) {
   const { user } = state;
-  const { authenticated } = user;
+  const authenticated = user.uid && true;
 
   return {
     authenticated,

@@ -99,7 +99,7 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   const { user, appState } = state;
-  const authenticated = user.authenticated && !user.isAnonymous;
+  const authenticated = user.uid && !user.isAnonymous;
   const { systemMessage } = appState;
 
   return {
