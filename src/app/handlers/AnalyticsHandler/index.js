@@ -6,6 +6,7 @@ import ReactGA from 'react-ga';
 import { analytics } from '../../config';
 
 const { trackingID } = analytics;
+const isDev = !process.env.REACT_APP_ENV || process.env.REACT_APP_ENV === 'dev';
 
 export class AnalyticsHandler extends React.Component {
   constructor(props) {
@@ -24,24 +25,24 @@ export class AnalyticsHandler extends React.Component {
   componentDidMount() {
     const { uid } = this.props;
 
-    this.initialiseGA();
+    if (!isDev) {
+      this.initialiseGA();
 
-    if (uid) {
-      this.setUserID(uid);
+      if (uid) {
+        this.setUserID(uid);
+      }
     }
   }
 
   componentDidUpdate(prevProps) {
     const { uid } = this.props;
 
-    if (uid && !prevProps.uid) {
+    if (!isDev && uid && !prevProps.uid) {
       this.setUserID(uid);
     }
   }
 
   initialiseGA() {
-    const isDev = !process.env.REACT_APP_ENV || process.env.REACT_APP_ENV === 'dev';
-
     ReactGA.initialize(trackingID, { debug: isDev });
   }
 
