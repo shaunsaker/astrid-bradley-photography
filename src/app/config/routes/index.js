@@ -34,7 +34,7 @@ routes.push(
   {
     title: 'Contact',
     href: '/contact',
-    prefetch: true,
+    prefetch: false,
     isAdmin: false,
     isNav: true,
   },
