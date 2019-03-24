@@ -1,7 +1,7 @@
 const testimonials = [
   {
     image: {
-      src: '/static/images/featured/featured-hochzeitsguide.png',
+      src: '/static/images/featured/featured-hochzeitsguide.jpg',
       alt: 'Huchzeitsguide Blog',
     },
     href:
@@ -9,7 +9,7 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/featured/featured-confetti-daydreams.png',
+      src: '/static/images/featured/featured-confetti-daydreams.jpg',
       alt: 'Confetti Daydreams',
     },
     href: 'http://www.confettidaydreams.com/burgundy-red-navy-blue-gold-wedding/',
@@ -23,7 +23,7 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/featured/featured-confetti.png',
+      src: '/static/images/featured/featured-confetti.jpg',
       alt: 'Confetti',
     },
     href: 'https://www.confetti.co.za/listing/astrid-bradley-photography',
@@ -38,14 +38,14 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/featured/featured-bloved.png',
+      src: '/static/images/featured/featured-bloved.jpg',
       alt: 'Be Loved',
     },
     href: 'http://blovedblog.com/weddings/vibrant-south-african-wedding-inspiration/',
   },
   {
     image: {
-      src: '/static/images/featured/featured-smashing-the-glass.png',
+      src: '/static/images/featured/featured-smashing-the-glass.jpg',
       alt: 'Smashing The Glass',
     },
     href:

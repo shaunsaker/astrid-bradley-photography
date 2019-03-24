@@ -9,7 +9,7 @@ const testimonials = [
   },
   {
     image: {
-      src: '/static/images/testimonials/testimonial-y.jpeg',
+      src: '/static/images/testimonials/testimonial-y.jpg',
       alt: 'Y',
     },
     name: 'Y',
