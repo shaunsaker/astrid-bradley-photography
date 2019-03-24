@@ -3,7 +3,7 @@ const colors = {
   transBlack: 'rgba(0, 0, 0, 0.8)',
   white: '#FFFFFF',
   transWhite: 'rgba(255, 255, 255, 0.8)',
-  grey: '#9C9C9C',
+  grey: '#737373',
   lightGrey: '#CCCCCC',
   accent1: '#BB7D46',
   accent2: '#61A1FF',
