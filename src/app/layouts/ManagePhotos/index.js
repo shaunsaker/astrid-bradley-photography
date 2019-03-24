@@ -110,8 +110,8 @@ export class ManagePhotos extends React.Component {
 
   createPhoto({ downloadURL, width, height, fileName, id }) {
     const shoot = this.getShoot();
-    const { name } = shoot;
-    const alt = name;
+    const { name, date, location } = shoot;
+    const alt = `${name} on the ${date} at ${location}`;
     const photo = {
       src: downloadURL,
       alt,

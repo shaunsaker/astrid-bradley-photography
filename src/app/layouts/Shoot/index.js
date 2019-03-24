@@ -19,7 +19,7 @@ const Shoot = ({ router, shoots }) => {
 
   if (shoot) {
     title = `${shoot.name} | ${business.name}`;
-    description = `${shoot.name} | ${shoot.location} | ${shoot.date}`;
+    description = `${shoot.name} on the ${shoot.date} at ${shoot.location}`;
     shootComponent = <ShootSection shoot={shoot} />;
   }
 
