@@ -173,6 +173,7 @@ export default class ImageSlider extends React.Component {
                 type="button"
                 onClick={() => this.onSetSlideIndex(index)}
                 className={`dot ${isActive ? 'active' : ''} shadow-sm shadow-hover`}
+                aria-label={`Image ${index + 1}`}
               />
             );
           })}

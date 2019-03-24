@@ -10,7 +10,7 @@ const ContactButton = () => {
     <div className="container">
       <Link href="/contact">
         <span>
-          <IconButton iconName="mail" />
+          <IconButton name="Contact" iconName="mail" />
         </span>
       </Link>
 
