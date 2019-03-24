@@ -21,7 +21,7 @@ const styles = css`
   span {
     align-self: center;
     transform: scaleX(2);
-    color: ${colors.lightGrey};
+    color: ${colors.grey};
     font-size: 16px;
     line-height: 20px;
     margin-top: -5px;
