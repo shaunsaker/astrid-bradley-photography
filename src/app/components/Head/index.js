@@ -11,17 +11,29 @@ const primaryColor = colors.black;
 const defaultTitle = SEO.title;
 const defaultDescription = SEO.description;
 
-const HeadComponent = ({ router }) => {
-  const { pathname } = router;
-  const route = routes.filter((item) => item.href === pathname)[0];
-  const title = `${route.title} | ${name}` || defaultTitle;
-  const description = route.description || defaultDescription;
+const HeadComponent = ({ title, description, router }) => {
+  const { asPath, pathname } = router;
+
+  const route = routes.filter((item) => {
+    if (item.as) {
+      return item.as === asPath;
+    }
+
+    return item.href === pathname;
+  })[0];
+
+  // Either use the passed title OR use the configs title OR fallback to the default
+  const titleToUse = title || (route && `${route.title} | ${name}`) || defaultTitle;
+  const descriptionToUse = description || (route && route.description) || defaultDescription;
 
   return (
     <Head>
       {/* Title and description */}
-      <title key="title">{title}</title>
-      <meta key="description" name="Description" content={description} />
+      <title key="title">{titleToUse}</title>
+
+      <meta key="description" name="Description" content={descriptionToUse} />
+
+      <meta key="keywords" name="keywords" content={SEO.keywords} />
 
       {/* Responsiveness */}
       <meta
@@ -73,8 +85,8 @@ const HeadComponent = ({ router }) => {
       {/* Open graph */}
       <meta key="og:url" property="og:url" content={SEO.openGraph.url} />
       <meta key="og:type" property="og:type" content={SEO.openGraph.type} />
-      <meta key="og:title" property="og:title" content={title} />
-      <meta key="og:description" property="og:description" content={description} />
+      <meta key="og:title" property="og:title" content={titleToUse} />
+      <meta key="og:description" property="og:description" content={descriptionToUse} />
       <meta key="og:image" property="og:image" content={SEO.openGraph.image} />
       <meta key="og:image:width" property="og:image:width" content={SEO.openGraph.imageWidth} />
       <meta key="og:image:height" property="og:image:height" content={SEO.openGraph.imageHeight} />
@@ -84,6 +96,8 @@ const HeadComponent = ({ router }) => {
 };
 
 HeadComponent.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
   router: PropTypes.shape({
     pathname: PropTypes.string,
   }),

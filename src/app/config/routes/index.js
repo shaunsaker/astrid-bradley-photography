@@ -26,6 +26,7 @@ categories.forEach((category) => {
 routes.push(
   {
     title: 'Photo Queue',
+    description: 'View timeline & editing queue',
     href: '/photo-queue',
     prefetch: false,
     isAdmin: false,
@@ -33,6 +34,8 @@ routes.push(
   },
   {
     title: 'Contact',
+    description:
+      'Contact Wedding & Lifestyle photographer, Astrid Bradley, based in Cape Town, South Africa',
     href: '/contact',
     prefetch: false,
     isAdmin: false,
@@ -44,34 +47,6 @@ routes.push(
     prefetch: false,
     isAdmin: true,
     isNav: true,
-  },
-  {
-    title: 'Admin',
-    href: '/admin/login',
-    prefetch: false,
-    isAdmin: false,
-    isNav: false,
-  },
-  {
-    title: 'Add a Shoot',
-    href: '/admin/shoots/add',
-    prefetch: false,
-    isAdmin: true,
-    isNav: false,
-  },
-  {
-    title: 'Update a Shoot',
-    href: '/admin/shoots/update',
-    prefetch: false,
-    isAdmin: true,
-    isNav: false,
-  },
-  {
-    title: 'Manage Photo Queue',
-    href: '/admin/shoots/photo-queue',
-    prefetch: false,
-    isAdmin: true,
-    isNav: false,
   },
 );
 

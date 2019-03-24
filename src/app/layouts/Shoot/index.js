@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
+import { business } from '../../config';
+
 import Layout from '../../components/Layout';
 import ShootSection from './ShootSection';
 import LoadingSection from '../../components/LoadingSection';
@@ -11,11 +13,18 @@ import ContactButton from '../../components/ContactButton';
 const Shoot = ({ router, shoots }) => {
   const shootID = router.query.id;
   const shoot = shoots.filter((item) => item.id === shootID)[0];
-  const name = shoot ? shoot.name : null;
-  const shootComponent = shoot ? <ShootSection shoot={shoot} /> : <LoadingSection />;
+  let title;
+  let description;
+  let shootComponent = <LoadingSection />;
+
+  if (shoot) {
+    title = `${shoot.name} | ${business.name}`;
+    description = `${shoot.name} | ${shoot.location} | ${shoot.date}`;
+    shootComponent = <ShootSection shoot={shoot} />;
+  }
 
   return (
-    <Layout title={name}>
+    <Layout title={title} description={description}>
       {shootComponent}
 
       <ContactButton />
