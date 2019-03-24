@@ -2,7 +2,7 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 
 import { rhythm } from '../../../static/styles/styleConstants';
 
-const IMAGE_SIZE = 132;
+const IMAGE_SIZE = 126;
 
 const styles = css`
   .item-container {
