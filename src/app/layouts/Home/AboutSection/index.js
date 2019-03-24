@@ -13,14 +13,14 @@ const AboutSection = () => {
 
       <div className="row xs-wrap">
         <div className="image-container">
-          <img src="/static/images/astrid-bradley.jpg" alt="Astrid Bradley" />
+          <img src="/static/images/astrid-bradley.jpg" alt="Astrid Bradley" className="image" />
         </div>
 
         <div className="spacer-hz hidden-xs-down" />
 
         <div className="spacer-vt hidden-xs-up" />
 
-        <div>
+        <div className="text-container">
           <ParagraphText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque eros ac
             sapien interdum laoreet. Nulla mauris magna, tincidunt sed efficitur ut, finibus vel
