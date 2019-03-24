@@ -6,7 +6,7 @@ import styles from './styles';
 const ParagraphText = ({ children, className, white, style }) => {
   return (
     <Fragment>
-      <p className={`${className} ${white && 'white'}`} style={style}>
+      <p className={`${className} ${white ? 'white' : ''}`} style={style}>
         {children}
       </p>
 

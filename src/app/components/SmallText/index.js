@@ -6,7 +6,7 @@ import styles from './styles';
 const SmallText = ({ children, white }) => {
   return (
     <Fragment>
-      <small className={white && 'white'}>{children}</small>
+      <small className={white ? 'white' : ''}>{children}</small>
 
       <style jsx>{styles}</style>
     </Fragment>

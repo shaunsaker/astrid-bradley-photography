@@ -61,7 +61,7 @@ export class Mobile extends React.Component {
     const menuComponent = showMenu && <Menu handleClose={this.toggleMenu} />;
 
     return (
-      <div className={`container hidden-md-up ${hasShadow && 'shadow-lg'}`}>
+      <div className={`container hidden-md-up ${hasShadow ? 'shadow-lg' : ''}`}>
         <div className="buttonContainer">
           <button type="button" onClick={this.toggleMenu}>
             <Icon name="menu" />

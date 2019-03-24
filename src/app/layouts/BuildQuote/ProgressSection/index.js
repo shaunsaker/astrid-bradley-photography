@@ -21,7 +21,7 @@ const ProgressSection = ({ items, itemIndex, handleProgressItemClick }) => {
               type="button"
               onClick={() => handleProgressItemClick(index)}
               disabled={disabled}
-              className={`progress-item-container ${disabled && 'opacity'}`}
+              className={`progress-item-container ${disabled ? 'opacity' : ''}`}
             >
               <ProgressItem number={number} text={text} isChecked={isChecked} />
             </button>

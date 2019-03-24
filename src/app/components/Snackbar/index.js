@@ -102,7 +102,7 @@ export default class Snackbar extends React.Component {
     );
 
     return (
-      <div className={`wrapper shadow-lg animate-in ${shouldAnimateOut && 'animate-out'}`}>
+      <div className={`wrapper shadow-lg animate-in ${shouldAnimateOut ? 'animate-out' : ''}`}>
         <div className="container row">
           {iconComponent}
 
