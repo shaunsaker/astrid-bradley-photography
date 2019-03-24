@@ -59,6 +59,8 @@ export class TheApp extends App {
             <style jsx global>
               {globalStyles}
             </style>
+
+            <noscript>Your browser does not support JavaScript!</noscript>
           </PersistGate>
         </Provider>
       </Container>
