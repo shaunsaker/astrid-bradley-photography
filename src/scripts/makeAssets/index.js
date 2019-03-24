@@ -11,7 +11,7 @@ const pathsObj = getPathsObject();
 // ROBOTS.txt
 const robotsTxt = `User-agent: *
 Sitemap: ${app.url}/sitemap.xml
-Disallow:`;
+Disallow: /admin/*`;
 
 fs.writeFileSync('src/public/robots.txt', robotsTxt);
 
