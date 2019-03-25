@@ -9,7 +9,9 @@ import Links from '../Links';
 const Desktop = () => {
   return (
     <div className="hidden-md-down">
-      <Logo />
+      <div className="logo-container">
+        <Logo />
+      </div>
 
       <ul className="row">
         <Links />

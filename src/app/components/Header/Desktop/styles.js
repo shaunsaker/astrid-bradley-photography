@@ -3,6 +3,10 @@ import css from 'styled-jsx/css'; // eslint-disable-line
 import { rhythm } from '../../../static/styles/styleConstants';
 
 const styles = css`
+  .logo-container {
+    padding: 0 ${rhythm.hz}px;
+  }
+
   ul {
     justify-content: space-between;
     margin-top: ${rhythm.vt * 4}px;
