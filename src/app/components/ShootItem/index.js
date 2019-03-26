@@ -35,6 +35,9 @@ const ShootItem = ({ shoot, secondary, admin }) => {
   const href = admin ? `/admin/shoots/edit?id=${id}` : photos ? `/shoot?id=${id}` : null; // TODO: As route
   const action = href ? { nextLink: { href } } : undefined;
 
+  const isCompleted = download_url;
+  const deliveryText = !isCompleted && `(Est. delivery: ${estimatedDeliveryDate})`;
+
   return (
     <Card action={action} secondary={secondary}>
       <div className="container row">
@@ -46,7 +49,7 @@ const ShootItem = ({ shoot, secondary, admin }) => {
           <div className="spacer-vt" />
 
           <SmallText className="text">
-            {prettyDate} (Est. delivery: {estimatedDeliveryDate})
+            {prettyDate} {deliveryText}
           </SmallText>
         </div>
 
