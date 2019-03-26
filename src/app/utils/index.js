@@ -1,6 +1,7 @@
 import cleanObject from './cleanObject';
 import cloneObject from './cloneObject';
 import createUID from './createUID';
+import firstCharToUpperCase from './firstCharToUpperCase';
 import getBlobURL from './getBlobURL';
 import getElapsedDays from './getElapsedDays';
 import getElementRect from './getElementRect';
@@ -15,6 +16,7 @@ const utils = {
   cleanObject,
   cloneObject,
   createUID,
+  firstCharToUpperCase,
   getBlobURL,
   getElapsedDays,
   getElementRect,
@@ -30,6 +32,7 @@ export {
   cleanObject,
   cloneObject,
   createUID,
+  firstCharToUpperCase,
   getBlobURL,
   getElapsedDays,
   getElementRect,

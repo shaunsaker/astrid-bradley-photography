@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
-import { sortArrayOfObjectsByKey } from '../../utils';
+import { firstCharToUpperCase, sortArrayOfObjectsByKey } from '../../utils';
 import { categories } from '../../config';
 
 import Layout from '../../components/Layout';
@@ -13,7 +13,7 @@ import ContactButton from '../../components/ContactButton';
 
 const Category = ({ router, shoots }) => {
   const categoryID = router.query.id;
-  const title = categoryID.replace('-', ' '); // FIXME: Title could come from db categories collection (overkill for now)
+  const title = firstCharToUpperCase(categoryID.replace('-', ' ')); // FIXME: Title could come from db categories collection (overkill for now)
   const { description } = categories.filter((item) => item.id === categoryID)[0];
 
   // Filter on category_id

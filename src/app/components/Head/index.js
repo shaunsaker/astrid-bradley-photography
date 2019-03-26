@@ -23,7 +23,10 @@ const HeadComponent = ({ title, description, router }) => {
   })[0];
 
   // Either use the passed title OR use the configs title OR fallback to the default
-  const titleToUse = title || (route && `${route.title} | ${name}`) || defaultTitle;
+  const titleToUse =
+    (title && `${title} | ${business.name}`) ||
+    (route && `${route.title} | ${name}`) ||
+    defaultTitle;
   const descriptionToUse = description || (route && route.description) || defaultDescription;
 
   return (

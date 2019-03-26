@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
-import { business } from '../../config';
-
 import Layout from '../../components/Layout';
 import ShootSection from './ShootSection';
 import LoadingSection from '../../components/LoadingSection';
@@ -18,7 +16,7 @@ const Shoot = ({ router, shoots }) => {
   let shootComponent = <LoadingSection />;
 
   if (shoot) {
-    title = `${shoot.name} | ${business.name}`;
+    title = shoot.name;
     description = `${shoot.name} on the ${shoot.date} at ${shoot.location}`;
     shootComponent = <ShootSection shoot={shoot} />;
   }
