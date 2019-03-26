@@ -46,17 +46,10 @@ class Admin extends React.Component {
   }
 
   render() {
-    const firstSpringboard = SPRINGBOARDS[0];
-    const otherSpringboards = SPRINGBOARDS.slice(1, 3);
-
     return (
       <Layout title="Admin Dashboard">
-        <section className="flex row">
-          <Springboard {...firstSpringboard} />
-        </section>
-
-        <Grid size={2}>
-          {otherSpringboards.map((springboard) => {
+        <Grid size={3}>
+          {SPRINGBOARDS.map((springboard) => {
             const { text } = springboard;
 
             return <Springboard key={text} {...springboard} />;
