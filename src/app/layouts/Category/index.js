@@ -48,7 +48,7 @@ const Category = ({ router, shoots }) => {
     };
   });
 
-  const springboardsComponent = shoots ? (
+  const springboardsComponent = shoots.length ? (
     <SpringboardsSection springboards={springboards} />
   ) : (
     <LoadingSection />
