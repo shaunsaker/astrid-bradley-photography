@@ -7,6 +7,7 @@ import { sortArrayOfObjectsByKey } from '../../utils';
 import styles from './styles';
 
 import Layout from '../../components/Layout';
+import LoadingSection from '../../components/LoadingSection';
 import HeadingText from '../../components/HeadingText';
 import ShootItem from '../../components/ShootItem';
 import ContactButton from '../../components/ContactButton';
@@ -37,8 +38,10 @@ const PhotoQueue = ({ shoots }) => {
     </section>
   );
 
-  return (
-    <Layout title="Photo Queue">
+  const photoQueueComponent = !shoots.length ? (
+    <LoadingSection />
+  ) : (
+    <Fragment>
       {inProgressSection}
 
       <section>
@@ -76,6 +79,12 @@ const PhotoQueue = ({ shoots }) => {
           );
         })}
       </section>
+    </Fragment>
+  );
+
+  return (
+    <Layout title="Photo Queue">
+      {photoQueueComponent}
 
       <ContactButton />
 
