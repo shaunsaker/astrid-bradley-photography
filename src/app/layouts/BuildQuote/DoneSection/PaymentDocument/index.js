@@ -14,7 +14,7 @@ class PaymentDocument extends React.Component {
   }
 
   renderSection({ title, rows }) {
-    const titleComponent = title && <Text style={styles.headingText}>{title}</Text>;
+    const titleComponent = title ? <Text style={styles.headingText}>{title}</Text> : null;
 
     return (
       <View style={styles.column}>
@@ -64,9 +64,9 @@ class PaymentDocument extends React.Component {
           </View>
 
           {sections.map((section) => {
-            const titleComponent = section.title && (
+            const titleComponent = section.title ? (
               <Text style={styles.headingText}>{section.title}</Text>
-            );
+            ) : null;
 
             return (
               <View key={section.key} style={[styles.section, { flex: section.flex || null }]}>
