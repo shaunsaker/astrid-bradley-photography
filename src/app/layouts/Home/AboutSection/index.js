@@ -11,7 +11,7 @@ const AboutSection = () => {
     <section>
       <TitleText>About Me</TitleText>
 
-      <div className="row xs-wrap">
+      <div className="container row xs-wrap">
         <div className="image-container">
           <img src="/static/images/astrid-bradley.jpg" alt="Astrid Bradley" className="image" />
         </div>
