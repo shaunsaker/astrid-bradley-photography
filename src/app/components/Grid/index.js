@@ -26,7 +26,7 @@ const Grid = ({ size, children }) => {
         {`
           @media (min-width: 480px) {
             .item-container {
-              width: calc(${100 / size}% - ${((size - 1) * rhythm.vt) / size}px);
+              width: calc(${100 / size}% - ${((size - 1) * rhythm.vt) / size}px) !important;
               margin-right: ${rhythm.vt}px;
             }
 

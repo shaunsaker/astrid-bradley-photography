@@ -8,6 +8,7 @@ const styles = css`
   }
 
   .item-container {
+    width: 100%;
     margin-bottom: ${rhythm.vt}px;
   }
 `;
