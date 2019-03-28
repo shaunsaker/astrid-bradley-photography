@@ -11,8 +11,7 @@ const styles = css`
   }
 
   img {
-    width: ${IMAGE_SIZE}px;
-    height: ${IMAGE_SIZE}px;
+    max-width: ${IMAGE_SIZE}px;
     border-radius: ${IMAGE_SIZE / 2}px;
   }
 `;
