@@ -85,15 +85,13 @@ class Login extends React.Component {
 
   render() {
     const { isLoading } = this.state;
-    const loadingComponent = isLoading && <LoadingSection />;
-
-    return (
-      <Layout title="Login">
-        <LoginFormSection handleSubmit={this.onSubmit} />
-
-        {loadingComponent}
-      </Layout>
+    const mainComponent = isLoading ? (
+      <LoadingSection />
+    ) : (
+      <LoginFormSection handleSubmit={this.onSubmit} />
     );
+
+    return <Layout title="Login">{mainComponent}</Layout>;
   }
 }
 
