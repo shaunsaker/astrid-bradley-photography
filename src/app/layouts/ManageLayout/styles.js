@@ -16,8 +16,6 @@ const styles = css`
     bottom: 0;
     width: ${sizes.photoHeight}px;
   }
-
-  /* TODO: Responsive styling */
 `;
 
 export default styles;

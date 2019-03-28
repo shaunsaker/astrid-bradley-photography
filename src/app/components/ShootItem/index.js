@@ -32,7 +32,7 @@ const ShootItem = ({ shoot, secondary, admin }) => {
   // THEN go to the relevant edit shoot page
   // ELSE
   // THEN go to the relevant shoot page
-  const href = admin ? `/admin/shoots/edit?id=${id}` : photos ? `/shoot?id=${id}` : null; // TODO: As route
+  const href = admin ? `/admin/shoots/edit?id=${id}` : photos ? `/shoot?id=${id}` : null;
   const action = href ? { nextLink: { href } } : undefined;
 
   const isCompleted = download_url;
