@@ -36,6 +36,8 @@
     "react-ga": "^2.5.7",
     "react-icons": "^3.3.0",
     "react-redux": "^6.0.0",
+    "react-swipeable-views": "^0.13.1",
+    "react-swipeable-views-utils": "^0.13.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",

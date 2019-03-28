@@ -5,21 +5,6 @@ import { colors, rhythm } from '../../static/styles/styleConstants';
 const DOT_SIZE = 10;
 
 const styles = css`
-  .wrapper {
-  }
-
-  .container {
-    scroll-snap-type: x mandatory;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none; /* FIXME: Only works on older Firefox versions */
-  }
-
-  .container::-webkit-scrollbar {
-    display: none;
-  }
-
   .slide {
     width: 100%;
     flex-shrink: 0;

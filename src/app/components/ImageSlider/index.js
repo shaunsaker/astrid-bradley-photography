@@ -1,27 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
 
 import styles from './styles';
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 export default class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
 
-    this.startInterval = this.startInterval.bind(this);
-    this.clearInterval = this.clearInterval.bind(this);
-    this.onInterval = this.onInterval.bind(this);
-    this.onScroll = this.onScroll.bind(this);
-    this.onKeyPressed = this.onKeyPressed.bind(this);
     this.onSetSlideIndex = this.onSetSlideIndex.bind(this);
     this.setSlideIndex = this.setSlideIndex.bind(this);
-    this.scrollToIndex = this.scrollToIndex.bind(this);
-    this.scrollTo = this.scrollTo.bind(this);
-    this.getImageSliderWidth = this.getImageSliderWidth.bind(this);
-
-    this.imageSlider = null;
-    this.interval = null;
-
-    this.timerInterval = 3000;
 
     this.state = {
       slideIndex: 0,
@@ -34,90 +25,8 @@ export default class ImageSlider extends React.Component {
 
   static defaultProps = {};
 
-  componentDidMount() {
-    const imageSlider = document.getElementById('image-slider');
-    this.imageSlider = imageSlider;
-
-    this.imageSlider.addEventListener('scroll', this.onScroll);
-    document.addEventListener('keydown', this.onKeyPressed);
-
-    this.startInterval();
-  }
-
-  componentDidUpdate(prevState) {
-    const { slideIndex } = this.state;
-
-    if (slideIndex !== prevState.slideIndex) {
-      this.scrollToIndex(slideIndex);
-    }
-  }
-
-  componentWillUnmount() {
-    this.imageSlider.removeEventListener('scroll', this.onScroll);
-    document.removeEventListener('keydown', this.onKeyPressed);
-    this.clearInterval();
-  }
-
-  startInterval() {
-    this.interval = setInterval(this.onInterval, this.timerInterval);
-  }
-
-  clearInterval() {
-    clearInterval(this.interval);
-  }
-
-  onInterval() {
-    const { slideIndex } = this.state;
-    const { images } = this.props;
-
-    if (slideIndex === images.length - 1) {
-      // At the end, reset
-      this.setSlideIndex(0);
-    } else {
-      this.setSlideIndex(slideIndex + 1);
-    }
-  }
-
-  onScroll(event) {
-    const imageSliderWidth = this.getImageSliderWidth();
-    const target = event.target || event.srcElement;
-    const scrollX = target.scrollLeft;
-    const slideIndex = scrollX / imageSliderWidth;
-
-    if (slideIndex % 1 === 0) {
-      // Only if it's a whole number
-      this.onSetSlideIndex(slideIndex);
-    }
-  }
-
-  onKeyPressed(event) {
-    const { slideIndex } = this.state;
-    const { images } = this.props;
-    const { keyCode } = event;
-    const isLeftArrow = keyCode === 37;
-    const isRightArrow = keyCode === 39;
-
-    if (isLeftArrow) {
-      if (slideIndex === 0) {
-        // Go backwards
-        this.onSetSlideIndex(images.length - 1);
-      } else {
-        this.onSetSlideIndex(slideIndex - 1);
-      }
-    } else if (isRightArrow) {
-      if (slideIndex === images.length - 1) {
-        // Reset
-        this.onSetSlideIndex(0);
-      } else {
-        this.onSetSlideIndex(slideIndex + 1);
-      }
-    }
-  }
-
   onSetSlideIndex(slideIndex) {
-    this.clearInterval();
     this.setSlideIndex(slideIndex);
-    this.startInterval();
   }
 
   setSlideIndex(slideIndex) {
@@ -126,31 +35,13 @@ export default class ImageSlider extends React.Component {
     });
   }
 
-  scrollToIndex(index) {
-    const imageSliderWidth = this.getImageSliderWidth();
-    const scrollX = imageSliderWidth * index;
-
-    this.scrollTo(scrollX);
-  }
-
-  scrollTo(left) {
-    this.imageSlider.scrollTo({ left, behavior: 'smooth' });
-  }
-
-  getImageSliderWidth() {
-    const imageSlider = document.getElementById('image-slider');
-    const imageSliderWidth = imageSlider.getBoundingClientRect().width;
-
-    return imageSliderWidth;
-  }
-
   render() {
     const { slideIndex } = this.state;
     const { images } = this.props;
 
     return (
       <div className="wrapper">
-        <div id="image-slider" className="container row">
+        <AutoPlaySwipeableViews index={slideIndex} onChangeIndex={this.onSetSlideIndex}>
           {images.map((image) => {
             const { src, alt } = image;
 
@@ -160,7 +51,7 @@ export default class ImageSlider extends React.Component {
               </div>
             );
           })}
-        </div>
+        </AutoPlaySwipeableViews>
 
         <div className="dots-container row flex-center">
           {images.map((image, index) => {
