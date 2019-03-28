@@ -55,9 +55,6 @@ class BuildQuote extends React.Component {
     if (slideIndex === targetSlideIndex) {
       this.setValue(value);
       this.setSlideIndex(slideIndex + 1);
-
-      // Scroll to the top of the window
-      window.scrollTo(0, 0);
     }
   }
 
