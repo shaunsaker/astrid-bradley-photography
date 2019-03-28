@@ -5,7 +5,6 @@ import FEATURES from './features';
 
 import TitleText from '../../../components/TitleText';
 import Grid from '../../../components/Grid';
-import Card from '../../../components/Card';
 
 const FeaturedOnSection = () => {
   return (
@@ -18,14 +17,15 @@ const FeaturedOnSection = () => {
           const { src, alt } = image;
 
           return (
-            <Card
+            <a
               key={src}
-              shadow
-              className="item-container"
-              action={{ link: { href, target: '_blank' } }}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="item-container flex flex-center"
             >
               <img src={src} alt={alt} />
-            </Card>
+            </a>
           );
         })}
       </Grid>
