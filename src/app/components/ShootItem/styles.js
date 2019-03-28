@@ -4,6 +4,7 @@ const styles = css`
   .container {
     justify-content: space-between;
     align-items: flex-end;
+    align-self: stretch;
   }
 
   .text-container {
