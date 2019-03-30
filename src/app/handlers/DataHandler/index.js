@@ -70,7 +70,7 @@ export class DataHandler extends React.Component {
       this.setHaveSyncedData(true);
       this.syncPackages();
       this.syncProducts();
-      this.syncShoots();
+      // this.syncShoots();
     }
   }
 
