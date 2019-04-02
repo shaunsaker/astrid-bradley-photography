@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // import { categories } from '../../config';
 import SLIDES from './slides';
@@ -80,6 +80,7 @@ class BuildQuote extends React.Component {
 
   render() {
     const { slideIndex, values } = this.state;
+    const { packages, shoots } = this.props;
     const category = values[0];
     const packageItem = values[1];
     const additionalProducts = values[2];
@@ -139,11 +140,15 @@ class BuildQuote extends React.Component {
         <div className="slider-container">
           <Slider slideIndex={slideIndex}>
             <div key="SelectShootTypeSection" className="slide-container">
-              <SelectShootTypeSection handleSelect={(value) => this.onSelectValue(value, 0)} />
+              <SelectShootTypeSection
+                packages={packages}
+                handleSelect={(value) => this.onSelectValue(value, 0)}
+              />
             </div>
 
             <div key="SelectPackageSection" className="slide-container">
               <SelectPackageSection
+                packages={packages}
                 category={category}
                 handleSelect={(value) => this.onSelectValue(value, 1)}
               />
@@ -154,7 +159,10 @@ class BuildQuote extends React.Component {
             </div>
 
             <div key="CheckAvailabilitySection" className="slide-container">
-              <CheckAvailabilitySection handleSubmit={(value) => this.onSelectValue(value, 3)} />
+              <CheckAvailabilitySection
+                shoots={shoots}
+                handleSubmit={(value) => this.onSelectValue(value, 3)}
+              />
             </div>
 
             <div key="EnterInfoSection" className="slide-container">
@@ -175,15 +183,11 @@ class BuildQuote extends React.Component {
   }
 }
 
-BuildQuote.propTypes = {};
+BuildQuote.propTypes = {
+  // getInitialProps
+  packages: PropTypes.arrayOf(PropTypes.shape({})),
+  shoots: PropTypes.arrayOf(PropTypes.shape({})),
+};
 BuildQuote.defaultProps = {};
 
-const mapStateToProps = (state) => {
-  const { packages } = state;
-
-  return {
-    packages,
-  };
-};
-
-export default connect(mapStateToProps)(BuildQuote);
+export default BuildQuote;

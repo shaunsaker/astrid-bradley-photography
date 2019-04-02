@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { sortArrayOfObjectsByKey } from '../../../utils';
 import styles from './styles';
@@ -43,24 +42,15 @@ const SelectPackageSection = ({ packages, category, handleSelect }) => {
 };
 
 SelectPackageSection.propTypes = {
-  // connect
+  // from parent
   packages: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
     }),
   ),
-  // from parent
   category: PropTypes.shape({ id: PropTypes.string }),
   handleSelect: PropTypes.func,
 };
 SelectPackageSection.defaultProps = {};
 
-const mapStateToProps = (state) => {
-  const { packages } = state;
-
-  return {
-    packages,
-  };
-};
-
-export default connect(mapStateToProps)(SelectPackageSection);
+export default SelectPackageSection;

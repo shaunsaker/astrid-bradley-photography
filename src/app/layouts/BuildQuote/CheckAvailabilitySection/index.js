@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { colors } from '../../../static/styles/styleConstants';
 import styles from './styles';
@@ -22,9 +21,8 @@ export class CheckAvailabilitySection extends React.Component {
   }
 
   static propTypes = {
-    // connect
+    // from parent
     shoots: PropTypes.arrayOf(PropTypes.shape({ date: PropTypes.string })),
-    // parent
     handleSubmit: PropTypes.func,
   };
 
@@ -111,12 +109,4 @@ export class CheckAvailabilitySection extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { shoots } = state;
-
-  return {
-    shoots,
-  };
-};
-
-export default connect(mapStateToProps)(CheckAvailabilitySection);
+export default CheckAvailabilitySection;
