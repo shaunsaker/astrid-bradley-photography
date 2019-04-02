@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { sortArrayOfObjectsByKey } from '../../utils';
 
@@ -94,16 +93,9 @@ const PhotoQueue = ({ shoots }) => {
 };
 
 PhotoQueue.propTypes = {
+  // getInitialProps
   shoots: PropTypes.arrayOf(PropTypes.shape({})),
 };
 PhotoQueue.defaultProps = {};
 
-const mapStateToProps = (state) => {
-  const { shoots } = state;
-
-  return {
-    shoots,
-  };
-};
-
-export default connect(mapStateToProps)(PhotoQueue);
+export default PhotoQueue;
