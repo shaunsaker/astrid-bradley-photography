@@ -14,3 +14,7 @@ dist
 
 # firebase
 firebase-debug.log
+
+# Project
+./src/public/robots.txt
+./src/public/sitemap.xml
