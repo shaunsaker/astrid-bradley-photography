@@ -10,10 +10,11 @@
     "prebuild": "yarn run clean",
     "build": "next build src/app",
     "export": "next export src/app --outdir dist",
-    "postexport": "yarn run makeassets",
-    "makeassets": "node ./src/scripts/makeAssets",
-    "postmakeassets": "yarn run copyassets",
-    "copyassets": "cp -a ./src/public/. ./dist/",
+    "postexport": "yarn run kill-child-processes && yarn run make-assets",
+    "kill-child-processes": "node ./src/scripts/killChildProcesses",
+    "make-assets": "node ./src/scripts/makeAssets",
+    "postmake-assets": "yarn run copy-assets",
+    "copy-assets": "cp -a ./src/public/. ./dist/",
     "deploy-funcs": "yarn firebase deploy --only functions"
   },
   "author": "Shaun Saker [hello.clevelup@gmail.com]",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "child_process": "^1.0.2",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
