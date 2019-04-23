@@ -10,11 +10,11 @@
     "prebuild": "yarn run clean",
     "build": "next build src/app",
     "export": "next export src/app --outdir dist",
-    "postexport": "yarn run kill-child-processes && yarn run make-assets",
-    "kill-child-processes": "node ./src/scripts/killChildProcesses",
+    "postexport": "yarn run make-assets && yarn run kill-child-processes",
     "make-assets": "node ./src/scripts/makeAssets",
     "postmake-assets": "yarn run copy-assets",
     "copy-assets": "cp -a ./src/public/. ./dist/",
+    "kill-child-processes": "node ./src/scripts/killChildProcesses",
     "deploy-funcs": "yarn firebase deploy --only functions"
   },
   "author": "Shaun Saker [hello.clevelup@gmail.com]",
