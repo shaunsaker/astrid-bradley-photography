@@ -9,18 +9,32 @@ const Page = (props) => {
   return <Category {...props} />;
 };
 
-Page.getInitialProps = async ({ query }) => {
+Page.getInitialProps = async ({ isServer, query, store }) => {
   const { id } = query;
 
-  await signInAnonymously();
+  /*
+   * If we're on the server
+   * Get the shoots from firebase
+   * Else just get the shoots from the store
+   */
+  if (isServer) {
+    await signInAnonymously();
 
-  // Get all of the shoots
-  const { collection } = await getCollection({ url: 'shoots' });
+    // Get all of the shoots
+    const { collection } = await getCollection({ url: 'shoots' });
 
-  return {
-    shoots: collection,
-    categoryID: id,
-  };
+    return {
+      shoots: collection,
+      categoryID: id,
+    };
+  } else {
+    const { shoots } = store.getState();
+
+    return {
+      shoots,
+      categoryID: id,
+    };
+  }
 };
 
 export default Page;
