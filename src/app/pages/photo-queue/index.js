@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { signInAnonymously } from '../../services/auth';
-import { getCollection } from '../../services/firestore';
+import shoots from '../../../data/shoots.json';
 
 import PhotoQueue from '../../layouts/PhotoQueue';
 
@@ -16,19 +15,12 @@ Page.getInitialProps = async ({ isServer, store }) => {
    * Else just get the data from the store
    */
   if (isServer) {
-    await signInAnonymously();
-
-    // Get all of the shoots
-    const { collection } = await getCollection({ url: 'shoots' });
-
-    return {
-      shoots: collection,
-    };
-  } else {
-    const { shoots } = store.getState();
-
     return {
       shoots,
+    };
+  } else {
+    return {
+      shoots: store.getState().shoots,
     };
   }
 };

@@ -1,9 +1,8 @@
-const getShoots = require('../getShoots');
+const data = require('../../data/shoots.json');
 const addDynamicPages = require('../addDynamicPages');
 
 const addShootPages = async (pathMap) => {
-  const shoots = await getShoots();
-  const newPathMap = addDynamicPages({ page: '/shoot', data: shoots, pathMap });
+  const newPathMap = addDynamicPages({ page: '/shoot', data, pathMap });
 
   return newPathMap;
 };

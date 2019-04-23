@@ -9,6 +9,8 @@
     "clean": "rimraf src/app/.next dist",
     "prebuild": "yarn run clean",
     "build": "next build src/app",
+    "preexport": "yarn run get-data",
+    "get-data": "node ./src/scripts/getData",
     "export": "next export src/app --outdir dist",
     "postexport": "yarn run make-assets",
     "make-assets": "node ./src/scripts/makeAssets",

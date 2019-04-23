@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { signInAnonymously } from '../../services/auth';
-import { getCollection } from '../../services/firestore';
+import shoots from '../../../data/shoots.json';
 
 import Category from '../../layouts/Category';
 
@@ -14,24 +13,17 @@ Page.getInitialProps = async ({ isServer, query, store }) => {
 
   /*
    * If we're on the server
-   * Get the data from firebase
+   * Get the data locally
    * Else just get the data from the store
    */
   if (isServer) {
-    await signInAnonymously();
-
-    // Get all of the shoots
-    const { collection } = await getCollection({ url: 'shoots' });
-
     return {
-      shoots: collection,
+      shoots,
       categoryID: id,
     };
   } else {
-    const { shoots } = store.getState();
-
     return {
-      shoots,
+      shoots: store.getState().shoots,
       categoryID: id,
     };
   }
