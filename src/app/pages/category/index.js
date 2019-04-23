@@ -14,8 +14,8 @@ Page.getInitialProps = async ({ isServer, query, store }) => {
 
   /*
    * If we're on the server
-   * Get the shoots from firebase
-   * Else just get the shoots from the store
+   * Get the data from firebase
+   * Else just get the data from the store
    */
   if (isServer) {
     await signInAnonymously();
