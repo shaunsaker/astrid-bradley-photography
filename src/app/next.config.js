@@ -14,8 +14,8 @@ module.exports = withPlugins([
   {
     exportPathMap: (defaultPathMap) => {
       let pathMap = defaultPathMap;
-      pathMap = addCategoryPages(pathMap);
-      pathMap = addShootPages(pathMap);
+      // pathMap = addCategoryPages(pathMap);
+      // pathMap = addShootPages(pathMap);
 
       return pathMap;
     },
