@@ -21,7 +21,7 @@ Page.getInitialProps = async ({ isServer, query, store }) => {
 
     return { shoot };
   } else {
-    const shootsArray = store.getState().shoot;
+    const shootsArray = store.getState().shoots;
     const shoot = shootsArray.filter((item) => item.id === id)[0];
 
     return {
