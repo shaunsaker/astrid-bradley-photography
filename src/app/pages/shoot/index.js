@@ -1,6 +1,6 @@
 import React from 'react';
 
-import shoots from '../../../data/shoots.json';
+import shootsJSON from '../../../data/shoots.json';
 
 import Shoot from '../../layouts/Shoot';
 
@@ -10,19 +10,19 @@ const Page = (props) => {
 
 Page.getInitialProps = async ({ isServer, query, store }) => {
   const { id } = query;
+  const shootsStore = store.getState().shoots;
 
   /*
-   * If we're on the server
-   * Get the data from firebase
+   * If we're on the server OR we don't have shoots in the store
+   * Get the data locally
    * Else just get the data from the store
    */
-  if (isServer) {
-    const shoot = shoots.filter((item) => item.id === id)[0];
+  if (isServer || !shootsStore.length) {
+    const shoot = shootsJSON.filter((item) => item.id === id)[0];
 
     return { shoot };
   } else {
-    const shootsArray = store.getState().shoots;
-    const shoot = shootsArray.filter((item) => item.id === id)[0];
+    const shoot = shootsStore.filter((item) => item.id === id)[0];
 
     return {
       shoot,

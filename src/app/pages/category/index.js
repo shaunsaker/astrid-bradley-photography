@@ -1,6 +1,6 @@
 import React from 'react';
 
-import shoots from '../../../data/shoots.json';
+import shootsJSON from '../../../data/shoots.json';
 
 import Category from '../../layouts/Category';
 
@@ -10,20 +10,21 @@ const Page = (props) => {
 
 Page.getInitialProps = async ({ isServer, query, store }) => {
   const { id } = query;
+  const shootsStore = store.getState().shoots;
 
   /*
-   * If we're on the server
+   * If we're on the server OR we don't have shoots in the store
    * Get the data locally
    * Else just get the data from the store
    */
-  if (isServer) {
+  if (isServer || !shootsStore.length) {
     return {
-      shoots,
+      shoots: shootsJSON,
       categoryID: id,
     };
   } else {
     return {
-      shoots: store.getState().shoots,
+      shoots: shootsStore,
       categoryID: id,
     };
   }

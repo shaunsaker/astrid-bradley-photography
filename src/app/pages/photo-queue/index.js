@@ -1,6 +1,6 @@
 import React from 'react';
 
-import shoots from '../../../data/shoots.json';
+import shootsJSON from '../../../data/shoots.json';
 
 import PhotoQueue from '../../layouts/PhotoQueue';
 
@@ -9,18 +9,20 @@ const Page = (props) => {
 };
 
 Page.getInitialProps = async ({ isServer, store }) => {
+  const shootsStore = store.getState().shoots;
+
   /*
-   * If we're on the server
-   * Get the data from firebase
+   * If we're on the server OR we don't have shoots in the store
+   * Get the data locally
    * Else just get the data from the store
    */
-  if (isServer) {
+  if (isServer || !shootsStore.length) {
     return {
-      shoots,
+      shoots: shootsJSON,
     };
   } else {
     return {
-      shoots: store.getState().shoots,
+      shoots: shootsStore,
     };
   }
 };

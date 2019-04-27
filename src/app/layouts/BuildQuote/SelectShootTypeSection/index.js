@@ -53,7 +53,7 @@ const SelectShootTypeSection = ({ packages, handleSelect }) => {
 };
 
 SelectShootTypeSection.propTypes = {
-  packages: PropTypes.arrayOf(PropTypes.string),
+  packages: PropTypes.arrayOf(PropTypes.shape({ category_id: PropTypes.string })),
   handleSelect: PropTypes.func,
 };
 SelectShootTypeSection.defaultProps = {};
