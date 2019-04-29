@@ -23,7 +23,7 @@ Shoot.propTypes = {
   // getInitialProps
   shoot: PropTypes.shape({
     name: PropTypes.string,
-    date: PropTypes.number,
+    date: PropTypes.string,
     location: PropTypes.string,
   }),
 };
