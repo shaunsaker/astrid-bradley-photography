@@ -129,4 +129,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withAuth(withSaveShoot(connect(mapStateToProps)(ManageLayout)));
+export default withRouter(withAuth(withSaveShoot(connect(mapStateToProps)(ManageLayout))));
