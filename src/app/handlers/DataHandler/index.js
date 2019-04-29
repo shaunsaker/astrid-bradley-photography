@@ -23,6 +23,7 @@ export class DataHandler extends React.Component {
       pathname: PropTypes.string,
     }),
     authenticated: PropTypes.bool,
+    isAnonymous: PropTypes.bool,
     dispatch: PropTypes.func,
   };
 
@@ -35,10 +36,17 @@ export class DataHandler extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    // If the user has just become authenticated
     const { authenticated } = this.props;
 
-    // If the user has just become authenticated
     if (authenticated && !prevProps.authenticated) {
+      this.handleSyncData();
+    }
+
+    // If the user just become not anonymous (lol)
+    const { isAnonymous } = this.props;
+
+    if (!isAnonymous && prevProps.isAnonymous) {
       this.handleSyncData();
     }
   }
@@ -49,23 +57,24 @@ export class DataHandler extends React.Component {
 
   handleSyncData() {
     const { haveSyncedData } = this.state;
-    const { router, authenticated } = this.props;
+    const { router, authenticated, isAnonymous } = this.props;
     const { pathname } = router;
 
-    // If the user is authenticated
+    // If the user is authenticated (if admin route, must not be anonymous)
     // If we have not synced shoots AND
     // If the user navigated to the category OR
     // If the user navigated to the shoot page THEN
     // Sync all of the shoots
     // FIXME: This should come from routes config
+
     if (
-      authenticated &&
-      !haveSyncedData &&
-      (pathname.indexOf('admin') > -1 ||
-        pathname.indexOf('category') > -1 ||
-        pathname.indexOf('shoot') > -1 ||
-        pathname.indexOf('build-quote') > -1 ||
-        pathname.indexOf('photo-queue') > -1)
+      (authenticated && !isAnonymous && pathname.indexOf('admin') > -1) ||
+      (authenticated &&
+        !haveSyncedData &&
+        (pathname.indexOf('category') > -1 ||
+          pathname.indexOf('shoot') > -1 ||
+          pathname.indexOf('build-quote') > -1 ||
+          pathname.indexOf('photo-queue') > -1))
     ) {
       this.setHaveSyncedData(true);
       this.syncPackages();
@@ -128,9 +137,11 @@ export class DataHandler extends React.Component {
 function mapStateToProps(state) {
   const { user } = state;
   const authenticated = user.uid && true;
+  const { isAnonymous } = user;
 
   return {
     authenticated,
+    isAnonymous,
   };
 }
 
