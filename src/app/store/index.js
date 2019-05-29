@@ -17,6 +17,7 @@ const persistConfig = {
   key: 'root',
   storage,
   blacklist: ['appState'],
+  timeout: 67,
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
 
