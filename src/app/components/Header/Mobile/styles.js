@@ -11,11 +11,12 @@ const styles = css`
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     background-color: ${colors.white};
     z-index: 2;
+    display: flex;
+    flex-direction: row;
   }
 
-  .buttonContainer {
-    align-items: flex-start;
-    margin-bottom: ${rhythm.vt}px;
+  .logo-container {
+    margin-right: ${rhythm.hz}px;
   }
 `;
 

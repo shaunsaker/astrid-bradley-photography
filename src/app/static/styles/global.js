@@ -197,7 +197,7 @@ iframe {
 
 @media (min-width: 768px) {
   .hidden-md-up {
-      display: none;
+      display: none !important;
   }
 }
 `;

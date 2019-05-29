@@ -13,7 +13,7 @@ const styles = css`
     width: 100%;
     height: 100%;
     padding: 0px ${rhythm.hz}px 0;
-    padding-top: ${105 + rhythm.vt}px; /* header height + spacing */
+    padding-top: ${58 + rhythm.vt}px; /* header height + spacing */
   }
 
   @media (min-width: 544px) {

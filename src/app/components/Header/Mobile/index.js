@@ -62,13 +62,15 @@ export class Mobile extends React.Component {
 
     return (
       <div className={`container hidden-md-up ${hasShadow ? 'shadow-lg' : ''}`}>
+        <div className="logo-container">
+          <Logo />
+        </div>
+
         <div className="buttonContainer">
           <button type="button" onClick={this.toggleMenu}>
             <Icon name="menu" />
           </button>
         </div>
-
-        <Logo />
 
         {menuComponent}
 
