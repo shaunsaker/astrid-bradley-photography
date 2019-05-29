@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BeatLoader } from 'react-spinners';
 
-import styles from './styles';
+import { colors, sizes } from '../../static/styles/styleConstants';
 
 const Spinner = ({ small }) => {
   return (
-    <div className={`container ${small ? 'small' : ''}`}>
-      <style jsx>{styles}</style>
+    <div style={{ transform: 'rotate(90deg)' }}>
+      <BeatLoader
+        size={small ? sizes.spinner.small : sizes.spinner.default}
+        loading
+        color={colors.black}
+      />
     </div>
   );
 };

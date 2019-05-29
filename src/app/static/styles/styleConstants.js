@@ -24,8 +24,8 @@ const sizes = {
     default: 50,
   },
   spinner: {
-    small: 20,
-    default: 40,
+    small: 8,
+    default: 16,
   },
 };
 
