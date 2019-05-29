@@ -14,6 +14,8 @@ export class PageLoadingHandler extends React.Component {
     this.setIsLoading = this.setIsLoading.bind(this);
     this.setSavingSystemMessage = this.setSavingSystemMessage.bind(this);
 
+    this.timer = null;
+
     this.state = {
       isLoading: false,
     };
@@ -48,11 +50,21 @@ export class PageLoadingHandler extends React.Component {
   }
 
   onRouteChangeStart() {
-    this.setIsLoading(true);
+    this.timer = setTimeout(() => this.setIsLoading(true), 2000);
   }
 
   onRouteChangeComplete() {
-    this.setIsLoading(false);
+    /*
+     * If the route has changed before our 2 second delay
+     * Clear the timeout
+     */
+    const { isLoading } = this.state;
+
+    if (!isLoading) {
+      clearTimeout(this.timer);
+    } else {
+      this.setIsLoading(false);
+    }
   }
 
   setIsLoading(isLoading) {
