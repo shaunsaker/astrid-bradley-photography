@@ -5,7 +5,7 @@ const testimonials = [
       alt: 'Huchzeitsguide Blog',
     },
     href:
-      'https://amberandmuse.com/styled-shoots-en/bridesmaids-elegance-shoot-by-astrid-bradley-photography/',
+      'https://www.hochzeitsguide.com/elegante-brautjungfern-inspirationen-von-astrid-bradley-photography/',
   },
   {
     image: {
