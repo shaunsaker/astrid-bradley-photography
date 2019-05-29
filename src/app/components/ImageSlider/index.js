@@ -41,7 +41,11 @@ export default class ImageSlider extends React.Component {
 
     return (
       <div className="wrapper">
-        <AutoPlaySwipeableViews index={slideIndex} onChangeIndex={this.onSetSlideIndex}>
+        <AutoPlaySwipeableViews
+          index={slideIndex}
+          onChangeIndex={this.onSetSlideIndex}
+          springConfig={{ duration: '0.9s', easeFunction: 'ease', delay: '0s' }}
+        >
           {images.map((image) => {
             const { src, alt } = image;
 
