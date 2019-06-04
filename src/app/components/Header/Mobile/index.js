@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { SwipeableDrawer } from '@material-ui/core';
+import Router from 'next/router';
 
 import styles from './styles';
 
@@ -15,6 +15,7 @@ export class Mobile extends React.Component {
 
     this.onOpenMenu = this.onOpenMenu.bind(this);
     this.onCloseMenu = this.onCloseMenu.bind(this);
+    this.onMenuItemClick = this.onMenuItemClick.bind(this);
     this.setShowMenu = this.setShowMenu.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.setHasShadow = this.setHasShadow.bind(this);
@@ -48,6 +49,11 @@ export class Mobile extends React.Component {
 
   onCloseMenu() {
     this.setShowMenu(false);
+  }
+
+  onMenuItemClick(link) {
+    this.setShowMenu(false);
+    Router.push(link.href);
   }
 
   setShowMenu(showMenu) {
@@ -98,11 +104,11 @@ export class Mobile extends React.Component {
             {links.map((link) => {
               return (
                 <li key={link.href}>
-                  <Link href={link.href} prefetch={link.prefetch} as={link.as}>
+                  <button onClick={() => this.onMenuItemClick(link)}>
                     <span className={`nav-link clickable ${link.isActive ? 'active' : ''}`}>
                       {link.title}
                     </span>
-                  </Link>
+                  </button>
                 </li>
               );
             })}
