@@ -79,38 +79,30 @@ class CustomisePackageSection extends React.Component {
   getProducts() {
     const { packageItem, getProduct } = this.props;
 
-    const { products_included, products_available } = packageItem;
-    let products = products_included.map((item) => {
-      const product = getProduct(item);
-
-      return product;
-    });
-
-    products_available.forEach((item) => {
+    /*
+     * Filter out products that aren't available for this package
+     */
+    const { products_available } = packageItem;
+    const productsAvailable = products_available.filter((item) => {
       const id = Object.keys(item)[0];
-      const isAvailable = item[id];
+      const isAvailable = item[id]; // true || false
 
       if (isAvailable) {
-        // Push it to products if its not already present
-        const isProductPresentInProducts = products.filter((product) => product.id === id).length;
-
-        if (!isProductPresentInProducts) {
-          const product = getProduct(item);
-          product.qty = 0;
-
-          products.push(product);
-        }
+        return item;
       }
+
+      return null;
     });
 
-    // Set the minimum
-    products = products.map((product) => {
-      const { qty } = product;
+    /*
+     * Get the product details
+     */
+    const products = productsAvailable.map((item) => {
+      const product = getProduct(item);
+      product.qty = 0;
+      product.minimum = 0;
 
-      return {
-        ...product,
-        minimum: qty,
-      };
+      return product;
     });
 
     return products;
