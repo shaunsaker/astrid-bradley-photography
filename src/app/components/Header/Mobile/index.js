@@ -1,18 +1,21 @@
 import React from 'react';
+import { SwipeableDrawer } from '@material-ui/core';
 
 import styles from './styles';
 
 import Logo from '../../Logo';
 import Icon from '../../Icon';
-import Menu from './Menu';
+import Links from '../Links';
 
 export class Mobile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onOpenMenu = this.onOpenMenu.bind(this);
+    this.onCloseMenu = this.onCloseMenu.bind(this);
+    this.setShowMenu = this.setShowMenu.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.setHasShadow = this.setHasShadow.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
 
     this.state = {
       showMenu: false,
@@ -32,6 +35,20 @@ export class Mobile extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+  onOpenMenu() {
+    this.setShowMenu(true);
+  }
+
+  onCloseMenu() {
+    this.setShowMenu(false);
+  }
+
+  setShowMenu(showMenu) {
+    this.setState({
+      showMenu,
+    });
+  }
+
   handleScroll() {
     const { scrollY } = window;
 
@@ -48,17 +65,8 @@ export class Mobile extends React.Component {
     });
   }
 
-  toggleMenu() {
-    const { showMenu } = this.state;
-
-    this.setState({
-      showMenu: !showMenu,
-    });
-  }
-
   render() {
     const { showMenu, hasShadow } = this.state;
-    const menuComponent = showMenu && <Menu handleClose={this.toggleMenu} />;
 
     return (
       <div className={`container hidden-md-up ${hasShadow ? 'shadow-lg' : ''}`}>
@@ -67,12 +75,14 @@ export class Mobile extends React.Component {
         </div>
 
         <div className="buttonContainer">
-          <button type="button" onClick={this.toggleMenu}>
+          <button type="button" onClick={this.onOpenMenu}>
             <Icon name="menu" />
           </button>
         </div>
 
-        {menuComponent}
+        <SwipeableDrawer open={showMenu} onClose={this.onCloseMenu} onOpen={this.onOpenMenu}>
+          <Links />
+        </SwipeableDrawer>
 
         <style jsx>{styles}</style>
       </div>

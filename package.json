@@ -21,6 +21,7 @@
   "author": "Shaun Saker [hello.clevelup@gmail.com]",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.0.2",
     "@react-pdf/renderer": "^1.4.0",
     "autoprefixer": "^9.4.5",
     "express": "^4.16.4",
