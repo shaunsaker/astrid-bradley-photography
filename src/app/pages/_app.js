@@ -12,7 +12,6 @@ import configureStore from '../store';
 import AnalyticsHandler from '../handlers/AnalyticsHandler';
 import AuthHandler from '../handlers/AuthHandler';
 import DataHandler from '../handlers/DataHandler';
-import PageLoadingHandler from '../handlers/PageLoadingHandler';
 import SystemMessageHandler from '../handlers/SystemMessageHandler';
 
 export class TheApp extends App {
@@ -51,8 +50,6 @@ export class TheApp extends App {
             <AuthHandler />
 
             <DataHandler />
-
-            <PageLoadingHandler />
 
             <SystemMessageHandler />
 
