@@ -20,18 +20,31 @@ const styles = css`
   }
 
   ul {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: ${rhythm.hz * 4}px;
-    bottom: 0;
-    background-color: ${colors.white};
     padding: ${rhythm.vt}px ${rhythm.hz}px;
     align-items: flex-start;
+    min-width: 240px;
   }
 
-  ul > :global(li) {
+  li {
     margin-bottom: ${rhythm.vt}px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    color: ${colors.grey};
+  }
+
+  .nav-link {
+    transition: color 0.5s ease;
+  }
+
+  .nav-link:hover {
+    color: ${colors.black};
+  }
+
+  .nav-link.active {
+    font-weight: 700;
+    color: ${colors.black};
   }
 `;
 

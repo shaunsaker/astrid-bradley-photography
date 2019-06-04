@@ -1,11 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 import { SwipeableDrawer } from '@material-ui/core';
 
 import styles from './styles';
 
 import Logo from '../../Logo';
 import Icon from '../../Icon';
-import Links from '../Links';
+import withLinks from '../withLinks';
 
 export class Mobile extends React.Component {
   constructor(props) {
@@ -23,7 +25,12 @@ export class Mobile extends React.Component {
     };
   }
 
-  static propTypes = {};
+  static propTypes = {
+    /*
+     * withLinks
+     */
+    links: PropTypes.arrayOf(PropTypes.shape({})),
+  };
 
   static defaultProps = {};
 
@@ -67,6 +74,7 @@ export class Mobile extends React.Component {
 
   render() {
     const { showMenu, hasShadow } = this.state;
+    const { links } = this.props;
 
     return (
       <div className={`container hidden-md-up ${hasShadow ? 'shadow-lg' : ''}`}>
@@ -80,8 +88,25 @@ export class Mobile extends React.Component {
           </button>
         </div>
 
-        <SwipeableDrawer open={showMenu} onClose={this.onCloseMenu} onOpen={this.onOpenMenu}>
-          <Links />
+        <SwipeableDrawer
+          anchor="right"
+          open={showMenu}
+          onClose={this.onCloseMenu}
+          onOpen={this.onOpenMenu}
+        >
+          <ul>
+            {links.map((link) => {
+              return (
+                <li key={link.href}>
+                  <Link href={link.href} prefetch={link.prefetch} as={link.as}>
+                    <span className={`nav-link clickable ${link.isActive ? 'active' : ''}`}>
+                      {link.title}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </SwipeableDrawer>
 
         <style jsx>{styles}</style>
@@ -90,4 +115,4 @@ export class Mobile extends React.Component {
   }
 }
 
-export default Mobile;
+export default withLinks(Mobile);

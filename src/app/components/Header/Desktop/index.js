@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import styles from './styles';
 
 import Logo from '../../Logo';
-import Links from '../Links';
+import withLinks from '../withLinks';
 
-const Desktop = () => {
+const Desktop = ({ links }) => {
   return (
     <div className="hidden-md-down">
       <div className="logo-container">
@@ -14,7 +15,17 @@ const Desktop = () => {
       </div>
 
       <ul className="row">
-        <Links />
+        {links.map((link) => {
+          return (
+            <li key={link.href}>
+              <Link href={link.href} prefetch={link.prefetch} as={link.as}>
+                <span className={`nav-link clickable ${link.isActive ? 'active' : ''}`}>
+                  {link.title}
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
       <style jsx>{styles}</style>
@@ -22,7 +33,9 @@ const Desktop = () => {
   );
 };
 
-Desktop.propTypes = {};
+Desktop.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.shape({})),
+};
 Desktop.defaultProps = {};
 
-export default Desktop;
+export default withLinks(Desktop);
