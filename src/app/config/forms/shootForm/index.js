@@ -48,6 +48,11 @@ const shootForm = [
     name: 'archived',
     label: 'Archive Shoot',
   },
+  {
+    type: 'textarea',
+    name: 'vendors',
+    label: 'Vendors',
+  },
 ];
 
 export default shootForm;
